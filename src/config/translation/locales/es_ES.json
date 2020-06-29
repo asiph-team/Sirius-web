@@ -559,5 +559,6 @@
   "topbar.viewAll": "Ver todo",
   "topbar.viewCart": "Ver carro",
   "topbar.totalPrice": "Precio total",
-  "sidebar.scrumboard": "tablero de scrum"
+  "sidebar.scrumboard": "tablero de scrum",
+  "page.enterprise": "Empresas"
 }
