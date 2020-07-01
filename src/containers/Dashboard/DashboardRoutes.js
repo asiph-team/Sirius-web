@@ -10,9 +10,13 @@ const routes = [
     },
     {
         path: 'enterprise',
-        component: lazy(() => import('@sirius/pages/Enterprise/Enterprise')),
+        component: lazy(() => import('@sirius/pages/Enterprise')),
         exact: true
     },
+    {
+        path: 'enterprise/create',
+        component: lazy(() => import('@sirius/pages/Enterprise/Add')),
+    }
 ];
 
 export default function AppRouter() {

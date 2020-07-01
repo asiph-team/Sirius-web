@@ -560,5 +560,6 @@
   "topbar.viewCart": "Ver carro",
   "topbar.totalPrice": "Precio total",
   "sidebar.scrumboard": "tablero de scrum",
-  "page.enterprise": "Empresas"
+  "page.enterprise": "Empresas",
+  "page.enterprise.add": "Crear Empresa"
 }
