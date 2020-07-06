@@ -1,4 +1,10 @@
 export const PUBLIC_ROUTE = {
-    DASHBOARD: '/dashboard',
-    ENTERPRISE: '/enterprise'
+    LANDING: '/',
+    SIGN_IN: '/signin',
+    FORGET_PASSWORD: '/forgotpassword'
 };
+
+export const PRIVATE_ROUTE = {
+    DASHBOARD: '/',
+    ENTERPRISE: '/enterprise'
+}
