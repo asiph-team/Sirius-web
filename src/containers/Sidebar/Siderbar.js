@@ -102,7 +102,7 @@ export default function Sidebar() {
                         className="isoDashboardMenu"
                         mode={mode}
                         openKeys={isCollapsed ? [] : openKeys}
-                        selectedKeys={current}
+                        selectedKeys={!current.length ? '/' : current}
                         onOpenChange={onOpenChange}
                         >
                         {options.map(singleOption => (

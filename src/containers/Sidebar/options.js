@@ -1,11 +1,11 @@
 const options = [
     {
-      key: '',
+      key: '/',
       label: 'Home',
       leftIcon: 'ion-android-home',
     },
     {
-      key: 'enterprise',
+      key: '/enterprise',
       label: 'Empresas',
       leftIcon: 'ion-cube',
     },
