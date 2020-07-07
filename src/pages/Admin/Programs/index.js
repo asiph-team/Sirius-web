@@ -6,81 +6,61 @@ import IntlMessages from '@sirius/components/utility/intlMessages';
 import Button from '@sirius/components/uielements/button';
 import HelperText from '@sirius/components/utility/helper-text';
 import SimpleView from '@sirius/containers/Tables/AntTables/TableViews/SimpleView';
-import Switch from '@sirius/components/uielements/switch';
-import CardWrapper, { Box } from './Enterprise.styles';
+import CardWrapper, { Box } from './Programs.styles';
 
-export default function Enterprise() {
+export default function Programs() {
     const match = useRouteMatch();
-    const _data = [
+    const _data_1 = [
         {
             id: 0,
             key: 0,
-            name: 'Asiph',
-            rut: '77154419-3',
-            item: 'Software development',
-            email: 'jorge@asiph.cl',
-            contact: '12345678',
-            actions: 'acciones',
-            status: 'inactive',
+            name: 'Nombre de programa',
+            program: 'Programa',
+            status: 'Pendiente'
         },
         {
             id: 1,
             key: 1,
-            name: 'Asiph',
-            rut: '77154419-3',
-            item: 'Software development',
-            email: 'jorge@asiph.cl',
-            contact: '12345678',
-            actions: 'acciones',
-            status: 'inactive',
+            name: 'Nombre de programa',
+            program: 'Programa',
+            status: 'Pendiente'
         },
-    ]
+        {
+            id: 2,
+            key: 2,
+            name: 'Nombre de programa',
+            program: 'Programa',
+            status: 'Pendiente'
+        },
+    ];
 
     const columns = [
         {
-            title: 'Nombre/Razón Social',
+            title: 'Nombre',
             dataIndex: 'name',
             rowKey: 'name',
-            width: '20%',
-            render: (text, value) => (
-                <Link to={`${match.path}/${value.id}`}>
-                    <span id="company">{text}</span>
-                </Link>
-            )
+            width: '25%',
+            render: (text) => <span>{text}</span>
         },
         {
-            title: 'RUT',
-            dataIndex: 'rut',
-            rowKey: 'rut',
-            width: '15%',
+            title: 'Programa',
+            dataIndex: 'program',
+            rowKey: 'program',
+            width: '25%',
             render: text => <span>{text}</span>
         },
         {
-            title: 'Rubro',
-            dataIndex: 'item',
-            rowKey: 'item',
-            width: '15%',
-            render: text => <span>{text}</span>
-        },
-        {
-            title: 'Email',
-            dataIndex: 'email',
-            rowKey: 'email',
-            width: '15%',
-            render: text => <span>{text}</span>,
-        },
-        {
-            title: 'Contacto',
-            dataIndex: 'contact',
-            rowKey: 'contact',
-            width: '15%',
+            title: 'Estado',
+            dataIndex: 'status',
+            rowKey: 'status',
+            width: '25%',
             render: text => <span>{text}</span>,
         },
         {
             title: 'Acciones',
             dataIndex: 'actions',
             rowKey: 'actions',
-            width: '10%',
+            width: '25%',
             render: () => (
                 <div className="isoInvoiceBtnView">
                     <Button color="primary" className="invoiceViewBtn">
@@ -91,19 +71,12 @@ export default function Enterprise() {
                     </Button>
                 </div>
             ),
-        },
-        {
-            title: 'Status',
-            dataIndex: 'status',
-            rowKey: 'status',
-            width: '10%',
-            render: () => <Switch defaultChecked />,
         }
     ];
     return(
         <LayoutWrapper>
             <PageHeader>
-                <IntlMessages id="page.enterprise" />
+                <IntlMessages id="page.workers" />
             </PageHeader>
             <Box>
                 <div className="isoInvoiceTableBtn">
@@ -115,12 +88,30 @@ export default function Enterprise() {
                 </div>
                 <CardWrapper>
                     {
-                        _data.length === 0 ? (
-                            <HelperText text="Aun no se han agregado empresas" />
+                        _data_1.length === 0 ? (
+                            <HelperText text="Aun no se han agregado programas de vigilancia para trabajadores" />
                         ) : (
                             <SimpleView
                                 columns={columns}
-                                dataSource={_data}
+                                dataSource={_data_1}
+                                className="isoSimpleTable"
+                            />
+                        )
+                    }
+                </CardWrapper>
+            </Box>
+            <PageHeader>
+                <IntlMessages id="page.jobPositions" />
+            </PageHeader>
+            <Box>
+                <CardWrapper>
+                    {
+                        _data_1.length === 0 ? (
+                            <HelperText text="Aun no se han agregado programas de vigilancia para trabajadores" />
+                        ) : (
+                            <SimpleView
+                                columns={columns}
+                                dataSource={_data_1}
                                 className="isoSimpleTable"
                             />
                         )

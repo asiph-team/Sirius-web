@@ -33,10 +33,10 @@ export default function SignIn(){
             dispatch(login());
         }
         dispatch(clearMenu());
-        history.push('/dashboard');
+        history.push('/superadmin');
     }
 
-    let { from } = location.state || { from: { pathname: '/dashboard' } };
+    let { from } = location.state || { from: { pathname: '/superadmin' } };
     if (redirectToReferrer) {
         return <Redirect to={from} />;
     }

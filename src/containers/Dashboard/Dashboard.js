@@ -27,7 +27,7 @@ const styles = {
     },
   };
 
-  export default function Dashboard() {
+  export default function Dashboard(props) {
       const dispatch = useDispatch();
       const appHeight = useSelector(state => state.App.height);
       const {width, height} = useWindowSize();
@@ -36,18 +36,20 @@ const styles = {
           dispatch(toggleAll(width, height));
       }, [width, height, dispatch]);
 
+      const {routes, options} = props;
+
       return (
           <DashboardContainer>
               <DashboardGlobalStyles />
               <Layout style={{ height: height }}>
                     <Topbar />
                     <Layout style={styles.layout}>
-                        <Sidebar />
+                        <Sidebar options={options}/>
                         <Layout
                             className="isoContentMainLayout"
                             style={{height: appHeight}}>
                             <Content className="isomorphicContent" style={styles.content}>
-                                <DashboardRoutes />
+                                <DashboardRoutes routes={routes}/>
                             </Content>
                             <Footer style={styles.footer}>{siteConfig.footerText}</Footer>
                         </Layout>

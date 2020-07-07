@@ -1,23 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { PUBLIC_ROUTE } from './route.constans';
+import { Dashboard, PUBLIC_ROUTES, SUPER_ADMIN_ROUTES, ADMIN_ROUTES } from './route.constans';
+import {superAdminOptions, adminOptions} from './options';
 import ErrorBoundary from './ErrorBoundary';
 import Loader from './components/utility/loader';
-
-const Dashboard = lazy(() => import('./containers/Dashboard/Dashboard'));
-
-const publicRoutes = [
-    {
-        path: PUBLIC_ROUTE.LANDING,
-        exact: true,
-        component: lazy(() => import('@sirius/pages/Auth/SignIn')),
-    },
-    {
-        path: PUBLIC_ROUTE.FORGET_PASSWORD,
-        component: lazy(() => import('@sirius/pages/Auth/ForgetPassword'),)
-    }
-];
 
 function PrivateRoute({ children, ...rest}) {
     const isLoggedIn = useSelector(state => state.Auth.idToken);
@@ -46,13 +33,16 @@ export default function Routes() {
             <Suspense fallback={<Loader />}>
                 <Router>
                     <Switch>
-                        {publicRoutes.map((route, index) => (
+                        {PUBLIC_ROUTES.map((route, index) => (
                             <Route key={index} path={route.path} exact={route.exact}>
                                 <route.component />
                             </Route>
                         ))}
-                        <PrivateRoute path="/dashboard">
-                            <Dashboard />
+                        <PrivateRoute path="/superadmin">
+                            <Dashboard routes={SUPER_ADMIN_ROUTES} options={superAdminOptions}/>
+                        </PrivateRoute>
+                        <PrivateRoute path="/admin">
+                            <Dashboard routes={ADMIN_ROUTES} options={adminOptions}/>
                         </PrivateRoute>
                     </Switch>
                 </Router>

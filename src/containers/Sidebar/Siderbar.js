@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {Layout} from 'antd';
-import options from './options';
 import Scrollbars from '@sirius/components/utility/customScrollBar';
 import Menu from '@sirius/components/uielements/menu';
 import appActions from '@sirius/redux/app/actions';
@@ -16,7 +15,7 @@ const {
     toggleCollapsed,
 } = appActions;
 
-export default function Sidebar() {
+export default function Sidebar(props) {
     const dispatch = useDispatch();
     const {
         view,
@@ -105,7 +104,7 @@ export default function Sidebar() {
                         selectedKeys={!current.length ? '/' : current}
                         onOpenChange={onOpenChange}
                         >
-                        {options.map(singleOption => (
+                        {props.options.map(singleOption => (
                         <SidebarMenu
                             key={singleOption.key}
                             submenuStyle={submenuStyle}

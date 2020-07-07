@@ -561,5 +561,11 @@
   "topbar.totalPrice": "Precio total",
   "sidebar.scrumboard": "tablero de scrum",
   "page.enterprise": "Empresas",
-  "page.enterprise.add": "Crear Empresa"
+  "page.enterprise.add": "Crear Empresa",
+  "page.jobPositions": "Puestos de Trabajo",
+  "page.workers": "Trabajadores",
+  "page.activities": "Actividades",
+  "page.trainings": "Capacitaciones",
+  "page.programs": "Programas de Vigilancia",
+  "page.plans": "Planes de Acción"
 }
