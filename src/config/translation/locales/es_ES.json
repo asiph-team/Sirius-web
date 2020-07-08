@@ -561,11 +561,17 @@
   "topbar.totalPrice": "Precio total",
   "sidebar.scrumboard": "tablero de scrum",
   "page.enterprise": "Empresas",
-  "page.enterprise.add": "Crear Empresa",
+  "page.enterprise.add": "Agregar Empresa",
   "page.jobPositions": "Puestos de Trabajo",
+  "page.jobPositions.add": "Agregar Puesto de trabajo",
   "page.workers": "Trabajadores",
+  "page.workers.add": "Agregar Trabajadores",
   "page.activities": "Actividades",
+  "page.activities.add": "Agregar Actividades",
   "page.trainings": "Capacitaciones",
+  "page.trainings.add": "Agregar Capacitaciones",
   "page.programs": "Programas de Vigilancia",
-  "page.plans": "Planes de Acción"
+  "page.programs.add": "Agregar Programas de Vigilancia",
+  "page.plans": "Planes de Acción",
+  "page.plans.add": "Agregar Planes de Acción"
 }

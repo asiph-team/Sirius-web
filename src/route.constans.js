@@ -43,8 +43,18 @@ export const ADMIN_ROUTES = [
         exact: true
     },
     {
+        path: '/job-positions/create',
+        component: React.lazy(() => import('@sirius/pages/Admin/JobPositions/Add')),
+        exact: true
+    },
+    {
         path: '/workers',
         component: React.lazy(() => import('@sirius/pages/Admin/Workers')),
+        exact: true
+    },
+    {
+        path: '/workers/create',
+        component: React.lazy(() => import('@sirius/pages/Admin/Workers/Add')),
         exact: true
     },
     {
@@ -53,8 +63,18 @@ export const ADMIN_ROUTES = [
         exact: true
     },
     {
+        path: '/activities/create',
+        component: React.lazy(() => import('@sirius/pages/Admin/Activities/Add')),
+        exact: true
+    },
+    {
         path: '/trainings',
         component: React.lazy(() => import('@sirius/pages/Admin/Trainings')),
+        exact: true
+    },
+    {
+        path: '/trainings/create',
+        component: React.lazy(() => import('@sirius/pages/Admin/Trainings/Add')),
         exact: true
     },
     {
@@ -63,8 +83,18 @@ export const ADMIN_ROUTES = [
         exact: true
     },
     {
+        path: '/programs/create',
+        component: React.lazy(() => import('@sirius/pages/Admin/Programs/Add')),
+        exact: true
+    },
+    {
         path: '/plans',
         component: React.lazy(() => import('@sirius/pages/Admin/Plans')),
+        exact: true
+    },
+    {
+        path: '/plans/create',
+        component: React.lazy(() => import('@sirius/pages/Admin/Plans/Add')),
         exact: true
     },
 ];

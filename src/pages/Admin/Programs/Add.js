@@ -4,8 +4,8 @@ import LayoutWrapper from '@sirius/components/utility/layoutWrapper';
 import PageHeader from '@sirius/components/utility/pageHeader';
 import IntlMessages from '@sirius/components/utility/intlMessages';
 import Button from '@sirius/components/uielements/button';
-import AddEnterprise from '@sirius/containers/Forms/AddEnterprise';
-import { Box } from './Enterprise.styles';
+import AddProgram from '@sirius/containers/Forms/AddProgram';
+import { Box } from './Programs.styles';
 
 export default function Add(){
     const match = useRouteMatch();
@@ -13,10 +13,10 @@ export default function Add(){
     return(
         <LayoutWrapper>
             <PageHeader>
-                <IntlMessages id="page.enterprise.add" />
+                <IntlMessages id="page.programs.add" />
             </PageHeader>
             <Box>
-                <AddEnterprise />
+                <AddProgram/>
                 <div className="bottomActions">
                     <Link to={redirectPath}>
                         <Button className="mateAddInvoiceBtn">
