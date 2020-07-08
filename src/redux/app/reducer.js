@@ -2,6 +2,7 @@ import { getDefaultPath } from '@sirius/lib/helpers/url_sync';
 import actions, { getView } from './actions';
 import { isServer } from '@sirius/lib/helpers/isServer';
 const preKeys = getDefaultPath();
+
 const initState = {
   collapsed: !isServer && window.innerWidth > 1220 ? false : true,
   view: !isServer && getView(window.innerWidth),

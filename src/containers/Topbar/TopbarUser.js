@@ -1,12 +1,17 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Popover from '@sirius/components/uielements/popover';
 import IntlMessages from '@sirius/components/utility/intlMessages';
 import userpic from '@sirius/assets/images/avatar.png';
+import authAction from '@sirius/redux/auth/actions';
 import TopbarDropdownWrapper from './TopbarDropdown.styles';
+
+const { logout } = authAction;
 
 export default function TopbarUser() {
     const [visible, setVisibility] = useState(false);
+    const dispatch = useDispatch();
     function handleVisibleChange() {
         setVisibility(visible => !visible);
     }
@@ -22,7 +27,7 @@ export default function TopbarUser() {
           <a className="isoDropdownLink" href="# ">
             <IntlMessages id="topbar.help" />
           </a>
-          <div className="isoDropdownLink">
+          <div className="isoDropdownLink" onClick={() => dispatch(logout())}>
             <IntlMessages id="topbar.logout" />
           </div>
         </TopbarDropdownWrapper>

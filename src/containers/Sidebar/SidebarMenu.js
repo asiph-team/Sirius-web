@@ -23,7 +23,7 @@ export default React.memo(function SidebarMenu({
 
     return (
       <Menu.Item key={key} {...rest}>
-        <Link to={`${url}/${key}`}>
+        <Link to={`${url}${key}`}>
           <span className="isoMenuHolder" style={submenuColor}>
             <i className={leftIcon} />
             <span className="nav-text">

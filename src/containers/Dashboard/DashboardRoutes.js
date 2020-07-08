@@ -1,26 +1,11 @@
-import React, {lazy, Suspense} from 'react';
+import React, {Suspense} from 'react';
 import {Route, useRouteMatch, Switch} from 'react-router-dom';
 import Loader from '@sirius/components/utility/loader';
 
-const routes = [
-    {
-        path: '',
-        component: lazy(() => import('@sirius/pages/Home/Home')),
-        exact: true
-    },
-    {
-        path: 'enterprise',
-        component: lazy(() => import('@sirius/pages/Enterprise')),
-        exact: true
-    },
-    {
-        path: 'enterprise/create',
-        component: lazy(() => import('@sirius/pages/Enterprise/Add')),
-    }
-];
-
-export default function AppRouter() {
+export default function AppRouter(props) {
     const { url } = useRouteMatch();
+    const { routes } = props;
+
     return(
         <Suspense fallback={<Loader />}>
             <Switch>
