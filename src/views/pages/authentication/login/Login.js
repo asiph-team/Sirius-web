@@ -15,7 +15,6 @@ import classnames from "classnames"
 import loginImg from "../../../../assets/img/pages/login.png"
 import "../../../../assets/scss/pages/authentication.scss"
 import LoginAuth0 from "./LoginAuth0"
-import LoginFirebase from "./LoginFirebase"
 import LoginJWT from "./LoginJWT"
 
 class Login extends React.Component {
@@ -73,18 +72,6 @@ class Login extends React.Component {
                     <NavItem>
                       <NavLink
                         className={classnames({
-                          active: this.state.activeTab === "2"
-                        })}
-                        onClick={() => {
-                          this.toggle("2")
-                        }}
-                      >
-                        Firebase
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                        className={classnames({
                           active: this.state.activeTab === "3"
                         })}
                         onClick={() => {
@@ -98,9 +85,6 @@ class Login extends React.Component {
                   <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="1">
                       <LoginJWT />
-                    </TabPane>
-                    <TabPane tabId="2">
-                      <LoginFirebase />
                     </TabPane>
                     <TabPane tabId="3">
                       <LoginAuth0 />

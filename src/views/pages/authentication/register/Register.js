@@ -13,7 +13,6 @@ import {
   TabPane
 } from "reactstrap"
 import classnames from "classnames"
-import RegisterFirebase from "./RegisterFirebase"
 import RegisterAuth0 from "./RegisterAuth0"
 import RegisterJWT from "./RegisterJWT"
 import registerImg from "../../../../assets/img/pages/register.jpg"
@@ -74,18 +73,6 @@ class Register extends React.Component {
                     <NavItem>
                       <NavLink
                         className={classnames({
-                          active: this.state.activeTab === "2"
-                        })}
-                        onClick={() => {
-                          this.toggle("2")
-                        }}
-                      >
-                        Firebase
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                        className={classnames({
                           active: this.state.activeTab === "3"
                         })}
                         onClick={() => {
@@ -100,9 +87,6 @@ class Register extends React.Component {
                     <TabContent activeTab={this.state.activeTab}>
                       <TabPane tabId="1">
                         <RegisterJWT />
-                      </TabPane>
-                      <TabPane tabId="2">
-                        <RegisterFirebase />
                       </TabPane>
                       <TabPane tabId="3">
                         <RegisterAuth0 />

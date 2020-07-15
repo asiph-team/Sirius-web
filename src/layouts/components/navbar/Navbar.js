@@ -4,8 +4,7 @@ import { connect } from "react-redux"
 import classnames from "classnames"
 import { useAuth0 } from "../../../authServices/auth0/auth0Service"
 import {
-  logoutWithJWT,
-  logoutWithFirebase
+  logoutWithJWT
 } from "../../../redux/actions/auth/loginActions"
 import NavbarBookmarks from "./NavbarBookmarks"
 import NavbarUser from "./NavbarUser"
@@ -121,6 +120,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   logoutWithJWT,
-  logoutWithFirebase,
   useAuth0
 })(ThemeNavbar)
