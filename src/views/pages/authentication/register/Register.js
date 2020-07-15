@@ -6,29 +6,12 @@ import {
   CardBody,
   Row,
   Col,
-  Nav,
-  NavItem,
-  NavLink,
-  TabContent,
-  TabPane
 } from "reactstrap"
-import classnames from "classnames"
-import RegisterAuth0 from "./RegisterAuth0"
 import RegisterJWT from "./RegisterJWT"
 import registerImg from "../../../../assets/img/pages/register.jpg"
 import "../../../../assets/scss/pages/authentication.scss"
 
 class Register extends React.Component {
-  state = {
-    activeTab: "1"
-  }
-  toggle = tab => {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab
-      })
-    }
-  }
   render() {
     return (
       <Row className="m-0 justify-content-center">
@@ -57,41 +40,8 @@ class Register extends React.Component {
                   <p className="px-2 auth-title mb-0">
                     Fill the below form to create a new account.
                   </p>
-                  <Nav tabs className="px-2">
-                    <NavItem>
-                      <NavLink
-                        className={classnames({
-                          active: this.state.activeTab === "1"
-                        })}
-                        onClick={() => {
-                          this.toggle("1")
-                        }}
-                      >
-                        JWT
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                        className={classnames({
-                          active: this.state.activeTab === "3"
-                        })}
-                        onClick={() => {
-                          this.toggle("3")
-                        }}
-                      >
-                        Auth0
-                      </NavLink>
-                    </NavItem>
-                  </Nav>
                   <CardBody className="pt-1 pb-50">
-                    <TabContent activeTab={this.state.activeTab}>
-                      <TabPane tabId="1">
-                        <RegisterJWT />
-                      </TabPane>
-                      <TabPane tabId="3">
-                        <RegisterAuth0 />
-                      </TabPane>
-                    </TabContent>
+                    <RegisterJWT />
                   </CardBody>
                 </Card>
               </Col>

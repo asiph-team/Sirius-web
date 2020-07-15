@@ -2,7 +2,6 @@ import React from "react"
 import { Navbar } from "reactstrap"
 import { connect } from "react-redux"
 import classnames from "classnames"
-import { useAuth0 } from "../../../authServices/auth0/auth0Service"
 import {
   logoutWithJWT
 } from "../../../redux/actions/auth/loginActions"
@@ -29,7 +28,6 @@ const UserName = props => {
   return username
 }
 const ThemeNavbar = props => {
-  const { user } = useAuth0()
   const colorsArr = [ "primary", "danger", "success", "info", "warning", "dark"]
   const navbarTypes = ["floating" , "static" , "sticky" , "hidden"]
   return (
@@ -86,13 +84,12 @@ const ThemeNavbar = props => {
               <NavbarUser
                 handleAppOverlay={props.handleAppOverlay}
                 changeCurrentLang={props.changeCurrentLang}
-                userName={<UserName userdata={user} {...props} />}
+                userName={<UserName {...props} />}
                 userImg={
                   props.user.login.values !== undefined &&
                   props.user.login.values.loggedInWith !== "jwt" &&
                   props.user.login.values.photoUrl
                     ? props.user.login.values.photoUrl 
-                    : user !== undefined && user.picture ? user.picture
                     : userImg
                 }
                 loggedInWith={
@@ -119,6 +116,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {
-  logoutWithJWT,
-  useAuth0
+  logoutWithJWT
 })(ThemeNavbar)
