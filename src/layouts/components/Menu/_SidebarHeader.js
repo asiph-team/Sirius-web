@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 import classnames from "classnames"
 import { X } from 'react-feather'
+import logo from '../../../assets/img/logo/logo.png'
 
 class SidebarHeader extends Component {
     render() {
@@ -14,7 +15,7 @@ class SidebarHeader extends Component {
                 <ul className="nav navbar-nav flex-row">
                     <li className="nav-item mr-auto">
                         <NavLink to="/" className="navbar-brand">
-                            <div className="brand-logo" />
+                            <img className="brand-logo" src={logo} alt="Sirius" />
                             <h2 className="brand-text mb-0">Sirius</h2>
                         </NavLink>
                     </li>

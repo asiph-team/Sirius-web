@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
-import { ContextLayout } from '../../../../utility/context/Layout'
-import SidebarHeader from './SidebarHeader'
+import { ContextLayout } from '../../../utility/context/Layout'
+import SidebarHeader from './_SidebarHeader'
 import Hammer from 'react-hammerjs'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 class Sidebar extends Component {
     static getDerivedStateFromProps(props, state) {
-        if (props.activePath !== state.activeItem) {
-          return {
-            activeItem: props.activePath
-          }
+      if (props.activePath !== state.activeItem) {
+        return {
+          activeItem: props.activePath
         }
+      }
 
-        return null
+      return null
     }
 
     state = {
@@ -28,9 +28,7 @@ class Sidebar extends Component {
 
     updateWidth = () => {
         if (this.mounted) {
-          this.setState(prevState => ({
-            width: window.innerWidth
-          }))
+          this.setState(prevState => ({width: window.innerWidth}))
           this.checkDevice()
         }
     }
@@ -52,13 +50,9 @@ class Sidebar extends Component {
         }
 
         if ("ontouchstart" in window || window.DocumentTouch) {
-          this.setState({
-            ScrollbarTag: "div"
-          })
+          this.setState({ ScrollbarTag: "div" })
         } else {
-          this.setState({
-            ScrollbarTag: PerfectScrollbar
-          })
+          this.setState({ ScrollbarTag: PerfectScrollbar })
         }
         var query = ["(", prefixes.join("touch-enabled),("), "heartz", ")"].join("")
         return mq(query)
@@ -66,23 +60,18 @@ class Sidebar extends Component {
 
     changeActiveIndex = id => {
         if (id !== this.state.activeIndex) {
-          this.setState({
-            activeIndex: id
-          })
+          this.setState({ activeIndex: id })
         } else {
-          this.setState({
-            activeIndex: null
-          })
+          this.setState({ activeIndex: null })
         }
     }
 
-    handleActiveItem = url => this.setState({activeItem: url})
+    handleActiveItem = url => this.setState({ activeItem: url })
 
     render() {
         let {
             visibilityState,
             toggleSidebarMenu,
-            sidebarHover,
             toggle,
             color,
             sidebarVisibility,
@@ -90,8 +79,6 @@ class Sidebar extends Component {
             collapsed,
             activePath,
             sidebarState,
-            currentLang,
-            permission,
             currentUser,
             collapsedMenuPaths
         } = this.props
@@ -127,11 +114,10 @@ class Sidebar extends Component {
                     </Hammer>
                     <div
                       className={classnames(
-                        `main-menu menu-fixed menu-light menu-accordion menu-shadow theme-${activeTheme}`,
+                        `main-menu menu-fixed menu-light menu-accordion menu-shadow theme-primary`,
                         {
                           collapsed: sidebarState === true,
-                          "hide-sidebar":
-                            this.state.width < 1200 && visibilityState === false
+                          "hide-sidebar": this.state.width < 1200 && visibilityState === false
                         }
                       )}>
                       <SidebarHeader
@@ -162,7 +148,7 @@ class Sidebar extends Component {
                           onSwipe={() => {
                             sidebarVisibility()
                           }}
-                          direction={"DIRECTION_RIGHT"}>
+                          direction="DIRECTION_RIGHT">
                           <ul className="navigation navigation-main">
                           </ul>
                         </Hammer>

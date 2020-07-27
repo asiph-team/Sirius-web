@@ -1,14 +1,7 @@
 import React from 'react'
-import themeConfig from '../configs/themeConfig'
-import classnames from 'classnames'
 
 const FullPageLayout = ({children, ...rest}) => (
-    <div className={classnames(
-        "full-layout wrapper bg-full-screen-image blank-page dark-layout",
-        {
-            "layout-dark": themeConfig.layoutDark
-        }
-    )}
+    <div className="full-layout wrapper bg-full-screen-image blank-page dark-layout"
     >
         <div className="app-content">
             <div className="content-wrapper">
