@@ -1,8 +1,10 @@
-import React, { Suspense } from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
 import { history } from './history'
 import { LoadingSpinner } from './components/@vuexy/Spinner'
 import { ContextLayout } from './utility/context/Layout'
+
+const Login = lazy(() => import('./views/pages/auth/Login')) 
 
 const RouteConfig = ({ component: Component, fullLayout, ...rest }) => (
     <Route
@@ -27,7 +29,7 @@ const RouteConfig = ({ component: Component, fullLayout, ...rest }) => (
 const AppRouter = () => (
     <Router history={history}>
         <Switch>
-            <RouteConfig exact path="/" component={() => <h1>HOLA2</h1>} />
+            <RouteConfig exact path="/" component={Login} fullLayout/>
             <RouteConfig exact path="/dashboard" component={() => <h1>HOLA SOY EL DASHBOARD</h1>} />
         </Switch>
     </Router>

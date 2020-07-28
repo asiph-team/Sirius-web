@@ -16,7 +16,7 @@ class NavbarBookmarks extends Component {
                         className="nav-menu-main menu-toggle hidden-xs is-active"
                         onClick={sidebarVisibility}
                         >
-                        <Icon.Menu className="ficon" />
+                            <Icon.Menu className="ficon" />
                         </NavLink>
                     </NavItem>
                 </ul>
