@@ -79,15 +79,10 @@ class Sidebar extends Component {
             collapsed,
             activePath,
             sidebarState,
-            currentUser,
-            collapsedMenuPaths
         } = this.props
 
         let {
             menuShadow,
-            activeIndex,
-            hoveredMenuItem,
-            activeItem,
             ScrollbarTag
           } = this.state
           let scrollShadow = (container, dir) => {

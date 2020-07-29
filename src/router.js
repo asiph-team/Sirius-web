@@ -4,7 +4,7 @@ import { history } from './history'
 import { LoadingSpinner } from './components/@vuexy/Spinner'
 import { ContextLayout } from './utility/context/Layout'
 
-const Login = lazy(() => import('./views/pages/auth/Login')) 
+const Login = lazy(() => import('./views/pages/auth/Login'))
 
 const RouteConfig = ({ component: Component, fullLayout, ...rest }) => (
     <Route
