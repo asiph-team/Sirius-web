@@ -1,4 +1,5 @@
-import React,{ createContext, Component } from 'react'
+import React, { createContext, useReducer } from 'react'
+import { initialState, authReducer } from '../../hooks/session'
 
 const ContextAuth = createContext({
     authenticated: false,
@@ -9,38 +10,32 @@ const ContextAuth = createContext({
     logout: () => {}
 })
 
-class Auth extends Component {
-    state = {
-        accessToken: null,
-        authenticated: false,
-        user: null,
+const Auth = props => {
+    const [state, dispatch] = useReducer(authReducer, initialState)
+
+    const handleAuthentication = values => {
+        dispatch({type: 'SET_USER'})
     }
 
-    handleAuthentication = values => {
-        console.log(values)
-    }
-
-    logout = () => {
+    const logout = () => {
         console.log('CIERRO LOGOUT')
     }
 
-    setSession(authResult) {
+    const setSession = (authResult) => {
 
     }
 
-    render() {
-        const authProviderValue = {
-            ...this.state,
-            handleAuthentication: this.handleAuthentication,
-            logout: this.logout
-        }
-
-        return (
-            <ContextAuth.Provider value={authProviderValue}>
-                {this.props.children}
-            </ContextAuth.Provider>
-        )
+    const authProviderValue = {
+        ...state,
+        handleAuthentication,
+        logout
     }
+
+    return (
+        <ContextAuth.Provider value={authProviderValue}>
+            {props.children}
+        </ContextAuth.Provider>
+    )
 }
 
 export {Auth, ContextAuth};

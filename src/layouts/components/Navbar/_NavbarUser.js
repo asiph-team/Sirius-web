@@ -24,7 +24,7 @@ const UserDropdown = props => {
             <DropdownItem divider />
             <DropdownItem
                 tag="a"
-                href="#"
+                href="/"
                 onClick={() => console.log('CERRAR SESIÓN')}
             >
                 <Icon.Power size={14} className="mr-50" />
