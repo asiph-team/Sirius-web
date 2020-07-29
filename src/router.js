@@ -2,9 +2,22 @@ import React, { lazy, Suspense } from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
 import { history } from './history'
 import { LoadingSpinner } from './components/@vuexy/Spinner'
+import { ContextAuth } from './utility/context/Auth'
 import { ContextLayout } from './utility/context/Layout'
 
 const Login = lazy(() => import('./views/pages/auth/Login'))
+
+const AuthConfig = props => (
+    <ContextAuth.Consumer>
+        {({ user }) => {
+            const { match } = props
+            const login = match.path === '/' ? true : false;
+            if (!user && !login) history.push('/')
+            if (user && login) history.push('/dashboard')
+            return props.children
+        }}
+    </ContextAuth.Consumer>
+)
 
 const RouteConfig = ({ component: Component, fullLayout, ...rest }) => (
     <Route
@@ -16,7 +29,9 @@ const RouteConfig = ({ component: Component, fullLayout, ...rest }) => (
                 return (
                     <LayoutTag {...props}>
                         <Suspense fallback={<LoadingSpinner />}>
-                            <Component {...props} />
+                            <AuthConfig {...props}>
+                                <Component {...props} />
+                            </AuthConfig>
                         </Suspense>
                     </LayoutTag>
                     )
@@ -24,7 +39,7 @@ const RouteConfig = ({ component: Component, fullLayout, ...rest }) => (
             </ContextLayout.Consumer>
         )}
     />
-  )
+)
 
 const AppRouter = () => (
     <Router history={history}>
