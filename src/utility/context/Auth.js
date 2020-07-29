@@ -16,12 +16,8 @@ class Auth extends Component {
         user: null,
     }
 
-    initiateLogin = () => {
-        console.log('INICIO LOGIN')
-    }
-
-    handleAuthentication = () => {
-        console.log('MANEJO AUTH')
+    handleAuthentication = values => {
+        console.log(values)
     }
 
     logout = () => {
@@ -35,7 +31,6 @@ class Auth extends Component {
     render() {
         const authProviderValue = {
             ...this.state,
-            initiateLogin: this.initiateLogin,
             handleAuthentication: this.handleAuthentication,
             logout: this.logout
         }

@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react'
-import { Router, Switch, Route } from 'react-router-dom'
+import { Redirect, Router, Switch, Route } from 'react-router-dom'
 import { history } from './history'
 import { LoadingSpinner } from './components/@vuexy/Spinner'
 import { ContextAuth } from './utility/context/Auth'
@@ -12,8 +12,8 @@ const AuthConfig = props => (
         {({ user }) => {
             const { match } = props
             const login = match.path === '/' ? true : false;
-            if (!user && !login) history.push('/')
-            if (user && login) history.push('/dashboard')
+            if (!user && !login) return <Redirect to="/" />
+            if (user && login) return <Redirect to="/dashboard" />
             return props.children
         }}
     </ContextAuth.Consumer>

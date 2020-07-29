@@ -1,17 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { Button, CardBody, FormGroup, Form, Input, Label } from 'reactstrap'
 import { Mail, Lock } from 'react-feather'
 
-const LoginForm = () => {
+const LoginForm = props => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     return (
         <>
             <CardBody className="pt-1">
-                <Form>
+                <Form onSubmit={e => {
+                    e.preventDefault()
+                    props.handleLogin({ email, password })
+                }}>
                     <FormGroup className="form-label-group position-relative has-icon-left">
                         <Input
                             type="email"
                             placeholder="Correo electrónico"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
                             required
                         />
                         <div className="form-control-position">
@@ -23,6 +30,8 @@ const LoginForm = () => {
                         <Input
                             type="password"
                             placeholder="Contraseña"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
                             required
                         />
                         <div className="form-control-position">
