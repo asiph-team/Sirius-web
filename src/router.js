@@ -10,7 +10,6 @@ const Login = lazy(() => import('./views/pages/auth/Login'))
 const AuthConfig = props => (
     <ContextAuth.Consumer>
         {({ user }) => {
-            console.log('USUARIO', user)
             const { match } = props
             const login = match.path === '/' ? true : false;
             if (!user && !login) return <Redirect to="/" />

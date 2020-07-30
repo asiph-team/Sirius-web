@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
-import { Button, CardBody, FormGroup, Form, Input, Label } from 'reactstrap'
+import { Button, CardBody, FormGroup, Form, Input, Label, Spinner } from 'reactstrap'
 import { Mail, Lock } from 'react-feather'
 
 const LoginForm = props => {
@@ -41,7 +41,7 @@ const LoginForm = props => {
                     </FormGroup>
                     <div className="d-flex justify-content-between">
                         <Button block color="primary" type="submit">
-                            Ingresar
+                            {props.loading ? <Spinner size="sm" color="light" /> : 'Ingresar'}
                         </Button>
                     </div>
                     <div className="text-center py-1">

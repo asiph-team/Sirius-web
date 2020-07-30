@@ -6,6 +6,7 @@ import { Auth } from './utility/context/Auth'
 import { Layout } from './utility/context/Layout'
 import ReactDOM from 'react-dom'
 import "./index.scss"
+import "./@fake-db"
 
 const LazyApp = lazy(() => import("./App"))
 
