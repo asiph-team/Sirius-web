@@ -7,7 +7,7 @@ import * as Icon from 'react-feather'
 
 class NavbarBookmarks extends Component {
     render() {
-        let { sidebarVisibility } = this.props
+        let { sidebarVisibility, enterprise } = this.props
         return (
             <div className="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                 <ul className="navbar-nav d-xl-none">
@@ -21,7 +21,7 @@ class NavbarBookmarks extends Component {
                     </NavItem>
                 </ul>
                 <ul className="nav navbar-nav">
-                    <h3 className="d-none d-lg-block mb-0 ml-1 primary">Nombre empresa</h3>
+                    {enterprise && <h3 className="d-none d-lg-block mb-0 ml-1 primary">{enterprise}</h3>}
                 </ul>
             </div>
         )

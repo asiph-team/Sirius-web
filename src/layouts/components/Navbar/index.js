@@ -8,7 +8,7 @@ import { ContextAuth } from '../../../utility/context/Auth'
 const ThemeNavbar = props => {
     return (
             <ContextAuth.Consumer>
-            {({ user }) => (
+            {({ user, logout }) => (
                 <>
                     <div className="content-overlay" />
                     <div className="header-navbar-shadow" />
@@ -21,11 +21,12 @@ const ThemeNavbar = props => {
                                 >
                                     <div className="bookmark-wrapper">
                                         <NavbarBookmarks
+                                            enterprise={user.enterprise}
                                             sidebarVisibility={props.sidebarVisibility}
                                             handleAppOverlay={props.handleAppOverlay}
                                         />
                                     </div>
-                                    <NavbarUser user={user} userImg={userImg}/>
+                                    <NavbarUser user={user} userImg={userImg} handleLogout={logout}/>
                                 </div>
                             </div>
                         </div>

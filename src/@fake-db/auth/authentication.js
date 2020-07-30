@@ -7,21 +7,24 @@ let users = [
       email: "superadmin@test.com",
       password: "123456",
       name: "Jorge Verdugo",
-      role: "Superadministrador"
+      role: "Superadministrador",
+      enterprise: null
     },
     {
       id: 2,
       email: "admin@test.com",
       password: "123456",
       name: "Carlos Knopel",
-      role: "Administrador"
+      role: "Administrador",
+      enterprise: "Asiph"
     },
     {
       id: 3,
       email: "jefearea@test.com",
       password: "123456",
       name: "Jorge Almonacid",
-      role: "Jefe Area"
+      role: "Jefe Area",
+      enterprise: "Asiph"
     }
 ]
 

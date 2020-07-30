@@ -25,7 +25,7 @@ const UserDropdown = props => {
             <DropdownItem
                 tag="a"
                 href="/"
-                onClick={() => console.log('CERRAR SESIÓN')}
+                onClick={props.handleLogout}
             >
                 <Icon.Power size={14} className="mr-50" />
                 <span className="align-middle">Cerrar Sesión</span>

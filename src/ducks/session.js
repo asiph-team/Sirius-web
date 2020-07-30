@@ -29,7 +29,7 @@ export const authReducer = (state = initialState, action) => {
             return {...state, loading: true}
         case FETCH_SUCCESS_AUTH:
             const { user, accessToken } = action.payload
-            return {...state, user, accessToken, loading: false}
+            return {...state, user, accessToken}
         case FETCH_ERROR_AUTH:
             return {...state, loading: false, error: action.payload}
         default:

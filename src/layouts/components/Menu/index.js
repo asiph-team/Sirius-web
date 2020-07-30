@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
 import { ContextLayout } from '../../../utility/context/Layout'
+import { ContextAuth } from '../../../utility/context/Auth'
 import SidebarHeader from './_SidebarHeader'
 import Hammer from 'react-hammerjs'
 import PerfectScrollbar from 'react-perfect-scrollbar'
+import SideMenuContent from './sidemenu/_SideMenuContent'
 
 class Sidebar extends Component {
     static getDerivedStateFromProps(props, state) {
@@ -79,9 +81,13 @@ class Sidebar extends Component {
             collapsed,
             activePath,
             sidebarState,
+            collapsedMenuPaths
         } = this.props
 
         let {
+            activeIndex,
+            activeItem,
+            hoveredMenuItem,
             menuShadow,
             ScrollbarTag
           } = this.state
@@ -99,8 +105,8 @@ class Sidebar extends Component {
             <ContextLayout.Consumer>
               {context => {
                 return (
-                  <React.Fragment>
-                    <Hammer
+                  <>
+                  <Hammer
                       onSwipe={e => {
                         sidebarVisibility()
                       }}
@@ -145,11 +151,30 @@ class Sidebar extends Component {
                           }}
                           direction="DIRECTION_RIGHT">
                           <ul className="navigation navigation-main">
+                            <ContextAuth.Consumer>
+                            {
+                              (({ user }) => (
+                                  <SideMenuContent
+                                  setActiveIndex={this.changeActiveIndex}
+                                  activeIndex={activeIndex}
+                                  hoverIndex={hoveredMenuItem}
+                                  handleSidebarMouseEnter={this.handleSidebarMouseEnter}
+                                  activeItemState={activeItem}
+                                  handleActiveItem={this.handleActiveItem}
+                                  activePath={activePath}
+                                  user={user}
+                                  collapsedMenuPaths={collapsedMenuPaths}
+                                  toggleMenu={sidebarVisibility}
+                                  deviceWidth={this.props.deviceWidth}
+                                />
+                              ))
+                            }
+                            </ContextAuth.Consumer>
                           </ul>
                         </Hammer>
                       </ScrollbarTag>
                     </div>
-                  </React.Fragment>
+                  </>
                 )
               }}
             </ContextLayout.Consumer>

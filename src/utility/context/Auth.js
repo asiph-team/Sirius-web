@@ -12,24 +12,28 @@ const ContextAuth = createContext({
 })
 
 const Auth = props => {
-    const [state, dispatch] = useReducer(authReducer, initialState)
+    const savedState = localStorage.getItem('user')
+
+    const [state, dispatch] = useReducer(authReducer, savedState ? JSON.parse(savedState) : initialState)
 
     const handleAuthentication = async values => {
         dispatch(fetchStartAuth())
         try {
             const response = await axios.post('/api/authenticate/login/user', values)
             dispatch(fetchSuccessAuth(response.data))
+            setSession(response.data)
         } catch (error) {
             dispatch(fetchErrorAuth(error.response.data.error))
         }
     }
 
-    const logout = () => {
-        console.log('CIERRO LOGOUT')
+    const setSession = (data, remove = false) => {
+        if (remove) return localStorage.clear();
+        else localStorage.setItem('user', JSON.stringify(data));
     }
 
-    const setSession = (authResult) => {
-
+    const logout = () => {
+        setSession(null, true)
     }
 
     const authProviderValue = {
