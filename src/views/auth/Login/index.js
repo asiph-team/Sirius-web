@@ -7,9 +7,9 @@ import {
     Row,
     UncontrolledAlert
 } from 'reactstrap'
-import '../../../../assets/scss/pages/authentication.scss'
-import logoImg from '../../../../assets/img/logo/logo-brand.png'
-import { ContextAuth } from '../../../../utility/context/Auth'
+import '../../../assets/scss/pages/authentication.scss'
+import logoImg from '../../../assets/img/logo/logo-brand.png'
+import { ContextAuth } from '../../../utility/context/Auth'
 import LoginForm from './_LoginForm'
 
 const Login = () => {

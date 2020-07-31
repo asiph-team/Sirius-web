@@ -10,16 +10,16 @@ const UserDropdown = props => {
                 href="#"
                 onClick={() => console.log('EDITAR PERFIL')}
             >
-                <Icon.User size={14} className="mr-50" />
-                <span className="align-middle">Editar Perfil</span>
+                <Icon.User size={14}/>
+                <span className="align-middle"> Editar Perfil</span>
             </DropdownItem>
             <DropdownItem
                 tag="a"
                 href="#"
                 onClick={() => console.log('CAMBIAR CONTRASEÑA')}
             >
-                <Icon.User size={14} className="mr-50" />
-                <span className="align-middle">Cambiar Contraseña</span>
+                <Icon.Lock size={14}/>
+                <span className="align-middle"> Editar Contraseña</span>
             </DropdownItem>
             <DropdownItem divider />
             <DropdownItem
@@ -27,8 +27,8 @@ const UserDropdown = props => {
                 href="/"
                 onClick={props.handleLogout}
             >
-                <Icon.Power size={14} className="mr-50" />
-                <span className="align-middle">Cerrar Sesión</span>
+                <Icon.Power size={14}/>
+                <span className="align-middle"> Cerrar Sesión</span>
             </DropdownItem>
         </DropdownMenu>
     )

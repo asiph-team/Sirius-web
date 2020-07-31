@@ -45,7 +45,7 @@ const LoginForm = props => {
                         </Button>
                     </div>
                     <div className="text-center py-1">
-                        <Link to="/pages/forgot-password">Recuperar contraseña</Link>
+                        <Link to="forgot-password">Recuperar contraseña</Link>
                     </div>
                 </Form>
             </CardBody>

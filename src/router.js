@@ -5,13 +5,14 @@ import { LoadingSpinner } from './components/@vuexy/Spinner'
 import { ContextAuth } from './utility/context/Auth'
 import { ContextLayout } from './utility/context/Layout'
 
-const Login = lazy(() => import('./views/pages/auth/Login'))
+const Login = lazy(() => import('./views/auth/Login'))
+const Reset = lazy(() => import ('./views/auth/Reset'))
 
 const AuthConfig = props => (
     <ContextAuth.Consumer>
         {({ user }) => {
             const { match } = props
-            const login = match.path === '/' ? true : false;
+            const login = (match.path === '/' || match.path === '/forgot-password') ? true : false;
             if (!user && !login) return history.push('/')
             if (user && login) return history.push('/dashboard')
             return props.children
@@ -46,8 +47,9 @@ const AppRouter = () => (
     <Router history={history}>
         <Switch>
             <RouteConfig exact path="/" component={Login} fullLayout/>
+            <RouteConfig exact path="/forgot-password" component={Reset} fullLayout/>
             <RouteConfig exact path="/dashboard" component={() => <h1>HOLA SOY EL DASHBOARD</h1>} />
-            <RouteConfig exact path="/dashboard/enterprise" component={() => <h1>HOLA SOY LA EMPRESA</h1>} />
+            <RouteConfig exact path="/dashboard/enterprises" component={() => <h1>HOLA SOY LA EMPRESA</h1>} />
         </Switch>
     </Router>
 )

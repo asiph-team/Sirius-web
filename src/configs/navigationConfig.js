@@ -15,7 +15,7 @@ const navigationConfig = [
         type: "item",
         icon: <Icon.Shield size={20} />,
         permissions: ["superadministrador"],
-        navLink: "/dashboard/enterprise"
+        navLink: "/dashboard/enterprises"
     },
 ]
 
