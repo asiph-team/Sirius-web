@@ -19,7 +19,7 @@ const Auth = props => {
     const handleAuthentication = async values => {
         dispatch(fetchStartAuth())
         try {
-            const response = await axios.post('/api/authenticate/login/user', values)
+            const response = await axios.post('/api/v1/authenticate/login/user', values)
             dispatch(fetchSuccessAuth(response.data))
             setSession(response.data)
         } catch (error) {

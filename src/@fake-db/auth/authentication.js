@@ -33,7 +33,7 @@ const jwtConfig = {
     "expireTime": 8000
 }
 
-mock.onPost('/api/authenticate/login/user').reply(request => {
+mock.onPost('/api/v1/authenticate/login/user').reply(request => {
     let { email, password } = JSON.parse(request.data)
     let error = 'Se ha producido un error, intentalo más tarde'
 
