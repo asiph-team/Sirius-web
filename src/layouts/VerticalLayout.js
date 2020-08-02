@@ -10,39 +10,23 @@ import {
 } from "../redux/actions/customizer";
 
 class VerticalLayout extends PureComponent {
-    state = {
-      width: window.innerWidth,
-      sidebarState: this.props.app.customizer.sidebarCollapsed,
-      layout: this.props.app.customizer.theme,
-      collapsedContent: this.props.app.customizer.sidebarCollapsed,
-      sidebarHidden: false,
-      appOverlay: false,
-      customizer: false,
-      currRoute: this.props.location.pathname
-    }
+  state = {
+    width: window.innerWidth,
+    sidebarState: this.props.app.customizer.sidebarCollapsed,
+    layout: this.props.app.customizer.theme,
+    collapsedContent: this.props.app.customizer.sidebarCollapsed,
+    sidebarHidden: false,
+    appOverlay: false,
+    customizer: false,
+    currRoute: this.props.location.pathname
+  }
 
-    collapsedPaths = []
-    mounted = false
+  collapsedPaths = []
+  mounted = false
 
-    updateWidth = () => {
-      if (this.mounted) this.setState(prevState => ({ width: window.innerWidth }))
-    };
-
-    handleSidebarVisibility = () => {
-      console.log('handleSidebarVisibility()')
-      if (this.mounted) {
-        if (window !== undefined) {
-          window.addEventListener("resize", () => {
-            if (this.state.sidebarHidden) {
-              this.setState({
-                sidebarHidden: !this.state.sidebarHidden
-              })
-            }
-          })
-        }
-        this.setState({ sidebarHidden: !this.state.sidebarHidden })
-      }
-    }
+  updateWidth = () => {
+    if (this.mounted) this.setState(prevState => ({ width: window.innerWidth }))
+  };
 
   componentDidMount() {
     this.mounted = true;
@@ -163,7 +147,6 @@ class VerticalLayout extends PureComponent {
       toggleSidebarMenu: this.toggleSidebarMenu,
       sidebarState: this.state.sidebarState,
       sidebarVisibility: this.handleSidebarVisibility,
-      handleAppOverlay: this.handleAppOverlay,
       appOverlayState: this.state.appOverlay,
     }
 

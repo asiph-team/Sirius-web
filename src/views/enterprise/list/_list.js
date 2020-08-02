@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Card, CardBody, Table } from 'reactstrap'
-import {Loader, Error} from '../../../components/custom'
-import Switch from "react-switch";
+import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
+import {Error} from '../../../components/custom'
+import {ContactInfoModal} from '../../../components/custom/modals'
+import Switch from 'react-switch'
 import * as Icon from 'react-feather'
 
 const List = props => {
     const { enterprises, error, loading } = props.data
-    if (loading) return <Loader />
+    const [visibility, setVisibility] = useState(false)
+    const [selected, setSelected] = useState({})
+
+    if (loading) return <LoadingSpinner />
     if (error) return <Error message={error}/>
     return (
         <Card>
@@ -31,10 +36,13 @@ const List = props => {
                                 <td>{item.heading}</td>
                                 <td>{item.spin}</td>
                                 <td>{item.RUT}</td>
-                                <td>{item.email}</td>
                                 <td>{item.size}</td>
                                 <td><Switch onChange={() => console.log('hola')} checked={item.status} uncheckedIcon={false} checkedIcon={false} height={20} width={40}/></td>
                                 <td>
+                                    <Button color="link" onClick={() => {
+                                        setSelected(item)
+                                        setVisibility(true)
+                                    }} className="p-0"><Icon.Search size={20} /></Button>
                                     <Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button>
                                     <Button color="link" className="p-0"><Icon.XCircle size={20} /></Button>
                                 </td>
@@ -43,6 +51,7 @@ const List = props => {
                     </tbody>
                 </Table>
             </CardBody>
+            <ContactInfoModal visibility={visibility} onClose={() => setVisibility(false)} item={selected}/>
         </Card>
     )
 }
