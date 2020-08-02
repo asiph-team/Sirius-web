@@ -8,6 +8,12 @@ import { ContextLayout } from './utility/context/Layout'
 const Login = lazy(() => import('./views/auth/Login'))
 const Reset = lazy(() => import ('./views/auth/Reset'))
 const EnterpriseList = lazy(() => import ('./views/enterprise/list'))
+const JobsList = lazy(() => import ('./views/jobs/list'))
+const WorkersList = lazy(() => import ('./views/workers/list'))
+const ActivitiesList = lazy(() => import ('./views/activities/list'))
+const TrainingsList = lazy(() => import ('./views/trainings/list'))
+const ProgramsList = lazy(() => import ('./views/programs/list'))
+const ActionsList = lazy(() => import ('./views/actions/list'))
 
 const AuthConfig = props => (
     <ContextAuth.Consumer>
@@ -51,6 +57,12 @@ const AppRouter = () => (
             <RouteConfig exact path="/forgot-password" component={Reset} fullLayout/>
             <RouteConfig exact path="/dashboard" component={() => <h1>HOLA SOY EL DASHBOARD</h1>} />
             <RouteConfig exact path="/dashboard/enterprises" component={EnterpriseList} />
+            <RouteConfig exact path="/dashboard/jobs" component={JobsList} />
+            <RouteConfig exact path="/dashboard/employees" component={WorkersList} />
+            <RouteConfig exact path="/dashboard/activities" component={ActivitiesList} />
+            <RouteConfig exact path="/dashboard/trainings" component={TrainingsList} />
+            <RouteConfig exact path="/dashboard/programs" component={ProgramsList} />
+            <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
         </Switch>
     </Router>
 )

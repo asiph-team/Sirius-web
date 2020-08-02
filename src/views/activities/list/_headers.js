@@ -1,0 +1,14 @@
+export const headers = [
+    {
+        id: 'name',
+        title: 'Nombre'
+    },
+    {
+        id: 'description',
+        title: 'Descripción'
+    },
+    {
+        id: 'job',
+        title: 'Puesto de trabajo'
+    },
+]

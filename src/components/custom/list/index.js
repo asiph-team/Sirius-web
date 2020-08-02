@@ -19,14 +19,14 @@ const List = props => {
     return (
         <Table responsive>
             <thead>
-                <tr>{headers.map(header => <th>{header.title}</th>)}</tr>
+                <tr>{headers.map(header => <th key={Math.random() * 2}>{header.title}</th>)}</tr>
             </thead>
             <tbody>
                 {data && data.map(item =>
                     <tr key={item.id}>
                         {headers.map(header => {
                             let content = header.id === 'status' ? <CustomSwitch status={item.status} /> : item[header.id]
-                            return <td>{content}</td>
+                            return <td key={item.id + Math.random()}>{content}</td>
                         })}
                         <td>
                             {showInfo && <Button color="link" onClick={() => showInfo(item)} className="p-0"><Icon.Search size={20} /></Button>}
