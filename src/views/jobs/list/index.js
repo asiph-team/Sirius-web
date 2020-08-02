@@ -17,6 +17,7 @@ const JobsList = () => {
                     <List
                         data={data}
                         headers={headers}
+                        resource="jobs"
                     />
                 </CardBody>
             </Card>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Table } from 'reactstrap'
 import Switch from 'react-switch'
 import * as Icon from 'react-feather'
+import Can from '../can'
 
 const CustomSwitch = (props) => (
     <Switch
@@ -10,12 +11,12 @@ const CustomSwitch = (props) => (
         uncheckedIcon={false}
         checkedIcon={false}
         height={20}
-        width={40}/
-    >
+        width={40}
+    />
 )
 
 const List = props => {
-    const { headers, data, showInfo } = props
+    const { headers, data, showInfo, resource } = props
     return (
         <Table responsive>
             <thead>
@@ -30,8 +31,8 @@ const List = props => {
                         })}
                         <td>
                             {showInfo && <Button color="link" onClick={() => showInfo(item)} className="p-0"><Icon.Search size={20} /></Button>}
-                            <Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button>
-                            <Button color="link" className="p-0"><Icon.XCircle size={20} /></Button>
+                            <Can rule={`${resource}:edit`}><Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button></Can>
+                            <Can rule={`${resource}:delete`}><Button color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
                         </td>
                     </tr>
                 )}

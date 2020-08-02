@@ -26,6 +26,7 @@ const EnterpriseList = () => {
                         data={data}
                         headers={headers}
                         showInfo={showContactInfo}
+                        resource="enterprises"
                     />
                 </CardBody>
             </Card>

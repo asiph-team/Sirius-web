@@ -20,6 +20,7 @@ const ProgramsList = () => {
                     <List
                         data={data && data.workers}
                         headers={headers}
+                        resource="programs"
                     />
                 </CardBody>
             </Card>

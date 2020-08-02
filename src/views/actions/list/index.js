@@ -17,6 +17,7 @@ const WorkersList = () => {
                     <List
                         data={data}
                         headers={headers}
+                        resource="actions"
                     />
                 </CardBody>
             </Card>

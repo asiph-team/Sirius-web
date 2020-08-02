@@ -17,6 +17,7 @@ const ActivitiesList = () => {
                     <List
                         data={data}
                         headers={headers}
+                        resource="activities"
                     />
                 </CardBody>
             </Card>
