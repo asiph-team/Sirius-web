@@ -1,6 +1,8 @@
 import React from 'react'
-import { Card, CardBody, Table } from 'reactstrap'
+import { Button, Card, CardBody, Table } from 'reactstrap'
 import {Loader, Error} from '../../../components/custom'
+import Switch from "react-switch";
+import * as Icon from 'react-feather'
 
 const List = props => {
     const { enterprises, error, loading } = props.data
@@ -31,6 +33,11 @@ const List = props => {
                                 <td>{item.RUT}</td>
                                 <td>{item.email}</td>
                                 <td>{item.size}</td>
+                                <td><Switch onChange={() => console.log('hola')} checked={item.status} uncheckedIcon={false} checkedIcon={false} height={20} width={40}/></td>
+                                <td>
+                                    <Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button>
+                                    <Button color="link" className="p-0"><Icon.XCircle size={20} /></Button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

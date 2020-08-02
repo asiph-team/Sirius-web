@@ -15,6 +15,7 @@ let enterprises = [
         CRL: '+569 91349182',
         RT: 'Grabriel Vasquez',
         CRT: '+569 77381029',
+        status: true,
     },
     {
         id: 2,
@@ -30,6 +31,7 @@ let enterprises = [
         CRL: '+569 93659298',
         RT: 'Pablo Segovia',
         CRT: '+569 44650208',
+        status: false,
     },
     {
         id: 3,
@@ -45,6 +47,7 @@ let enterprises = [
         CRL: '+569 91444184',
         RT: 'Ignacio Muñoz',
         CRT: '+569 73381329',
+        status: true,
     },
 ]
 
