@@ -1,5 +1,5 @@
 import Header from './header'
 import Error from './error'
-import Loader from './loader'
+import List from './list'
 
-export {Header, Error, Loader}
+export {Header, Error, List}
