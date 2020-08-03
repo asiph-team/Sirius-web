@@ -4,6 +4,8 @@ export const rules = {
         "enterprises:delete",
     ],
     "Administrador": [
+        "areas:edit",
+        "areas:delete",
         "jobs:edit",
         "jobs:delete",
         "workers:edit",

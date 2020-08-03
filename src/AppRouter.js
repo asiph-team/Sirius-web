@@ -6,14 +6,15 @@ import { ContextAuth } from './utility/context/Auth'
 import { ContextLayout } from './utility/context/Layout'
 
 const Login = lazy(() => import('./views/auth/Login'))
-const Reset = lazy(() => import ('./views/auth/Reset'))
-const EnterprisesList = lazy(() => import ('./views/enterprises/list'))
-const JobsList = lazy(() => import ('./views/jobs/list'))
-const WorkersList = lazy(() => import ('./views/workers/list'))
-const ActivitiesList = lazy(() => import ('./views/activities/list'))
-const TrainingsList = lazy(() => import ('./views/trainings/list'))
-const ProgramsList = lazy(() => import ('./views/programs/list'))
-const ActionsList = lazy(() => import ('./views/actions/list'))
+const Reset = lazy(() => import('./views/auth/Reset'))
+const EnterprisesList = lazy(() => import('./views/enterprises/list'))
+const JobsList = lazy(() => import('./views/jobs/list'))
+const WorkersList = lazy(() => import('./views/workers/list'))
+const ActivitiesList = lazy(() => import('./views/activities/list'))
+const TrainingsList = lazy(() => import('./views/trainings/list'))
+const ProgramsList = lazy(() => import('./views/programs/list'))
+const ActionsList = lazy(() => import('./views/actions/list'))
+const AreasList = lazy(() => import('./views/areas/list'))
 
 const AuthConfig = props => (
     <ContextAuth.Consumer>
@@ -63,6 +64,7 @@ const AppRouter = () => (
             <RouteConfig exact path="/dashboard/trainings" component={TrainingsList} />
             <RouteConfig exact path="/dashboard/programs" component={ProgramsList} />
             <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
+            <RouteConfig exact path="/dashboard/areas" component={AreasList} />
         </Switch>
     </Router>
 )

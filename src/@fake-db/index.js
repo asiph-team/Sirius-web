@@ -7,5 +7,6 @@ import './_workers/show'
 import './_activities/show'
 import './_trainings/show'
 import './_programs/show'
+import './_areas/show'
 
 mock.onAny().passThrough()

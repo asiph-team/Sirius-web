@@ -22,7 +22,7 @@ const navigationConfig = [
         title: "Areas de trabajo",
         type: "item",
         icon: <Icon.Box size={20} />,
-        permissions: ["jefe area"],
+        permissions: ["administrador"],
         navLink: "/dashboard/areas"
     },
     {
