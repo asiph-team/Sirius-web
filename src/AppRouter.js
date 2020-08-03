@@ -7,6 +7,7 @@ import { ContextLayout } from './utility/context/Layout'
 
 const Login = lazy(() => import('./views/auth/Login'))
 const Reset = lazy(() => import('./views/auth/Reset'))
+const Dashboard = lazy(() => import('./views/dashboard'))
 const EnterprisesList = lazy(() => import('./views/enterprises/list'))
 const JobsList = lazy(() => import('./views/jobs/list'))
 const WorkersList = lazy(() => import('./views/workers/list'))
@@ -56,7 +57,7 @@ const AppRouter = () => (
         <Switch>
             <RouteConfig exact path="/" component={Login} fullLayout/>
             <RouteConfig exact path="/forgot-password" component={Reset} fullLayout/>
-            <RouteConfig exact path="/dashboard" component={() => <h1>HOLA SOY EL DASHBOARD</h1>} />
+            <RouteConfig exact path="/dashboard" component={Dashboard} />
             <RouteConfig exact path="/dashboard/enterprises" component={EnterprisesList} />
             <RouteConfig exact path="/dashboard/jobs" component={JobsList} />
             <RouteConfig exact path="/dashboard/employees" component={WorkersList} />

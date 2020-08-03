@@ -1,9 +1,12 @@
 export const rules = {
     "Superadministrador": [
+        "dashboard:superadmin",
         "enterprises:edit",
         "enterprises:delete",
     ],
     "Administrador": [
+        "dashboard:admin",
+        "dashboard:manager",
         "areas:edit",
         "areas:delete",
         "jobs:edit",
@@ -20,6 +23,7 @@ export const rules = {
         "actions:delete",
     ],
     "Jefe Area": [
+        "dashboard:manager",
         "trainings:edit",
         "trainings:delete",
         "programs:edit",

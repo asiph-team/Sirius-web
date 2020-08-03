@@ -2,7 +2,7 @@ import React from 'react'
 import { Navbar } from 'reactstrap'
 import NavbarUser from './_NavbarUser'
 import NavbarBookmarks from './_NavbarBookmarks'
-import userImg from "../../../assets/img/portrait/small/avatar-s-11.jpg"
+import userImg from "../../../assets/img/user.png"
 import { ContextAuth } from '../../../utility/context/Auth'
 
 const ThemeNavbar = props => {
