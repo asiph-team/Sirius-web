@@ -1,7 +1,7 @@
 export const headers = [
     {
         id: 'name',
-        title: 'Nombre'
+        title: 'Nombre de capacitación'
     },
     {
         id: 'description',
@@ -13,7 +13,7 @@ export const headers = [
     },
     {
         id: 'date',
-        title: 'Fecha'
+        title: 'Fecha de compromiso'
     },
     {
         id: 'frequency',

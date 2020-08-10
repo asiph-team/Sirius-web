@@ -18,7 +18,7 @@ const CustomSwitch = (props) => (
 const List = props => {
     const { headers, data, showInfo, resource } = props
     return (
-        <Table responsive>
+        <Table striped responsive>
             <thead>
                 <tr>{headers.map(header => <th key={Math.random() * 2}>{header.title}</th>)}</tr>
             </thead>

@@ -17,7 +17,7 @@ export const headers = [
     },
     {
         id: 'job',
-        title: 'Puesto'
+        title: 'Puesto de trabajo'
     },
     {
         id: 'status',
