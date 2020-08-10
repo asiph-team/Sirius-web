@@ -9,6 +9,7 @@ const Login = lazy(() => import('./views/auth/Login'))
 const Reset = lazy(() => import('./views/auth/Reset'))
 const Dashboard = lazy(() => import('./views/dashboard'))
 const EnterprisesList = lazy(() => import('./views/enterprises/list'))
+const EnterprisesAdd = lazy(() => import('./views/enterprises/add'))
 const JobsList = lazy(() => import('./views/jobs/list'))
 const WorkersList = lazy(() => import('./views/workers/list'))
 const ActivitiesList = lazy(() => import('./views/activities/list'))
@@ -59,6 +60,7 @@ const AppRouter = () => (
             <RouteConfig exact path="/forgot-password" component={Reset} fullLayout/>
             <RouteConfig exact path="/dashboard" component={Dashboard} />
             <RouteConfig exact path="/dashboard/enterprises" component={EnterprisesList} />
+            <RouteConfig path="/dashboard/enterprises/add" component={EnterprisesAdd} />
             <RouteConfig exact path="/dashboard/jobs" component={JobsList} />
             <RouteConfig exact path="/dashboard/employees" component={WorkersList} />
             <RouteConfig exact path="/dashboard/activities" component={ActivitiesList} />

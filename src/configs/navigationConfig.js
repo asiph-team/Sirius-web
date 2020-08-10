@@ -15,7 +15,10 @@ const navigationConfig = [
         type: "item",
         icon: <Icon.Shield size={20} />,
         permissions: ["superadministrador"],
-        navLink: "/dashboard/enterprises"
+        navLink: "/dashboard/enterprises",
+        parentOf: [
+            "/dashboard/enterprises/add"
+        ]
     },
     {
         id: "areas",

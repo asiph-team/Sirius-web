@@ -7,11 +7,11 @@ const Header = props => {
     const IconTag = Icon[icon]
     return (
         <Row className="mb-2">
-            <Col sm="6" className="ml-50 d-flex align-items-center">
-                <IconTag size={20}/>
-                <p className="font-medium-5 mt-1 extension-title" data-tour="extension-title">&nbsp;{title}</p>
+            <Col sm="5" className="d-flex align-items-center">
+                <IconTag size={20} />
+                <h3 className="font-medium-5 extension-title mb-0" data-tour="extension-title">&nbsp;{title}</h3>
             </Col>
-            <Col sm="6" className="ml-50">
+            <Col sm="7" className="d-flex align-items-center justify-content-end">
                 {children}
             </Col>
         </Row>

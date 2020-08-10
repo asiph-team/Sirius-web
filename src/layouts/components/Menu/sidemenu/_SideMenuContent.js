@@ -25,7 +25,7 @@ class SideMenuContent extends React.Component {
       className={classnames("nav-item", {
         open: this.state.activeGroups.includes(item.id),
         hover: this.props.hoverIndex === item.id,
-        active: this.props.activeItemState === item.navLink,
+        active: (this.props.activeItemState === item.navLink) || (item.parentOf && item.parentOf.includes(this.props.activeItemState)),
       })}
       key={item.id}
       onClick={e => {
