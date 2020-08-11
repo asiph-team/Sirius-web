@@ -3,34 +3,34 @@ const FETCH_SUCCESS = 'FETCH_SUCCESS'
 const FETCH_ERROR = 'FETCH_ERROR'
 
 export const fetchStart = () => ({
-    type: FETCH_START,
+  type: FETCH_START,
 })
 
-export const fetchSuccess = payload => ({
-    type: FETCH_SUCCESS,
-    payload
+export const fetchSuccess = (payload) => ({
+  type: FETCH_SUCCESS,
+  payload,
 })
 
-export const fetchError = payload => ({
-    type: FETCH_ERROR,
-    payload
+export const fetchError = (payload) => ({
+  type: FETCH_ERROR,
+  payload,
 })
 
 export const initialState = {
-    error: null,
-    loading: false,
-    data: null,
+  error: null,
+  loading: false,
+  data: null,
 }
 
 export const resourcesReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case FETCH_START:
-            return {...state, loading: true}
-        case FETCH_SUCCESS:
-            return {...state, loading: false, data: action.payload}
-        case FETCH_ERROR:
-            return {...state, loading: false, error: action.payload}
-        default:
-            return state
-    }
+  switch (action.type) {
+    case FETCH_START:
+      return { ...state, loading: true }
+    case FETCH_SUCCESS:
+      return { ...state, loading: false, data: action.payload }
+    case FETCH_ERROR:
+      return { ...state, loading: false, error: action.payload }
+    default:
+      return state
+  }
 }

@@ -1,16 +1,16 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
-import StatisticsCard from '../../components/@vuexy/StatisticsCard'
-import {Can} from '../../components/custom'
-import {
-    siteTraffic,
-    siteTrafficSeries,
-    activeUsers,
-    activeUsersSeries,
-    newsLetter,
-    newsLetterSeries
-  } from '../../@fake-db/_dashboard/superadmin'
 import * as Icon from 'react-feather'
+import StatisticsCard from '../../components/@vuexy/StatisticsCard'
+import { Can } from '../../components/custom'
+import {
+  siteTraffic,
+  siteTrafficSeries,
+  activeUsers,
+  activeUsersSeries,
+  newsLetter,
+  newsLetterSeries,
+} from '../../@fake-db/_dashboard/superadmin'
 
 const DashboardSuperAdmin = () => (
   <Can rule="dashboard:superadmin">

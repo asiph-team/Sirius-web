@@ -1,11 +1,9 @@
-import React from "react"
-import AppRouter from "./AppRouter"
+import React from 'react'
+import AppRouter from './AppRouter'
 
-import "react-perfect-scrollbar/dist/css/styles.css"
-import "prismjs/themes/prism-tomorrow.css"
+import 'react-perfect-scrollbar/dist/css/styles.css'
+import 'prismjs/themes/prism-tomorrow.css'
 
-const App = props => {
-  return <AppRouter />
-}
+const App = () => <AppRouter />
 
 export default App

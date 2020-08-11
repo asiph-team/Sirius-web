@@ -1,166 +1,175 @@
+/* eslint-disable react/no-did-update-set-state */
 import React, { PureComponent } from 'react'
-import classnames from "classnames";
+import classnames from 'classnames'
+import { connect } from 'react-redux'
 import Navbar from './components/Navbar'
-import Sidebar from './components/Menu';
+import Sidebar from './components/Menu'
 import Footer from './components/Footer'
-import { connect } from "react-redux";
 import {
   changeMode,
-  collapseSidebar
-} from "../redux/actions/customizer";
+  collapseSidebar,
+} from '../redux/actions/customizer'
 
 class VerticalLayout extends PureComponent {
-  state = {
-    width: window.innerWidth,
-    sidebarState: this.props.app.customizer.sidebarCollapsed,
-    layout: this.props.app.customizer.theme,
-    collapsedContent: this.props.app.customizer.sidebarCollapsed,
-    sidebarHidden: false,
-    appOverlay: false,
-    customizer: false,
-    currRoute: this.props.location.pathname
-  }
-
   collapsedPaths = []
+
   mounted = false
 
-  updateWidth = () => {
-    if (this.mounted) this.setState(prevState => ({ width: window.innerWidth }))
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      width: window.innerWidth,
+      sidebarState: props.app.customizer.sidebarCollapsed,
+      collapsedContent: props.app.customizer.sidebarCollapsed,
+      sidebarHidden: false,
+      appOverlay: false,
+    }
+  }
 
   componentDidMount() {
-    this.mounted = true;
-    let { location: { pathname } } = this.props;
+    this.mounted = true
+    const { location: { pathname } } = this.props
     if (this.mounted) {
-      if (window !== "undefined") {
-        window.addEventListener("resize", this.updateWidth, false);
+      if (window !== 'undefined') {
+        window.addEventListener('resize', this.updateWidth, false)
       }
       if (this.collapsedPaths.includes(pathname)) {
-        this.props.collapseSidebar(true)
+        collapseSidebar(true)
       }
 
-      document.getElementsByTagName("html")[0].setAttribute("dir", "ltr")
+      document.getElementsByTagName('html')[0].setAttribute('dir', 'ltr')
     }
   }
 
   componentDidUpdate(prevProps) {
-    let {
+    const {
       location: { pathname },
       app: {
-        customizer: { sidebarCollapsed }
-      }
+        customizer: { sidebarCollapsed },
+      },
     } = this.props
 
     if (this.mounted) {
       if (
-        prevProps.app.customizer.sidebarCollapsed !==
-        this.props.app.customizer.sidebarCollapsed
+        prevProps.app.customizer.sidebarCollapsed
+        !== sidebarCollapsed
       ) {
         this.setState({
           collapsedContent: sidebarCollapsed,
-          sidebarState: sidebarCollapsed
+          sidebarState: sidebarCollapsed,
         })
       }
       if (
-        prevProps.app.customizer.sidebarCollapsed ===
-          this.props.app.customizer.sidebarCollapsed &&
-        pathname !== prevProps.location.pathname &&
-        this.collapsedPaths.includes(pathname)
+        prevProps.app.customizer.sidebarCollapsed
+          === sidebarCollapsed
+        && pathname !== prevProps.location.pathname
+        && this.collapsedPaths.includes(pathname)
       ) {
-        this.props.collapseSidebar(true);
+        collapseSidebar(true)
       }
       if (
-        prevProps.app.customizer.sidebarCollapsed ===
-          this.props.app.customizer.sidebarCollapsed &&
-        pathname !== prevProps.location.pathname &&
-        !this.collapsedPaths.includes(pathname)
+        prevProps.app.customizer.sidebarCollapsed
+          === sidebarCollapsed
+        && pathname !== prevProps.location.pathname
+        && !this.collapsedPaths.includes(pathname)
       ) {
-        this.props.collapseSidebar(false);
+        collapseSidebar(false)
       }
     }
   }
 
-  toggleSidebarMenu = val => {
-    console.log('toggleSidebarMenu()')
+  componentWillUnmount() {
+    this.mounted = false
+  }
+
+  updateWidth = () => {
+    if (this.mounted) this.setState(() => ({ width: window.innerWidth }))
+  };
+
+  toggleSidebarMenu = () => {
+    const { collapsedContent, sidebarState } = this.state
     this.setState({
-      sidebarState: !this.state.sidebarState,
-      collapsedContent: !this.state.collapsedContent
+      sidebarState: !sidebarState,
+      collapsedContent: !collapsedContent,
     })
   }
 
-  sidebarMenuHover = val => {
-    console.log('sidebarMenuHover()')
-    this.setState({ sidebarState: val })
-  }
-
   handleSidebarVisibility = () => {
-    console.log('handleSidebarVisibility()');
+    const { sidebarHidden } = this.state
     if (this.mounted) {
       if (window !== undefined) {
-        window.addEventListener("resize", () => {
-          if (this.state.sidebarHidden) {
-            this.setState({ sidebarHidden: !this.state.sidebarHidden });
+        window.addEventListener('resize', () => {
+          if (sidebarHidden) {
+            this.setState({ sidebarHidden: !sidebarHidden })
           }
-        });
+        })
       }
       this.setState({
-        sidebarHidden: !this.state.sidebarHidden
-      });
+        sidebarHidden: !sidebarHidden,
+      })
     }
   };
 
-  componentWillUnmount() {
-    this.mounted = false;
+  sidebarMenuHover = (val) => {
+    this.setState({ sidebarState: val })
   }
 
-  handleAppOverlay = value => {
-    console.log('handleAppOverlay()')
+  handleAppOverlay = (value) => {
     if (value.length > 0) {
-      this.setState({ appOverlay: true });
-    } else if (value.length < 0 || value === "") {
-      this.setState({ appOverlay: false });
+      this.setState({ appOverlay: true })
+    } else if (value.length < 0 || value === '') {
+      this.setState({ appOverlay: false })
     }
   };
 
   handleAppOverlayClick = () => {
-    console.log('handleAppOverlayClick()')
-    this.setState({ appOverlay: false });
+    this.setState({ appOverlay: false })
   };
 
-  render(){
-    let appProps = this.props.app.customizer
-    let sidebarProps = {
-      toggleSidebarMenu: this.props.collapseSidebar,
+  render() {
+    const { app, children, match } = this.props
+    const {
+      appOverlay, collapsedContent, sidebarState, sidebarHidden, width,
+    } = this.state
+    const appProps = app.customizer
+    const sidebarProps = {
+      toggleSidebarMenu: collapseSidebar,
       toggle: this.toggleSidebarMenu,
-      sidebarState: this.state.sidebarState,
+      sidebarState,
       sidebarHover: this.sidebarMenuHover,
       sidebarVisibility: this.handleSidebarVisibility,
-      visibilityState: this.state.sidebarHidden,
-      activePath: this.props.match.path,
+      visibilityState: sidebarHidden,
+      activePath: match.path,
       collapsedMenuPaths: this.handleCollapsedMenuPaths,
       activeTheme: appProps.menuTheme,
-      collapsed: this.state.collapsedContent,
-      deviceWidth: this.state.width
-    };
-
-    let navbarProps = {
-      toggleSidebarMenu: this.toggleSidebarMenu,
-      sidebarState: this.state.sidebarState,
-      sidebarVisibility: this.handleSidebarVisibility,
-      appOverlayState: this.state.appOverlay,
+      collapsed: collapsedContent,
+      deviceWidth: width,
     }
 
-    return(
+    const navbarProps = {
+      toggleSidebarMenu: this.toggleSidebarMenu,
+      sidebarState,
+      sidebarVisibility: this.handleSidebarVisibility,
+      appOverlayState: appOverlay,
+    }
+
+    return (
       <div className={classnames(
-        "wrapper vertical-layout theme-primary navbar-floating",
+        'wrapper vertical-layout theme-primary navbar-floating',
         {
-          "menu-collapsed": this.state.collapsedContent === true && this.state.width >= 1200,
-        })
-        }>
-        <Sidebar {...sidebarProps}/>
-        <div className={classnames("app-content content", { "show-overlay": this.state.appOverlay === true })} onClick={this.handleAppOverlayClick}>
+          'menu-collapsed': collapsedContent === true && width >= 1200,
+        },
+      )}
+      >
+        <Sidebar {...sidebarProps} />
+        <div
+          className={classnames(
+            'app-content content', { 'show-overlay': appOverlay === true },
+          )}
+          onClick={this.handleAppOverlayClick}
+        >
           <Navbar {...navbarProps} />
-          <div className="content-wrapper">{this.props.children}</div>
+          <div className="content-wrapper">{children}</div>
         </div>
         <Footer />
         <div
@@ -172,13 +181,11 @@ class VerticalLayout extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    app: state.customizer
-  };
-};
+const mapStateToProps = (state) => ({
+  app: state.customizer,
+})
 
 export default connect(mapStateToProps, {
   changeMode,
-  collapseSidebar
-})(VerticalLayout);
+  collapseSidebar,
+})(VerticalLayout)

@@ -1,14 +1,14 @@
 export const headers = [
-    {
-        id: 'name',
-        title: 'Nombre'
-    },
-    {
-        id: 'description',
-        title: 'Descripción'
-    },
-    {
-        id: 'state',
-        title: 'Estado'
-    },
+  {
+    id: 'name',
+    title: 'Nombre',
+  },
+  {
+    id: 'description',
+    title: 'Descripción',
+  },
+  {
+    id: 'state',
+    title: 'Estado',
+  },
 ]

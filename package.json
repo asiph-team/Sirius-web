@@ -90,6 +90,8 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-react": "^7.20.5",
     "node-sass": "^4.13.1",
     "react-app-rewire-postcss": "^3.0.2",
     "react-app-rewired": "^2.1.5"

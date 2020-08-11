@@ -18,58 +18,58 @@ const ProgramsList = lazy(() => import('./views/programs/list'))
 const ActionsList = lazy(() => import('./views/actions/list'))
 const AreasList = lazy(() => import('./views/areas/list'))
 
-const AuthConfig = props => (
-    <ContextAuth.Consumer>
-        {({ user }) => {
-            const { match } = props
-            const login = (match.path === '/' || match.path === '/forgot-password') ? true : false;
-            if (!user && !login) return history.push('/')
-            if (user && login) return history.push('/dashboard')
-            return props.children
-        }}
-    </ContextAuth.Consumer>
+const AuthConfig = (props) => (
+  <ContextAuth.Consumer>
+    {({ user }) => {
+      const { match } = props
+      const login = !!((match.path === '/' || match.path === '/forgot-password'))
+      if (!user && !login) return history.push('/')
+      if (user && login) return history.push('/dashboard')
+      return props.children
+    }}
+  </ContextAuth.Consumer>
 )
 
 const RouteConfig = ({ component: Component, fullLayout, ...rest }) => (
-    <Route
-      {...rest}
-      render={props => (
-            <AuthConfig {...props}>
-                <ContextLayout.Consumer>
-                    {value => {
-                    let LayoutTag = fullLayout === true ? value.fullLayout : value.VerticalLayout
-                    return (
-                        <LayoutTag {...props}>
-                            <Suspense fallback={<LoadingSpinner />}>
+  <Route
+    {...rest}
+    render={(props) => (
+      <AuthConfig {...props}>
+        <ContextLayout.Consumer>
+          {(value) => {
+            const LayoutTag = fullLayout === true ? value.fullLayout : value.VerticalLayout
+            return (
+              <LayoutTag {...props}>
+                <Suspense fallback={<LoadingSpinner />}>
 
-                                    <Component {...props} />
-                            </Suspense>
-                        </LayoutTag>
-                        )
-                    }}
-                </ContextLayout.Consumer>
-            </AuthConfig>
-        )}
-    />
+                  <Component {...props} />
+                </Suspense>
+              </LayoutTag>
+            )
+          }}
+        </ContextLayout.Consumer>
+      </AuthConfig>
+    )}
+  />
 )
 
 const AppRouter = () => (
-    <Router history={history}>
-        <Switch>
-            <RouteConfig exact path="/" component={Login} fullLayout/>
-            <RouteConfig exact path="/forgot-password" component={Reset} fullLayout/>
-            <RouteConfig exact path="/dashboard" component={Dashboard} />
-            <RouteConfig exact path="/dashboard/enterprises" component={EnterprisesList} />
-            <RouteConfig path="/dashboard/enterprises/add" component={EnterprisesAdd} />
-            <RouteConfig exact path="/dashboard/jobs" component={JobsList} />
-            <RouteConfig exact path="/dashboard/employees" component={WorkersList} />
-            <RouteConfig exact path="/dashboard/activities" component={ActivitiesList} />
-            <RouteConfig exact path="/dashboard/trainings" component={TrainingsList} />
-            <RouteConfig exact path="/dashboard/programs" component={ProgramsList} />
-            <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
-            <RouteConfig exact path="/dashboard/areas" component={AreasList} />
-        </Switch>
-    </Router>
+  <Router history={history}>
+    <Switch>
+      <RouteConfig exact path="/" component={Login} fullLayout />
+      <RouteConfig exact path="/forgot-password" component={Reset} fullLayout />
+      <RouteConfig exact path="/dashboard" component={Dashboard} />
+      <RouteConfig exact path="/dashboard/enterprises" component={EnterprisesList} />
+      <RouteConfig path="/dashboard/enterprises/add" component={EnterprisesAdd} />
+      <RouteConfig exact path="/dashboard/jobs" component={JobsList} />
+      <RouteConfig exact path="/dashboard/employees" component={WorkersList} />
+      <RouteConfig exact path="/dashboard/activities" component={ActivitiesList} />
+      <RouteConfig exact path="/dashboard/trainings" component={TrainingsList} />
+      <RouteConfig exact path="/dashboard/programs" component={ProgramsList} />
+      <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
+      <RouteConfig exact path="/dashboard/areas" component={AreasList} />
+    </Switch>
+  </Router>
 )
 
 export default AppRouter
