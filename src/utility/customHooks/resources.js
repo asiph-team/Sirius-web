@@ -12,11 +12,21 @@ import {
 export function useFetchResources(url) {
   const [data, dispatch] = useReducer(resourcesReducer, initialState)
   useEffect(() => {
+    let unmounted = false
+    const source = axios.CancelToken.source()
     dispatch(fetchStart())
+    axios.get(url, { CancelToken: source.token })
+      .then((response) => {
+        if (!unmounted) dispatch(fetchSuccess(response.data))
+      })
+      .catch((error) => {
+        if (!axios.isCancel()) dispatch(fetchError(error))
+      })
 
-    axios.get(url)
-      .then((response) => dispatch(fetchSuccess(response.data)))
-      .catch((error) => dispatch(fetchError(error)))
+    return () => {
+      unmounted = true
+      source.cancel()
+    }
   }, [url])
 
   return data
