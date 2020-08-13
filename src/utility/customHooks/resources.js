@@ -6,6 +6,7 @@ import {
   fetchStart,
   fetchSuccess,
   fetchError,
+  cleanState,
 } from '../../ducks/resources'
 
 export function useFetchResources(url) {
@@ -19,4 +20,18 @@ export function useFetchResources(url) {
   }, [url])
 
   return data
+}
+
+export function usePostResources() {
+  const [data, dispatch] = useReducer(resourcesReducer, initialState)
+  const postData = async (values, url, config) => {
+    dispatch(fetchStart())
+    await axios.post(url, values, config)
+      .then((response) => dispatch(fetchSuccess(response.data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
+  const clean = () => dispatch(cleanState())
+
+  return { data, postData, clean }
 }

@@ -22,9 +22,11 @@ export const addEnterpriseSchema = Yup.object().shape({
     .required('La dirección es requerida'),
   RUT: Yup.string()
     .test('RUT-validator', 'El RUT ingresado no es válido', (value) => {
-      const dot = !(value.indexOf('.') <= 0)
-      const hyphen = !(value.indexOf('-') <= 0)
-      if (value) return rutRegex({ exact: true, dot, hyphen }).test(value)
+      if (value) {
+        const dot = !(value.indexOf('.') <= 0)
+        const hyphen = !(value.indexOf('-') <= 0)
+        return rutRegex({ exact: true, dot, hyphen }).test(value)
+      }
       return true
     })
     .required('El RUT es requerido'),
