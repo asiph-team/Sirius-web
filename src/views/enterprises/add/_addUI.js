@@ -92,7 +92,10 @@ const AddUI = (props) => {
                 <Row>
                   <Col sm="6">
                     <FormGroup>
-                      <label htmlFor="RUT">RUT</label>
+                      <label htmlFor="RUT">
+                        RUT
+                        <small>&nbsp;(ej: 99999999-9)</small>
+                      </label>
                       <Field
                         className="form-control"
                         name="RUT"

@@ -52,10 +52,14 @@ const enterprises = [
 ]
 
 mock.onGet('/api/v1/enterprises').reply(() => [200, enterprises])
-
 mock.onPost('/api/v1/enterprises').reply((request) => {
   const reqData = JSON.parse(request.data)
   const newEnterprise = { ...reqData, status: true }
   enterprises.push(newEnterprise)
   return [200, []]
+})
+
+mock.onDelete('/api/v1/enterprises').reply((request) => {
+  const data = JSON.parse(request.data)
+  console.log(data)
 })

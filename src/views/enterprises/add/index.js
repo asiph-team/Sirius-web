@@ -9,7 +9,7 @@ const Add = () => {
   return (
     <>
       <AddUI handleSubmit={(values) => postData(values, url)} />
-      {loading && <AlertLoading />}
+      {loading && <AlertLoading message="Almacenando datos" />}
       {error && <AlertError callback={() => clean()} />}
       {data && (
       <AlertSuccess

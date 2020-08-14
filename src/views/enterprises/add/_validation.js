@@ -24,8 +24,7 @@ export const addEnterpriseSchema = Yup.object().shape({
     .test('RUT-validator', 'El RUT ingresado no es válido', (value) => {
       if (value) {
         const dot = !(value.indexOf('.') <= 0)
-        const hyphen = !(value.indexOf('-') <= 0)
-        return rutRegex({ exact: true, dot, hyphen }).test(value)
+        return rutRegex({ exact: true, dot, hyphen: true }).test(value)
       }
       return true
     })

@@ -10,11 +10,11 @@ import { headers } from './_headers'
 
 const EnterpriseList = () => {
   const { data, loading, error } = useFetchResources('/api/v1/enterprises')
-  const [visibility, setVisibility] = useState(false)
   const [selected, setSelected] = useState({})
-  const showContactInfo = (item) => {
+  const [visibility, setVisibility] = useState({ contact: false, remove: false })
+  const show = (item, type, visible = true) => {
     setSelected(item)
-    setVisibility(true)
+    setVisibility({ ...visibility, [type]: visible })
   }
 
   if (loading) return <LoadingSpinner />
@@ -34,14 +34,14 @@ const EnterpriseList = () => {
           <List
             data={data}
             headers={headers}
-            showInfo={showContactInfo}
+            showInfo={show}
             resource="enterprises"
           />
         </CardBody>
       </Card>
       <ContactInfoModal
-        visibility={visibility}
-        onClose={() => setVisibility(false)}
+        visibility={visibility.contact}
+        onClose={() => setVisibility({ ...visibility, contact: false })}
         item={selected}
       />
     </>
