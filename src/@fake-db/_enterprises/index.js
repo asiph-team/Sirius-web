@@ -59,7 +59,9 @@ mock.onPost('/api/v1/enterprises').reply((request) => {
   return [200, []]
 })
 
-mock.onDelete('/api/v1/enterprises').reply((request) => {
-  const data = JSON.parse(request.data)
-  console.log(data)
+mock.onPost('/api/v1/enterprises/remove').reply((request) => {
+  const { id } = JSON.parse(request.data)
+  const index = enterprises.findIndex((item) => item.id === id)
+  enterprises.splice(index, 1)
+  return [200, enterprises]
 })

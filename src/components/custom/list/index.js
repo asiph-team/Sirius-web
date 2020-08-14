@@ -20,7 +20,7 @@ const CustomSwitch = (props) => {
 
 const List = (props) => {
   const {
-    headers, data, showInfo, resource,
+    headers, data, show, resource,
   } = props
   return (
     <Table striped responsive>
@@ -35,9 +35,9 @@ const List = (props) => {
               return <td key={item.id + Math.random()}>{content}</td>
             })}
             <td>
-              {showInfo && <Button color="link" onClick={() => showInfo(item, 'contact')} className="p-0"><Icon.Search size={20} /></Button>}
+              {show && <Button color="link" onClick={() => show(item, 'contact')} className="p-0"><Icon.Search size={20} /></Button>}
               <Can rule={`${resource}:edit`}><Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button></Can>
-              <Can rule={`${resource}:delete`}><Button onClick={() => console.log(item.id, item.name)} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
+              <Can rule={`${resource}:delete`}><Button onClick={() => show(item, 'remove')} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
             </td>
           </tr>
         ))}

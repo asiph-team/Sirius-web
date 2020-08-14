@@ -24,7 +24,7 @@ export const cleanState = () => ({
 export const initialState = {
   error: null,
   loading: false,
-  data: null,
+  items: null,
 }
 
 export const resourcesReducer = (state = initialState, action) => {
@@ -32,7 +32,7 @@ export const resourcesReducer = (state = initialState, action) => {
     case FETCH_START:
       return { ...state, loading: true }
     case FETCH_SUCCESS:
-      return { ...state, loading: false, data: action.payload }
+      return { ...state, loading: false, items: action.payload }
     case FETCH_ERROR:
       return { ...state, loading: false, error: action.payload }
     case CLEAN:

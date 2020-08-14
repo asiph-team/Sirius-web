@@ -10,7 +10,7 @@ import {
 } from '../../ducks/resources'
 
 export function useFetchResources(url) {
-  const [data, dispatch] = useReducer(resourcesReducer, initialState)
+  const [items, dispatch] = useReducer(resourcesReducer, initialState)
   useEffect(() => {
     let unmounted = false
     const source = axios.CancelToken.source()
@@ -29,7 +29,14 @@ export function useFetchResources(url) {
     }
   }, [url])
 
-  return data
+  const remove = async (data, config) => {
+    dispatch(fetchStart())
+    await axios.post(`${url}/remove`, data, config)
+      .then((response) => dispatch(fetchSuccess(response.data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
+  return { items, remove }
 }
 
 export function usePostResources() {
