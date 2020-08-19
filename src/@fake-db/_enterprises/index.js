@@ -65,3 +65,13 @@ mock.onPost('/api/v1/enterprises/remove').reply((request) => {
   enterprises.splice(index, 1)
   return [200, enterprises]
 })
+
+mock.onPost('/api/v1/enterprises/status').reply((request) => {
+  const { id, status } = JSON.parse(request.data)
+  const nEnterprises = enterprises.map((item) => {
+    if (item.id === id) return { ...item, status }
+    return item
+  })
+
+  return [200, nEnterprises]
+})

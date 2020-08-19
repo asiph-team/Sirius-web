@@ -5,13 +5,13 @@ import AddUI from './_addUI'
 
 const Add = () => {
   const url = 'api/v1/enterprises'
-  const { data: { loading, error, data }, postData, clean } = usePostResources()
+  const { data: { loading, error, items }, postData, clean } = usePostResources()
   return (
     <>
       <AddUI handleSubmit={(values) => postData(values, url)} />
       {loading && <AlertLoading message="Almacenando datos" />}
       {error && <AlertError callback={() => clean()} />}
-      {data && (
+      {items && (
       <AlertSuccess
         message="Se ha creado una nueva empresa."
         callback={() => {

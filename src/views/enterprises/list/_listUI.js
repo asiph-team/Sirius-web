@@ -9,9 +9,9 @@ import {
 import { headers } from './_headers'
 
 const ListUI = (props) => {
-  const { data, remove } = props
+  const { data, remove, changeStatus } = props
   const [selected, setSelected] = useState({})
-  const [visibility, setVisibility] = useState({ contact: false, remove: false })
+  const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
   const show = (item, type, visible = true) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
@@ -49,6 +49,16 @@ const ListUI = (props) => {
           callback={() => remove({ id: selected.id }, null)}
           callbackCancel={() => setVisibility({ ...visibility, remove: false })}
         />
+        )
+      }
+      {
+        visibility.status && (
+          <AlertDialog
+            title={`¿Estás seguro de ${selected.status ? 'desactivar' : 'activar'} a ${selected.name}?`}
+            paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} a la empresa en la plataforma.`}
+            callback={() => changeStatus({ id: selected.id, status: !selected.status }, null)}
+            callbackCancel={() => setVisibility({ ...visibility, status: false })}
+          />
         )
       }
     </>

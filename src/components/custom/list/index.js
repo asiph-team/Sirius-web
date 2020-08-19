@@ -1,26 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Table } from 'reactstrap'
-import Switch from 'react-switch'
+import Switch from 'rc-switch'
+import 'rc-switch/assets/index.css'
 import * as Icon from 'react-feather'
 import Can from '../can'
 
 const CustomSwitch = (props) => {
-  const { status } = props
+  const { status, changeStatus } = props
   return (
     <Switch
-      onChange={() => console.log('hola')}
+      onClick={() => changeStatus(!status)}
       checked={status}
-      uncheckedIcon={false}
-      checkedIcon={false}
-      height={20}
-      width={40}
     />
   )
 }
 
 const List = (props) => {
   const {
-    headers, data, show, resource,
+    headers, data, show, resource, change,
   } = props
   return (
     <Table striped responsive>
@@ -31,7 +28,7 @@ const List = (props) => {
         {data && data.map((item) => (
           <tr key={item.id}>
             {headers.map((header) => {
-              const content = header.id === 'status' ? <CustomSwitch status={item.status} /> : item[header.id]
+              const content = header.id === 'status' ? <CustomSwitch status={item.status} changeStatus={() => show(item, 'status')} /> : item[header.id]
               return <td key={item.id + Math.random()}>{content}</td>
             })}
             <td>
