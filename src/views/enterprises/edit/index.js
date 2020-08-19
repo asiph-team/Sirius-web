@@ -1,19 +1,19 @@
 import React from 'react'
 import { AlertError, AlertLoading, AlertSuccess } from '../../../components/custom'
 import { usePostResources } from '../../../utility/customHooks/resources'
-import AddUI from './_addUI'
+import EditUI from './_editUI'
 
-const Add = () => {
+const Edit = (props) => {
   const url = 'api/v1/enterprises'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   return (
     <>
-      <AddUI handleSubmit={(values) => postData(values, url)} />
-      {loading && <AlertLoading message="Almacenando empresa" />}
+      <EditUI handleSubmit={(values) => postData(values, url)} {...props} />
+      {loading && <AlertLoading message="Actualizando empresa" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
       <AlertSuccess
-        message="La empresa ha sido creada."
+        message="La información de la empresa ha sido actualizada."
         callback={() => {
           document.getElementById('form-enterprises').reset()
           clean()
@@ -24,4 +24,4 @@ const Add = () => {
   )
 }
 
-export default Add
+export default Edit

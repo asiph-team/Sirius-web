@@ -1,6 +1,6 @@
 import { options } from './_initialValues'
 
-export const formConfig = [
+export const config = [
   [
     {
       input: 'CustomInput',

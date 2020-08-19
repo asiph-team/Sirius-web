@@ -18,6 +18,7 @@ const navigationConfig = [
     navLink: '/dashboard/enterprises',
     parentOf: [
       '/dashboard/enterprises/add',
+      '/dashboard/enterprises/edit',
     ],
   },
   {

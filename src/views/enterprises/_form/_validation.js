@@ -3,7 +3,7 @@ import rutRegex from 'rut-regex'
 
 const phoneRegExp = /^[0-9]{8}$/
 
-export const addEnterpriseSchema = Yup.object().shape({
+export const enterpriseSchema = Yup.object().shape({
   name: Yup.string()
     .min(4, 'El nombre de empresa debe ser mayor a 4 caractéres')
     .max(50, 'El nombre de empresa debe ser menor a 50 caractéres')

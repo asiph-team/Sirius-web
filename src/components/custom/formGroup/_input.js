@@ -48,7 +48,6 @@ export const CustomSelect = (props) => {
         tag={Field}
         options={options}
         onChange={(option) => setFieldValue(name, option.value)}
-        placeholder=""
       />
     </>
   )

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Table } from 'reactstrap'
+import { Link } from 'react-router-dom'
 import Switch from 'rc-switch'
 import 'rc-switch/assets/index.css'
 import * as Icon from 'react-feather'
@@ -17,7 +18,7 @@ const CustomSwitch = (props) => {
 
 const List = (props) => {
   const {
-    headers, data, show, resource, change,
+    headers, data, show, resource,
   } = props
   return (
     <Table striped responsive>
@@ -33,7 +34,7 @@ const List = (props) => {
             })}
             <td>
               {show && <Button color="link" onClick={() => show(item, 'contact')} className="p-0"><Icon.Search size={20} /></Button>}
-              <Can rule={`${resource}:edit`}><Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button></Can>
+              <Can rule={`${resource}:edit`}><Link to={{ pathname: '/dashboard/enterprises/edit', state: { placeholder: item } }}><Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
               <Can rule={`${resource}:delete`}><Button onClick={() => show(item, 'remove')} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
             </td>
           </tr>

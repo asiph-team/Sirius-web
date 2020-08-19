@@ -10,7 +10,7 @@ const AlertSuccess = (props) => {
       success
       showConfirm
     >
-      <h1>¡Ups!</h1>
+      <h1>¡Éxito!</h1>
       <p>{message}</p>
     </SweetAlert>
   )
