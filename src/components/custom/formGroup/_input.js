@@ -34,22 +34,35 @@ export const CustomInputAddon = (props) => {
   )
 }
 
+const SelectField = (props) => {
+  const {
+    options, field, form,
+  } = props
+  return (
+    <Select
+      className="basic-single"
+      classNamePrefix="select"
+      name={field.name}
+      options={options}
+      onChange={(option) => option && form.setFieldValue(field.name, option.value)}
+      defaultValue={options.find((option) => option.value === field.value)}
+      isSearchable
+      placeholder=""
+    />
+  )
+}
+
 export const CustomSelect = (props) => {
   const {
-    name, title, options, setFieldValue, small,
+    name, title, options, small,
   } = props
   return (
     <>
       <label htmlFor={name}>{`${title} ${small || ''}`}</label>
-      <Select
-        className="basic-single"
-        classNamePrefix="select"
-        name={name}
-        tag={Field}
+      <Field
         options={options}
-        onChange={(option) => option && setFieldValue(name, option.value)}
-        isClearable
-        isSearchable
+        name={name}
+        component={SelectField}
       />
     </>
   )

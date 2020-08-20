@@ -11,7 +11,6 @@ const EditUI = (props) => {
   placeholder.phone = phoneFormat(placeholder.phone)
   placeholder.CRL = phoneFormat(placeholder.CRL)
   placeholder.CRT = phoneFormat(placeholder.CRT)
-  placeholder.size = { value: placeholder.size, label: placeholder.size }
   return (
     <>
       <Header title="Editar empresa" icon="Shield" />

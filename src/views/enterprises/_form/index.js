@@ -16,10 +16,10 @@ const FormUI = (props) => {
       <CardBody>
         <Formik
           initialValues={placeholder || initialValues}
-          // validationSchema={enterpriseSchema}
-          onSubmit={(values) => console.log(values)}
+          validationSchema={enterpriseSchema}
+          onSubmit={(values) => handleSubmit(values)}
         >
-          {({ setFieldValue }) => (
+          {() => (
             <Form id="form-enterprises">
               {
               config.map((row) => (
@@ -27,7 +27,7 @@ const FormUI = (props) => {
                   {
                     row.map((item) => (
                       <Col sm="6" key={item.key}>
-                        <FormGroup {...item} setFieldValue={setFieldValue} />
+                        <FormGroup {...item} />
                       </Col>
                     ))
                   }
