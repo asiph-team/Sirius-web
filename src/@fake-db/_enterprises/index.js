@@ -75,3 +75,15 @@ mock.onPost('/api/v1/enterprises/status').reply((request) => {
 
   return [200, nEnterprises]
 })
+
+mock.onPost('/api/v1/enterprises/update').reply((request) => {
+  const data = JSON.parse(request.data)
+  enterprises.map((item) => {
+    if (item.id === data.id) {
+      return Object.assign(item, { ...data })
+    }
+    return item
+  })
+
+  return [200, []]
+})

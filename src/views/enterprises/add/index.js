@@ -1,4 +1,5 @@
 import React from 'react'
+import { history } from '../../../history'
 import { AlertError, AlertLoading, AlertSuccess } from '../../../components/custom'
 import { usePostResources } from '../../../utility/customHooks/resources'
 import AddUI from './_addUI'
@@ -17,6 +18,7 @@ const Add = () => {
         callback={() => {
           document.getElementById('form-enterprises').reset()
           clean()
+          history.goBack()
         }}
       />
       )}
