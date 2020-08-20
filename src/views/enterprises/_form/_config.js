@@ -42,12 +42,11 @@ export const config = [
       small: '(ej: 99999999-9)',
     },
     {
-      input: 'CustomInputAddon',
+      input: 'CustomInput',
       key: 6,
       name: 'phone',
       title: 'Teléfono contacto',
-      type: 'phone',
-      prepend: '+569',
+      type: 'tel',
     },
   ],
   [

@@ -16,8 +16,8 @@ const FormUI = (props) => {
       <CardBody>
         <Formik
           initialValues={placeholder || initialValues}
-          validationSchema={enterpriseSchema}
-          onSubmit={(values) => handleSubmit(values)}
+          // validationSchema={enterpriseSchema}
+          onSubmit={(values) => console.log(values)}
         >
           {({ setFieldValue }) => (
             <Form id="form-enterprises">

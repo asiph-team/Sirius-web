@@ -1,7 +1,8 @@
 import * as Yup from 'yup'
 import rutRegex from 'rut-regex'
 
-const phoneRegExp = /^[0-9]{8}$/
+const phoneRegExp = /^[0-9]{9,11}$/
+const cellRegExp = /^[0-9]{8}$/
 
 export const enterpriseSchema = Yup.object().shape({
   name: Yup.string()
@@ -43,13 +44,13 @@ export const enterpriseSchema = Yup.object().shape({
     .max(50, 'El representante legal debe ser menor a 50 caractéres')
     .required('El representante legal es requerido'),
   CRL: Yup.string()
-    .matches(phoneRegExp, 'El teléfono ingresado no es válido')
+    .matches(cellRegExp, 'El teléfono ingresado no es válido')
     .required('El número es requerido'),
   RT: Yup.string()
     .min(5, 'El representante legal debe ser mayor a 5 caractéres')
     .max(50, 'El representante legal debe ser menor a 50 caractéres')
     .required('El representante legal es requerido'),
   CRT: Yup.string()
-    .matches(phoneRegExp, 'El teléfono ingresado no es válido')
+    .matches(cellRegExp, 'El teléfono ingresado no es válido')
     .required('El número es requerido'),
 })

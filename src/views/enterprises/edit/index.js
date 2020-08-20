@@ -8,7 +8,7 @@ const Edit = (props) => {
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   return (
     <>
-      <EditUI handleSubmit={(values) => postData(values, url)} {...props} />
+      <EditUI handleSubmit={(values) => console.log(values)} {...props} />
       {loading && <AlertLoading message="Actualizando empresa" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (

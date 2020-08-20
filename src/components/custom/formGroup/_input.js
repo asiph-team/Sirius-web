@@ -47,7 +47,9 @@ export const CustomSelect = (props) => {
         name={name}
         tag={Field}
         options={options}
-        onChange={(option) => setFieldValue(name, option.value)}
+        onChange={(option) => option && setFieldValue(name, option.value)}
+        isClearable
+        isSearchable
       />
     </>
   )
