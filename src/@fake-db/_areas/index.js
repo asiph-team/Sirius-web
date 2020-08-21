@@ -10,3 +10,10 @@ const areas = [
 ]
 
 mock.onGet('/api/v1/areas').reply(() => [200, areas])
+
+mock.onPost('/api/v1/areas/remove').reply((request) => {
+  const { id } = JSON.parse(request.data)
+  const index = areas.findIndex((item) => item.id === id)
+  areas.splice(index, 1)
+  return [200, areas]
+})
