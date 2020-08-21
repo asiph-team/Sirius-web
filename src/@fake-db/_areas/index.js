@@ -10,6 +10,12 @@ const areas = [
 ]
 
 mock.onGet('/api/v1/areas').reply(() => [200, areas])
+mock.onPost('/api/v1/areas').reply((request) => {
+  const reqData = JSON.parse(request.data)
+  const newArea = { ...reqData, status: true }
+  areas.push(newArea)
+  return [200, []]
+})
 
 mock.onPost('/api/v1/areas/remove').reply((request) => {
   const { id } = JSON.parse(request.data)

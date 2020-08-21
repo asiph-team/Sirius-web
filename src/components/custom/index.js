@@ -6,7 +6,8 @@ import {
   AlertDialog, AlertError, AlertLoading, AlertSuccess,
 } from './alerts'
 import FormGroup from './formGroup'
+import FormSubmit from './formSubmit'
 
 export {
-  AlertDialog, AlertError, AlertLoading, AlertSuccess, Can, FormGroup, Header, Error, List,
+  AlertDialog, AlertError, AlertLoading, AlertSuccess, Can, FormGroup, FormSubmit, Header, Error, List,
 }

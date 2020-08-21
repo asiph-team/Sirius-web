@@ -1,16 +1,17 @@
 import React from 'react'
 import {
-  Button, Card, CardBody, Col, Row,
+  Card, CardBody, Col, Row,
 } from 'reactstrap'
-import { Link } from 'react-router-dom'
 import { Formik, Form } from 'formik'
-import { FormGroup } from '../../../components/custom'
+import { FormGroup, FormSubmit } from '../../../components/custom'
 import { areaSchema } from './_validation'
 import { initialValues } from './_initialValues'
 import { config } from './_config'
 
 const FormUI = (props) => {
-  const { handleSubmit, placeholder, title } = props
+  const {
+    handleSubmit, placeholder, title, options,
+  } = props
   return (
     <Card>
       <CardBody>
@@ -25,23 +26,21 @@ const FormUI = (props) => {
               config.map((row) => (
                 <Row key={row[0].key}>
                   {
-                    row.map((item) => (
-                      <Col sm={item.grid} key={item.key}>
-                        <FormGroup {...item} />
-                      </Col>
-                    ))
+                    row.map((item) => {
+                      if (options && item.options) {
+                        Object.assign(item, { ...item, options })
+                      }
+                      return (
+                        <Col sm={item.grid} key={item.key}>
+                          <FormGroup {...item} />
+                        </Col>
+                      )
+                    })
                   }
                 </Row>
               ))
             }
-              <Row>
-                <Col sm="12 d-flex justify-content-end">
-                  <div>
-                    <Link to="/dashboard/areas"><Button color="light">Cancelar</Button></Link>
-                    <Button color="primary" className="ml-1" type="submit">{title}</Button>
-                  </div>
-                </Col>
-              </Row>
+              <FormSubmit back="/dashboard/areas" title={title} />
             </Form>
           )}
         </Formik>
