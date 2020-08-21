@@ -8,6 +8,7 @@ export const config = [
       name: 'name',
       title: 'Nombre o razón social',
       type: 'text',
+      grid: 6,
     },
     {
       input: 'CustomInput',
@@ -15,6 +16,7 @@ export const config = [
       name: 'spin',
       title: 'Giro',
       type: 'text',
+      grid: 6,
     },
   ], [
     {
@@ -23,6 +25,7 @@ export const config = [
       name: 'heading',
       title: 'Rubro',
       type: 'text',
+      grid: 6,
     },
     {
       input: 'CustomInput',
@@ -30,6 +33,7 @@ export const config = [
       name: 'address',
       title: 'Dirección',
       type: 'text',
+      grid: 6,
     },
   ],
   [
@@ -40,6 +44,7 @@ export const config = [
       title: 'RUT',
       type: 'text',
       small: '(ej: 99999999-9)',
+      grid: 6,
     },
     {
       input: 'CustomInput',
@@ -47,6 +52,7 @@ export const config = [
       name: 'phone',
       title: 'Teléfono contacto',
       type: 'tel',
+      grid: 6,
     },
   ],
   [
@@ -56,6 +62,7 @@ export const config = [
       name: 'email',
       title: 'Email',
       type: 'email',
+      grid: 6,
     },
     {
       input: 'CustomSelect',
@@ -64,6 +71,7 @@ export const config = [
       title: 'Tamaño',
       type: 'text',
       options,
+      grid: 6,
     },
   ],
   [
@@ -73,6 +81,7 @@ export const config = [
       name: 'RL',
       title: 'Representante legal',
       type: 'text',
+      grid: 6,
     },
     {
       input: 'CustomInputAddon',
@@ -81,6 +90,7 @@ export const config = [
       title: 'Contacto Representante legal',
       type: 'phone',
       prepend: '+569',
+      grid: 6,
     },
   ],
   [
@@ -90,6 +100,7 @@ export const config = [
       name: 'RT',
       title: 'Representante técnico',
       type: 'text',
+      grid: 6,
     },
     {
       input: 'CustomInputAddon',
@@ -98,6 +109,7 @@ export const config = [
       title: 'Contacto Representante técnico',
       type: 'phone',
       prepend: '+569',
+      grid: 6,
     },
   ],
 ]

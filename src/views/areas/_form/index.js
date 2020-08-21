@@ -5,7 +5,7 @@ import {
 import { Link } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import { FormGroup } from '../../../components/custom'
-import { enterpriseSchema } from './_validation'
+import { areaSchema } from './_validation'
 import { initialValues } from './_initialValues'
 import { config } from './_config'
 
@@ -16,11 +16,11 @@ const FormUI = (props) => {
       <CardBody>
         <Formik
           initialValues={placeholder || initialValues}
-          validationSchema={enterpriseSchema}
+          validationSchema={areaSchema}
           onSubmit={(values) => handleSubmit(values)}
         >
           {() => (
-            <Form id="form-enterprises">
+            <Form id="form-areas">
               {
               config.map((row) => (
                 <Row key={row[0].key}>
@@ -37,7 +37,7 @@ const FormUI = (props) => {
               <Row>
                 <Col sm="12 d-flex justify-content-end">
                   <div>
-                    <Link to="/dashboard/enterprises"><Button color="light">Cancelar</Button></Link>
+                    <Link to="/dashboard/areas"><Button color="light">Cancelar</Button></Link>
                     <Button color="primary" className="ml-1" type="submit">{title}</Button>
                   </div>
                 </Col>

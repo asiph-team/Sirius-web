@@ -28,6 +28,10 @@ const navigationConfig = [
     icon: <Icon.Box size={20} />,
     permissions: ['administrador'],
     navLink: '/dashboard/areas',
+    parentOf: [
+      '/dashboard/areas/add',
+      '/dashboard/areas/edit',
+    ],
   },
   {
     id: 'jobs',

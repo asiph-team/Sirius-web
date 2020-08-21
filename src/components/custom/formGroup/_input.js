@@ -3,6 +3,24 @@ import { Field } from 'formik'
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap'
 import Select from 'react-select'
 
+const SelectField = (props) => {
+  const {
+    options, field, form,
+  } = props
+  return (
+    <Select
+      className="basic-single"
+      classNamePrefix="select"
+      name={field.name}
+      options={options}
+      onChange={(option) => option && form.setFieldValue(field.name, option.value)}
+      defaultValue={options.find((option) => option.value === field.value)}
+      isSearchable
+      placeholder=""
+    />
+  )
+}
+
 export const CustomInput = (props) => {
   const {
     name, title, type, small,
@@ -34,21 +52,20 @@ export const CustomInputAddon = (props) => {
   )
 }
 
-const SelectField = (props) => {
+export const CustomTextArea = (props) => {
   const {
-    options, field, form,
+    name, title, small, rows,
   } = props
   return (
-    <Select
-      className="basic-single"
-      classNamePrefix="select"
-      name={field.name}
-      options={options}
-      onChange={(option) => option && form.setFieldValue(field.name, option.value)}
-      defaultValue={options.find((option) => option.value === field.value)}
-      isSearchable
-      placeholder=""
-    />
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        name={name}
+        component="textarea"
+        className="form-control"
+        rows={rows}
+      />
+    </>
   )
 }
 

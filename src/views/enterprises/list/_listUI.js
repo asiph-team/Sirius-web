@@ -33,6 +33,7 @@ const ListUI = (props) => {
             headers={headers}
             show={show}
             resource="enterprises"
+            contact
           />
         </CardBody>
       </Card>
