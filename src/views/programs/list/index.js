@@ -8,7 +8,8 @@ import { Header, List, Error } from '../../../components/custom'
 import { headers } from './_headers'
 
 const ProgramsList = () => {
-  const { data, loading, error } = useFetchResources('/api/v1/programs')
+  const { items: data, remove } = useFetchResources('/api/v1/programs')
+  const { items, loading, error } = data
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
   return (
@@ -20,7 +21,7 @@ const ProgramsList = () => {
         </CardHeader>
         <CardBody>
           <List
-            data={data && data.workers}
+            data={items && items.workers}
             headers={headers}
             resource="programs"
           />
@@ -32,7 +33,7 @@ const ProgramsList = () => {
         </CardHeader>
         <CardBody>
           <List
-            data={data && data.jobs}
+            data={items && items.jobs}
             headers={headers}
           />
         </CardBody>

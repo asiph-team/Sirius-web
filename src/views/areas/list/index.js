@@ -6,7 +6,8 @@ import { Header, List, Error } from '../../../components/custom'
 import { headers } from './_headers'
 
 const AreasList = () => {
-  const { data, loading, error } = useFetchResources('/api/v1/areas')
+  const { items: areas, remove } = useFetchResources('/api/v1/areas')
+  const { items, loading, error } = areas
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
   return (
@@ -15,7 +16,7 @@ const AreasList = () => {
       <Card>
         <CardBody>
           <List
-            data={data}
+            data={items}
             headers={headers}
             resource="areas"
           />
