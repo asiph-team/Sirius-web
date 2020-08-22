@@ -8,7 +8,7 @@ import { useFetchResources, usePostResources } from '../../../utility/customHook
 import AddUI from './_addUI'
 
 const Add = () => {
-  const url = 'api/v1/area'
+  const url = 'api/v1/areas'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   const { items: workers } = useFetchResources('/api/v1/workers')
   const { items: data, loading: loadingWorkers, error: errorWorkers } = workers
@@ -23,7 +23,7 @@ const Add = () => {
       <AlertSuccess
         message="El área de trabajo ha sido creada."
         callback={() => {
-          document.getElementById('form-area').reset()
+          document.getElementById('form-areas').reset()
           clean()
           history.goBack()
         }}
