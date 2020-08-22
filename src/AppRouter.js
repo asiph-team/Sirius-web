@@ -19,6 +19,7 @@ const ProgramsList = lazy(() => import('./views/programs/list'))
 const ActionsList = lazy(() => import('./views/actions/list'))
 const AreasList = lazy(() => import('./views/areas/list'))
 const AreasAdd = lazy(() => import('./views/areas/add'))
+const AreasEdit = lazy(() => import('./views/areas/edit'))
 
 const AuthConfig = (props) => (
   <ContextAuth.Consumer>
@@ -72,6 +73,7 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
       <RouteConfig exact path="/dashboard/areas" component={AreasList} />
       <RouteConfig path="/dashboard/areas/add" component={AreasAdd} />
+      <RouteConfig path="/dashboard/areas/edit" component={AreasEdit} />
     </Switch>
   </Router>
 )

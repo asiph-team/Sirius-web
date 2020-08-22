@@ -34,7 +34,7 @@ const List = (props) => {
             })}
             <td>
               {contact && <Button color="link" onClick={() => show(item, 'contact')} className="p-0"><Icon.Search size={20} /></Button>}
-              <Can rule={`${resource}:edit`}><Link to={{ pathname: '/dashboard/enterprises/edit', state: { placeholder: item } }}><Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
+              <Can rule={`${resource}:edit`}><Link to={{ pathname: `/dashboard/${resource}/edit`, state: { placeholder: item } }}><Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
               <Can rule={`${resource}:delete`}><Button onClick={() => show(item, 'remove')} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
             </td>
           </tr>

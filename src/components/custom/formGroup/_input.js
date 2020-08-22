@@ -7,14 +7,15 @@ const SelectField = (props) => {
   const {
     options, field, form,
   } = props
+  const { name, value } = field
   return (
     <Select
       className="basic-single"
       classNamePrefix="select"
-      name={field.name}
+      name={name}
       options={options}
-      onChange={(option) => option && form.setFieldValue(field.name, option.value)}
-      defaultValue={options.find((option) => option.value === field.value)}
+      onChange={(option) => option && form.setFieldValue(name, option.value)}
+      defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
       isSearchable
       placeholder=""
     />
