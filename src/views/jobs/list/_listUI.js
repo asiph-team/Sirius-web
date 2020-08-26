@@ -18,10 +18,10 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Puestos de trabajo" icon="Briefcase">
-        <Link to="/dashboard/areas/add">
+        <Link to="/dashboard/jobs/add">
           <Button color="primary">
             <PlusCircle size={14} />
-                &nbsp;Agregar área
+                &nbsp;Agregar puesto
           </Button>
         </Link>
       </Header>

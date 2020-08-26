@@ -1,6 +1,6 @@
 import mock from '../mock'
 
-const workers = [
+const employees = [
   {
     id: 1,
     name: 'Javier Andrés',
@@ -8,6 +8,8 @@ const workers = [
     phone: '+569 44650909',
     email: 'jsoto@asiph.cl',
     job: 'Frontend Developer',
+    address: 'Avda. España 1234',
+    date_start: '01/09/2010',
     status: true,
   },
   {
@@ -17,6 +19,8 @@ const workers = [
     phone: '+569 95651900',
     email: 'amaldonado@asiph.cl',
     job: 'Frontend Developer',
+    address: 'Arauco 327',
+    date_start: '01/09/2010',
     status: true,
   },
   {
@@ -26,6 +30,8 @@ const workers = [
     phone: '+569 83331922',
     email: 'ymoreira@asiph.cl',
     job: 'Backend Developer',
+    address: 'Orompello 129',
+    date_start: '01/09/2010',
     status: true,
   },
   {
@@ -35,6 +41,8 @@ const workers = [
     phone: '+569 44337699',
     email: 'crios@asiph.cl',
     job: 'Backend Developer',
+    address: 'Chacabuco 768',
+    date_start: '01/09/2010',
     status: true,
   },
   {
@@ -44,8 +52,10 @@ const workers = [
     phone: '+569 771595834',
     email: 'pgonzalez@asiph.cl',
     job: 'Software Architect',
+    address: 'Isabel Rodas 247',
+    date_start: '01/09/2010',
     status: true,
   },
 ]
 
-mock.onGet('/api/v1/workers').reply(() => [200, workers])
+mock.onGet('/api/v1/employees').reply(() => [200, employees])

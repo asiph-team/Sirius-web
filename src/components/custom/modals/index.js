@@ -1,3 +1,4 @@
-import ContactInfoModal from './_contactInfoModal'
+import ContactInfoEnterprise from './_contactInfoEnterprise'
+import ContactInfoEmployee from './_contactInfoEmployee'
 
-export { ContactInfoModal }
+export { ContactInfoEmployee, ContactInfoEnterprise }

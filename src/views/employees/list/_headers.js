@@ -8,14 +8,6 @@ export const headers = [
     title: 'Apellidos',
   },
   {
-    id: 'phone',
-    title: 'Teléfono',
-  },
-  {
-    id: 'email',
-    title: 'Email',
-  },
-  {
     id: 'job',
     title: 'Puesto de trabajo',
   },

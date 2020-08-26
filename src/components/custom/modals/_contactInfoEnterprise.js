@@ -10,7 +10,7 @@ import {
   Row,
 } from 'reactstrap'
 
-const ContactInfoModal = (props) => {
+const ContactInfoEnterprise = (props) => {
   const { onClose, visibility, item } = props
   return (
     <Modal
@@ -67,4 +67,4 @@ const ContactInfoModal = (props) => {
   )
 }
 
-export default ContactInfoModal
+export default ContactInfoEnterprise

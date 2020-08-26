@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
-import { ContactInfoEnterprise } from '../../../components/custom/modals'
+import { ContactInfoEmployee } from '../../../components/custom/modals'
 import {
   AlertDialog, Header, List,
 } from '../../../components/custom'
@@ -18,11 +18,11 @@ const ListUI = (props) => {
   }
   return (
     <>
-      <Header title="Empresas" icon="Shield">
-        <Link to="/dashboard/enterprises/add">
+      <Header title="Trabajadores" icon="Users">
+        <Link to="/dashboard/employees/add">
           <Button color="primary">
             <PlusCircle size={14} />
-                &nbsp;Agregar empresa
+                &nbsp;Agregar trabajador
           </Button>
         </Link>
       </Header>
@@ -32,12 +32,12 @@ const ListUI = (props) => {
             data={data}
             headers={headers}
             show={show}
-            resource="enterprises"
+            resource="employees"
             contact
           />
         </CardBody>
       </Card>
-      <ContactInfoEnterprise
+      <ContactInfoEmployee
         visibility={visibility.contact}
         onClose={() => setVisibility({ ...visibility, contact: false })}
         item={selected}
@@ -46,7 +46,7 @@ const ListUI = (props) => {
         visibility.remove && (
         <AlertDialog
           title={`¿Estás seguro de eliminar a ${selected.name}?`}
-          paragraph="Estas operación es irreversible, se eliminará toda la información respecto a la empresa."
+          paragraph="Estas operación es irreversible, se eliminará toda la información relacionada al trabajador."
           callback={() => remove({ id: selected.id }, null)}
           callbackCancel={() => setVisibility({ ...visibility, remove: false })}
         />
@@ -56,7 +56,7 @@ const ListUI = (props) => {
         visibility.status && (
           <AlertDialog
             title={`¿Estás seguro de ${selected.status ? 'desactivar' : 'activar'} a ${selected.name}?`}
-            paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} a la empresa en la plataforma.`}
+            paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} al trabajador en la plataforma.`}
             callback={() => changeStatus({ id: selected.id, status: !selected.status }, null)}
             callbackCancel={() => setVisibility({ ...visibility, status: false })}
           />

@@ -40,6 +40,10 @@ const navigationConfig = [
     icon: <Icon.Briefcase size={20} />,
     permissions: ['administrador', 'jefe area'],
     navLink: '/dashboard/jobs',
+    parentOf: [
+      '/dashboard/jobs/add',
+      '/dashboard/jobs/edit',
+    ],
   },
   {
     id: 'employees',
@@ -48,6 +52,10 @@ const navigationConfig = [
     icon: <Icon.Users size={20} />,
     permissions: ['administrador', 'jefe area'],
     navLink: '/dashboard/employees',
+    parentOf: [
+      '/dashboard/employees/add',
+      '/dashboard/employees/edit',
+    ],
   },
   {
     id: 'activities',
@@ -56,14 +64,22 @@ const navigationConfig = [
     icon: <Icon.Activity size={20} />,
     permissions: ['administrador', 'jefe area'],
     navLink: '/dashboard/activities',
+    parentOf: [
+      '/dashboard/activities/add',
+      '/dashboard/activities/edit',
+    ],
   },
   {
-    id: 'trainings',
+    id: 'trainigs',
     title: 'Capacitaciones',
     type: 'item',
     icon: <Icon.Clipboard size={20} />,
     permissions: ['administrador', 'jefe area'],
     navLink: '/dashboard/trainings',
+    parentOf: [
+      '/dashboard/trainings/add',
+      '/dashboard/trainings/edit',
+    ],
   },
   {
     id: 'programs',
@@ -72,6 +88,10 @@ const navigationConfig = [
     icon: <Icon.Video size={20} />,
     permissions: ['administrador', 'jefe area'],
     navLink: '/dashboard/programs',
+    parentOf: [
+      '/dashboard/programs/add',
+      '/dashboard/programs/edit',
+    ],
   },
   {
     id: 'actions',
@@ -80,6 +100,10 @@ const navigationConfig = [
     icon: <Icon.BookOpen size={20} />,
     permissions: ['administrador', 'jefe area'],
     navLink: '/dashboard/actions',
+    parentOf: [
+      '/dashboard/actions/add',
+      '/dashboard/actions/edit',
+    ],
   },
 ]
 

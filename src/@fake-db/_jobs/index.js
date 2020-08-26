@@ -36,10 +36,28 @@ const jobs = [
 ]
 
 mock.onGet('/api/v1/jobs').reply(() => [200, jobs])
+mock.onPost('/api/v1/jobs').reply((request) => {
+  const reqData = JSON.parse(request.data)
+  const newJob = { ...reqData, status: true }
+  jobs.push(newJob)
+  return [200, []]
+})
 
 mock.onPost('/api/v1/jobs/remove').reply((request) => {
   const { id } = JSON.parse(request.data)
   const index = jobs.findIndex((item) => item.id === id)
   jobs.splice(index, 1)
   return [200, jobs]
+})
+
+mock.onPost('/api/v1/jobs/update').reply((request) => {
+  const data = JSON.parse(request.data)
+  jobs.map((item) => {
+    if (item.id === data.id) {
+      return Object.assign(item, { ...data })
+    }
+    return item
+  })
+
+  return [200, []]
 })
