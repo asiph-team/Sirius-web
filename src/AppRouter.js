@@ -15,6 +15,7 @@ const JobsList = lazy(() => import('./views/jobs/list'))
 const JobsAdd = lazy(() => import('./views/jobs/add'))
 const JobsEdit = lazy(() => import('./views/jobs/edit'))
 const EmployeesList = lazy(() => import('./views/employees/list'))
+const EmployeesAdd = lazy(() => import('./views/employees/add'))
 const ActivitiesList = lazy(() => import('./views/activities/list'))
 const TrainingsList = lazy(() => import('./views/trainings/list'))
 const ProgramsList = lazy(() => import('./views/programs/list'))
@@ -71,6 +72,7 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/jobs/add" component={JobsAdd} />
       <RouteConfig path="/dashboard/jobs/edit" component={JobsEdit} />
       <RouteConfig exact path="/dashboard/employees" component={EmployeesList} />
+      <RouteConfig path="/dashboard/employees/add" component={EmployeesAdd} />
       <RouteConfig exact path="/dashboard/activities" component={ActivitiesList} />
       <RouteConfig exact path="/dashboard/trainings" component={TrainingsList} />
       <RouteConfig exact path="/dashboard/programs" component={ProgramsList} />

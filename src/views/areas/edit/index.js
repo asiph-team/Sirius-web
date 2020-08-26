@@ -10,13 +10,13 @@ import EditUI from './_editUI'
 const Edit = (props) => {
   const url = 'api/v1/areas/update'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: workers } = useFetchResources('/api/v1/workers')
-  const { items: data, loading: loadingWorkers, error: errorWorkers } = workers
-  if (loadingWorkers) return <LoadingSpinner />
-  if (errorWorkers) return <Error message={errorWorkers} />
+  const { items: employees } = useFetchResources('/api/v1/employees')
+  const { items: data, loading: loadingEmployees, error: errorEmployees } = employees
+  if (loadingEmployees) return <LoadingSpinner />
+  if (errorEmployees) return <Error message={errorEmployees} />
   return (
     <>
-      <EditUI handleSubmit={(values) => postData(values, url)} {...props} workers={data} />
+      <EditUI handleSubmit={(values) => postData(values, url)} {...props} employees={data} />
       {loading && <AlertLoading message="Actualizando área de trabajo" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (

@@ -3,8 +3,8 @@ import { Header } from '../../../components/custom'
 import FormUI from '../_form'
 
 const EditUI = (props) => {
-  const { handleSubmit, location: { state: { placeholder } }, workers } = props
-  const options = workers ? workers.map((item) => ({ label: item.name, value: item.id })) : null
+  const { handleSubmit, location: { state: { placeholder } }, employees } = props
+  const options = employees ? employees.map((item) => ({ label: item.name, value: item.id })) : null
   return (
     <>
       <Header title="Agregar área de trabajo" icon="Box" />

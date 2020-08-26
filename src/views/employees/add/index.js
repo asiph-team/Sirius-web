@@ -8,22 +8,22 @@ import { useFetchResources, usePostResources } from '../../../utility/customHook
 import AddUI from './_addUI'
 
 const Add = () => {
-  const url = 'api/v1/areas'
+  const url = 'api/v1/employees'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: jobs } = useFetchResources('/api/v1/employees')
-  const { items: data, loading: loadingEmployees, error: errorEmployees } = jobs
-  if (loadingEmployees) return <LoadingSpinner />
-  if (errorEmployees) return <Error message={errorEmployees} />
+  const { items: jobs } = useFetchResources('/api/v1/jobs')
+  const { items: data, loading: loadingJobs, error: errorJobs } = jobs
+  if (loadingJobs) return <LoadingSpinner />
+  if (errorJobs) return <Error message={errorJobs} />
   return (
     <>
-      <AddUI handleSubmit={(values) => postData(values, url)} employees={data} />
+      <AddUI handleSubmit={(values) => postData(values, url)} jobs={data} />
       {loading && <AlertLoading message="Almacenando trabajador" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
       <AlertSuccess
         message="El trabajador ha sido creado."
         callback={() => {
-          document.getElementById('form-employees').reset()
+          document.getElementById('form-jobs').reset()
           clean()
           history.goBack()
         }}

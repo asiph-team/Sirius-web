@@ -60,7 +60,7 @@ export const config = [
       input: 'CustomInput',
       key: 7,
       name: 'email',
-      title: 'Email',
+      title: 'Correo electrónico',
       type: 'email',
       grid: 6,
     },

@@ -3,11 +3,11 @@ import { Header } from '../../../components/custom'
 import FormUI from '../_form'
 
 const AddUI = (props) => {
-  const { handleSubmit, employees } = props
-  const options = employees ? employees.map((item) => ({ label: item.name, value: item.id })) : null
+  const { handleSubmit, jobs } = props
+  const options = jobs ? jobs.map((item) => ({ label: item.name, value: item.id })) : null
   return (
     <>
-      <Header title="Agregar área de trabajo" icon="Box" />
+      <Header title="Agregar trabajador" icon="Users" />
       <FormUI handleSubmit={handleSubmit} title="Agregar" options={options} />
     </>
   )

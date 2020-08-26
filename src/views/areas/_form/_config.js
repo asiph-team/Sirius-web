@@ -1,5 +1,3 @@
-import { options } from './_initialValues'
-
 export const config = [
   [
     {
@@ -16,7 +14,7 @@ export const config = [
       name: 'manager',
       title: 'Encargado',
       type: 'text',
-      options,
+      options: [],
       grid: 6,
     },
   ],
