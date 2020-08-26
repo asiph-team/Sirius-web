@@ -1,6 +1,9 @@
 import React from 'react'
 import { Field } from 'formik'
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap'
+import 'flatpickr/dist/themes/light.css'
+import '../../../assets/scss/plugins/forms/flatpickr/flatpickr.scss'
+import Flatpickr from 'react-flatpickr'
 import Select from 'react-select'
 
 const SelectField = (props) => {
@@ -18,6 +21,19 @@ const SelectField = (props) => {
       defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
       isSearchable
       placeholder=""
+    />
+  )
+}
+
+const DatePicker = (props) => {
+  const { field } = props
+  const { name, value } = field
+  return (
+    <Flatpickr
+      className="form-control"
+      name={name}
+      value={new Date()}
+      onChange={(date) => console.log(date)}
     />
   )
 }
@@ -81,6 +97,21 @@ export const CustomSelect = (props) => {
         options={options}
         name={name}
         component={SelectField}
+      />
+    </>
+  )
+}
+
+export const CustomDatePicker = (props) => {
+  const {
+    name, title, small,
+  } = props
+  return (
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        name={name}
+        component={DatePicker}
       />
     </>
   )
