@@ -1,9 +1,8 @@
 import React from 'react'
 import { Field } from 'formik'
+import 'react-datepicker/dist/react-datepicker.css'
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap'
-import 'flatpickr/dist/themes/light.css'
-import '../../../assets/scss/plugins/forms/flatpickr/flatpickr.scss'
-import Flatpickr from 'react-flatpickr'
+import DatePicker from 'react-datepicker'
 import Select from 'react-select'
 
 const SelectField = (props) => {
@@ -25,15 +24,18 @@ const SelectField = (props) => {
   )
 }
 
-const DatePicker = (props) => {
-  const { field } = props
+const DatePickerField = (props) => {
+  const { field, form } = props
   const { name, value } = field
   return (
-    <Flatpickr
-      className="form-control"
+    <DatePicker
       name={name}
-      value={new Date()}
-      onChange={(date) => console.log(date)}
+      className="form-control"
+      dateFormat="dd/MM/yyyy"
+      selected={value}
+      onChange={(date) => {
+        form.setFieldValue(name, date)
+      }}
     />
   )
 }
@@ -111,7 +113,7 @@ export const CustomDatePicker = (props) => {
       <label htmlFor={name}>{`${title} ${small || ''}`}</label>
       <Field
         name={name}
-        component={DatePicker}
+        component={DatePickerField}
       />
     </>
   )

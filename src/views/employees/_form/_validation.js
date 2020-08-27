@@ -1,15 +1,38 @@
 import * as Yup from 'yup'
+import rutRegex from 'rut-regex'
+import { cellRegExp } from '../../../utility/helpers/consts'
 
 export const jobSchema = Yup.object().shape({
   name: Yup.string()
-    .min(3, 'El nombre del área debe ser mayor a 3 caractéres')
-    .max(50, 'El nombre del área debe ser menor a 50 caractéres')
-    .required('El nombre del área es requerido'),
-  manager: Yup.string()
+    .min(5, 'Los nombres del trabajador debe ser mayores a 5 caractéres')
+    .max(50, 'Los nombres del trabajador debe ser menores a 50 caractéres')
+    .required('Los nombres del trabajador son requeridos'),
+  lastname: Yup.string()
+    .min(3, 'Los apellidos del trabajador deben ser mayores a 3 caractéres')
+    .max(70, 'Los apellidos del trabajador deben ser menores a 50 caractéres')
+    .required('Los apellidos del trabajador son requeridos'),
+  RUT: Yup.string()
+    .test('RUT-validator', 'El RUT ingresado no es válido', (value) => {
+      if (value) {
+        const dot = !(value.indexOf('.') <= 0)
+        return rutRegex({ exact: true, dot, hyphen: true }).test(value)
+      }
+      return true
+    })
+    .required('El RUT es requerido'),
+  email: Yup.string()
+    .email('El email ingresado no es válido')
+    .required('El email es requerido'),
+  address: Yup.string()
+    .min(10, 'La dirección debe ser mayor a 10 caractéres')
+    .max(50, 'La dirección debe ser menor a 50 caractéres')
+    .required('La dirección es requerida'),
+  phone: Yup.string()
+    .matches(cellRegExp, 'El teléfono ingresado no es válido')
+    .required('El número es requerido'),
+  job: Yup.string()
     .ensure()
-    .required('El encargado del área es requerido'),
-  description: Yup.string()
-    .min(5, 'La descripción debe ser mayor a 5 caractéres')
-    .max(80, 'La descripción debe ser menor a 80 caractéres')
-    .required('Una descripción es requerida'),
+    .required('El puesto de trabajo es requerido'),
+  date_start: Yup.date()
+    .required('La fecha de inicio laboral es requerida'),
 })

@@ -59,3 +59,16 @@ const employees = [
 ]
 
 mock.onGet('/api/v1/employees').reply(() => [200, employees])
+mock.onPost('/api/v1/employees').reply((request) => {
+  const reqData = JSON.parse(request.data)
+  const newEmployees = { ...reqData, status: true }
+  employees.push(newEmployees)
+  return [200, []]
+})
+
+mock.onPost('/api/v1/employees/remove').reply((request) => {
+  const { id } = JSON.parse(request.data)
+  const index = employees.findIndex((item) => item.id === id)
+  employees.splice(index, 1)
+  return [200, employees]
+})

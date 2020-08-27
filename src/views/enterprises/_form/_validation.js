@@ -1,8 +1,6 @@
 import * as Yup from 'yup'
 import rutRegex from 'rut-regex'
-
-const phoneRegExp = /^[0-9]{9,11}$/
-const cellRegExp = /^[0-9]{8}$/
+import { cellRegExp, phoneRegExp } from '../../../utility/helpers/consts'
 
 export const enterpriseSchema = Yup.object().shape({
   name: Yup.string()
