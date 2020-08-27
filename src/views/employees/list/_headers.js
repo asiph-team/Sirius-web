@@ -8,6 +8,10 @@ export const headers = [
     title: 'Apellidos',
   },
   {
+    id: 'RUT',
+    title: 'RUT',
+  },
+  {
     id: 'job',
     title: 'Puesto de trabajo',
   },

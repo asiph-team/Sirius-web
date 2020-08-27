@@ -5,6 +5,7 @@ const employees = [
     id: 1,
     name: 'Javier Andrés',
     lastname: 'Soto Pereira',
+    RUT: '10515377-5',
     phone: '+569 44650909',
     email: 'jsoto@asiph.cl',
     job: 'Frontend Developer',
@@ -16,6 +17,7 @@ const employees = [
     id: 2,
     name: 'Andrés',
     lastname: 'Maldonado Ramírez',
+    RUT: '17693283-k',
     phone: '+569 95651900',
     email: 'amaldonado@asiph.cl',
     job: 'Frontend Developer',
@@ -27,6 +29,7 @@ const employees = [
     id: 3,
     name: 'Yerco ignacio',
     lastname: 'Moreira Cuevas',
+    RUT: '11426634-5',
     phone: '+569 83331922',
     email: 'ymoreira@asiph.cl',
     job: 'Backend Developer',
@@ -38,6 +41,7 @@ const employees = [
     id: 4,
     name: 'Carlos Gabriel',
     lastname: 'Rios Sandoval',
+    RUT: '18133681-1',
     phone: '+569 44337699',
     email: 'crios@asiph.cl',
     job: 'Backend Developer',
@@ -49,6 +53,7 @@ const employees = [
     id: 5,
     name: 'Pedro Pablo',
     lastname: 'Gonzalez Jara',
+    RUT: '24292723-0',
     phone: '+569 771595834',
     email: 'pgonzalez@asiph.cl',
     job: 'Software Architect',
@@ -71,4 +76,16 @@ mock.onPost('/api/v1/employees/remove').reply((request) => {
   const index = employees.findIndex((item) => item.id === id)
   employees.splice(index, 1)
   return [200, employees]
+})
+
+mock.onPost('/api/v1/employees/update').reply((request) => {
+  const data = JSON.parse(request.data)
+  employees.map((item) => {
+    if (item.id === data.id) {
+      return Object.assign(item, { ...data })
+    }
+    return item
+  })
+
+  return [200, []]
 })

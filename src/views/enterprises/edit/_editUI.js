@@ -1,10 +1,7 @@
 import React from 'react'
 import { Header } from '../../../components/custom'
+import { phoneFormat } from '../../../utility/helpers/functions'
 import FormUI from '../_form'
-
-function phoneFormat(phone) {
-  return phone.replace('+569 ', '').replace(/\s/g, '')
-}
 
 const EditUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } } } = props

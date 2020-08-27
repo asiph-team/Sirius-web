@@ -45,11 +45,12 @@ export const config = [
       grid: 6,
     },
     {
-      input: 'CustomInput',
+      input: 'CustomInputAddon',
       key: 6,
       name: 'phone',
       title: 'Teléfono de contacto',
       type: 'phone',
+      prepend: '+569',
       grid: 6,
     },
   ],
