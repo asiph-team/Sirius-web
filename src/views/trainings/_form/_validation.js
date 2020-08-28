@@ -11,8 +11,6 @@ export const trainingSchema = Yup.object().shape({
     .min(3, 'La frecuencia debe ser mayor a 3 caractéres')
     .max(50, 'La frecuencia debe ser mayor a 50 caractéres')
     .required('La frecuencia es requerida'),
-  // employees: Yup.string()
-  //   .required('Se debe invitar invitar por lo menos a un trabajador'),
   description: Yup.string()
     .min(5, 'La descripción debe ser mayor a 5 caractéres')
     .max(80, 'La descripción debe ser menor a 80 caractéres')
