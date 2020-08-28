@@ -1,6 +1,6 @@
 import mock from './mock'
 import './_auth/authentication'
-import './_actions/show'
+import './_actions'
 import './_enterprises'
 import './_jobs'
 import './_employees'

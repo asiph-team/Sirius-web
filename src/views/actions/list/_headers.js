@@ -4,11 +4,11 @@ export const headers = [
     title: 'Nombre',
   },
   {
-    id: 'date_in',
+    id: 'date_initial',
     title: 'Fecha ingreso',
   },
   {
-    id: 'responsable',
+    id: 'manager',
     title: 'responsable',
   },
   {
@@ -20,7 +20,7 @@ export const headers = [
     title: 'Prioridad',
   },
   {
-    id: 'date_out',
+    id: 'date_committed',
     title: 'Fecha compromiso',
   },
 ]

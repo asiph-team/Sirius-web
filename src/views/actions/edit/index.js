@@ -1,0 +1,36 @@
+import React from 'react'
+import { history } from '../../../history'
+import {
+  AlertError, AlertLoading, AlertSuccess, Error,
+} from '../../../components/custom'
+import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
+import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
+import EditUI from './_editUI'
+
+const Edit = (props) => {
+  const url = 'api/v1/actions/update'
+  const { data: { loading, error, items }, postData, clean } = usePostResources()
+  const { items: jobs } = useFetchResources('/api/v1/employees')
+  const { items: data, loading: loadingEmployees, error: errorEmployees } = jobs
+  if (loadingEmployees) return <LoadingSpinner />
+  if (errorEmployees) return <Error message={errorEmployees} />
+  return (
+    <>
+      <EditUI handleSubmit={(values) => postData(values, url)} {...props} employees={data} />
+      {loading && <AlertLoading message="Almacenando plan de acción" />}
+      {error && <AlertError callback={() => clean()} />}
+      {items && (
+      <AlertSuccess
+        message="El plan de acción ha sido creado."
+        callback={() => {
+          document.getElementById('form-actions').reset()
+          clean()
+          history.goBack()
+        }}
+      />
+      )}
+    </>
+  )
+}
+
+export default Edit
