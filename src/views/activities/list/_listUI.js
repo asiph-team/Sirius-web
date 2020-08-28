@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
 import { ContactInfoEmployee } from '../../../components/custom/modals'
 import {
-  AlertDialog, Header, List,
+  AlertDialog, Can, Header, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
 
@@ -19,12 +19,14 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Acitvidades" icon="Activity">
-        <Link to="/dashboard/activities/add">
-          <Button color="primary">
-            <PlusCircle size={14} />
+        <Can rule="activities:add">
+          <Link to="/dashboard/activities/add">
+            <Button color="primary">
+              <PlusCircle size={14} />
                 &nbsp;Agregar actividad
-          </Button>
-        </Link>
+            </Button>
+          </Link>
+        </Can>
       </Header>
       <Card>
         <CardBody>

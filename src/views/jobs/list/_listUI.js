@@ -3,7 +3,7 @@ import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
 import {
-  AlertDialog, Header, List,
+  AlertDialog, Can, Header, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
 
@@ -18,12 +18,14 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Puestos de trabajo" icon="Briefcase">
-        <Link to="/dashboard/jobs/add">
-          <Button color="primary">
-            <PlusCircle size={14} />
+        <Can rule="jobs:add">
+          <Link to="/dashboard/jobs/add">
+            <Button color="primary">
+              <PlusCircle size={14} />
                 &nbsp;Agregar puesto
-          </Button>
-        </Link>
+            </Button>
+          </Link>
+        </Can>
       </Header>
       <Card>
         <CardBody>
