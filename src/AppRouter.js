@@ -21,6 +21,8 @@ const ActivitiesList = lazy(() => import('./views/activities/list'))
 const ActivitiesAdd = lazy(() => import('./views/activities/add'))
 const ActivitiesEdit = lazy(() => import('./views/activities/edit'))
 const TrainingsList = lazy(() => import('./views/trainings/list'))
+const TrainingsAdd = lazy(() => import('./views/trainings/add'))
+const TrainingsEdit = lazy(() => import('./views/trainings/edit'))
 const ProgramsList = lazy(() => import('./views/programs/list'))
 const ActionsList = lazy(() => import('./views/actions/list'))
 const AreasList = lazy(() => import('./views/areas/list'))
@@ -78,9 +80,11 @@ const AppRouter = () => (
       <RouteConfig path="/dashboard/employees/add" component={EmployeesAdd} />
       <RouteConfig path="/dashboard/employees/edit" component={EmployeesEdit} />
       <RouteConfig exact path="/dashboard/activities" component={ActivitiesList} />
-      <RouteConfig exact path="/dashboard/activities/add" component={ActivitiesAdd} />
-      <RouteConfig exact path="/dashboard/activities/edit" component={ActivitiesEdit} />
+      <RouteConfig path="/dashboard/activities/add" component={ActivitiesAdd} />
+      <RouteConfig path="/dashboard/activities/edit" component={ActivitiesEdit} />
       <RouteConfig exact path="/dashboard/trainings" component={TrainingsList} />
+      <RouteConfig path="/dashboard/trainings/add" component={TrainingsAdd} />
+      <RouteConfig path="/dashboard/trainings/edit" component={TrainingsEdit} />
       <RouteConfig exact path="/dashboard/programs" component={ProgramsList} />
       <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
       <RouteConfig exact path="/dashboard/areas" component={AreasList} />

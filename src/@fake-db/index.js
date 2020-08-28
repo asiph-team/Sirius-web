@@ -5,7 +5,7 @@ import './_enterprises'
 import './_jobs'
 import './_employees'
 import './_activities'
-import './_trainings/show'
+import './_trainings'
 import './_programs/show'
 import './_areas'
 

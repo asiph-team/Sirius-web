@@ -7,7 +7,7 @@ import Select from 'react-select'
 
 const SelectField = (props) => {
   const {
-    options, field, form,
+    options, field, form, multiple,
   } = props
   const { name, value } = field
   return (
@@ -20,6 +20,7 @@ const SelectField = (props) => {
       defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
       isSearchable
       placeholder=""
+      isMulti={!!multiple}
     />
   )
 }
@@ -90,7 +91,7 @@ export const CustomTextArea = (props) => {
 
 export const CustomSelect = (props) => {
   const {
-    name, title, options, small,
+    name, title, options, small, multiple,
   } = props
   return (
     <>
@@ -99,6 +100,7 @@ export const CustomSelect = (props) => {
         options={options}
         name={name}
         component={SelectField}
+        multiple={multiple}
       />
     </>
   )

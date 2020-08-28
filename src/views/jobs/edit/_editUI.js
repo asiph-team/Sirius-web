@@ -6,7 +6,7 @@ const EditUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } } } = props
   return (
     <>
-      <Header title="Editar puesto" icon="Briefcase" />
+      <Header title="Editar puesto de trabajo" icon="Briefcase" />
       <FormUI handleSubmit={handleSubmit} title="Editar" placeholder={placeholder} />
     </>
   )

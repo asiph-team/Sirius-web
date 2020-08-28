@@ -6,7 +6,7 @@ const AddUI = (props) => {
   const { handleSubmit } = props
   return (
     <>
-      <Header title="Agregar puestos" icon="Briefcase" />
+      <Header title="Agregar puesto de trabajo" icon="Briefcase" />
       <FormUI handleSubmit={handleSubmit} title="Agregar" />
     </>
   )
