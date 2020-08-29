@@ -23,7 +23,7 @@ const Add = () => {
       <AlertSuccess
         message="El trabajador ha sido creado."
         callback={() => {
-          document.getElementById('form-employees').reset()
+          document.getElementById('form-areas').reset()
           clean()
           history.goBack()
         }}

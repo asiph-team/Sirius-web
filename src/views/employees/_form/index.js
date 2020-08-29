@@ -21,7 +21,7 @@ const FormUI = (props) => {
           onSubmit={(values) => handleSubmit(values)}
         >
           {() => (
-            <Form id="form-jobs">
+            <Form id="form-employees">
               {
               config.map((row) => (
                 <Row key={row[0].key}>

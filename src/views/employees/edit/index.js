@@ -23,7 +23,7 @@ const Edit = (props) => {
       <AlertSuccess
         message="La información del trabajador ha sido actualizada."
         callback={() => {
-          document.getElementById('form-jobs').reset()
+          document.getElementById('form-employees').reset()
           clean()
           history.goBack()
         }}
