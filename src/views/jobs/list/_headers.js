@@ -8,15 +8,15 @@ export const headers = [
     title: 'Descripción',
   },
   {
-    id: 't_activities',
+    id: 'total_activities',
     title: 'Total actividades',
   },
   {
-    id: 't_trainings',
+    id: 'total_trainings',
     title: 'Total capacitaciones',
   },
   {
-    id: 't_programs',
+    id: 'total_programs',
     title: 'Total programas',
   },
 ]
