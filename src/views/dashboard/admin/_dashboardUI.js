@@ -4,9 +4,9 @@ import {
 } from 'reactstrap'
 import Chart from 'react-apexcharts'
 import { Calendar } from 'react-feather'
-import { Can } from '../../components/custom'
+import { Can } from '../../../components/custom'
 
-const DashboardAdminManager = () => (
+const DashboardUI = () => (
   <>
     <Can rule="dashboard:admin">
       <Row>
@@ -143,4 +143,4 @@ const DashboardAdminManager = () => (
   </>
 )
 
-export default DashboardAdminManager
+export default DashboardUI

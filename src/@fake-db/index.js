@@ -8,5 +8,6 @@ import './_activities'
 import './_trainings'
 import './_programs/show'
 import './_areas'
+import './_dashboard/admin'
 
 mock.onAny().passThrough()
