@@ -5,12 +5,13 @@ import {
 import { Link } from 'react-router-dom'
 
 const FormSubmit = (props) => {
-  const { back, title } = props
+  const { back, title, onClose } = props
   return (
     <Row>
       <Col sm="12 d-flex justify-content-end">
         <div>
-          <Link to={back}><Button color="light">Cancelar</Button></Link>
+          {back && <Link to={back}><Button color="light">Cancelar</Button></Link>}
+          {onClose && <Button onClick={onClose} color="light">Cancelar</Button>}
           <Button color="primary" className="ml-1" type="submit">{title}</Button>
         </div>
       </Col>
