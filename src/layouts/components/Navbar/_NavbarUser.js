@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   DropdownMenu, DropdownItem, DropdownToggle, UncontrolledDropdown,
 } from 'reactstrap'
 import * as Icon from 'react-feather'
+import { UpdateUserPassword } from '../../../components/custom/modals'
 
 const UserDropdown = (props) => {
-  const { handleLogout } = props
+  const { handleLogout, user } = props
+  const [visibility, setVisibility] = useState(false)
   return (
     <DropdownMenu right>
       <DropdownItem
@@ -19,7 +21,7 @@ const UserDropdown = (props) => {
       <DropdownItem
         tag="a"
         href="#"
-        onClick={() => console.log('CAMBIAR CONTRASEÑA')}
+        onClick={() => setVisibility(!visibility)}
       >
         <Icon.Lock size={14} />
         <span className="align-middle"> Editar Contraseña</span>
@@ -33,6 +35,11 @@ const UserDropdown = (props) => {
         <Icon.Power size={14} />
         <span className="align-middle"> Cerrar Sesión</span>
       </DropdownItem>
+      <UpdateUserPassword
+        visibility={visibility}
+        userData={user}
+        onClose={() => setVisibility(false)}
+      />
     </DropdownMenu>
   )
 }
