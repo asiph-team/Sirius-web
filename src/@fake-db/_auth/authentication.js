@@ -60,3 +60,25 @@ mock.onPost('/api/v1/authenticate/login/user').reply((request) => {
 
   return [422, { error }]
 })
+mock.onPost('api/v1/user/password').reply((request) => {
+  const { email, password, newPassword } = JSON.parse(request.data)
+  let error = 'Se ha producido un error, intentalo más tarde'
+  const user = users.find((item) => item.email === email && item.password === password)
+
+  if (user) {
+    try {
+      user.password = newPassword
+      const response = {
+        email,
+      }
+
+      return [200, response]
+    } catch (e) {
+      error = e
+    }
+  } else {
+    error = 'Correo electronico o contraseña inválida'
+  }
+
+  return [422, { error }]
+})
