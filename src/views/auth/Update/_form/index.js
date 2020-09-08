@@ -8,9 +8,10 @@ import { config } from './_config'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, userData,
+    handleSubmit, placeholder, title, userData, onClose,
   } = props
   initialValues.email = userData.email
+
   return (
     <Formik
       initialValues={placeholder || initialValues}
@@ -32,7 +33,7 @@ const FormUI = (props) => {
               </Row>
             ))
           }
-          <FormSubmit back="/" title={title} />
+          <FormSubmit onClose={onClose} title={title} />
         </Form>
       )}
     </Formik>

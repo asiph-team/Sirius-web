@@ -8,7 +8,7 @@ import {
 import Edit from '../../../views/auth/Update'
 
 const ResetUserPassword = (props) => {
-  const { onClose, visibility, userData } = props
+  const { onClose, visibility, userData, setVisibility } = props
   return (
     <Modal
       isOpen={visibility}
@@ -20,7 +20,7 @@ const ResetUserPassword = (props) => {
       </ModalHeader>
       <ModalBody className="modal-dialog-centered">
         <Container className="my-2">
-          <Edit userData={userData} />
+          <Edit userData={userData} setVisibility={setVisibility} onClose={onClose} />
         </Container>
       </ModalBody>
     </Modal>
