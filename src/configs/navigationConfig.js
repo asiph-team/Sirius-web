@@ -39,10 +39,10 @@ const navigationConfig = [
     type: 'item',
     icon: <Icon.Briefcase size={20} />,
     permissions: ['administrador', 'jefe area'],
-    navLink: '/dashboard/jobs',
+    navLink: '/dashboard/workstations',
     parentOf: [
-      '/dashboard/jobs/add',
-      '/dashboard/jobs/edit',
+      '/dashboard/workstations/add',
+      '/dashboard/workstations/edit',
     ],
   },
   {

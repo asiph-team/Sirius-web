@@ -11,9 +11,9 @@ const Dashboard = lazy(() => import('./views/dashboard'))
 const EnterprisesList = lazy(() => import('./views/enterprises/list'))
 const EnterprisesAdd = lazy(() => import('./views/enterprises/add'))
 const EnterprisesEdit = lazy(() => import('./views/enterprises/edit'))
-const JobsList = lazy(() => import('./views/jobs/list'))
-const JobsAdd = lazy(() => import('./views/jobs/add'))
-const JobsEdit = lazy(() => import('./views/jobs/edit'))
+const WorkStationsList = lazy(() => import('./views/workstations/list'))
+const WorkStationsAdd = lazy(() => import('./views/workstations/add'))
+const WorkStationsEdit = lazy(() => import('./views/workstations/edit'))
 const EmployeesList = lazy(() => import('./views/employees/list'))
 const EmployeesAdd = lazy(() => import('./views/employees/add'))
 const EmployeesEdit = lazy(() => import('./views/employees/edit'))
@@ -75,9 +75,9 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/enterprises" component={EnterprisesList} />
       <RouteConfig path="/dashboard/enterprises/add" component={EnterprisesAdd} />
       <RouteConfig path="/dashboard/enterprises/edit" component={EnterprisesEdit} />
-      <RouteConfig exact path="/dashboard/jobs" component={JobsList} />
-      <RouteConfig exact path="/dashboard/jobs/add" component={JobsAdd} />
-      <RouteConfig path="/dashboard/jobs/edit" component={JobsEdit} />
+      <RouteConfig exact path="/dashboard/workstations" component={WorkStationsList} />
+      <RouteConfig exact path="/dashboard/workstations/add" component={WorkStationsAdd} />
+      <RouteConfig path="/dashboard/workstations/edit" component={WorkStationsEdit} />
       <RouteConfig exact path="/dashboard/employees" component={EmployeesList} />
       <RouteConfig path="/dashboard/employees/add" component={EmployeesAdd} />
       <RouteConfig path="/dashboard/employees/edit" component={EmployeesEdit} />

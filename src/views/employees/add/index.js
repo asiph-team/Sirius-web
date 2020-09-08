@@ -10,13 +10,13 @@ import AddUI from './_addUI'
 const Add = () => {
   const url = 'api/v1/employees'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: jobs } = useFetchResources('/api/v1/jobs')
-  const { items: data, loading: loadingJobs, error: errorJobs } = jobs
-  if (loadingJobs) return <LoadingSpinner />
-  if (errorJobs) return <Error message={errorJobs} />
+  const { items: workstations } = useFetchResources('/api/v1/workstations')
+  const { items: data, loading: loadingWorkstations, error: errorWorkstations } = workstations
+  if (loadingWorkstations) return <LoadingSpinner />
+  if (errorWorkstations) return <Error message={errorWorkstations} />
   return (
     <>
-      <AddUI handleSubmit={(values) => postData(values, url)} jobs={data} />
+      <AddUI handleSubmit={(values) => postData(values, url)} workstations={data} />
       {loading && <AlertLoading message="Almacenando trabajador" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (

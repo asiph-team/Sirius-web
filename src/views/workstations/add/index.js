@@ -5,7 +5,7 @@ import { usePostResources } from '../../../utility/customHooks/resources'
 import AddUI from './_addUI'
 
 const Add = () => {
-  const url = 'api/v1/jobs'
+  const url = 'api/v1/workstations'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   return (
     <>
@@ -16,7 +16,7 @@ const Add = () => {
         <AlertSuccess
           message="El puesto de trabajo ha sido creado."
           callback={() => {
-            document.getElementById('form-jobs').reset()
+            document.getElementById('form-workstations').reset()
             clean()
             history.goBack()
           }}
