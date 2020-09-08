@@ -37,6 +37,7 @@ const UserDropdown = (props) => {
       </DropdownItem>
       <UpdateUserPassword
         visibility={visibility}
+        setVisibility={setVisibility}
         userData={user}
         onClose={() => setVisibility(false)}
       />

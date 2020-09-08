@@ -6,10 +6,11 @@ import EditUI from './_editUI'
 
 const Edit = (props) => {
   const url = 'api/v1/user/password'
+  const { onClose, setVisibility } = props
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   return (
     <>
-      <EditUI handleSubmit={(values) => postData(values, url)} {...props} />
+      <EditUI onClose={onClose} handleSubmit={(values) => postData(values, url)} {...props} />
       {loading && <AlertLoading message="Actualizando contraseña" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
@@ -18,6 +19,7 @@ const Edit = (props) => {
         callback={() => {
           document.getElementById('form-update-password').reset()
           clean()
+          setVisibility(false)
           history.goBack()
         }}
       />
