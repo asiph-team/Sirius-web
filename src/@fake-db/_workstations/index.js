@@ -1,6 +1,6 @@
 import mock from '../mock'
 
-const jobs = [
+const workstations = [
   {
     id: 1,
     name: 'Frontend Developer',
@@ -35,24 +35,24 @@ const jobs = [
   },
 ]
 
-mock.onGet('/api/v1/jobs').reply(() => [200, jobs])
-mock.onPost('/api/v1/jobs').reply((request) => {
+mock.onGet('/api/v1/workstations').reply(() => [200, workstations])
+mock.onPost('/api/v1/workstations').reply((request) => {
   const reqData = JSON.parse(request.data)
-  const newJob = { ...reqData, status: true }
-  jobs.push(newJob)
+  const newWorkStation = { ...reqData, status: true }
+  workstations.push(newWorkStation)
   return [200, []]
 })
 
-mock.onPost('/api/v1/jobs/remove').reply((request) => {
+mock.onPost('/api/v1/workstations/remove').reply((request) => {
   const { id } = JSON.parse(request.data)
-  const index = jobs.findIndex((item) => item.id === id)
-  jobs.splice(index, 1)
-  return [200, jobs]
+  const index = workstations.findIndex((item) => item.id === id)
+  workstations.splice(index, 1)
+  return [200, workstations]
 })
 
-mock.onPost('/api/v1/jobs/update').reply((request) => {
+mock.onPost('/api/v1/workstations/update').reply((request) => {
   const data = JSON.parse(request.data)
-  jobs.map((item) => {
+  workstations.map((item) => {
     if (item.id === data.id) {
       return Object.assign(item, { ...data })
     }
