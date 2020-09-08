@@ -30,7 +30,7 @@ export const workstationSchema = Yup.object().shape({
   phone: Yup.string()
     .matches(cellRegExp, 'El teléfono ingresado no es válido')
     .required('El número es requerido'),
-  job: Yup.string()
+  workstation: Yup.string()
     .ensure()
     .required('El puesto de trabajo es requerido'),
   date_start: Yup.date()

@@ -11,7 +11,7 @@ export const config = [
     {
       input: 'CustomSelect',
       key: 3,
-      name: 'job',
+      name: 'workstation',
       title: 'Puesto de trabajo',
       type: 'text',
       options: [],

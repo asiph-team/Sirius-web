@@ -1,5 +1,5 @@
 export const initialValues = {
   name: '',
-  job: '',
+  workstation: '',
   description: '',
 }

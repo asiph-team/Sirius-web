@@ -5,7 +5,7 @@ export const workstationSchema = Yup.object().shape({
     .min(3, 'El nombre de la actividad debe ser mayor a 3 caractéres')
     .max(50, 'El nombre de la actividad debe ser menor a 50 caractéres')
     .required('El nombre de la actividad es requerido'),
-  job: Yup.string()
+  workstation: Yup.string()
     .ensure()
     .required('El puesto de trabajo es requerido'),
   description: Yup.string()
