@@ -12,7 +12,7 @@ export const headers = [
     title: 'RUT',
   },
   {
-    id: 'job',
+    id: 'workstation',
     title: 'Puesto de trabajo',
   },
   {
