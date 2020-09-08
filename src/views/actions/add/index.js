@@ -10,8 +10,8 @@ import AddUI from './_addUI'
 const Add = () => {
   const url = 'api/v1/actions'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: jobs } = useFetchResources('/api/v1/employees')
-  const { items: data, loading: loadingEmployees, error: errorEmployees } = jobs
+  const { items: workstations } = useFetchResources('/api/v1/employees')
+  const { items: data, loading: loadingEmployees, error: errorEmployees } = workstations
   if (loadingEmployees) return <LoadingSpinner />
   if (errorEmployees) return <Error message={errorEmployees} />
   return (
