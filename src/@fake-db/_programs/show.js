@@ -27,7 +27,7 @@ let workers = [
     },
 ]
 
-let jobs = [
+let workstations = [
     {
         id: 5,
         name: 'In nunc ipsum,',
@@ -55,5 +55,5 @@ let jobs = [
 ]
 
 mock.onGet('/api/v1/programs').reply(() => {
-    return [200, {workers, jobs}]
+    return [200, {workers, workstations}]
 })

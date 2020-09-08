@@ -5,7 +5,7 @@ import { usePostResources } from '../../../utility/customHooks/resources'
 import EditUI from './_editUI'
 
 const Edit = (props) => {
-  const url = 'api/v1/jobs/update'
+  const url = 'api/v1/workstations/update'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   return (
     <>
@@ -16,7 +16,7 @@ const Edit = (props) => {
       <AlertSuccess
         message="La información del puesto de trabajo ha sido actualizado."
         callback={() => {
-          document.getElementById('form-jobs').reset()
+          document.getElementById('form-workstations').reset()
           clean()
           history.goBack()
         }}

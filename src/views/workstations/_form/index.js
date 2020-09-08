@@ -4,7 +4,7 @@ import {
 } from 'reactstrap'
 import { Formik, Form } from 'formik'
 import { FormGroup, FormSubmit } from '../../../components/custom'
-import { jobSchema } from './_validation'
+import { workstationSchema } from './_validation'
 import { initialValues } from './_initialValues'
 import { config } from './_config'
 
@@ -17,11 +17,11 @@ const FormUI = (props) => {
       <CardBody>
         <Formik
           initialValues={placeholder || initialValues}
-          validationSchema={jobSchema}
+          validationSchema={workstationSchema}
           onSubmit={(values) => handleSubmit(values)}
         >
           {() => (
-            <Form id="form-jobs">
+            <Form id="form-workstations">
               {
               config.map((row) => (
                 <Row key={row[0].key}>
@@ -35,7 +35,7 @@ const FormUI = (props) => {
                 </Row>
               ))
             }
-              <FormSubmit back="/dashboard/jobs" title={title} />
+              <FormSubmit back="/dashboard/workstations" title={title} />
             </Form>
           )}
         </Formik>

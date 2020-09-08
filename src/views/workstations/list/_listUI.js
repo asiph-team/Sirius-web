@@ -18,8 +18,8 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Puestos de trabajo" icon="Briefcase">
-        <Can rule="jobs:add">
-          <Link to="/dashboard/jobs/add">
+        <Can rule="workstations:add">
+          <Link to="/dashboard/workstations/add">
             <Button color="primary">
               <PlusCircle size={14} />
                 &nbsp;Agregar puesto
@@ -32,7 +32,7 @@ const ListUI = (props) => {
           <List
             data={data}
             headers={headers}
-            resource="jobs"
+            resource="workstations"
             show={show}
           />
         </CardBody>
