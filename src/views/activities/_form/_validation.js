@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-export const jobSchema = Yup.object().shape({
+export const workstationSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, 'El nombre de la actividad debe ser mayor a 3 caractéres')
     .max(50, 'El nombre de la actividad debe ser menor a 50 caractéres')

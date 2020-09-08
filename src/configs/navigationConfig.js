@@ -34,7 +34,7 @@ const navigationConfig = [
     ],
   },
   {
-    id: 'jobs',
+    id: 'workstations',
     title: 'Puestos de trabajo',
     type: 'item',
     icon: <Icon.Briefcase size={20} />,

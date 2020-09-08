@@ -33,7 +33,7 @@ const ProgramsList = () => {
         </CardHeader>
         <CardBody>
           <List
-            data={items && items.jobs}
+            data={items && items.workstations}
             headers={headers}
           />
         </CardBody>

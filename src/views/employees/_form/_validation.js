@@ -2,7 +2,7 @@ import * as Yup from 'yup'
 import rutRegex from 'rut-regex'
 import { cellRegExp } from '../../../utility/helpers/consts'
 
-export const jobSchema = Yup.object().shape({
+export const workstationSchema = Yup.object().shape({
   name: Yup.string()
     .min(5, 'Los nombres del trabajador debe ser mayores a 5 caractéres')
     .max(50, 'Los nombres del trabajador debe ser menores a 50 caractéres')
