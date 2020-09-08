@@ -4,7 +4,7 @@ import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { Error } from '../../../components/custom'
 import ListUI from './_listUI'
 
-const JobsList = () => {
+const List = () => {
   const { items: jobs, remove } = useFetchResources('/api/v1/jobs')
   const { items, loading, error } = jobs
   if (loading) return <LoadingSpinner />
@@ -12,4 +12,4 @@ const JobsList = () => {
   return <ListUI data={items} remove={remove} />
 }
 
-export default JobsList
+export default List
