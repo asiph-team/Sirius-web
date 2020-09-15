@@ -1,11 +1,15 @@
 import * as Yup from 'yup'
 
+const today = new Date()
+today.setHours(0, 0, 0, 0)
+
 export const trainingSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, 'El nombre de la capacitación debe ser mayor a 3 caractéres')
     .max(50, 'El nombre de la capacitación debe ser mayor a 50 caractéres')
     .required('El nombre de la capacitación es requerida'),
   date: Yup.date()
+    .min(today, 'La fecha de compromiso no debe ser menor a la fecha actual')
     .required('La fecha de compromiso es requerida'),
   frequency: Yup.string()
     .min(3, 'La frecuencia debe ser mayor a 3 caractéres')
