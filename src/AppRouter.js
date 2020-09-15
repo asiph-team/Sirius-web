@@ -1,5 +1,7 @@
 import React, { lazy, Suspense } from 'react'
-import { Router, Switch, Route, Redirect } from 'react-router-dom'
+import {
+  Router, Switch, Route, Redirect,
+} from 'react-router-dom'
 import { history } from './history'
 import { LoadingSpinner } from './components/@vuexy/Spinner'
 import { ContextAuth } from './utility/context/Auth'
