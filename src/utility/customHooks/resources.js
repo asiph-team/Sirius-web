@@ -43,7 +43,19 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
-  return { items, remove, changeStatus }
+  const pagination = async (pageNumber, config) => {
+    dispatch(fetchStart())
+    await axios.get(`${url}/?page=${pageNumber}`, pageNumber, config)
+      .then((response) => dispatch(fetchSuccess(response.data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
+  return {
+    items,
+    remove,
+    changeStatus,
+    pagination,
+  }
 }
 
 export function usePostResources() {
