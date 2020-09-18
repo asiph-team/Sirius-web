@@ -3,13 +3,20 @@ import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
 import { ContactInfoEnterprise } from '../../../components/custom/modals'
+
 import {
   AlertDialog, Header, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
+import PaginationBasic from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, changeStatus } = props
+  const {
+    data,
+    remove,
+    changeStatus,
+    pagination,
+  } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
   const show = (item, type, visible = true) => {
@@ -28,13 +35,17 @@ const ListUI = (props) => {
       </Header>
       <Card>
         <CardBody>
-          <List
-            data={data}
-            headers={headers}
-            show={show}
-            resource="enterprises"
-            contact
-          />
+          {
+            data && (
+              <List
+                data={data.data}
+                headers={headers}
+                show={show}
+                resource="enterprises"
+                contact
+              />
+            )
+          }
         </CardBody>
       </Card>
       <ContactInfoEnterprise
@@ -44,12 +55,12 @@ const ListUI = (props) => {
       />
       {
         visibility.remove && (
-        <AlertDialog
-          title={`¿Estás seguro de eliminar a ${selected.name}?`}
-          paragraph="Estas operación es irreversible, se eliminará toda la información respecto a la empresa."
-          callback={() => remove({ id: selected.id }, null)}
-          callbackCancel={() => setVisibility({ ...visibility, remove: false })}
-        />
+          <AlertDialog
+            title={`¿Estás seguro de eliminar a ${selected.name}?`}
+            paragraph="Estas operación es irreversible, se eliminará toda la información respecto a la empresa."
+            callback={() => remove({ id: selected.id }, null)}
+            callbackCancel={() => setVisibility({ ...visibility, remove: false })}
+          />
         )
       }
       {
@@ -62,6 +73,12 @@ const ListUI = (props) => {
           />
         )
       }
+      {
+        data && (
+          <PaginationBasic data={data} pagination={pagination} />
+        )
+      }
+
     </>
   )
 }
