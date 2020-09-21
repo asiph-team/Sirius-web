@@ -73,11 +73,11 @@ const ListUI = (props) => {
           />
         )
       }
-      {
+      {/* {
         data && (
           <PaginationBasic data={data} pagination={pagination} />
         )
-      }
+      } */}
 
     </>
   )
