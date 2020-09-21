@@ -129,7 +129,7 @@ const enterprises_2 = {
 }
 
 mock.onGet('/api/v1/enterprises').reply(() => [200, enterprises])
-mock.onGet('/api/v1/enterprises/?page=1').reply(() => [200, enterprises_2])
+// mock.onGet('/api/v1/enterprises/?page=1').reply(() => [200, enterprises_2])
 
 mock.onPost('/api/v1/enterprises').reply((request) => {
   const reqData = JSON.parse(request.data)
