@@ -3,14 +3,15 @@ import axios from 'axios'
 import {
   initialState, authReducer, fetchStartAuth, fetchSuccessAuth, fetchErrorAuth,
 } from '../../ducks/session'
+import { urlApi } from '../helpers/consts'
 
 const ContextAuth = createContext({
   authenticated: false,
   user: null,
   accessToken: null,
-  initiateLogin: () => {},
-  handleAuthentication: () => {},
-  logout: () => {},
+  initiateLogin: () => { },
+  handleAuthentication: () => { },
+  logout: () => { },
 })
 
 const Auth = (props) => {
@@ -27,9 +28,14 @@ const Auth = (props) => {
   const handleAuthentication = async (values) => {
     dispatch(fetchStartAuth())
     try {
-      const response = await axios.post('/api/v1/authenticate/login/user', values)
-      dispatch(fetchSuccessAuth(response.data))
-      setSession(response.data)
+      const response = await axios.post(`${urlApi}/api/v1/admin/login`, values)
+      const user = {}
+      const { access_token } = response.data.data
+      user.email = response.data.data.user.email
+      user.id = response.data.data.user.id
+      user.role = response.data.data.rol
+      dispatch(fetchSuccessAuth({ user, access_token }))
+      setSession({ user, access_token })
     } catch (error) {
       dispatch(fetchErrorAuth(error.response.data.error))
     }
