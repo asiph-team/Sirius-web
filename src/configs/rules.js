@@ -1,5 +1,5 @@
 export const rules = {
-  Superadministrator: [
+  superadministrator: [
     'dashboard:superadmin',
     'enterprises:edit',
     'enterprises:delete',
