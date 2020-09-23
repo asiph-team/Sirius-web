@@ -28,7 +28,7 @@ const Auth = (props) => {
   const handleAuthentication = async (values) => {
     dispatch(fetchStartAuth())
     try {
-      const response = await axios.post(`${urlApi}/api/v1/admin/login`, values)
+      const response = await axios.post(`${urlApi}/api/v1/users/login`, values)
       const user = {}
       const { access_token } = response.data.data
       user.email = response.data.data.user.email
