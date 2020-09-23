@@ -26,7 +26,7 @@ const navigationConfig = [
     title: 'Areas de trabajo',
     type: 'item',
     icon: <Icon.Box size={20} />,
-    permissions: ['administrador'],
+    permissions: ['administrator'],
     navLink: '/dashboard/areas',
     parentOf: [
       '/dashboard/areas/add',
@@ -38,7 +38,7 @@ const navigationConfig = [
     title: 'Puestos de trabajo',
     type: 'item',
     icon: <Icon.Briefcase size={20} />,
-    permissions: ['administrador', 'jefe area'],
+    permissions: ['administrator', 'chief_of_area'],
     navLink: '/dashboard/workstations',
     parentOf: [
       '/dashboard/workstations/add',
@@ -50,7 +50,7 @@ const navigationConfig = [
     title: 'Trabajadores',
     type: 'item',
     icon: <Icon.Users size={20} />,
-    permissions: ['administrador', 'jefe area'],
+    permissions: ['administrator', 'chief_of_area'],
     navLink: '/dashboard/employees',
     parentOf: [
       '/dashboard/employees/add',
@@ -62,7 +62,7 @@ const navigationConfig = [
     title: 'Actividades',
     type: 'item',
     icon: <Icon.Activity size={20} />,
-    permissions: ['administrador', 'jefe area'],
+    permissions: ['administrator', 'chief_of_area'],
     navLink: '/dashboard/activities',
     parentOf: [
       '/dashboard/activities/add',
@@ -74,7 +74,7 @@ const navigationConfig = [
     title: 'Capacitaciones',
     type: 'item',
     icon: <Icon.Clipboard size={20} />,
-    permissions: ['administrador', 'jefe area'],
+    permissions: ['administrator', 'chief_of_area'],
     navLink: '/dashboard/trainings',
     parentOf: [
       '/dashboard/trainings/add',
@@ -86,7 +86,7 @@ const navigationConfig = [
     title: 'Programas de vigilancia',
     type: 'item',
     icon: <Icon.Video size={20} />,
-    permissions: ['administrador', 'jefe area'],
+    permissions: ['administrator', 'chief_of_area'],
     navLink: '/dashboard/programs',
     parentOf: [
       '/dashboard/programs/add',
@@ -98,7 +98,7 @@ const navigationConfig = [
     title: 'Planes de acción',
     type: 'item',
     icon: <Icon.BookOpen size={20} />,
-    permissions: ['administrador', 'jefe area'],
+    permissions: ['administrator', 'chief_of_area'],
     navLink: '/dashboard/actions',
     parentOf: [
       '/dashboard/actions/add',
