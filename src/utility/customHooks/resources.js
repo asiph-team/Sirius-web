@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useContext } from 'react'
+import { useEffect, useReducer } from 'react'
 import axios from 'axios'
 import {
   initialState,
@@ -8,11 +8,10 @@ import {
   fetchError,
   cleanState,
 } from '../../ducks/resources'
-import { ContextAuth } from '../context/Auth'
 
-export function useFetchResources(url, accessToken) {
+export function useFetchResources(url) {
   const [items, dispatch] = useReducer(resourcesReducer, initialState)
-  const { access_token } = useContext(ContextAuth)
+  const { access_token } = JSON.parse(localStorage.getItem('user'))
   const header = { headers: { Authorization: `Bearer ${access_token}` } }
   useEffect(() => {
     let unmounted = false
@@ -46,7 +45,7 @@ export function useFetchResources(url, accessToken) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
-  const pagination = async (pageNumber, config) => {
+  const pagination = async (pageNumber) => {
     dispatch(fetchStart())
     await axios.get(`${url}/?page=${pageNumber}`, header)
       .then((response) => dispatch(fetchSuccess(response.data)))
