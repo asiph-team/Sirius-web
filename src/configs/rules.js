@@ -4,7 +4,7 @@ export const rules = {
     'enterprises:edit',
     'enterprises:delete',
   ],
-  Administrador: [
+  administrator: [
     'dashboard:admin',
     'dashboard:manager',
     'areas:edit',
@@ -25,7 +25,7 @@ export const rules = {
     'actions:edit',
     'actions:delete',
   ],
-  'Jefe Area': [
+  chief_of_area: [
     'dashboard:manager',
     'trainings:edit',
     'trainings:delete',
