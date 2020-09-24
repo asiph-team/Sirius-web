@@ -2,8 +2,8 @@ import mock from '../mock'
 
 const employees = [
   {
-    id: 1,
-    name: 'Javier Andrés',
+    id: 'eb181a40-fc5c-11ea-824d-7356ab1e5d61',
+    name: 'Javier Andrés.',
     lastname: 'Soto Pereira',
     RUT: '10515377-5',
     phone: '+569 44650909',
