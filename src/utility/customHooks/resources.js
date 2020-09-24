@@ -40,7 +40,7 @@ export function useFetchResources(url) {
 
   const changeStatus = async (data, config) => {
     dispatch(fetchStart())
-    await axios.post(`${url}/status`, data, config)
+    await axios.put(`${url}/${data.id}`, header, data)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
@@ -62,14 +62,23 @@ export function useFetchResources(url) {
 
 export function usePostResources() {
   const [data, dispatch] = useReducer(resourcesReducer, initialState)
-  const postData = async (values, url, config) => {
+  const { access_token } = JSON.parse(localStorage.getItem('user'))
+  const header = { headers: { Authorization: `Bearer ${access_token}` } }
+  const postData = async (values, url) => {
     dispatch(fetchStart())
-    await axios.post(url, values, config)
+    await axios.post(url, values, { headers: { Authorization: `Bearer ${access_token}` } })
+      .then((response) => dispatch(fetchSuccess(response.data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
+  const update = async (data, url) => {
+    dispatch(fetchStart())
+    await axios.put(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const clean = () => dispatch(cleanState())
 
-  return { data, postData, clean }
+  return { data, postData, clean, update }
 }
