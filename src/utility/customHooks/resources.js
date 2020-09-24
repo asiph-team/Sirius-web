@@ -13,6 +13,7 @@ export function useFetchResources(url) {
   const [items, dispatch] = useReducer(resourcesReducer, initialState)
   const { access_token } = JSON.parse(localStorage.getItem('user'))
   const header = { headers: { Authorization: `Bearer ${access_token}` } }
+
   useEffect(() => {
     let unmounted = false
     const source = axios.CancelToken.source()
@@ -31,9 +32,9 @@ export function useFetchResources(url) {
     }
   }, [url])
 
-  const remove = async (data, config) => {
+  const remove = async (data) => {
     dispatch(fetchStart())
-    await axios.post(`${url}/remove`, data, config)
+    await axios.delete(`${url}/${data.id}`, header)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
