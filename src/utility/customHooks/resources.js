@@ -78,7 +78,14 @@ export function usePostResources() {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const patchData = async (data, url) => {
+    dispatch(fetchStart())
+    await axios.patch(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+      .then((response) => dispatch(fetchSuccess(response.data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   const clean = () => dispatch(cleanState())
 
-  return { data, postData, clean, update }
+  return { data, postData, clean, update, patchData }
 }
