@@ -5,12 +5,11 @@ import { usePostResources } from '../../../utility/customHooks/resources'
 import EditUI from './_editUI'
 
 const Edit = (props) => {
-  const url = 'api/v1/user/password'
   const { onClose, setVisibility } = props
-  const { data: { loading, error, items }, postData, clean } = usePostResources()
+  const { data: { loading, error, items }, patchData, clean } = usePostResources()
   return (
     <>
-      <EditUI onClose={onClose} handleSubmit={(values) => postData(values, url)} {...props} />
+      <EditUI onClose={onClose} handleSubmit={(values, url) => patchData(values, url)} {...props} />
       {loading && <AlertLoading message="Actualizando contraseña" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (

@@ -5,8 +5,10 @@ import { FormGroup, FormSubmit } from '../../../../components/custom'
 import { enterpriseSchema } from './_validation'
 import { initialValues } from './_initialValues'
 import { config } from './_config'
+import { urlApi } from '../../../../utility/helpers/consts'
 
 const FormUI = (props) => {
+  const url = `${urlApi}/api/v1/users/password/`
   const {
     handleSubmit, placeholder, title, userData, onClose,
   } = props
@@ -16,7 +18,7 @@ const FormUI = (props) => {
     <Formik
       initialValues={placeholder || initialValues}
       validationSchema={enterpriseSchema}
-      onSubmit={(values) => handleSubmit(values)}
+      onSubmit={(values) => handleSubmit({ password: values.new_password, password_confirmation: values.confirmation, old_password: values.password }, url)}
     >
       {() => (
         <Form id="form-update-password">
