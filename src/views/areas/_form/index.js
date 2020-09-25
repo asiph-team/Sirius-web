@@ -20,7 +20,7 @@ const FormUI = (props) => {
         <Formik
           initialValues={placeholder || initialValues}
           validationSchema={areaSchema}
-          onSubmit={(values) => handleSubmit({ name: values.name, description: values.description, chief_areas_id: values.chief_areas_id }, `${urlApi}/api/v1/areas/${values.id}`)}
+          onSubmit={(values) => handleSubmit({ name: values.name, description: values.description, chief_areas_id: values.manager }, `${urlApi}/api/v1/areas/${values.id}`)}
         >
           {() => (
             <Form id="form-areas">
