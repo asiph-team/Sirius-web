@@ -2,5 +2,6 @@ export const initialValues = {
   name: '',
   description: '',
   frequency: '',
-  date: '',
+  start_date: '',
+  end_date: '',
 }
