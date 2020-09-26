@@ -2,7 +2,7 @@ import mock from '../mock'
 
 const activities = [
   {
-    id: 1,
+    id: 'ec2b6e30-fc5c-11ea-a7a0-6f8dac075b7e',
     name: 'Diseño de arquitectura',
     description: 'Toda solución de software debe tener una arquitectura que responda a la necesidad del problema.',
     workstations: 'Software Architect',
