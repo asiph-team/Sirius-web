@@ -7,9 +7,10 @@ import {
   AlertDialog, Can, Header, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
+import Pagination from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove } = props
+  const { data, remove, pagination } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ remove: false })
   const show = (item, type, visible = true) => {
@@ -30,12 +31,16 @@ const ListUI = (props) => {
       </Header>
       <Card>
         <CardBody>
-          <List
-            data={data}
-            headers={headers}
-            show={show}
-            resource="activities"
-          />
+          {
+            data && (
+              <List
+                data={data.data.data}
+                headers={headers}
+                show={show}
+                resource="activities"
+              />
+            )
+          }
         </CardBody>
       </Card>
       <ContactInfoEmployee
@@ -45,12 +50,17 @@ const ListUI = (props) => {
       />
       {
         visibility.remove && (
-        <AlertDialog
-          title={`¿Estás seguro de eliminar la actividad "${selected.name}"?`}
-          paragraph="Estas operación es irreversible, se eliminará toda la información relacionada a la actividad."
-          callback={() => remove({ id: selected.id }, null)}
-          callbackCancel={() => setVisibility({ ...visibility, remove: false })}
-        />
+          <AlertDialog
+            title={`¿Estás seguro de eliminar la actividad "${selected.name}"?`}
+            paragraph="Estas operación es irreversible, se eliminará toda la información relacionada a la actividad."
+            callback={() => remove({ id: selected.id }, null)}
+            callbackCancel={() => setVisibility({ ...visibility, remove: false })}
+          />
+        )
+      }
+      {
+        data && (
+          <Pagination data={data.data} pagination={pagination} />
         )
       }
     </>
