@@ -9,18 +9,17 @@ import EditUI from './_editUI'
 import { urlApi } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
-  const url = `${urlApi}api/v1/activities/update`
+  const url = `${urlApi}/api/v1/activities`
   const { data: { loading, error, items }, update, clean } = usePostResources()
   const { items: workstations } = useFetchResources(`${urlApi}/api/v1/workstations`)
   const { items: data, loading: loadingWorkstations, error: errorWorkstations } = workstations
-  console.log('workstations', workstations)
   if (loadingWorkstations) return <LoadingSpinner />
   if (errorWorkstations) return <Error message={errorWorkstations} />
   return (
     <>
       {
         data && (
-          <EditUI handleSubmit={(values) => update({ name: values.name, description: values.description, workstation_id: values.workstation }, `${url}/${values.id}`)} {...props} workstations={data.data.data} />
+          <EditUI handleSubmit={(values) => update({ name: values.name, description: values.description, workstations_id: [values.workstation] }, `${url}/${values.id}`)} {...props} workstations={data.data.data} />
         )
       }
       {loading && <AlertLoading message="Actualizando actividad" />}
