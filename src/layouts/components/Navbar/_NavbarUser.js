@@ -4,6 +4,7 @@ import {
 } from 'reactstrap'
 import * as Icon from 'react-feather'
 import { UpdateUserPassword } from '../../../components/custom/modals'
+import { profiles } from '../../../utility/helpers/consts'
 
 const UserDropdown = (props) => {
   const { handleLogout, user } = props
@@ -54,7 +55,7 @@ class NavbarUser extends React.PureComponent {
           <DropdownToggle tag="a" className="nav-link dropdown-user-link">
             <div className="user-nav d-sm-flex d-none">
               <span className="user-name text-bold-600">{name}</span>
-              <span className="user-status">{role}</span>
+              <span className="user-status">{profiles[role]}</span>
             </div>
             <span data-tour="user">
               <img
