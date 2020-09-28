@@ -29,12 +29,13 @@ const Auth = (props) => {
     dispatch(fetchStartAuth())
     try {
       const response = await axios.post(`${urlApi}/api/v1/users/login`, values)
+      const userMeta = JSON.parse(response.data.data.user.meta)
       const user = {}
       const { access_token } = response.data.data
       user.email = response.data.data.user.email
       user.id = response.data.data.user.id
       user.role = response.data.data.rol
-      user.name = response.data.data.meta
+      user.name = userMeta.name
       dispatch(fetchSuccessAuth({ user, access_token }))
       setSession({ user, access_token })
     } catch (error) {
