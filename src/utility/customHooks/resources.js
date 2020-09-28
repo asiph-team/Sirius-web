@@ -7,6 +7,7 @@ import {
   fetchSuccess,
   fetchError,
   cleanState,
+  removeItem,
 } from '../../ducks/resources'
 
 export function useFetchResources(url) {
@@ -35,6 +36,9 @@ export function useFetchResources(url) {
   const remove = async (data) => {
     dispatch(fetchStart())
     await axios.delete(`${url}/${data.id}`, header)
+      .then((response) => console.log('response', response))
+      .catch((error) => dispatch(fetchError(error)))
+    await axios.get(`${url}`, header)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
