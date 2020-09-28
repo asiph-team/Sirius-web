@@ -37,7 +37,7 @@ const Auth = (props) => {
       dispatch(fetchSuccessAuth({ user, access_token }))
       setSession({ user, access_token })
     } catch (error) {
-      dispatch(fetchErrorAuth(error.response.data.error))
+      dispatch(fetchErrorAuth('Usuario y/o contraseña incorrectos'))
     }
   }
 
