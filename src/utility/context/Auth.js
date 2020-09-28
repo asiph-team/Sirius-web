@@ -34,6 +34,7 @@ const Auth = (props) => {
       user.email = response.data.data.user.email
       user.id = response.data.data.user.id
       user.role = response.data.data.rol
+      user.name = response.data.data.meta
       dispatch(fetchSuccessAuth({ user, access_token }))
       setSession({ user, access_token })
     } catch (error) {
