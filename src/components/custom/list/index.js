@@ -29,7 +29,7 @@ const List = (props) => {
         {data && data.map((item) => (
           <tr key={item.id}>
             {headers.map((header) => {
-              const content = header.id === 'status' ? <CustomSwitch status={item.status} changeStatus={() => show(item, 'status')} /> : item[header.id]
+              const content = header.id === 'status' ? <CustomSwitch status={item.status} changeStatus={() => show(item, 'status')} /> : header.obj ? item[header.id][header.obj[0]][header.obj[1]] : item[header.id]
               return <td key={item.id + Math.random()}>{content}</td>
             })}
             <td>
