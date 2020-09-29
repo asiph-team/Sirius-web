@@ -8,7 +8,11 @@ export const headers = [
     title: 'Descripción',
   },
   {
-    id: 'workstation',
+    id: 'workstations',
+    obj: {
+      0: '0',
+      1: 'name',
+    },
     title: 'Puesto de trabajo',
   },
 ]
