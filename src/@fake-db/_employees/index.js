@@ -14,7 +14,7 @@ const employees = [
     status: true,
   },
   {
-    id: 2,
+    id: 'eb181a40-fc5c-11ea-824d-7356ab1e5d62',
     name: 'Andrés',
     lastname: 'Maldonado Ramírez',
     RUT: '17693283-k',
@@ -26,7 +26,7 @@ const employees = [
     status: true,
   },
   {
-    id: 3,
+    id: 'eb181a40-fc5c-11ea-824d-7356ab1e5d63',
     name: 'Yerco ignacio',
     lastname: 'Moreira Cuevas',
     RUT: '11426634-5',
@@ -38,7 +38,7 @@ const employees = [
     status: true,
   },
   {
-    id: 4,
+    id: 'eb181a40-fc5c-11ea-824d-7356ab1e5d64',
     name: 'Carlos Gabriel',
     lastname: 'Rios Sandoval',
     RUT: '18133681-1',
@@ -50,7 +50,7 @@ const employees = [
     status: true,
   },
   {
-    id: 5,
+    id: 'eb181a40-fc5c-11ea-824d-7356ab1e5d65',
     name: 'Pedro Pablo',
     lastname: 'Gonzalez Jara',
     RUT: '24292723-0',
