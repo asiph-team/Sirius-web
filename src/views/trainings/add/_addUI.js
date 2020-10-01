@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header } from '../../../components/custom'
 import FormUI from '../_form'
+import { addConfig } from '../_form/_config'
 
 const AddUI = (props) => {
   const { handleSubmit, employees } = props
@@ -8,7 +9,7 @@ const AddUI = (props) => {
   return (
     <>
       <Header title="Agregar capacitación" icon="Clipboard" />
-      <FormUI handleSubmit={handleSubmit} title="Agregar" options={options} />
+      <FormUI handleSubmit={handleSubmit} title="Agregar" config={addConfig} options={options} />
     </>
   )
 }
