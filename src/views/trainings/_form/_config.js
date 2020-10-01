@@ -35,6 +35,17 @@ export const config = [
   ],
   [
     {
+      input: 'CustomSelect',
+      key: 2,
+      name: 'employees',
+      title: 'Empleados',
+      type: 'text',
+      options: [],
+      grid: 12,
+    },
+  ],
+  [
+    {
       input: 'CustomTextArea',
       key: 5,
       name: 'description',
