@@ -8,11 +8,15 @@ export const headers = [
     title: 'Descripción',
   },
   {
-    id: 'invited',
+    id: 'total_invited',
     title: 'Trabajadores invitados',
   },
   {
-    id: 'date',
+    id: 'start_date',
+    title: 'Fecha de compromiso',
+  },
+  {
+    id: 'end_date',
     title: 'Fecha de compromiso',
   },
   {
