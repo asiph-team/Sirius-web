@@ -2,6 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { Header } from '../../../components/custom'
 import FormUI from '../_form'
+import { editConfig } from '../_form/_config'
 
 const AddUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } }, employees } = props
@@ -11,7 +12,7 @@ const AddUI = (props) => {
   return (
     <>
       <Header title="Actualizar capacitación" icon="Clipboard" />
-      <FormUI handleSubmit={handleSubmit} title="Editar" options={options} placeholder={placeholder} />
+      <FormUI handleSubmit={handleSubmit} title="Editar" config={editConfig} options={options} placeholder={placeholder} />
     </>
   )
 }
