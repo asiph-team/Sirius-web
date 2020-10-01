@@ -14,7 +14,7 @@ const employees = [
     status: true,
   },
   {
-    id: 'eb181a40-fc5c-11ea-824d-7356ab1e5d62',
+    id: 'eb05c510-fc5c-11ea-982c-7fb11ea89e04',
     name: 'Andrés',
     lastname: 'Maldonado Ramírez',
     RUT: '17693283-k',
