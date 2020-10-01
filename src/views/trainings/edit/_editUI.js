@@ -5,7 +5,8 @@ import FormUI from '../_form'
 
 const AddUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } }, employees } = props
-  placeholder.date = moment(placeholder.date, 'DD/MM/YYYY').toDate()
+  placeholder.start_date = moment(placeholder.start_date, 'DD/MM/YYYY').toDate()
+  placeholder.end_date = moment(placeholder.end_date, 'DD/MM/YYYY').toDate()
   const options = employees ? employees.map((item) => ({ label: item.name, value: item.id })) : null
   return (
     <>
