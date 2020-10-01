@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
+import moment from 'moment'
 import { ContactInfoEmployee } from '../../../components/custom/modals'
 import {
   AlertDialog, Header, List,
@@ -17,6 +18,25 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
+  const transformData = () => {
+    const newData = data.data.data.map((item) => {
+      return {
+        id: item.id,
+        name: item.name,
+        description: item.description,
+        total_invited: item.total_invited,
+        start_date: moment(item.start_date).format('DD/MM/YYYY'),
+        end_date: moment(item.end_date).format('DD/MM/YYYY'),
+        frequency: item.frequency,
+      }
+    })
+    return newData
+  }
+  if (data) {
+    transformData()
+  }
+
+
   return (
     <>
       <Header title="Capacitaciones" icon="Clipboard">
@@ -32,7 +52,7 @@ const ListUI = (props) => {
           {
             data && (
               <List
-                data={data.data.data}
+                data={transformData()}
                 headers={headers}
                 show={show}
                 resource="trainings"
