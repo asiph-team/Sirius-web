@@ -9,6 +9,7 @@ export const formatDate = (list, dates, format) => {
     const keys = Object.keys(item)
     const obj = {}
     keys.forEach((key) => {
+      // eslint-disable-next-line no-unused-expressions
       dates.includes(key) ? obj[[key]] = moment(item[[key]]).format(format) : obj[key] = item[key]
     })
     return obj
