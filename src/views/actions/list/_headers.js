@@ -8,7 +8,7 @@ export const headers = [
     title: 'Fecha ingreso',
   },
   {
-    id: 'manager',
+    id: 'manager_id',
     title: 'responsable',
   },
   {
