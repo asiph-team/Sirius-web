@@ -13,7 +13,7 @@ export const config = [
     {
       input: 'CustomSelect',
       key: 2,
-      name: 'manager',
+      name: 'manager_id',
       title: 'Responsable',
       type: 'text',
       options: [],
@@ -40,7 +40,7 @@ export const config = [
     {
       input: 'CustomSelect',
       key: 5,
-      name: 'origin',
+      name: 'origin_id',
       title: 'Origen',
       type: 'text',
       options: origins,
