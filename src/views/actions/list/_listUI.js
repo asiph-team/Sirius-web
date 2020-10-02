@@ -27,22 +27,26 @@ const ListUI = (props) => {
       </Header>
       <Card>
         <CardBody>
-          <List
-            data={data}
-            headers={headers}
-            show={show}
-            resource="actions"
-          />
+          {
+            data && (
+              <List
+                data={data.data.data}
+                headers={headers}
+                show={show}
+                resource="actions"
+              />
+            )
+          }
         </CardBody>
       </Card>
       {
         visibility.remove && (
-        <AlertDialog
-          title={`¿Estás seguro de eliminar el plan de acción "${selected.name}"?`}
-          paragraph="Estas operación es irreversible, se eliminará toda la información relacionada al trabajador."
-          callback={() => remove({ id: selected.id }, null)}
-          callbackCancel={() => setVisibility({ ...visibility, remove: false })}
-        />
+          <AlertDialog
+            title={`¿Estás seguro de eliminar el plan de acción "${selected.name}"?`}
+            paragraph="Estas operación es irreversible, se eliminará toda la información relacionada al trabajador."
+            callback={() => remove({ id: selected.id }, null)}
+            callbackCancel={() => setVisibility({ ...visibility, remove: false })}
+          />
         )
       }
     </>
