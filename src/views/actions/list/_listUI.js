@@ -7,9 +7,10 @@ import {
 } from '../../../components/custom'
 import { headers } from './_headers'
 import { formatDate } from '../../../utility/helpers/functions'
+import Pagination from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove } = props
+  const { data, remove, pagination } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ remove: false })
   const show = (item, type, visible = true) => {
@@ -48,6 +49,11 @@ const ListUI = (props) => {
             callback={() => remove({ id: selected.id }, null)}
             callbackCancel={() => setVisibility({ ...visibility, remove: false })}
           />
+        )
+      }
+      {
+        data && (
+          <Pagination data={data.data} pagination={pagination} />
         )
       }
     </>
