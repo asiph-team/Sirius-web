@@ -6,6 +6,7 @@ import {
   AlertDialog, Header, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
+import { formatDate } from '../../../utility/helpers/functions'
 
 const ListUI = (props) => {
   const { data, remove } = props
@@ -30,7 +31,7 @@ const ListUI = (props) => {
           {
             data && (
               <List
-                data={data.data.data}
+                data={formatDate(data.data.data, ['date_initial', 'date_end', 'date_committed'], 'DD/MM/YYYY')}
                 headers={headers}
                 show={show}
                 resource="actions"
