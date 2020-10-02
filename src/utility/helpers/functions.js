@@ -15,3 +15,5 @@ export const formatDate = (list, dates, format) => {
   })
   return newData
 }
+
+export const singleDateFormatter = (date, format) => moment(date).format(format)
