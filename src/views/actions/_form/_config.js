@@ -40,7 +40,7 @@ export const config = [
     {
       input: 'CustomSelect',
       key: 5,
-      name: 'origin_id',
+      name: 'origin',
       title: 'Origen',
       type: 'text',
       options: origins,
