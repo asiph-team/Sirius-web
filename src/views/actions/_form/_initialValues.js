@@ -2,7 +2,7 @@ export const initialValues = {
   name: '',
   date_initial: '',
   date_committed: '',
-  origin_id: '',
+  origin: '',
   priority: '',
   manager_id: '',
 }
@@ -19,7 +19,7 @@ export const origins = [
 ]
 
 export const priorities = [
-  { value: 'Alta', label: 'Alta' },
-  { value: 'Media', label: 'Media' },
-  { value: 'Baja', label: 'Baja' },
+  { value: 'high', label: 'Alta' },
+  { value: 'media', label: 'Media' },
+  { value: 'low', label: 'Baja' },
 ]

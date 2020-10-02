@@ -8,7 +8,7 @@ export const actionSchema = Yup.object().shape({
   manager_id: Yup.string()
     .ensure()
     .required('El responsable es requerido'),
-  origin_id: Yup.string()
+  origin: Yup.string()
     .ensure()
     .required('El origen es requerido'),
   priority: Yup.string()
