@@ -5,10 +5,10 @@ export const actionSchema = Yup.object().shape({
     .min(5, 'El nombre del plan debe ser mayores a 5 caractéres')
     .max(50, 'El nombre del plan debe ser menores a 50 caractéres')
     .required('El nombre del plan es requerido'),
-  manager: Yup.string()
+  manager_id: Yup.string()
     .ensure()
     .required('El responsable es requerido'),
-  origin: Yup.string()
+  origin_id: Yup.string()
     .ensure()
     .required('El origen es requerido'),
   priority: Yup.string()

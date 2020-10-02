@@ -2,9 +2,9 @@ export const initialValues = {
   name: '',
   date_initial: '',
   date_committed: '',
-  origin: '',
+  origin_id: '',
   priority: '',
-  manager: '',
+  manager_id: '',
 }
 
 export const origins = [
