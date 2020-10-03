@@ -52,7 +52,7 @@ export function useFetchResources(url) {
 
   const pagination = async (pageNumber) => {
     dispatch(fetchStart())
-    await axios.get(`${url}/?page=${pageNumber}`, header)
+    await axios.get(`${url}&page=${pageNumber}`, header)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
