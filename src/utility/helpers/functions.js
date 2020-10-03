@@ -18,3 +18,22 @@ export const formatDate = (list, dates, format) => {
 }
 
 export const singleDateFormatter = (date, format) => moment(date).format(format)
+
+export const priorityES = (list, data, header) => {
+  const newData = list.map((item) => {
+    const keys = Object.keys(item)
+    const priority = Object.keys(data)
+    const obj = {}
+    keys.forEach((key) => {
+      // eslint-disable-next-line no-unused-expressions
+      header.includes(key) ? (
+        priority.forEach((p) => {
+          if (item[key] === data[p].value) { obj[key] = data[p].label }
+        })
+      ) : obj[key] = item[key]
+
+    })
+    return obj
+  })
+  return newData
+}
