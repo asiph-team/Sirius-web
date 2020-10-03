@@ -7,9 +7,10 @@ import {
   AlertDialog, Can, Header, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
+import Pagination from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, changeStatus } = props
+  const { data, remove, changeStatus, pagination } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
   const show = (item, type, visible = true) => {
@@ -30,13 +31,17 @@ const ListUI = (props) => {
       </Header>
       <Card>
         <CardBody>
-          <List
-            data={data}
-            headers={headers}
-            show={show}
-            resource="employees"
-            contact
-          />
+          {
+            data && (
+              <List
+                data={data.data.data}
+                headers={headers}
+                show={show}
+                resource="employees"
+                contact
+              />
+            )
+          }
         </CardBody>
       </Card>
       <ContactInfoEmployee
@@ -46,12 +51,12 @@ const ListUI = (props) => {
       />
       {
         visibility.remove && (
-        <AlertDialog
-          title={`¿Estás seguro de eliminar a ${selected.name}?`}
-          paragraph="Estas operación es irreversible, se eliminará toda la información relacionada al trabajador."
-          callback={() => remove({ id: selected.id }, null)}
-          callbackCancel={() => setVisibility({ ...visibility, remove: false })}
-        />
+          <AlertDialog
+            title={`¿Estás seguro de eliminar a ${selected.name}?`}
+            paragraph="Estas operación es irreversible, se eliminará toda la información relacionada al trabajador."
+            callback={() => remove({ id: selected.id }, null)}
+            callbackCancel={() => setVisibility({ ...visibility, remove: false })}
+          />
         )
       }
       {
@@ -62,6 +67,11 @@ const ListUI = (props) => {
             callback={() => changeStatus({ id: selected.id, status: !selected.status }, null)}
             callbackCancel={() => setVisibility({ ...visibility, status: false })}
           />
+        )
+      }
+      {
+        data && (
+          <Pagination data={data.data} pagination={pagination} />
         )
       }
     </>
