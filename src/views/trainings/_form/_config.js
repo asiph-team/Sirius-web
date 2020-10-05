@@ -36,8 +36,8 @@ export const editConfig = [
   [
     {
       input: 'CustomSelect',
-      key: 2,
-      name: 'employees',
+      key: 6,
+      name: 'employees_id',
       title: 'Empleados',
       type: 'text',
       options: [],
