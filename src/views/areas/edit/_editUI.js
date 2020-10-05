@@ -4,7 +4,7 @@ import FormUI from '../_form'
 
 const EditUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } }, employees } = props
-  const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })) : null
+  const options = employees ? employees.map((item) => ({ label: item.name, value: item.id })) : null
   const { chief_areas_id, description, name, id } = placeholder
   return (
     <>
