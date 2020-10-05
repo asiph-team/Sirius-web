@@ -4,19 +4,18 @@ import {
 } from 'reactstrap'
 import { Formik, Form } from 'formik'
 import { FormGroup, FormSubmit } from '../../../components/custom'
-import { trainingSchema } from './_validation'
 import { initialValues } from './_initialValues'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, options, config
+    handleSubmit, placeholder, title, options, config, validationSchema
   } = props
   return (
     <Card>
       <CardBody>
         <Formik
           initialValues={placeholder || initialValues}
-          validationSchema={trainingSchema}
+          validationSchema={validationSchema}
           onSubmit={(values) => handleSubmit(values)}
         >
           {() => (

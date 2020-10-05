@@ -28,6 +28,7 @@ const ListUI = (props) => {
         start_date: moment(item.start_date).format('DD/MM/YYYY'),
         end_date: moment(item.end_date).format('DD/MM/YYYY'),
         frequency: item.frequency,
+        employees_id: [],
       }
     })
     return newData
