@@ -4,7 +4,7 @@ import FormUI from '../_form'
 
 const AddUI = (props) => {
   const { handleSubmit, employees } = props
-  const options = employees ? employees.map((item) => ({ label: item.name, value: item.id })) : null
+  const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })) : null
   return (
     <>
       <Header title="Agregar área de trabajo" icon="Box" />
