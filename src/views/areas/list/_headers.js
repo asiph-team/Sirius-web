@@ -8,7 +8,7 @@ export const headers = [
     title: 'Descripción',
   },
   {
-    id: 'chief_areas_id',
+    id: 'user_id',
     title: 'Responsable área',
   },
 ]
