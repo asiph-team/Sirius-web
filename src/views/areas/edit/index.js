@@ -16,18 +16,18 @@ const Edit = (props) => {
   if (errorEmployees) return <Error message={errorEmployees} />
   return (
     <>
-      <EditUI handleSubmit={(values, url) => update(values, url)} {...props} employees={data} />
+      <EditUI handleSubmit={(values) => update(values, `${urlApi}/api/v1/areas/${values.id}`)} {...props} employees={data} />
       {loading && <AlertLoading message="Actualizando área de trabajo" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
-      <AlertSuccess
-        message="La información del área de trabajo ha sido actualizada."
-        callback={() => {
-          document.getElementById('form-areas').reset()
-          clean()
-          history.goBack()
-        }}
-      />
+        <AlertSuccess
+          message="La información del área de trabajo ha sido actualizada."
+          callback={() => {
+            document.getElementById('form-areas').reset()
+            clean()
+            history.goBack()
+          }}
+        />
       )}
     </>
   )
