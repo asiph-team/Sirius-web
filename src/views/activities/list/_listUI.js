@@ -17,9 +17,21 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
+  const transformData = () => {
+    const newData = data.data.data.map((item) => {
+      return {
+        ...item,
+        workstation: item.workstations[0] ? item.workstations[0].name : 'No Asignada',
+      }
+    })
+    return newData
+  }
+  if (data) {
+    transformData()
+  }
   return (
     <>
-      <Header title="Acitvidades" icon="Activity">
+      <Header title="Actividades" icon="Activity">
         <Can rule="activities:add">
           <Link to="/dashboard/activities/add">
             <Button color="primary">
@@ -34,7 +46,7 @@ const ListUI = (props) => {
           {
             data && (
               <List
-                data={data.data.data}
+                data={transformData()}
                 headers={headers}
                 show={show}
                 resource="activities"
