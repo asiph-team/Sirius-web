@@ -8,8 +8,8 @@ const EditUI = (props) => {
   const { chief_areas_id, description, name, id } = placeholder
   return (
     <>
-      <Header title="Agregar área de trabajo" icon="Box" />
-      <FormUI handleSubmit={handleSubmit} title="Editar" options={options} placeholder={{ id, manager: chief_areas_id, description, name }} />
+      <Header title="Editar área de trabajo" icon="Box" />
+      <FormUI handleSubmit={handleSubmit} title="Editar" options={options} placeholder={{ name, id, description, user_id: chief_areas_id }} />
     </>
   )
 }
