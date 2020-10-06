@@ -16,6 +16,18 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
+  const transformData = () => {
+    const newData = data.data.data.map((item) => {
+      return {
+        ...item,
+        workstation: item.workstations[0] ? item.workstations[0].name : 'No Asignada',
+      }
+    })
+    return newData
+  }
+  if (data) {
+    transformData()
+  }
   return (
     <>
       <Header title="Trabajadores" icon="Users">
@@ -30,13 +42,17 @@ const ListUI = (props) => {
       </Header>
       <Card>
         <CardBody>
-          <List
-            data={data}
-            headers={headers}
-            show={show}
-            resource="employees"
-            contact
-          />
+          {
+            data && (
+              <List
+                data={transformData()}
+                headers={headers}
+                show={show}
+                resource="employees"
+                contact
+              />
+            )
+          }
         </CardBody>
       </Card>
       <ContactInfoEmployee
@@ -46,12 +62,12 @@ const ListUI = (props) => {
       />
       {
         visibility.remove && (
-        <AlertDialog
-          title={`¿Estás seguro de eliminar a ${selected.name}?`}
-          paragraph="Estas operación es irreversible, se eliminará toda la información relacionada al trabajador."
-          callback={() => remove({ id: selected.id }, null)}
-          callbackCancel={() => setVisibility({ ...visibility, remove: false })}
-        />
+          <AlertDialog
+            title={`¿Estás seguro de eliminar a ${selected.name}?`}
+            paragraph="Estas operación es irreversible, se eliminará toda la información relacionada al trabajador."
+            callback={() => remove({ id: selected.id }, null)}
+            callbackCancel={() => setVisibility({ ...visibility, remove: false })}
+          />
         )
       }
       {
