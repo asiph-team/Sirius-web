@@ -5,8 +5,7 @@ export const areaSchema = Yup.object().shape({
     .min(3, 'El nombre del área debe ser mayor a 3 caractéres')
     .max(50, 'El nombre del área debe ser menor a 50 caractéres')
     .required('El nombre del área es requerido'),
-  manager: Yup.string()
-    .ensure()
+  user_id: Yup.string()
     .required('El encargado del área es requerido'),
   description: Yup.string()
     .min(5, 'La descripción debe ser mayor a 5 caractéres')
