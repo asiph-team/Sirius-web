@@ -11,7 +11,7 @@ export const config = [
     {
       input: 'CustomSelect',
       key: 2,
-      name: 'manager',
+      name: 'user_id',
       title: 'Encargado',
       type: 'text',
       options: [],
