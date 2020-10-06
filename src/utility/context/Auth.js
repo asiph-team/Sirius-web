@@ -37,7 +37,6 @@ const Auth = (props) => {
       } else {
         url = 'users/login'
       }
-
       const response = await axios.post(`${urlApi}/api/v1/${url}`, values)
       const userMeta = JSON.parse(response.data.data.user.meta)
       const user = {}
@@ -45,7 +44,7 @@ const Auth = (props) => {
       user.email = response.data.data.user.email
       user.id = response.data.data.user.id
       user.role = response.data.data.rol
-      user.name = userMeta.name
+      user.name = Object.entries(userMeta).length ? userMeta.name : 'Super Administrador'
       dispatch(fetchSuccessAuth({ user, access_token }))
       setSession({ user, access_token })
     } catch (error) {
