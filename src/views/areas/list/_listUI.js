@@ -16,6 +16,20 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
+  const transformData = () => {
+    const newData = data.data.data.map((item) => {
+      return {
+        id: item.id,
+        name: item.name,
+        description: item.description,
+        user_id: item.user_chief_of_area.name,
+      }
+    })
+    return newData
+  }
+  if (data) {
+    transformData()
+  }
   return (
     <>
       <Header title="Áreas de trabajo" icon="Box">
@@ -31,7 +45,7 @@ const ListUI = (props) => {
           {
             data && (
               <List
-                data={data.data.data}
+                data={transformData()}
                 headers={headers}
                 resource="areas"
                 show={show}
