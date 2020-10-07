@@ -7,9 +7,10 @@ import {
   AlertDialog, Can, Header, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
+import Pagination from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, changeStatus } = props
+  const { data, remove, changeStatus, pagination } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
   const show = (item, type, visible = true) => {
@@ -78,6 +79,11 @@ const ListUI = (props) => {
             callback={() => changeStatus({ id: selected.id, status: !selected.status }, null)}
             callbackCancel={() => setVisibility({ ...visibility, status: false })}
           />
+        )
+      }
+      {
+        data && (
+          <Pagination data={data.data} pagination={pagination} />
         )
       }
     </>
