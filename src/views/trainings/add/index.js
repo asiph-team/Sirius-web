@@ -12,7 +12,7 @@ import { urlApi } from '../../../utility/helpers/consts'
 const Add = () => {
   const url = `${urlApi}/api/v1/trainings`
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: employees } = useFetchResources(`${urlApi}/api/v1/employees?rol=employess`)
+  const { items: employees } = useFetchResources(`${urlApi}/api/v1/employees?`)
   const { items: data, loading: loadingEmployees, error: errorEmployees } = employees
   if (loadingEmployees) return <LoadingSpinner />
   if (errorEmployees) return <Error message={errorEmployees} />
