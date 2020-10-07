@@ -11,7 +11,7 @@ export const workstationSchema = Yup.object().shape({
     .min(3, 'Los apellidos del trabajador deben ser mayores a 3 caractéres')
     .max(70, 'Los apellidos del trabajador deben ser menores a 50 caractéres')
     .required('Los apellidos del trabajador son requeridos'),
-  RUT: Yup.string()
+  rut: Yup.string()
     .test('RUT-validator', 'El RUT ingresado no es válido', (value) => {
       if (value) {
         const dot = !(value.indexOf('.') <= 0)
@@ -30,7 +30,7 @@ export const workstationSchema = Yup.object().shape({
   phone: Yup.string()
     .matches(cellRegExp, 'El teléfono ingresado no es válido')
     .required('El número es requerido'),
-  workstation: Yup.string()
+  workstation_id: Yup.string()
     .ensure()
     .required('El puesto de trabajo es requerido'),
   date_start: Yup.date()
