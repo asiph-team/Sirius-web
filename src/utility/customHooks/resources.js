@@ -35,7 +35,7 @@ export function useFetchResources(url) {
 
   const remove = async (data) => {
     dispatch(fetchStart())
-    await axios.delete(`${url}/${data.id}`, header)
+    await axios.delete(`${url.replace('?', '/')}${data.id}`, header)
       .then((response) => console.log('response', response))
       .catch((error) => dispatch(fetchError(error)))
     await axios.get(`${url}`, header)
