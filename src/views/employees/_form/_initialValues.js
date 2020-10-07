@@ -1,10 +1,10 @@
 export const initialValues = {
-  RUT: '',
+  rut: '',
   name: '',
   lastname: '',
   address: '',
   phone: '',
   email: '',
-  workstation: '',
+  workstation_id: '',
   date_start: '',
 }
