@@ -6,7 +6,7 @@ import ListUI from './_listUI'
 import { urlApi } from '../../../utility/helpers/consts'
 
 const AreasList = () => {
-  const { items: areas, remove, pagination } = useFetchResources(`${urlApi}/api/v1/areas`)
+  const { items: areas, remove, pagination } = useFetchResources(`${urlApi}/api/v1/areas?`)
   const { items, loading, error } = areas
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
