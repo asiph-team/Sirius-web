@@ -8,7 +8,7 @@ export const headers = [
     title: 'Apellidos',
   },
   {
-    id: 'RUT',
+    id: 'rut',
     title: 'RUT',
   },
   {
