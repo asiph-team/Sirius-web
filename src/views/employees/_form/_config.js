@@ -21,7 +21,7 @@ export const config = [
     {
       input: 'CustomInput',
       key: 3,
-      name: 'RUT',
+      name: 'rut',
       title: 'RUT',
       type: 'text',
       grid: 6,
@@ -50,7 +50,7 @@ export const config = [
       name: 'phone',
       title: 'Teléfono de contacto',
       type: 'phone',
-      prepend: '+569',
+      prepend: '+56',
       grid: 6,
     },
   ],
@@ -58,7 +58,7 @@ export const config = [
     {
       input: 'CustomSelect',
       key: 7,
-      name: 'workstation',
+      name: 'workstation_id',
       title: 'Puesto de trabajo',
       type: 'text',
       options: [],
