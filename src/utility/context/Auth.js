@@ -15,7 +15,7 @@ const ContextAuth = createContext({
 })
 const authUrl = {
   'admin@test.com': 'admin/login',
-  'superadmin@test.comn': 'users/login'
+  'superadmin@test.comn': 'users/login',
 }
 const Auth = (props) => {
   const savedState = localStorage.getItem('user')
@@ -31,20 +31,10 @@ const Auth = (props) => {
   const handleAuthentication = async (values) => {
     dispatch(fetchStartAuth())
     try {
-      let url = ''
-      if (values.email == 'superadmin@test.com') {
-        url = 'admin/login'
-      } else {
-        url = 'users/login'
-      }
+      const url = values.email === 'superadmin@test.com' ? 'admin/login' : 'users/login'
       const response = await axios.post(`${urlApi}/api/v1/${url}`, values)
-      const userMeta = JSON.parse(response.data.data.user.meta)
-      const user = {}
-      const { access_token } = response.data.data
-      user.email = response.data.data.user.email
-      user.id = response.data.data.user.id
-      user.role = response.data.data.rol
-      user.name = Object.entries(userMeta).length ? userMeta.name : 'Super Administrador'
+      const { user, access_token, rol } = response.data.data
+      user.role = rol
       dispatch(fetchSuccessAuth({ user, access_token }))
       setSession({ user, access_token })
     } catch (error) {
