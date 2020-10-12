@@ -3,9 +3,10 @@ import { useFetchResources } from '../../../utility/customHooks/resources'
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { Error } from '../../../components/custom'
 import DashboardUI from './_dashboardUI'
+import { urlApi } from '../../../utility/helpers/consts'
 
 const Admin = () => {
-  const { items: performance } = useFetchResources('/api/v1/dashboard/admin')
+  const { items: performance } = useFetchResources(`${urlApi}/api/v1/indicators`)
   const { items, loading, error } = performance
   if (loading || !items) return <LoadingSpinner />
   if (error) return <Error message={error} />
