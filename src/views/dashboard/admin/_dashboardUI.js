@@ -1,26 +1,42 @@
 import React, { useEffect, useState } from 'react'
 import {
-  Card, CardBody, Row, Col, FormGroup
+  Card, CardBody, Row, Col,
 } from 'reactstrap'
 import { Calendar } from 'react-feather'
-import { Can, Indicators } from '../../../components/custom'
 import Select from 'react-select'
+import DatePicker from 'react-datepicker'
+import { Can, Indicators } from '../../../components/custom'
+import { singleDateFormatter } from '../../../utility/helpers/functions'
 
-const DashboardUI = ({ performance }) => {
-  const [indicators, setindicators] = useState({})
+const DashboardUI = ({ performance, queryParams }) => {
+  const [dateStart, setDateStart] = useState()
+  const [dateEnd, setDateEnd] = useState()
+  const [indicators, setIndicators] = useState({})
   const { data } = performance
-  const activityRisk = {
-    acceptable: 25,
-    alert: 62,
-    unacceptable: 13,
-  }
+  const activityRisk = { acceptable: 25, alert: 62, unacceptable: 13 }
+  const activityRisk2 = { acceptable: 35, alert: 72, unacceptable: 23 }
   const options = data ? data.map((item) => ({ label: item.name, value: item.id, indicators: item.indicators })) : null
-  const handleIndicators = () => {
 
+  const handleDate = (date) => {
+    setDateEnd(date)
+    queryParams(`?date_start=${singleDateFormatter(dateStart, 'YYYY-MM-DD')}&date_end=${singleDateFormatter(dateEnd, 'YYYY-MM-DD')}`)
+  }
+  const handleIndicators = (values) => {
+    setIndicators(
+      {
+        ...values,
+        activityRisk: activityRisk2,
+      },
+    )
   }
   useEffect(() => {
-    setindicators({ ...options[0].indicators, ...activityRisk })
-    }, [])
+    setIndicators(
+      {
+        ...options[0].indicators,
+        activityRisk,
+      },
+    )
+  }, [])
   return (
     <>
       <Can rule="dashboard:admin">
@@ -32,14 +48,28 @@ const DashboardUI = ({ performance }) => {
                   <Calendar size={40} className="primary" />
                   <div className="mx-1">
                     <h4 className="primary mb-0 font-weight-bold">Fecha Inicio</h4>
-                    <h4 className="font-weight-bold">01/09/2020</h4>
+                    <DatePicker
+                      name="date_start"
+                      className="form-control"
+                      dateFormat="dd/MM/yyyy"
+                      selected={dateStart}
+                      onChange={(date) => {
+                        setDateStart(date)
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="d-flex">
                   <Calendar size={40} className="primary" />
                   <div className="mx-1">
                     <h4 className="primary mb-0 font-weight-bold">Fecha Término</h4>
-                    <h4 className="font-weight-bold">01/09/2020</h4>
+                    <DatePicker
+                      name="date_start"
+                      className="form-control"
+                      dateFormat="dd/MM/yyyy"
+                      selected={dateEnd}
+                      onChange={(date) => handleDate(date)}
+                    />
                   </div>
                 </div>
               </CardBody>
@@ -48,52 +78,29 @@ const DashboardUI = ({ performance }) => {
           <Col lg="6" md="6" sm="12">
             <Card>
               <CardBody className="w-full flex-wrap">
-                {/* <div className="flex flex-wrap">
-                  <div className="mx-1">
-                    <h4 className="mb-1 primary">Todas las areas</h4>
-                  </div>
-                </div> */}
                 <div className="w-1/2 flex flex-wrap">
                   <Select
                     className="w-full"
                     classNamePrefix="select"
                     name="areas-list"
                     options={options}
-                    //onChange={(option) => option && form.setFieldValue(name, option.value)}
-                    //defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
+                    onChange={(option) => handleIndicators(option.indicators)}
                     isSearchable
                     placeholder="Todas las Areas"
                     isMulti={false}
                   />
                 </div>
               </CardBody>
-              {/* <CardBody className="flex flex-wrap w-full">
-                <div className="w-1/2 flex flex-wrap border border-red">
-                  <h4 className="mb-1 primary">Todas las areas</h4>
-                </div>
-                <div className="w-1/2 flex flex-wrap">
-                  <Select
-                    className="w-full"
-                    classNamePrefix="select"
-                    name="areas-list"
-                    options={options}
-                    //onChange={(option) => option && form.setFieldValue(name, option.value)}
-                    //defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
-                    isSearchable
-                    placeholder="Todas las Areas"
-                    isMulti={false}
-                  />
-                </div>
-
-
-
-              </CardBody> */}
             </Card>
           </Col>
         </Row>
       </Can>
       <Can rule="dashboard:manager">
-        <Indicators performance={indicators} />
+        {
+          indicators.activityRisk && (
+            <Indicators performance={indicators} />
+          )
+        }
       </Can>
     </>
   )

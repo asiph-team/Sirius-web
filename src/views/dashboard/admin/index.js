@@ -6,11 +6,11 @@ import DashboardUI from './_dashboardUI'
 import { urlApi } from '../../../utility/helpers/consts'
 
 const Admin = () => {
-  const { items: performance } = useFetchResources(`${urlApi}/api/v1/indicators`)
+  const { items: performance, queryParams } = useFetchResources(`${urlApi}/api/v1/indicators`)
   const { items, loading, error } = performance
   if (loading || !items) return <LoadingSpinner />
   if (error) return <Error message={error} />
-  return <DashboardUI performance={items} />
+  return <DashboardUI performance={items} queryParams={queryParams} />
 }
 
 export default Admin

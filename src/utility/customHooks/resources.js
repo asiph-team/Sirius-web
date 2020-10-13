@@ -57,11 +57,19 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const queryParams = async (params) => {
+    dispatch(fetchStart())
+    await axios.get(`${url}${params}`, header)
+      .then((response) => dispatch(fetchSuccess(response.data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   return {
     items,
     remove,
     changeStatus,
     pagination,
+    queryParams,
   }
 }
 
