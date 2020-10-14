@@ -37,6 +37,7 @@ const DatePickerField = (props) => {
       onChange={(date) => {
         form.setFieldValue(name, date)
       }}
+      autoComplete="off"
     />
   )
 }
@@ -52,6 +53,7 @@ export const CustomInput = (props) => {
         className="form-control"
         name={name}
         type={type}
+        autoComplete="off"
       />
     </>
   )
@@ -116,6 +118,7 @@ export const CustomDatePicker = (props) => {
       <Field
         name={name}
         component={DatePickerField}
+        autoComplete="off"
       />
     </>
   )
