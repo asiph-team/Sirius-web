@@ -17,6 +17,7 @@ export const config = [
       title: 'Descripción del puesto de trabajo, actividades principales, funciones relevantes.',
       rows: 5,
       grid: 12,
+      maxLength: 300,
     },
   ],
 ]
