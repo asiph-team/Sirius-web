@@ -7,6 +7,7 @@ import { FormGroup, FormSubmit } from '../../../components/custom'
 import { workstationSchema } from './_validation'
 import { initialValues } from './_initialValues'
 import { config } from './_config'
+import CharsCounter from '../../../components/custom/charsCounter'
 
 const FormUI = (props) => {
   const {
@@ -20,21 +21,22 @@ const FormUI = (props) => {
           validationSchema={workstationSchema}
           onSubmit={(values) => handleSubmit(values)}
         >
-          {() => (
+          {({ values }) => (
             <Form id="form-workstations">
               {
-              config.map((row) => (
-                <Row key={row[0].key}>
-                  {
-                    row.map((item) => (
-                      <Col sm={item.grid} key={item.key}>
-                        <FormGroup {...item} />
-                      </Col>
-                    ))
-                  }
-                </Row>
-              ))
-            }
+                config.map((row) => (
+                  <Row key={row[0].key}>
+                    {
+                      row.map((item) => (
+                        <Col sm={item.grid} key={item.key}>
+                          <FormGroup {...item} />
+                          <CharsCounter maxLength={item.maxLength} values={values[item.name]} />
+                        </Col>
+                      ))
+                    }
+                  </Row>
+                ))
+              }
               <FormSubmit back="/dashboard/workstations" title={title} />
             </Form>
           )}
