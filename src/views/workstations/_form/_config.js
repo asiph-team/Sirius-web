@@ -14,7 +14,7 @@ export const config = [
       input: 'CustomTextArea',
       key: 3,
       name: 'description',
-      title: 'Descripción',
+      title: 'Descripción del puesto de trabajo, actividades principales, funciones relevantes.',
       rows: 5,
       grid: 12,
     },
