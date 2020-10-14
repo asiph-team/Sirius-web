@@ -17,7 +17,7 @@ const UserDropdown = (props) => {
         onClick={() => console.log('EDITAR PERFIL')}
       >
         <Icon.User size={14} />
-        <span className="align-middle"> Editar Perfil</span>
+        <span className="align-middle"> Editar perfil</span>
       </DropdownItem>
       <DropdownItem
         tag="a"
@@ -25,7 +25,7 @@ const UserDropdown = (props) => {
         onClick={() => setVisibility(!visibility)}
       >
         <Icon.Lock size={14} />
-        <span className="align-middle"> Editar Contraseña</span>
+        <span className="align-middle"> Editar contraseña</span>
       </DropdownItem>
       <DropdownItem divider />
       <DropdownItem
