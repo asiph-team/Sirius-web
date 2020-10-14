@@ -4,7 +4,7 @@ export const config = [
       input: 'CustomInput',
       key: 1,
       name: 'name',
-      title: 'Nombre',
+      title: 'Nombre del puesto de trabajo',
       type: 'text',
       grid: 12,
     },
