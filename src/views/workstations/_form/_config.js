@@ -14,7 +14,7 @@ export const config = [
       input: 'CustomTextArea',
       key: 3,
       name: 'description',
-      title: '*Descripción del puesto de trabajo, actividades principales, funciones relevantes.',
+      title: '*Descripción del Cargo/ funciones / responsabilidades/ Competencias Requeridas / Pricipales',
       rows: 5,
       grid: 12,
       maxLength: 300,
