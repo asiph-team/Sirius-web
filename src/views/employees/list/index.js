@@ -6,11 +6,12 @@ import ListUI from './_listUI'
 import { urlApi } from '../../../utility/helpers/consts'
 
 const EmployeesList = () => {
+  const url = `${urlApi}/api/v1/employees`
   const { items: employees, remove, changeStatus, pagination } = useFetchResources(`${urlApi}/api/v1/employees?`)
   const { items, loading, error } = employees
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
-  return <ListUI data={items} remove={remove} changeStatus={changeStatus} pagination={pagination} />
+  return <ListUI data={items} remove={remove} changeStatus={changeStatus} pagination={pagination} url={url} />
 }
 
 export default EmployeesList
