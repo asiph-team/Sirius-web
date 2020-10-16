@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 export const workstationSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, 'El nombre de la actividad debe ser mayor a 3 caractéres')
-    .max(50, 'El nombre de la actividad debe ser menor a 50 caractéres')
+    .max(100, 'El nombre de la actividad debe ser menor a 100 caractéres')
     .required('El nombre de la actividad es requerido'),
   workstation: Yup.string()
     .ensure()
