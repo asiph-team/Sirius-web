@@ -5,7 +5,7 @@ import { cellRegExp, phoneRegExp } from '../../../utility/helpers/consts'
 export const enterpriseSchema = Yup.object().shape({
   name: Yup.string()
     .min(4, 'El nombre de empresa debe ser mayor a 4 caractéres')
-    .max(50, 'El nombre de empresa debe ser menor a 50 caractéres')
+    .max(100, 'El nombre de empresa debe ser menor a 100 caractéres')
     .required('El nombre de empresa es requerido'),
   spin: Yup.string()
     .min(4, 'El giro debe ser mayor a 4 caractéres')
