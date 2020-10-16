@@ -20,6 +20,7 @@ export const rules = {
     'activities:delete',
     'trainings:edit',
     'trainings:delete',
+    'programs:add',
     'programs:edit',
     'programs:delete',
     'actions:edit',
