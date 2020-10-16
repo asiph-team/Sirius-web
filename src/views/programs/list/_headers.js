@@ -7,8 +7,4 @@ export const headers = [
     id: 'description',
     title: 'Descripción',
   },
-  {
-    id: 'state',
-    title: 'Estado',
-  },
 ]
