@@ -4,7 +4,7 @@ import FormUI from '../_form'
 
 const EditUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } }, workstations } = props
-  const options = workstations ? workstations.map((item) => ({ label: item.name, value: item.id })) : null
+  const options = workstations ? workstations.map((item) => ({ label: item.name, value: item.id })).sort((a, b) => { return a.label > b.label ? 1 : -1 }) : null
   return (
     <>
       <Header title="Editar actividad" icon="Activity" />
