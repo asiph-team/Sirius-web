@@ -6,7 +6,7 @@ today.setHours(0, 0, 0, 0)
 export const trainingSchemaAdd = Yup.object().shape({
   name: Yup.string()
     .min(3, 'El nombre de la capacitación debe ser mayor a 3 caractéres')
-    .max(50, 'El nombre de la capacitación debe ser mayor a 50 caractéres')
+    .max(100, 'El nombre de la capacitación debe ser mayor a 100 caractéres')
     .required('El nombre de la capacitación es requerida'),
   start_date: Yup.date()
     .min(today, 'La fecha de compromiso no debe ser menor a la fecha actual')
@@ -29,7 +29,7 @@ export const trainingSchemaAdd = Yup.object().shape({
 export const trainingSchemaEdit = Yup.object().shape({
   name: Yup.string()
     .min(3, 'El nombre de la capacitación debe ser mayor a 3 caractéres')
-    .max(50, 'El nombre de la capacitación debe ser mayor a 50 caractéres')
+    .max(100, 'El nombre de la capacitación debe ser mayor a 100 caractéres')
     .required('El nombre de la capacitación es requerida'),
   start_date: Yup.date()
     .required('La fecha de compromiso es requerida'),
