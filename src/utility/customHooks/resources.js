@@ -43,9 +43,12 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
-  const changeStatus = async (data, config) => {
+  const changeStatus = async (data) => {
     dispatch(fetchStart())
-    await axios.post(`${url}/status`, data, config)
+    await axios.put(`${url.replace('?', '/')}${data.id}`, data, header)
+      .then((response) => console.log('response', response))
+      .catch((error) => dispatch(fetchError(error)))
+    await axios.get(`${url}`, header)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
