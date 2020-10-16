@@ -25,13 +25,15 @@ const ActivitiesEdit = lazy(() => import('./views/activities/edit'))
 const TrainingsList = lazy(() => import('./views/trainings/list'))
 const TrainingsAdd = lazy(() => import('./views/trainings/add'))
 const TrainingsEdit = lazy(() => import('./views/trainings/edit'))
-const ProgramsList = lazy(() => import('./views/programs/list'))
 const ActionsList = lazy(() => import('./views/actions/list'))
 const ActionsAdd = lazy(() => import('./views/actions/add'))
 const ActionsEdit = lazy(() => import('./views/actions/edit'))
 const AreasList = lazy(() => import('./views/areas/list'))
 const AreasAdd = lazy(() => import('./views/areas/add'))
 const AreasEdit = lazy(() => import('./views/areas/edit'))
+const ProgramsList = lazy(() => import('./views/programs/list/'))
+const ProgramsAdd = lazy(() => import('./views/programs/add'))
+const ProgramsEdit = lazy(() => import('./views/programs/edit'))
 
 const AuthConfig = (props) => (
   <ContextAuth.Consumer>
@@ -89,13 +91,15 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/trainings" component={TrainingsList} />
       <RouteConfig path="/dashboard/trainings/add" component={TrainingsAdd} />
       <RouteConfig path="/dashboard/trainings/edit" component={TrainingsEdit} />
-      <RouteConfig exact path="/dashboard/programs" component={ProgramsList} />
       <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
       <RouteConfig path="/dashboard/actions/add" component={ActionsAdd} />
       <RouteConfig path="/dashboard/actions/edit" component={ActionsEdit} />
       <RouteConfig exact path="/dashboard/areas" component={AreasList} />
       <RouteConfig path="/dashboard/areas/add" component={AreasAdd} />
       <RouteConfig path="/dashboard/areas/edit" component={AreasEdit} />
+      <RouteConfig exact path="/dashboard/programs" component={ProgramsList} />
+      <RouteConfig exact path="/dashboard/programs/add" component={ProgramsAdd} />
+      <RouteConfig exact path="/dashboard/programs/edit" component={ProgramsEdit} />
     </Switch>
   </Router>
 )
