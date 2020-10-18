@@ -8,6 +8,7 @@ import {
 } from '../../../components/custom'
 import { headers } from './_headers'
 import Pagination from '../../../components/custom/pagination'
+import { singleDateFormatter } from '../../../utility/helpers/functions'
 
 const ListUI = (props) => {
   const { data, remove, changeStatus, pagination } = props
@@ -22,6 +23,8 @@ const ListUI = (props) => {
       return {
         ...item,
         workstation: item.workstations[0] ? item.workstations[0].name : 'No Asignada',
+        phone: `+56${item.phone}`,
+        date_start: singleDateFormatter(item.date_start, 'DD/MM/YYYY'),
       }
     })
     return newData
