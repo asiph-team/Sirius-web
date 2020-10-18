@@ -17,18 +17,18 @@ const Edit = (props) => {
   if (errorWorkstations) return <Error message={errorWorkstations} />
   return (
     <>
-      <EditUI handleSubmit={(values) => update(values, `${url}/${values.id}`)} {...props} employees={data} />
+      <EditUI handleSubmit={(values) => update({ ...values, phone: `9${values.phone}` }, `${url}/${values.id}`)} {...props} employees={data} />
       {loading && <AlertLoading message="Actualizando trabajador" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
-      <AlertSuccess
-        message="La información del trabajador ha sido actualizada."
-        callback={() => {
-          document.getElementById('form-employees').reset()
-          clean()
-          history.goBack()
-        }}
-      />
+        <AlertSuccess
+          message="La información del trabajador ha sido actualizada."
+          callback={() => {
+            document.getElementById('form-employees').reset()
+            clean()
+            history.goBack()
+          }}
+        />
       )}
     </>
   )

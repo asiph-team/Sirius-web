@@ -50,7 +50,7 @@ export const config = [
       name: 'phone',
       title: 'Teléfono de contacto*',
       type: 'phone',
-      prepend: '+56',
+      prepend: '+569',
       grid: 6,
     },
   ],

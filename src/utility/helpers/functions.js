@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 export function phoneFormat(phone) {
-  return phone.replace('+569 ', '').replace(/\s/g, '')
+  return phone.replace('+569', '').replace(/\s/g, '')
 }
 
 export const formatDate = (list, dates, format) => {
