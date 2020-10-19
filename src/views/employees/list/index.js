@@ -11,7 +11,7 @@ const EmployeesList = () => {
   const { items, loading, error } = employees
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
-  return <ListUI data={items} remove={remove} changeStatus={changeStatus} pagination={pagination} url={url} />
+  return <ListUI data={items} remove={remove} changeStatus={changeStatus} pagination={pagination} url={url} error={error} />
 }
 
 export default EmployeesList
