@@ -5,13 +5,14 @@ import { PlusCircle } from 'react-feather'
 import {
   AlertDialog, Can, Header, List,
 } from '../../../components/custom'
+import { InfoWorkStations } from '../../../components/custom/modals'
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
   const { data, remove, pagination } = props
   const [selected, setSelected] = useState({})
-  const [visibility, setVisibility] = useState({ remove: false })
+  const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
@@ -37,11 +38,17 @@ const ListUI = (props) => {
                 headers={headers}
                 resource="workstations"
                 show={show}
+                contact
               />
             )
           }
         </CardBody>
       </Card>
+      <InfoWorkStations
+        visibility={visibility.contact}
+        onClose={() => setVisibility({ ...visibility, contact: false })}
+        item={selected}
+      />
       {
         visibility.remove && (
           <AlertDialog
