@@ -4,10 +4,6 @@ export const headers = [
     title: 'Nombre',
   },
   {
-    id: 'description',
-    title: 'Descripción',
-  },
-  {
     id: 'total_activities',
     title: 'Total actividades',
   },
