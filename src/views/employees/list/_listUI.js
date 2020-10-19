@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
+import moment from 'moment'
 import { ContactInfoEmployee } from '../../../components/custom/modals'
 import {
   AlertDialog, Can, Header, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import Pagination from '../../../components/custom/pagination'
-import { singleDateFormatter } from '../../../utility/helpers/functions'
+import { singleDateFormatter, phoneFormat } from '../../../utility/helpers/functions'
 
 const ListUI = (props) => {
   const { data, remove, changeStatus, pagination } = props
@@ -79,7 +80,7 @@ const ListUI = (props) => {
           <AlertDialog
             title={`¿Estás seguro de ${selected.status ? 'desactivar' : 'activar'} a ${selected.name}?`}
             paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} al trabajador en la plataforma.`}
-            callback={() => changeStatus({ ...selected, status: !selected.status, workstations: selected.workstations[0].id, workstation_id: selected.workstations[0].id }, null)}
+            callback={() => changeStatus({ ...selected, status: !selected.status, workstations: selected.workstations[0].id, workstation_id: selected.workstations[0].id, phone: `9${phoneFormat(selected.phone)}`, date_start: moment(selected.date_start, 'YYYY-MM-DD').toDate() }, null)}
             callbackCancel={() => setVisibility({ ...visibility, status: false })}
           />
         )
