@@ -25,7 +25,8 @@ export const config = [
       input: 'CustomTextArea',
       key: 3,
       name: 'information',
-      title: 'Licencias / Permisos / Certificaciones / Cursos / Conocimientos obligatorios*',
+      title: 'Licencias / Permisos / Certificaciones / Cursos / Conocimientos obligatorios.',
+
       rows: 5,
       grid: 12,
     },
