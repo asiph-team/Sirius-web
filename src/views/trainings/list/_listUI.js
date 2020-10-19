@@ -3,7 +3,7 @@ import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
 import moment from 'moment'
-import { ContactInfoEmployee } from '../../../components/custom/modals'
+import { InfoTraining } from '../../../components/custom/modals'
 import {
   AlertDialog, Header, List,
 } from '../../../components/custom'
@@ -13,7 +13,7 @@ import PaginationSeprated from '../../../components/custom/pagination'
 const ListUI = (props) => {
   const { data, remove, pagination } = props
   const [selected, setSelected] = useState({})
-  const [visibility, setVisibility] = useState({ remove: false })
+  const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
@@ -57,12 +57,13 @@ const ListUI = (props) => {
                 headers={headers}
                 show={show}
                 resource="trainings"
+                contact
               />
             )
           }
         </CardBody>
       </Card>
-      <ContactInfoEmployee
+      <InfoTraining
         visibility={visibility.contact}
         onClose={() => setVisibility({ ...visibility, contact: false })}
         item={selected}

@@ -4,20 +4,16 @@ export const headers = [
     title: 'Nombre de capacitación',
   },
   {
-    id: 'description',
-    title: 'Descripción',
-  },
-  {
     id: 'total_invited',
     title: 'Trabajadores invitados',
   },
   {
     id: 'start_date',
-    title: 'Fecha de compromiso',
+    title: 'Fecha de inicio',
   },
   {
     id: 'end_date',
-    title: 'Fecha de compromiso',
+    title: 'Fecha de termino',
   },
   {
     id: 'frequency',
