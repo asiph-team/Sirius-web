@@ -38,7 +38,7 @@ const ListUI = (props) => {
           {
             data && (
               <List
-                data={data.data}
+                data={data.data.data}
                 headers={headers}
                 show={show}
                 resource="enterprises"
@@ -73,11 +73,11 @@ const ListUI = (props) => {
           />
         )
       }
-      {/* {
+      {
         data && (
-          <PaginationBasic data={data} pagination={pagination} />
+          <PaginationBasic data={data.data} pagination={pagination} />
         )
-      } */}
+      }
 
     </>
   )
