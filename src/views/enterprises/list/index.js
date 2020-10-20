@@ -11,7 +11,7 @@ const EnterpriseList = () => {
     remove,
     changeStatus,
     pagination,
-  } = useFetchResources(`${urlApi}/api/v1/enterprises`)
+  } = useFetchResources(`${urlApi}/api/v1/enterprises?`)
   const { items, loading, error } = enterprises
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
