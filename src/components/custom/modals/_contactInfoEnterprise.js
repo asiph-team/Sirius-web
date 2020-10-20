@@ -29,19 +29,19 @@ const ContactInfoEnterprise = (props) => {
         <Container className="my-2">
           <Row className="mb-1">
             <Col><strong>Representante Legal:</strong></Col>
-            <Col>{item.RL}</Col>
+            <Col>{item.LR}</Col>
           </Row>
           <Row className="mb-1">
             <Col><strong>Contacto Representante Legal:</strong></Col>
-            <Col>{item.CRL}</Col>
+            <Col>{item.CLR}</Col>
           </Row>
           <Row className="mb-1">
             <Col><strong>Representante Técnico:</strong></Col>
-            <Col>{item.RT}</Col>
+            <Col>{item.TR}</Col>
           </Row>
           <Row className="mb-1">
             <Col><strong>Contacto Representante Técnico:</strong></Col>
-            <Col>{item.CRT}</Col>
+            <Col>{item.CTR}</Col>
           </Row>
           <Row className="mb-1">
             <Col><strong>Email:</strong></Col>

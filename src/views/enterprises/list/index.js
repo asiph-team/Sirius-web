@@ -3,6 +3,7 @@ import { useFetchResources } from '../../../utility/customHooks/resources'
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { Error } from '../../../components/custom'
 import ListUI from './_listUI'
+import { urlApi } from '../../../utility/helpers/consts'
 
 const EnterpriseList = () => {
   const {
@@ -10,7 +11,7 @@ const EnterpriseList = () => {
     remove,
     changeStatus,
     pagination,
-  } = useFetchResources('/api/v1/enterprises')
+  } = useFetchResources(`${urlApi}/api/v1/enterprises`)
   const { items, loading, error } = enterprises
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />

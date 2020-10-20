@@ -12,7 +12,7 @@ export const headers = [
     title: 'Rubro',
   },
   {
-    id: 'RUT',
+    id: 'rut',
     title: 'RUT',
   },
   {
