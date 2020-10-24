@@ -23,6 +23,18 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
+  const transformData = () => {
+    const newData = data.data.data.map((item) => {
+      return {
+        ...item,
+        status: item.status === 'active',
+      }
+    })
+    return newData
+  }
+  if (data) {
+    transformData()
+  }
   return (
     <>
       <Header title="Empresas" icon="Shield">
@@ -38,7 +50,7 @@ const ListUI = (props) => {
           {
             data && (
               <List
-                data={data.data.data}
+                data={transformData()}
                 headers={headers}
                 show={show}
                 resource="enterprises"
@@ -68,8 +80,8 @@ const ListUI = (props) => {
           <AlertDialog
             title={`¿Estás seguro de ${selected.status ? 'desactivar' : 'activar'} a ${selected.name}?`}
             paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} a la empresa en la plataforma.`}
-            callback={() => changeStatus({ ...selected, status: !selected.status }, null)}
-            callbackCancel={() => setVisibility({ ...visibility, status: false })}
+            callback={() => { selected.status = !selected.status; changeStatus({ ...selected, status: !selected.status }, null) }}
+            callbackCancel={() => setVisibility({ ...visibility, status: true })}
           />
         )
       }
