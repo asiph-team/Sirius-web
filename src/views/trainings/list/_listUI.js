@@ -25,8 +25,8 @@ const ListUI = (props) => {
         name: item.name,
         description: item.description,
         total_invited: item.total_invited,
-        start_date: moment(item.start_date).format('DD/MM/YYYY'),
-        end_date: moment(item.end_date).format('DD/MM/YYYY'),
+        start_date: item.start_date,
+        end_date: item.end_date,
         frequency: item.frequency,
         employees_id: [],
       }
