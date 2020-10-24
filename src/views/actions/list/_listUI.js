@@ -6,7 +6,6 @@ import {
   AlertDialog, Header, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
-import { formatDate } from '../../../utility/helpers/functions'
 import Pagination from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
@@ -16,6 +15,18 @@ const ListUI = (props) => {
   const show = (item, type, visible = true) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
+  }
+  const transformData = () => {
+    const newData = data.data.data.map((item) => {
+      return {
+        ...item,
+        manager: item.user ? item.user.name : 'No Asignado',
+      }
+    })
+    return newData
+  }
+  if (data) {
+    transformData()
   }
   return (
     <>
@@ -32,7 +43,7 @@ const ListUI = (props) => {
           {
             data && (
               <List
-                data={formatDate(data.data.data, ['date_initial', 'date_end', 'date_committed'], 'DD/MM/YYYY')}
+                data={transformData()}
                 headers={headers}
                 show={show}
                 resource="actions"
