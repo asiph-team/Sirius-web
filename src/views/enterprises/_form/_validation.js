@@ -19,7 +19,7 @@ export const enterpriseSchema = Yup.object().shape({
     .min(10, 'La dirección debe ser mayor a 10 caractéres')
     .max(50, 'La dirección debe ser menor a 50 caractéres')
     .required('La dirección es requerida'),
-  RUT: Yup.string()
+  rut: Yup.string()
     .test('RUT-validator', 'El RUT ingresado no es válido', (value) => {
       if (value) {
         const dot = !(value.indexOf('.') <= 0)
@@ -37,18 +37,18 @@ export const enterpriseSchema = Yup.object().shape({
   size: Yup.string()
     .ensure()
     .required('El tamaño de la empresa es requerido'),
-  RL: Yup.string()
+  LR: Yup.string()
     .min(5, 'El representante legal debe ser mayor a 5 caractéres')
     .max(50, 'El representante legal debe ser menor a 50 caractéres')
     .required('El representante legal es requerido'),
-  CRL: Yup.string()
+  CLR: Yup.string()
     .matches(cellRegExp, 'El teléfono ingresado no es válido')
     .required('El número es requerido'),
-  RT: Yup.string()
+  TR: Yup.string()
     .min(5, 'El representante legal debe ser mayor a 5 caractéres')
     .max(50, 'El representante legal debe ser menor a 50 caractéres')
     .required('El representante legal es requerido'),
-  CRT: Yup.string()
+  CTR: Yup.string()
     .matches(cellRegExp, 'El teléfono ingresado no es válido')
     .required('El número es requerido'),
 })

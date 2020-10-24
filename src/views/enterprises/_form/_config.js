@@ -40,18 +40,19 @@ export const config = [
     {
       input: 'CustomInput',
       key: 5,
-      name: 'RUT',
+      name: 'rut',
       title: 'RUT*',
       type: 'text',
       small: '(ej: 99999999-9)',
       grid: 6,
     },
     {
-      input: 'CustomInput',
+      input: 'CustomInputAddon',
       key: 6,
       name: 'phone',
       title: 'Teléfono contacto*',
-      type: 'tel',
+      type: 'phone',
+      prepend: '+569',
       grid: 6,
     },
   ],
@@ -78,7 +79,7 @@ export const config = [
     {
       input: 'CustomInput',
       key: 9,
-      name: 'RL',
+      name: 'LR',
       title: 'Representante legal*',
       type: 'text',
       grid: 6,
@@ -86,7 +87,7 @@ export const config = [
     {
       input: 'CustomInputAddon',
       key: 10,
-      name: 'CRL',
+      name: 'CLR',
       title: 'Contacto Representante legal*',
       type: 'phone',
       prepend: '+569',
@@ -97,7 +98,7 @@ export const config = [
     {
       input: 'CustomInput',
       key: 11,
-      name: 'RT',
+      name: 'TR',
       title: 'Representante técnico*',
       type: 'text',
       grid: 6,
@@ -105,7 +106,7 @@ export const config = [
     {
       input: 'CustomInputAddon',
       key: 12,
-      name: 'CRT',
+      name: 'CTR',
       title: 'Contacto Representante técnico*',
       type: 'phone',
       prepend: '+569',
