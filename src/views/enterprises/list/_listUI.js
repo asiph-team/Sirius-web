@@ -26,8 +26,20 @@ const ListUI = (props) => {
   const transformData = () => {
     const newData = data.data.data.map((item) => {
       return {
-        ...item,
-        status: item.status === 'active',
+        id: item.id,
+        name: item.name,
+        spin: item.spin,
+        heading: item.heading,
+        rut: item.rut,
+        address: item.address,
+        phone: item.phone,
+        email: item.email,
+        size: item.size,
+        LR: item.LR,
+        CLR: item.CLR,
+        TR: item.RT,
+        CTR: item.CRT,
+        status: item.status === 'active' ? true : false,
       }
     })
     return newData
@@ -80,7 +92,7 @@ const ListUI = (props) => {
           <AlertDialog
             title={`¿Estás seguro de ${selected.status ? 'desactivar' : 'activar'} a ${selected.name}?`}
             paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} a la empresa en la plataforma.`}
-            callback={() => { selected.status = !selected.status; changeStatus({ ...selected, status: !selected.status }, null) }}
+            callback={() => { changeStatus({ ...selected, status: !selected.status }, null) }}
             callbackCancel={() => setVisibility({ ...visibility, status: true })}
           />
         )
