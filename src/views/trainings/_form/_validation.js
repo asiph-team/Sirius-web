@@ -33,9 +33,9 @@ export const trainingSchemaEdit = Yup.object().shape({
     .required('El nombre de la capacitación es requerida'),
   start_date: Yup.date()
     .required('La fecha de compromiso es requerida'),
-  employees_id: Yup.string()
-    .required('Es necesario seleccionar a un empleado para completar la acción.')
-    .nullable(),
+  // employees_id: Yup.string()
+  //   .required('Es necesario seleccionar a un empleado para completar la acción.')
+  //   .nullable(),
   end_date: Yup.date()
     .when('start_date',
       // eslint-disable-next-line camelcase
