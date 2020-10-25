@@ -35,13 +35,14 @@ export const editConfig = [
   ],
   [
     {
-      input: 'CustomSelect',
+      input: 'MultipleCustomSelect',
       key: 6,
       name: 'employees_id',
       title: 'Empleados*',
       type: 'text',
       options: [],
       grid: 12,
+      multiple: true,
     },
   ],
   [
