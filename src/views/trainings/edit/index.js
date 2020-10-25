@@ -18,7 +18,7 @@ const Edit = (props) => {
   if (errorEmployees) return <Error message={errorEmployees} />
   return (
     <>
-      <EditUI handleSubmit={(values) => update({ id: values.id, description: values.description, end_date: moment(values.end_date).format('YYYY-MM-DD'), start_date: moment(values.start_date).format('YYYY-MM-DD'), frequency: values.frequency, name: values.name, employees_id: [values.employees_id] }, `${url}/${values.id}`)} {...props} employees={data} />
+      <EditUI handleSubmit={(values) => update({ id: values.id, description: values.description, end_date: moment(values.end_date).format('YYYY-MM-DD'), start_date: moment(values.start_date).format('YYYY-MM-DD'), frequency: values.frequency, name: values.name, employees_id: values.employees_id }, `${url}/${values.id}`)} {...props} employees={data} />
       {loading && <AlertLoading message="Actualizando capacitación" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (

@@ -36,7 +36,7 @@ const MultipleSelectField = (props) => {
       classNamePrefix="select"
       name={name}
       options={options}
-      onChange={(option) => option && form.setFieldValue(name, option.filter((item) => item.value))}
+      onChange={(option) => option && form.setFieldValue(name, option.map((item) => item.value))}
       defaultValue={options.filter((option) => (option.value === value) || (option.label === value))}
       isSearchable
       placeholder=""
