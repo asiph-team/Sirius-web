@@ -41,6 +41,7 @@ export const editConfig = [
       title: 'Empleados*',
       type: 'text',
       options: [],
+      selected: [],
       grid: 12,
       multiple: true,
     },

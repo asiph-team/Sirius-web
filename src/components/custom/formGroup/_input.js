@@ -27,9 +27,9 @@ const SelectField = (props) => {
 
 const MultipleSelectField = (props) => {
   const {
-    options, field, form, multiple,
+    options, field, form, multiple, defaultData,
   } = props
-  const { name, value } = field
+  const { name } = field
   return (
     <Select
       className="basic-single"
@@ -37,7 +37,7 @@ const MultipleSelectField = (props) => {
       name={name}
       options={options}
       onChange={(option) => option && form.setFieldValue(name, option.map((item) => item.value))}
-      defaultValue={options.filter((option) => (option.value === value) || (option.label === value))}
+      defaultValue={defaultData}
       isSearchable
       placeholder=""
       isMulti={!!multiple}
@@ -130,7 +130,7 @@ export const CustomSelect = (props) => {
 
 export const MultipleCustomSelect = (props) => {
   const {
-    name, title, options, small, multiple,
+    name, title, options, small, multiple, defaultData,
   } = props
   return (
     <>
@@ -140,6 +140,7 @@ export const MultipleCustomSelect = (props) => {
         name={name}
         component={MultipleSelectField}
         multiple={multiple}
+        defaultData={defaultData}
       />
     </>
   )
