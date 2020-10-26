@@ -26,6 +26,7 @@ const ListUI = (props) => {
         workstation: item.workstation ? item.workstation.name : 'No Asignada',
         workstation_id: item.workstation ? item.workstation.id : 'No Asignada',
         phone: phoneFormatTo8(item.phone),
+        originalPhone: item.phone,
         status: item.state,
       }
     })
@@ -81,7 +82,7 @@ const ListUI = (props) => {
           <AlertDialog
             title={`¿Estás seguro de ${selected.status ? 'desactivar' : 'activar'} a ${selected.name}?`}
             paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} al trabajador en la plataforma.`}
-            callback={() => changeStatus({ ...selected, state: !selected.state }, null)}
+            callback={() => changeStatus({ ...selected, state: !selected.state, phone: selected.originalPhone, date_start: moment(selected.date_start, 'YYYY-MM-DD') }, null)}
             callbackCancel={() => setVisibility({ ...visibility, status: false })}
           />
         )
