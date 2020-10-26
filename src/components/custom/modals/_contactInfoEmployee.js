@@ -37,7 +37,7 @@ const ContactInfoEmployee = (props) => {
           </Row>
           <Row className="mb-1">
             <Col><strong>Teléfono de contacto:</strong></Col>
-            <Col>{item.phone}</Col>
+            <Col>+569{item.phone}</Col>
           </Row>
           <Row className="mb-1">
             <Col><strong>Fecha de inicio laboral:</strong></Col>
