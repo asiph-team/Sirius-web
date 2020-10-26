@@ -9,7 +9,7 @@ import {
 } from '../../../components/custom'
 import { headers } from './_headers'
 import Pagination from '../../../components/custom/pagination'
-import { singleDateFormatter, phoneFormat } from '../../../utility/helpers/functions'
+import { phoneFormatTo8 } from '../../../utility/helpers/functions'
 
 const ListUI = (props) => {
   const { data, remove, changeStatus, pagination } = props
@@ -23,9 +23,10 @@ const ListUI = (props) => {
     const newData = data.data.data.map((item) => {
       return {
         ...item,
-        workstation: item.workstations[0] ? item.workstations[0].name : 'No Asignada',
-        phone: `+56${item.phone}`,
-        date_start: singleDateFormatter(item.date_start, 'DD/MM/YYYY'),
+        workstation: item.workstation ? item.workstation.name : 'No Asignada',
+        workstation_id: item.workstation ? item.workstation.id : 'No Asignada',
+        phone: phoneFormatTo8(item.phone),
+        status: item.state,
       }
     })
     return newData
@@ -80,7 +81,7 @@ const ListUI = (props) => {
           <AlertDialog
             title={`¿Estás seguro de ${selected.status ? 'desactivar' : 'activar'} a ${selected.name}?`}
             paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} al trabajador en la plataforma.`}
-            callback={() => changeStatus({ ...selected, status: !selected.status, workstations: selected.workstations[0].id, workstation_id: selected.workstations[0].id, phone: `9${phoneFormat(selected.phone)}`, date_start: moment(selected.date_start, 'YYYY-MM-DD').toDate() }, null)}
+            callback={() => changeStatus({ ...selected, state: !selected.state }, null)}
             callbackCancel={() => setVisibility({ ...visibility, status: false })}
           />
         )
