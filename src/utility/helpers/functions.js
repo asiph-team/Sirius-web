@@ -4,6 +4,10 @@ export function phoneFormat(phone) {
   return phone.replace('+569', '').replace(/\s/g, '')
 }
 
+export function phoneFormatTo8(phone) {
+  return phone.slice(1)
+}
+
 export const formatDate = (list, dates, format) => {
   const newData = list.map((item) => {
     const keys = Object.keys(item)
