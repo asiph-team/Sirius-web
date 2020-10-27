@@ -29,7 +29,7 @@ export const enterpriseSchema = Yup.object().shape({
     })
     .required('El RUT es requerido'),
   phone: Yup.string()
-    .matches(phoneRegExp, 'El teléfono ingresado no es válido')
+    .matches(cellRegExp, 'El teléfono ingresado no es válido')
     .required('El número es requerido'),
   email: Yup.string()
     .email('El email ingresado no es válido')

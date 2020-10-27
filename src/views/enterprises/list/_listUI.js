@@ -23,30 +23,6 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
-  const transformData = () => {
-    const newData = data.data.data.map((item) => {
-      return {
-        id: item.id,
-        name: item.name,
-        spin: item.spin,
-        heading: item.heading,
-        rut: item.rut,
-        address: item.address,
-        phone: item.phone,
-        email: item.email,
-        size: item.size,
-        LR: item.LR,
-        CLR: item.CLR,
-        TR: item.RT,
-        CTR: item.CRT,
-        status: item.status === 'active' ? true : false,
-      }
-    })
-    return newData
-  }
-  if (data) {
-    transformData()
-  }
   return (
     <>
       <Header title="Empresas" icon="Shield">
@@ -62,7 +38,7 @@ const ListUI = (props) => {
           {
             data && (
               <List
-                data={transformData()}
+                data={data.data.data}
                 headers={headers}
                 show={show}
                 resource="enterprises"

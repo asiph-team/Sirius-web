@@ -10,21 +10,20 @@ const Add = () => {
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   return (
     <>
-      <AddUI handleSubmit={(values) => postData(values, url)} />
+      <AddUI handleSubmit={(values) => postData({ name: values.name, spin: values.spin, heading: values.heading, rut: values.rut, address: values.address, phone: values.phone ? `9${values.phone}` : null, email: values.email, size: values.size, LR: values.LR, TR: values.TR, CLR: values.CLR, CTR: values.CTR, status: 1 }, url)} />
       {loading && <AlertLoading message="Almacenando empresa" />}
-      {error && <AlertError callback={() => clean()} />}
+      {error && <AlertError error={error} callback={() => clean()} />}
       {items && (
-      <AlertSuccess
-        message="La empresa ha sido creada."
-        callback={() => {
-          document.getElementById('form-enterprises').reset()
-          clean()
-          history.goBack()
-        }}
-      />
+        <AlertSuccess
+          message="La empresa ha sido creada."
+          callback={() => {
+            document.getElementById('form-enterprises').reset()
+            clean()
+            history.goBack()
+          }}
+        />
       )}
     </>
   )
 }
-
 export default Add
