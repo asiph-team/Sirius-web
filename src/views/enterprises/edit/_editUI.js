@@ -5,9 +5,6 @@ import FormUI from '../_form'
 
 const EditUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } } } = props
-  placeholder.phone = phoneFormat(placeholder.phone)
-  placeholder.CRL = phoneFormat(placeholder.CRL)
-  placeholder.CRT = phoneFormat(placeholder.CRT)
   return (
     <>
       <Header title="Editar empresa" icon="Shield" />
