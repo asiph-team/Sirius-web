@@ -73,7 +73,7 @@ export const CustomInput = (props) => {
         className="form-control"
         name={name}
         type={type}
-        autoComplete="off"
+        autoComplete="nofill"
       />
     </>
   )
