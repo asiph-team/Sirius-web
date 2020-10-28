@@ -3,7 +3,7 @@ import SweetAlert from 'react-bootstrap-sweetalert'
 
 const AlertError = (props) => {
   const { callback, error } = props
-  const values = Object.values(error.response.data.error.message)
+  const values = error ? Object.values(error.response.data.error.message) : null
   return (
     <SweetAlert
       title=""
