@@ -14,8 +14,7 @@ export const workstationSchema = Yup.object().shape({
   rut: Yup.string()
     .test('RUT-validator', 'El RUT ingresado no es válido', (value) => {
       if (value) {
-        const dot = !(value.indexOf('.') <= 0)
-        return rutRegex({ exact: true, dot, hyphen: true }).test(value)
+        return rutRegex({ exact: true, dot: false, hyphen: false }).test(value)
       }
       return true
     })

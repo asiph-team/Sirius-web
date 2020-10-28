@@ -19,7 +19,7 @@ const Edit = (props) => {
     <>
       <EditUI handleSubmit={(values) => update({ ...values, phone: `9${values.phone}` }, `${url}/${values.id}`)} {...props} employees={data} />
       {loading && <AlertLoading message="Actualizando trabajador" />}
-      {error && <AlertError callback={() => clean()} />}
+      {error && <AlertError error={error} callback={() => clean()} />}
       {items && (
         <AlertSuccess
           message="La información del trabajador ha sido actualizada."
