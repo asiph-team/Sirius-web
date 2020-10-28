@@ -1,10 +1,17 @@
 export const headers = [
   {
-    id: 'name',
-    title: 'Nombre',
+    selector: 'name',
+    name: 'Nombre',
+    sortable: true,
   },
   {
-    id: 'description',
-    title: 'Descripción',
+    selector: 'description',
+    name: 'Descripción',
+    sortable: true,
+  },
+  {
+    selector: 'actions',
+    name: '',
+    maxWidth: '100px',
   },
 ]
