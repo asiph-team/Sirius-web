@@ -1,22 +1,32 @@
 export const headers = [
   {
-    id: 'name',
-    title: 'Nombre de capacitación',
+    selector: 'name',
+    name: 'Nombre de capacitación',
+    sortable: true,
   },
   {
-    id: 'total_invited',
-    title: 'Trabajadores invitados',
+    selector: 'total_invited',
+    name: 'Trabajadores invitados',
+    sortable: true,
   },
   {
-    id: 'start_date',
-    title: 'Fecha de inicio',
+    selector: 'start_date',
+    name: 'Fecha de inicio',
+    sortable: true,
   },
   {
-    id: 'end_date',
-    title: 'Fecha de termino',
+    selector: 'end_date',
+    name: 'Fecha de termino',
+    sortable: true,
   },
   {
-    id: 'frequency',
-    title: 'Frecuencia',
+    selector: 'frequency',
+    name: 'Frecuencia',
+    sortable: true,
+  },
+  {
+    selector: 'actions',
+    name: '',
+    maxWidth: '100px',
   },
 ]
