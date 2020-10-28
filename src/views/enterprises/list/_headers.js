@@ -1,26 +1,40 @@
 export const headers = [
   {
-    id: 'name',
-    title: 'Nombre / Razon Social',
+    selector: 'name',
+    name: 'Nombre / Razon Social',
+    sortable: true,
   },
   {
-    id: 'spin',
-    title: 'Giro',
+    selector: 'spin',
+    name: 'Giro',
+    sortable: true,
   },
   {
-    id: 'heading',
-    title: 'Rubro',
+    selector: 'heading',
+    name: 'Rubro',
+    sortable: true,
   },
   {
-    id: 'rut',
-    title: 'RUT',
+    selector: 'rut',
+    name: 'RUT',
+    sortable: true,
+    maxWidth: '120px',
   },
   {
-    id: 'size',
-    title: 'Tamaño',
+    selector: 'size',
+    name: 'Tamaño',
+    sortable: true,
+    maxWidth: '50px',
   },
   {
-    id: 'status',
-    title: 'Estado',
+    selector: 'status',
+    name: 'Estado',
+    sortable: true,
+    maxWidth: '50px',
+  },
+  {
+    selector: 'actions',
+    name: '',
+    maxWidth: '50px',
   },
 ]
