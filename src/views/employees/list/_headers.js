@@ -1,22 +1,33 @@
 export const headers = [
   {
-    id: 'name',
-    title: 'Nombre',
+    selector: 'name',
+    name: 'Nombre',
+    sortable: true,
   },
   {
-    id: 'lastname',
-    title: 'Apellidos',
+    selector: 'lastname',
+    name: 'Apellidos',
+    sortable: true,
   },
   {
-    id: 'rut',
-    title: 'RUT',
+    selector: 'rut',
+    name: 'RUT',
+    sortable: true,
   },
   {
-    id: 'workstation',
-    title: 'Puesto de trabajo',
+    selector: 'workstation',
+    name: 'Puesto de trabajo',
+    sortable: true,
   },
   {
-    id: 'status',
-    title: 'Estado',
+    selector: 'status',
+    name: 'Estado',
+    sortable: true,
+    maxWidth: '100px',
+  },
+  {
+    selector: 'actions',
+    name: '',
+    maxWidth: '100px',
   },
 ]
