@@ -1,26 +1,37 @@
 export const headers = [
   {
-    id: 'name',
-    title: 'Nombre',
+    selector: 'name',
+    name: 'Nombre',
+    sortable: true,
   },
   {
-    id: 'date_initial',
-    title: 'Fecha ingreso',
+    selector: 'date_initial',
+    name: 'Fecha ingreso',
+    sortable: true,
   },
   {
-    id: 'manager',
-    title: 'responsable',
+    selector: 'manager',
+    name: 'responsable',
+    sortable: true,
   },
   {
-    id: 'origin',
-    title: 'Origen',
+    selector: 'origin',
+    name: 'Origen',
+    sortable: true,
   },
   {
-    id: 'priority',
-    title: 'Prioridad',
+    selector: 'priority',
+    name: 'Prioridad',
+    sortable: true,
   },
   {
-    id: 'date_committed',
-    title: 'Fecha compromiso',
+    selector: 'date_committed',
+    name: 'Fecha compromiso',
+    sortable: true,
+  },
+  {
+    selector: 'actions',
+    name: '',
+    maxWidth: '100px',
   },
 ]
