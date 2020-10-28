@@ -23,6 +23,8 @@ export const formatDate = (list, dates, format) => {
 
 export const singleDateFormatter = (date, format) => moment(date).format(format)
 
+export const rutFormatter = (value) => `${value.substr(0, value.length - 1)}-${value.substr(value.length - 1, value.length - 1)}`
+
 export const priorityES = (list, data, header) => {
   const newData = list.map((item) => {
     const keys = Object.keys(item)
