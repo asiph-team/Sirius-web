@@ -3,9 +3,10 @@ import { history } from '../../../history'
 import { AlertError, AlertLoading, AlertSuccess } from '../../../components/custom'
 import { usePostResources } from '../../../utility/customHooks/resources'
 import ResetUI from './_resetUI'
+import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
-  const url = 'api/v1/user/forget-password'
+  const url = `${urlApi}${baseApiUrl}users/forgetPassword`
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   return (
     <>
@@ -13,14 +14,14 @@ const Edit = (props) => {
       {loading && <AlertLoading message="Recuperando contraseña" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
-      <AlertSuccess
-        message="Hemos enviado un enlace a tu correo para que recuperes tu contraseña"
-        callback={() => {
-          document.getElementById('form-recovery-password').reset()
-          clean()
-          history.goBack()
-        }}
-      />
+        <AlertSuccess
+          message="Hemos enviado un enlace a tu correo para que recuperes tu contraseña"
+          callback={() => {
+            document.getElementById('form-recovery-password').reset()
+            clean()
+            history.goBack()
+          }}
+        />
       )}
     </>
   )

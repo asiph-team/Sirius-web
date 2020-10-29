@@ -70,7 +70,7 @@ export function useFetchResources(url) {
 
 export function usePostResources() {
   const [data, dispatch] = useReducer(resourcesReducer, initialState)
-  const { access_token } = JSON.parse(localStorage.getItem('user'))
+  const { access_token } = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : 'null'
   const postData = async (values, url, config) => {
     dispatch(fetchStart())
     await axios.post(url, values, { headers: { Authorization: `Bearer ${access_token}` } })
