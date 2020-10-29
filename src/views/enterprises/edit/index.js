@@ -10,7 +10,7 @@ const Edit = (props) => {
   const { data: { loading, error, items }, update, clean } = usePostResources()
   return (
     <>
-      <EditUI handleSubmit={(values) => update({ name: values.name, spin: values.spin, heading: values.heading, rut: values.rut, address: values.address, phone: values.phone ? `9${values.phone}` : null, email: values.email, size: values.size, LR: values.LR, TR: values.TR, CLR: values.CLR, CTR: values.CTR, status: 1 }, `${url}/${values.id}`)} {...props} />
+      <EditUI handleSubmit={(values) => update({ name: values.name, spin: values.spin, heading: values.heading, rut: values.rut, address: values.address, phone: values.phone, email: values.email, size: values.size, LR: values.LR, TR: values.TR, CLR: values.CLR, CTR: values.CTR, status: 1 }, `${url}/${values.id}`)} {...props} />
       {loading && <AlertLoading message="Actualizando empresa" />}
       {error && <AlertError error={error} callback={() => clean()} />}
       {items && (
