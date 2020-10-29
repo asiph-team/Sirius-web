@@ -16,6 +16,19 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
+  const transformData = () => {
+    const newData = data.data.data.map((item) => {
+      return {
+        ...item,
+        workstation: item.workstation ? item.workstation.name : 'No Asignado',
+        workstation_id: item.workstation ? item.workstation.id : 'No Asignado',
+      }
+    })
+    return newData
+  }
+  if (data) {
+    transformData()
+  }
   return (
     <>
       <Header title="Programas de Vigilancia" icon="Video">
@@ -33,7 +46,7 @@ const ListUI = (props) => {
           {
             data && (
               <List
-                data={data.data.data}
+                data={transformData()}
                 headers={headers}
                 resource="programs"
                 show={show}

@@ -16,7 +16,7 @@ export const programsSchemaEdit = Yup.object().shape({
     .min(3, 'El nombre del programa debe ser mayor a 3 caractéres')
     .max(100, 'El nombre del programa debe ser menor a 100 caractéres')
     .required('El nombre del programa es requerido'),
-  workstation_id: Yup.string()
+  workstations_id: Yup.string()
     .ensure()
     .required('El puesto de trabajo es requerido'),
   description: Yup.string()
