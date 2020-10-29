@@ -5,6 +5,11 @@ export const headers = [
     sortable: true,
   },
   {
+    selector: 'workstation',
+    name: 'Puesto de Trabajo',
+    sortable: true,
+  },
+  {
     selector: 'description',
     name: 'Descripción',
     sortable: true,
@@ -12,6 +17,6 @@ export const headers = [
   {
     selector: 'actions',
     name: '',
-    maxWidth: '100px',
+    maxWidth: '50px',
   },
 ]
