@@ -82,7 +82,7 @@ const ListUI = (props) => {
           <AlertDialog
             title={`¿Estás seguro de ${selected.status ? 'desactivar' : 'activar'} a ${selected.name}?`}
             paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} al trabajador en la plataforma.`}
-            callback={() => changeStatus({ ...selected, state: !selected.state, phone: selected.originalPhone, date_start: moment(selected.date_start, 'YYYY-MM-DD') }, null)}
+            callback={() => { changeStatus({ ...selected, state: !selected.state, phone: selected.originalPhone, date_start: moment(selected.date_start, 'YYYY-MM-DD') }, 'state'); setVisibility({ ...visibility, status: false }) }}
             callbackCancel={() => setVisibility({ ...visibility, status: false })}
           />
         )
