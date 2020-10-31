@@ -8,6 +8,7 @@ import {
   fetchError,
   cleanState,
   removeItem,
+  updateStatus,
 } from '../../ducks/resources'
 
 export function useFetchResources(url) {
@@ -43,13 +44,9 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
-  const changeStatus = async (data) => {
-    dispatch(fetchStart())
+  const changeStatus = async (data, field) => {
     await axios.put(`${url.replace('?', '/')}${data.id}`, data, header)
-      .then((response) => console.log('response', response))
-      .catch((error) => dispatch(fetchError(error)))
-    await axios.get(`${url}`, header)
-      .then((response) => dispatch(fetchSuccess(response.data)))
+      .then(dispatch(updateStatus(data, field)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
@@ -85,6 +82,13 @@ export function usePostResources() {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const changeStatus = async (data, url) => {
+    dispatch(fetchStart())
+    await axios.put(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+      .then(dispatch(updateStatus(data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   const patchData = async (data, url) => {
     dispatch(fetchStart())
     await axios.patch(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
@@ -94,5 +98,5 @@ export function usePostResources() {
 
   const clean = () => dispatch(cleanState())
 
-  return { data, postData, clean, update, patchData }
+  return { data, postData, clean, update, patchData, changeStatus }
 }
