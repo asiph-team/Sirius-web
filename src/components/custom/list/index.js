@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Switch from 'rc-switch'
 import 'rc-switch/assets/index.css'
 import * as Icon from 'react-feather'
-import DataTable from "react-data-table-component"
+import DataTable from 'react-data-table-component'
 import Can from '../can'
 
 const CustomSwitch = (props) => {
@@ -35,7 +35,7 @@ const List = (props) => {
   const updateStatus = {
     cell: (row) => {
       return (
-        <CustomSwitch status={row.status} changeStatus={() => show(row, 'status')} /> 
+        <CustomSwitch status={row.status} changeStatus={() => show(row, 'status')} />
       )
     },
   }
