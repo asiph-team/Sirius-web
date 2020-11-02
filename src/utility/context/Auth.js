@@ -30,6 +30,7 @@ const Auth = (props) => {
 
   const handleAuthentication = async (values) => {
     dispatch(fetchStartAuth())
+    dispatch(fetchErrorAuth(null))
     try {
       const url = values.email === 'superadmin@test.com' ? 'admin/login' : 'users/login'
       const response = await axios.post(`${urlApi}/api/v1/${url}`, values)
