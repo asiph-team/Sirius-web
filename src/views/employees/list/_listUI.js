@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-import { Button, Card, CardBody } from 'reactstrap'
+import { Button, Card, CardBody, Col, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
 import moment from 'moment'
 import { ContactInfoEmployee } from '../../../components/custom/modals'
 import {
-  AlertDialog, Can, Header, List,
+  AlertDialog, Can, Header, List, Search,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import Pagination from '../../../components/custom/pagination'
 import { phoneFormatTo8 } from '../../../utility/helpers/functions'
 
 const ListUI = (props) => {
-  const { data, remove, changeStatus, pagination } = props
+  const { data, remove, changeStatus, pagination, search } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
   const show = (item, type, visible = true) => {
@@ -32,12 +32,10 @@ const ListUI = (props) => {
     })
     return newData
   }
-  if (data) {
-    transformData()
-  }
   return (
     <>
       <Header title="Trabajadores" icon="Users">
+        <Search placeholder="Buscar por rut, nombre y apellidos" search={search} icon="Search" />
         <Can rule="employees:add">
           <Link to="/dashboard/employees/add">
             <Button color="primary">
