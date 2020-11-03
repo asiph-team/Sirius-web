@@ -10,7 +10,7 @@ const Add = () => {
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   return (
     <>
-      <AddUI handleSubmit={(values) => postData({ name: values.name, spin: values.spin, heading: values.heading, rut: values.rut, address: values.address, phone: values.phone ? `9${values.phone}` : null, email: values.email, size: values.size, LR: values.LR, TR: values.TR, CLR: values.CLR, CTR: values.CTR, status: 1 }, url)} />
+      <AddUI handleSubmit={(values) => postData({ name: values.name, spin: values.spin, heading: values.heading, rut: values.rut, address: values.address, phone: values.phone, email: values.email, size: values.size, LR: values.LR, TR: values.TR, CLR: values.CLR, CTR: values.CTR, status: 1 }, url)} />
       {loading && <AlertLoading message="Almacenando empresa" />}
       {error && <AlertError error={error} callback={() => clean()} />}
       {items && (
