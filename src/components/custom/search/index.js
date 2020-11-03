@@ -4,10 +4,10 @@ import * as Icon from 'react-feather'
 
 const Search = (props) => {
   const [data, setData] = useState('')
-  const { icon, placeholder, search } = props
+  const { icon, placeholder, search, param } = props
   const IconTag = Icon[icon]
   const handleSearch = () => {
-    search('rut', data)
+    search(param, data)
   }
   return (
     <Col>

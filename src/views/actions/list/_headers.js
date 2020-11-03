@@ -23,6 +23,7 @@ export const headers = [
     selector: 'priority',
     name: 'Prioridad',
     sortable: true,
+    maxWidth: '100px',
   },
   {
     selector: 'date_committed',

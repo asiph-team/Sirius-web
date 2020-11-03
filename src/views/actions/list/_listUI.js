@@ -3,13 +3,13 @@ import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
 import {
-  AlertDialog, Header, List,
+  AlertDialog, Header, List, Search,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import Pagination from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, pagination } = props
+  const { data, remove, pagination, search } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ remove: false })
   const show = (item, type, visible = true) => {
@@ -31,6 +31,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Planes de acción" icon="BookOpen">
+        <Search placeholder="Buscar..." search={search} icon="Search" param="origin" />
         <Link to="/dashboard/actions/add">
           <Button color="primary">
             <PlusCircle size={14} />
