@@ -4,7 +4,7 @@ import FormUI from '../_form'
 
 const AddUI = (props) => {
   const { handleSubmit, employees } = props
-  const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })) : null
+  const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })).sort((a, b) => { return a.label > b.label ? 1 : -1 }) : null
   return (
     <>
       <Header title="Agregar plan de acción" icon="BookOpen" />
