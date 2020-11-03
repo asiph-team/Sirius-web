@@ -12,7 +12,7 @@ const Edit = (props) => {
     <>
       <ResetUI handleSubmit={(values) => postData(values, url)} {...props} />
       {loading && <AlertLoading message="Recuperando contraseña" />}
-      {error && <AlertError callback={() => clean()} />}
+      {error && <AlertError error={error} callback={() => clean()} />}
       {items && (
         <AlertSuccess
           message="Hemos enviado un enlace a tu correo para que recuperes tu contraseña"
