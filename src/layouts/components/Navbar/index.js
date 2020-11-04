@@ -11,7 +11,7 @@ const ThemeNavbar = (props) => (
       <>
         <div className="content-overlay" />
         <div className="header-navbar-shadow" />
-        <Navbar className="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-shadow navbar-light floating-nav" id="navbar-sirius">
+        <Navbar className="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-shadow navbar-light floating-nav" id="navbar-sinjury">
           <div className="navbar-wrapper">
             <div className="navbar-container content">
               <div

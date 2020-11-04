@@ -15,8 +15,8 @@ class SidebarHeader extends PureComponent {
         <ul className="nav navbar-nav flex-row">
           <li className="nav-item mr-auto">
             <NavLink to="/" className="navbar-brand">
-              <img className="brand-logo" src={logo} alt="Sirius" />
-              <h2 className="brand-text mb-0">Sirius</h2>
+              <img className="brand-logo" src={logo} alt="Sinjury" />
+              <h2 className="brand-text mb-0">Sinjury</h2>
             </NavLink>
           </li>
           <li className="nav-item nav-toggle">

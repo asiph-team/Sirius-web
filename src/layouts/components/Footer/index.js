@@ -7,7 +7,7 @@ const Footer = () => (
   <footer className="footer footer-light footer-static">
     <p className="mb-0 clearfix">
       <span className="float-md-left d-block d-md-inline-block mt-25">
-        Sirius -
+        Sinjury -
         {' '}
         {new Date().getFullYear()}
       </span>
