@@ -3,13 +3,15 @@ import { useFetchResources } from '../../../utility/customHooks/resources'
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { Error } from '../../../components/custom'
 import DashboardUI from './_dashboardUI'
+import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Admin = () => {
-  const { items: performance } = useFetchResources('/api/v1/dashboard/admin')
+  const { items: performance, queryParams } = useFetchResources(`${urlApi + baseApiUrl}indicators`)
+  const { items: areas } = useFetchResources(`${urlApi + baseApiUrl}areas`)
   const { items, loading, error } = performance
   if (loading || !items) return <LoadingSpinner />
   if (error) return <Error message={error} />
-  return <DashboardUI performance={items} />
+  return <DashboardUI performance={items} areas={areas} queryParams={queryParams} />
 }
 
 export default Admin
