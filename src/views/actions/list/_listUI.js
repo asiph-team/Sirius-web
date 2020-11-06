@@ -9,7 +9,7 @@ import { headers } from './_headers'
 import Pagination from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, pagination, search } = props
+  const { data, remove, pagination, search, temp } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ remove: false })
   const show = (item, type, visible = true) => {
@@ -31,7 +31,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Planes de acción" icon="BookOpen">
-        <Search placeholder="Buscar..." search={search} icon="Search" param="origin" />
+        <Search placeholder="Buscar..." search={search} icon="Search" temp={temp} param="origin" />
         <Link to="/dashboard/actions/add">
           <Button color="primary">
             <PlusCircle size={14} />
