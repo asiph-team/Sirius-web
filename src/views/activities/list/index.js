@@ -7,10 +7,10 @@ import { urlApi } from '../../../utility/helpers/consts'
 
 const ActivitiesList = () => {
   const { items: activities, remove, pagination, search } = useFetchResources(`${urlApi}/api/v1/activities?`)
-  const { items, loading, error } = activities
+  const { items, loading, error, temp } = activities
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
-  return <ListUI data={items} remove={remove} pagination={pagination} search={search} />
+  return <ListUI data={items} remove={remove} pagination={pagination} temp={temp} search={search} />
 }
 
 export default ActivitiesList
