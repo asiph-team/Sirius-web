@@ -12,7 +12,7 @@ import Pagination from '../../../components/custom/pagination'
 import { phoneFormatTo8 } from '../../../utility/helpers/functions'
 
 const ListUI = (props) => {
-  const { data, remove, changeStatus, pagination, search } = props
+  const { data, remove, changeStatus, pagination, search, temp } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
   const show = (item, type, visible = true) => {
@@ -23,6 +23,7 @@ const ListUI = (props) => {
     const newData = data.data.data.map((item) => {
       return {
         ...item,
+        fullname: `${item.name} ${item.lastname}`,
         workstation: item.workstation ? item.workstation.name : 'No Asignada',
         workstation_id: item.workstation ? item.workstation.id : 'No Asignada',
         phone: phoneFormatTo8(item.phone),
@@ -35,7 +36,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Trabajadores" icon="Users">
-        <Search placeholder="Buscar..." search={search} icon="Search" param="rut" />
+        <Search placeholder="Buscar..." search={search} icon="Search" temp={temp} param="filter" />
         <Can rule="employees:add">
           <Link to="/dashboard/employees/add">
             <Button size="" color="primary">

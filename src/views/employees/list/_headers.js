@@ -1,12 +1,7 @@
 export const headers = [
   {
-    selector: 'name',
+    selector: 'fullname',
     name: 'Nombre',
-    sortable: true,
-  },
-  {
-    selector: 'lastname',
-    name: 'Apellidos',
     sortable: true,
   },
   {
