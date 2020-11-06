@@ -1,5 +1,6 @@
 const FETCH_START = 'FETCH_START'
 const FETCH_SUCCESS = 'FETCH_SUCCESS'
+const FETCH_SEARCH = 'FETCH_SEARCH'
 const FETCH_ERROR = 'FETCH_ERROR'
 const CLEAN = 'CLEAN'
 const UPDATE_STATUS = 'UPDATE_STATUS'
@@ -11,6 +12,11 @@ export const fetchStart = () => ({
 export const fetchSuccess = (payload) => ({
   type: FETCH_SUCCESS,
   payload,
+})
+export const fetchSearch = (payload, data) => ({
+  type: FETCH_SEARCH,
+  payload,
+  data,
 })
 
 export const fetchError = (payload) => ({
@@ -32,14 +38,18 @@ export const initialState = {
   error: null,
   loading: false,
   items: null,
+  temp: null,
 }
 
 export const resourcesReducer = (state = initialState, action) => {
+  console.log('action', action)
   switch (action.type) {
     case FETCH_START:
       return { ...state, loading: true }
     case FETCH_SUCCESS:
       return { ...state, loading: false, items: action.payload }
+    case FETCH_SEARCH:
+      return { ...state, loading: false, items: action.payload, temp: action.data }
     case FETCH_ERROR:
       return { ...state, loading: false, error: action.payload }
     case CLEAN:
