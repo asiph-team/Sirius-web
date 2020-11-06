@@ -8,6 +8,7 @@ import {
   fetchError,
   cleanState,
   removeItem,
+  fetchSearch,
   updateStatus,
 } from '../../ducks/resources'
 
@@ -60,7 +61,7 @@ export function useFetchResources(url) {
   const search = async (param, data) => {
     dispatch(fetchStart())
     await axios.get(`${url}&${param}=${data}`, header)
-      .then((response) => dispatch(fetchSuccess(response.data)))
+      .then((response) => dispatch(fetchSearch(response.data, data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
