@@ -21,11 +21,14 @@ const List = (props) => {
   const {
     headers, data, show, resource, contact,
   } = props
+  const handleChange = (row) => {
+    show(row, 'contact')
+  }
+
   const menu = {
     cell: (row) => {
       return (
         <>
-          {contact && <Button color="link" onClick={() => show(row, 'contact')} className="p-0"><Icon.Search size={20} /></Button>}
           <Can rule={`${resource}:edit`}><Link to={{ pathname: `/dashboard/${resource}/edit`, state: { placeholder: row } }}><Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
           <Can rule={`${resource}:delete`}><Button onClick={() => show(row, 'remove')} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
         </>
@@ -45,21 +48,13 @@ const List = (props) => {
       ? obj.cell = menu.cell : obj.selector === 'status' ? obj.cell = updateStatus.cell : obj.cell = null
   })
   return (
-    <>
-      {
-        data.length ? (
-          <DataTable
-            data={data}
-            columns={headers}
-            noHeader
-          />
-        ) : (
-          <Row className="d-flex justify-content-center">
-            <h3>No se encontraron coincidencias.</h3>
-          </Row>
-        )
-      }
-    </>
+    <DataTable
+      data={data}
+      columns={headers}
+      noHeader
+      pointerOnHover={contact}
+      onRowClicked={contact ? (row) => handleChange(row) : null}
+    />
   )
 }
 
