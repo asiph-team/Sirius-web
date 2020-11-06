@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'reactstrap'
+import { Button, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import Switch from 'rc-switch'
 import 'rc-switch/assets/index.css'
@@ -45,11 +45,21 @@ const List = (props) => {
       ? obj.cell = menu.cell : obj.selector === 'status' ? obj.cell = updateStatus.cell : obj.cell = null
   })
   return (
-    <DataTable
-      data={data}
-      columns={headers}
-      noHeader
-    />
+    <>
+      {
+        data.length ? (
+          <DataTable
+            data={data}
+            columns={headers}
+            noHeader
+          />
+        ) : (
+          <Row className="d-flex justify-content-center">
+            <h3>No se encontraron coincidencias.</h3>
+          </Row>
+        )
+      }
+    </>
   )
 }
 
