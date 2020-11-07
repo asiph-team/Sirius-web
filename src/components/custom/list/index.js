@@ -54,6 +54,7 @@ const List = (props) => {
       noHeader
       pointerOnHover={contact}
       onRowClicked={contact ? (row) => handleChange(row) : null}
+      noDataComponent="No se encontraron coincidencias."
     />
   )
 }
