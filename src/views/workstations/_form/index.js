@@ -6,12 +6,11 @@ import { Formik, Form } from 'formik'
 import { FormGroup, FormSubmit } from '../../../components/custom'
 import { workstationSchema } from './_validation'
 import { initialValues } from './_initialValues'
-import { config } from './_config'
 import CharsCounter from '../../../components/custom/charsCounter'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title,
+    handleSubmit, placeholder, title, config
   } = props
   return (
     <Card>
