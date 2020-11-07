@@ -29,6 +29,12 @@ const InfoWorkStations = (props) => {
         <Container className="my-2">
           <div className="w-full flex flex-wrap">
             <div className="w-full">
+              <strong>Area de Trabajo:</strong>
+            </div>
+            <div className="w-full">
+              {item.area}
+            </div>
+            <div className="w-full">
               <strong>Descripción del Cargo / Funciones / Responsabilidades/ Competencias Requeridas / Principales Riesgos:</strong>
             </div>
             <div className="w-full">
