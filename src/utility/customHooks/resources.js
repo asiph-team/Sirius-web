@@ -51,16 +51,17 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
-  const pagination = async (pageNumber) => {
+  const pagination = async (pageNumber, search) => {
     dispatch(fetchStart())
-    await axios.get(`${url}&page=${pageNumber}`, header)
+    const paginated = search.temp ? `${url}${search.param}=${search.temp}&page=${pageNumber}` : `${url}&page=${pageNumber}`
+    await axios.get(`${paginated}`, header)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const search = async (param, data) => {
     dispatch(fetchStart())
-    await axios.get(`${url}&${param}=${data}`, header)
+    await axios.get(`${url}${param}=${data}`, header)
       .then((response) => dispatch(fetchSearch(response.data, data)))
       .catch((error) => dispatch(fetchError(error)))
   }
