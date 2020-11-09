@@ -10,6 +10,11 @@ export const headers = [
     sortable: true,
   },
   {
+    selector: 'area',
+    name: 'Area de Trabajo',
+    sortable: true,
+  },
+  {
     selector: 'workstation',
     name: 'Puesto de trabajo',
     sortable: true,
