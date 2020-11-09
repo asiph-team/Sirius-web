@@ -3,14 +3,14 @@ import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
 import {
-  AlertDialog, Can, Header, List,
+  AlertDialog, Can, Header, List, Search,
 } from '../../../components/custom'
 import { InfoWorkStations } from '../../../components/custom/modals'
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, pagination } = props
+  const { data, remove, pagination, search, temp } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
@@ -29,6 +29,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Puestos de trabajo" icon="Briefcase">
+        <Search placeholder="Buscar..." search={search} icon="Search" temp={temp} param="filter" />
         <Can rule="workstations:add">
           <Link to="/dashboard/workstations/add">
             <Button color="primary">
