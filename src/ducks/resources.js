@@ -42,7 +42,6 @@ export const initialState = {
 }
 
 export const resourcesReducer = (state = initialState, action) => {
-  console.log('action', action)
   switch (action.type) {
     case FETCH_START:
       return { ...state, loading: true }
