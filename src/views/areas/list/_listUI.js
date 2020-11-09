@@ -34,7 +34,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Áreas de trabajo" icon="Box">
-        <Search placeholder="Buscar..." search={search} icon="Search" temp={temp} param="filter" />
+        <Search placeholder="Buscar nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Link to="/dashboard/areas/add">
           <Button color="primary">
             <PlusCircle size={14} />
