@@ -6,6 +6,7 @@ import 'rc-switch/assets/index.css'
 import * as Icon from 'react-feather'
 import DataTable from 'react-data-table-component'
 import Can from '../can'
+import { priority } from '../../../utility/helpers/consts'
 
 const CustomSwitch = (props) => {
   const { status, changeStatus } = props
@@ -15,6 +16,14 @@ const CustomSwitch = (props) => {
       checked={status}
     />
   )
+}
+
+const PriorityChip = {
+  cell: (row) => {
+    return (
+      <div className={`rounded-circle bg-${priority[row.priority]} `} style={{ height: '20px', width: '20px' }} />
+    )
+  },
 }
 
 const List = (props) => {
@@ -45,7 +54,7 @@ const List = (props) => {
   headers.forEach((obj) => {
     // eslint-disable-next-line no-unused-expressions
     obj.selector === 'actions'
-      ? obj.cell = menu.cell : obj.selector === 'status' ? obj.cell = updateStatus.cell : obj.cell = null
+      ? obj.cell = menu.cell : obj.selector === 'status' ? obj.cell = updateStatus.cell : obj.selector === 'priority' ? obj.cell = PriorityChip.cell : obj
   })
   return (
     <DataTable
