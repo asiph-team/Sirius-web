@@ -37,7 +37,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Trabajadores" icon="Users">
-        <Search placeholder="Buscar..." search={search} icon="Search" temp={temp} param="filter" />
+        <Search placeholder="Buscar nombre o rut" search={search} icon="Search" temp={temp} param="filter" />
         <Can rule="employees:add">
           <Link to="/dashboard/employees/add">
             <Button size="" color="primary">
