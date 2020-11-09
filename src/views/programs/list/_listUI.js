@@ -3,13 +3,13 @@ import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
 import {
-  AlertDialog, Can, Header, List,
+  AlertDialog, Can, Header, List, Search,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, pagination } = props
+  const { data, remove, pagination, search, temp } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ remove: false })
   const show = (item, type, visible = true) => {
@@ -32,6 +32,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Programas de Vigilancia" icon="Video">
+        <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Can rule="programs:add">
           <Link to="/dashboard/programs/add">
             <Button color="primary">
