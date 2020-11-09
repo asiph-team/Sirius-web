@@ -71,7 +71,7 @@ const ListUI = (props) => {
       }
       {
         data && (
-          <PaginationSeprated data={data.data} pagination={pagination} />
+          <PaginationSeprated data={data.data} pagination={pagination} temp={temp} param="filter" />
         )
       }
     </>
