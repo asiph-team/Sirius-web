@@ -5,13 +5,13 @@ import { PlusCircle } from 'react-feather'
 import moment from 'moment'
 import { InfoTraining } from '../../../components/custom/modals'
 import {
-  AlertDialog, Header, List,
+  AlertDialog, Header, List, Search,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, pagination } = props
+  const { data, remove, pagination, search, temp } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
@@ -41,6 +41,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Capacitaciones" icon="Clipboard">
+        <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Link to="/dashboard/trainings/add">
           <Button color="primary">
             <PlusCircle size={14} />
