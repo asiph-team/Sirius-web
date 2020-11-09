@@ -31,7 +31,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Planes de acción" icon="BookOpen">
-        <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="origin" />
+        <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Link to="/dashboard/actions/add">
           <Button color="primary">
             <PlusCircle size={14} />
@@ -65,7 +65,7 @@ const ListUI = (props) => {
       }
       {
         data && (
-          <Pagination data={data.data} pagination={pagination} />
+          <Pagination data={data.data} pagination={pagination} temp={temp} param="filter" />
         )
       }
     </>
