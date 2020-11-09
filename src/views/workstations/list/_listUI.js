@@ -29,7 +29,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Puestos de trabajo" icon="Briefcase">
-        <Search placeholder="Buscar..." search={search} icon="Search" temp={temp} param="filter" />
+        <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Can rule="workstations:add">
           <Link to="/dashboard/workstations/add">
             <Button color="primary">
