@@ -29,6 +29,7 @@ const ListUI = (props) => {
         phone: phoneFormatTo8(item.phone),
         originalPhone: item.phone,
         status: item.state,
+        area: item.area ? item.area.name : 'No Asignada',
       }
     })
     return newData
