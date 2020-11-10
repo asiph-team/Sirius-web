@@ -9,9 +9,14 @@ import {
   ModalFooter,
   Row,
 } from 'reactstrap'
+import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
+import { useFetchResources } from '../../../utility/customHooks/resources'
 
 const InfoTraining = (props) => {
   const { onClose, visibility, item } = props
+  const { items: participants } = useFetchResources(`${urlApi}${baseApiUrl}trainings/${item.id}/employees?all`)
+  const { items: data } = participants
+  const list = data ? data.data.data.map((info) => ({ name: `${info.name} ${info.lastname}` })).sort((a, b) => { return a.name > b.name ? 1 : -1 }) : null
   return (
     <Modal
       isOpen={visibility}
@@ -38,6 +43,16 @@ const InfoTraining = (props) => {
           <Row className="mb-1">
             <Col><strong>Descripción:</strong></Col>
             <Col>{item.description}</Col>
+          </Row>
+          <Row className="mb-1">
+            <Col><strong>Participantes:</strong></Col>
+            <Col>
+              {
+                data && list.map((emp) => (
+                  <li> {emp.name} </li>
+                ))
+              }
+            </Col>
           </Row>
         </Container>
       </ModalBody>
