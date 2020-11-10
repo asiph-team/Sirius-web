@@ -9,7 +9,7 @@ const AddUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } }, employees, participants } = props
   placeholder.start_date = moment(placeholder.start_date, 'DD/MM/YYYY').toDate()
   placeholder.end_date = moment(placeholder.end_date, 'DD/MM/YYYY').toDate()
-  const dataParticipants = participants ? participants.data.map((item) => ({ label: item.name, value: item.id })) : null
+  const dataParticipants = participants ? participants.data.data.map((item) => ({ label: item.name, value: item.id })) : null
   const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })) : null
   return (
     <>
