@@ -21,7 +21,7 @@ const ListUI = (props) => {
       return {
         ...item,
         workstation: item.workstation ? item.workstation.name : 'No Asignado',
-        workstation_id: item.workstation ? item.workstation.id : 'No Asignado',
+        workstations_id: item.workstation ? item.workstation.id : 'No Asignado',
       }
     })
     return newData
