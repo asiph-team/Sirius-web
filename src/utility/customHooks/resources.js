@@ -73,6 +73,14 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const indicatorsParams = async (data) => {
+    dispatch(fetchStart())
+    const newUrl = data.area ? `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}&area_id=${data.area}` : `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}`
+    await axios.get(`${newUrl}`, header)
+      .then((response) => dispatch(fetchSearch(response.data, data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   return {
     items,
     remove,
@@ -80,6 +88,7 @@ export function useFetchResources(url) {
     pagination,
     search,
     queryParams,
+    indicatorsParams,
   }
 }
 
