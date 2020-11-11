@@ -26,8 +26,6 @@ const ListUI = (props) => {
         fullname: `${item.name} ${item.lastname}`,
         workstation: item.workstation ? item.workstation.name : 'No Asignada',
         workstation_id: item.workstation ? item.workstation.id : 'No Asignada',
-        phone: phoneFormatTo8(item.phone),
-        originalPhone: item.phone,
         status: item.state,
         area: item.area ? item.area.name : 'No Asignada',
       }
