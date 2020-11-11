@@ -58,6 +58,8 @@ const DatePickerField = (props) => {
         form.setFieldValue(name, date)
       }}
       autoComplete="off"
+      showMonthDropdown
+      showYearDropdown
     />
   )
 }
