@@ -49,12 +49,14 @@ const ContactInfoEmployee = (props) => {
             <Col>{item.date_start}</Col>
           </Row>
           <Row className="mb-1">
-            <Col><strong>Participantes:</strong></Col>
+            <Col><strong>Capacitaciones:</strong></Col>
             <Col>
               {
-                trainingsList && trainingsList.map((emp) => (
-                  <li> {emp.name} </li>
-                ))
+                trainingsList && trainingsList.length ? (
+                  trainingsList.map((emp) => (
+                    <li> {emp.name} </li>
+                  ))
+                ) : (<p>Sin capacitaciones registradas</p>)
               }
             </Col>
           </Row>
