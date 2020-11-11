@@ -18,7 +18,7 @@ const Add = () => {
   if (errorWorkstations) return <Error message={errorWorkstations} />
   return (
     <>
-      <AddUI handleSubmit={(values) => postData({ ...values, date_start: singleDateFormatter(values.date_start, 'YYYY-MM-DD'), phone: `9${values.phone}`, rut: rutFormatter(values.rut) }, url)} workstations={data} />
+      <AddUI handleSubmit={(values) => postData({ ...values, date_start: singleDateFormatter(values.date_start, 'YYYY-MM-DD'), phone: `9${values.phone}` }, url)} workstations={data} />
       {loading && <AlertLoading message="Almacenando trabajador" />}
       {error && <AlertError error={error} callback={() => clean()} />}
       {items && (
