@@ -5,45 +5,27 @@ import {
 import { Calendar } from 'react-feather'
 import Select from 'react-select'
 import DatePicker from 'react-datepicker'
+import moment from 'moment'
 import { Can, Indicators } from '../../../components/custom'
 import { singleDateFormatter } from '../../../utility/helpers/functions'
 
-
-
 const DashboardUI = (props) => {
-  const { performance, queryParams, areas } = props
+  const { performance, indicatorsParams, areas, temp } = props
   const { items } = areas
   const todayInitial = new Date()
   const todayEnd = new Date()
-  const [dateStart, setDateStart] = useState(todayInitial.setDate(todayInitial.getDate() - 30))
-  const [dateEnd, setDateEnd] = useState(todayEnd.setDate(todayEnd.getDate() - 1))
+  const [dateStart, setDateStart] = useState((temp != null) ? moment(temp.dateStart, 'YYYY-MM-DD').toDate() : todayInitial.setDate(todayInitial.getDate() - 30))
+  const [dateEnd, setDateEnd] = useState((temp != null) ? moment(temp.dateEnd, 'YYYY-MM-DD').toDate() : todayEnd.setDate(todayEnd.getDate() - 1))
   const [indicators, setIndicators] = useState({})
-  const [areasId, setAreasId] = useState('')
-  const [showDateStart, setShowDateStart] = useState(false)
+  const [areasId, setAreasId] = useState((temp != null && temp.areas != null) ? temp.areas : '')
   const { data } = performance
   const activityRisk = { acceptable: 25, alert: 62, unacceptable: 13 }
-  const activityRisk2 = { acceptable: 35, alert: 72, unacceptable: 23 }
   const options = items ? items.data.data.map((item) => ({ label: item.name, value: item.id, indicators: item.indicators })).sort((a, b) => { return a.label > b.label ? 1 : -1 }) : null
-
   const ExampleCustomInput = ({ value, onClick }) => (
     <h4 className="cursor-pointer" onClick={onClick}>
       {value}
     </h4>
   )
-  const handleFilter = (date) => {
-    setDateEnd(date)
-    queryParams(
-      `?date_start=${singleDateFormatter(dateStart, 'YYYY-MM-DD')}&date_end=${singleDateFormatter(dateEnd, 'YYYY-MM-DD')}&areas_id=${areasId}`)
-  }
-
-  const handleIndicators = (values) => {
-    setIndicators(
-      {
-        ...values,
-        activityRisk: activityRisk2,
-      },
-    )
-  }
   useEffect(() => {
     setIndicators(
       {
@@ -113,12 +95,13 @@ const DashboardUI = (props) => {
                     options={options}
                     isSearchable
                     placeholder="Todas las Areas"
+                    defaultValue={options.find((option) => (option.value === areasId) || (option.label === areasId))}
                     onChange={(e) => setAreasId(e.value)}
                     isMulti={false}
                   />
                 </Col>
                 <Col sm="2" lg="4" className="d-flex align-items-end">
-                  <Button onClick={() => handleFilter()} color="primary">Filtrar</Button>
+                  <Button onClick={() => indicatorsParams({ dateStart: singleDateFormatter(dateStart, 'YYYY-MM-DD'), dateEnd: singleDateFormatter(dateEnd, 'YYYY-MM-DD'), areas: areasId })} color="primary">Filtrar</Button>
                 </Col>
               </CardBody>
             </Card>
