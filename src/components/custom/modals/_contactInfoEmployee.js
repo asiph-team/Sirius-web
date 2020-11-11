@@ -9,9 +9,14 @@ import {
   ModalFooter,
   Row,
 } from 'reactstrap'
+import { useFetchResources } from '../../../utility/customHooks/resources'
+import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const ContactInfoEmployee = (props) => {
   const { onClose, visibility, item } = props
+  const { items: trainings } = useFetchResources(`${urlApi}${baseApiUrl}employees/${item.id}/trainings?all`)
+  const { items: data } = trainings
+  const trainingsList = data ? data.data.data : null
   return (
     <Modal
       isOpen={visibility}
@@ -42,6 +47,16 @@ const ContactInfoEmployee = (props) => {
           <Row className="mb-1">
             <Col><strong>Fecha de inicio laboral:</strong></Col>
             <Col>{item.date_start}</Col>
+          </Row>
+          <Row className="mb-1">
+            <Col><strong>Participantes:</strong></Col>
+            <Col>
+              {
+                trainingsList && trainingsList.map((emp) => (
+                  <li> {emp.name} </li>
+                ))
+              }
+            </Col>
           </Row>
         </Container>
       </ModalBody>
