@@ -10,7 +10,7 @@ import CharsCounter from '../../../components/custom/charsCounter'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, config
+    handleSubmit, placeholder, title, config, options,
   } = props
   return (
     <Card>
@@ -26,12 +26,17 @@ const FormUI = (props) => {
                 config.map((row) => (
                   <Row key={row[0].key}>
                     {
-                      row.map((item) => (
-                        <Col sm={item.grid} key={item.key}>
-                          <FormGroup {...item} />
-                          <CharsCounter maxLength={item.maxLength} values={values[item.name]} />
-                        </Col>
-                      ))
+                      row.map((item) => {
+                        if (options && item.options) {
+                          Object.assign(item, { ...item, options })
+                        }
+                        return (
+                          <Col sm={item.grid} key={item.key}>
+                            <FormGroup {...item} />
+                            <CharsCounter maxLength={item.maxLength} values={values[item.name]} />
+                          </Col>
+                        )
+                      })
                     }
                   </Row>
                 ))
