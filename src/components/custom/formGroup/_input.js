@@ -2,9 +2,11 @@ import React from 'react'
 import { Field } from 'formik'
 import 'react-datepicker/dist/react-datepicker.css'
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap'
-import DatePicker from 'react-datepicker'
+import DatePicker, { registerLocale } from 'react-datepicker'
+import { es } from 'date-fns/locale'
 import Select from 'react-select'
 
+registerLocale('es', es)
 const SelectField = (props) => {
   const {
     options, field, form, multiple,
@@ -50,6 +52,7 @@ const DatePickerField = (props) => {
   const { name, value } = field
   return (
     <DatePicker
+      locale="es"
       name={name}
       className="form-control"
       dateFormat="dd/MM/yyyy"
