@@ -86,8 +86,8 @@ const DashboardUI = (props) => {
           </Col>
           <Col lg="6" md="6" sm="12">
             <Card>
-              <CardBody className="d-flex justify-content-between p-1">
-                <Col sm="10" lg="8">
+              <CardBody className="d-flex justify-content-between">
+                <Col sm="10" lg="9">
                   <Select
                     className="w-full"
                     classNamePrefix="select"
@@ -100,7 +100,7 @@ const DashboardUI = (props) => {
                     isMulti={false}
                   />
                 </Col>
-                <Col sm="2" lg="4" className="d-flex align-items-end">
+                <Col sm="2" lg="3" className="d-flex flex-row-reverse">
                   <Button onClick={() => indicatorsParams({ dateStart: singleDateFormatter(dateStart, 'YYYY-MM-DD'), dateEnd: singleDateFormatter(dateEnd, 'YYYY-MM-DD'), areas: areasId })} color="primary">Filtrar</Button>
                 </Col>
               </CardBody>
