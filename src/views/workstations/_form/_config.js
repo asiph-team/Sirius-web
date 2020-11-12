@@ -38,11 +38,21 @@ export const Editconfig = [
     {
       input: 'CustomInput',
       key: 1,
-      name: 'area',
-      title: 'Area de Trabajo',
+      name: 'name',
+      title: 'Nombre del puesto de trabajo*',
       type: 'text',
       grid: 12,
-      disabled: true,
+    },
+  ],
+  [
+    {
+      input: 'CustomSelect',
+      key: 2,
+      name: 'area_id',
+      title: 'Area de pertenencia*',
+      type: 'text',
+      options: [],
+      grid: 12,
     },
   ],
   [
