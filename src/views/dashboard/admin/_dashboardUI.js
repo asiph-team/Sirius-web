@@ -95,7 +95,7 @@ const DashboardUI = (props) => {
                     options={options}
                     isSearchable
                     placeholder="Todas las Areas"
-                    defaultValue={options.find((option) => (option.value === areasId) || (option.label === areasId))}
+                    defaultValue={options && options.find((option) => (option.value === areasId) || (option.label === areasId))}
                     onChange={(e) => setAreasId(e.value)}
                     isMulti={false}
                   />
