@@ -4,11 +4,13 @@ import {
 } from 'reactstrap'
 import { Calendar } from 'react-feather'
 import Select from 'react-select'
-import DatePicker from 'react-datepicker'
+import DatePicker, { registerLocale } from 'react-datepicker'
+import { es } from 'date-fns/locale'
 import moment from 'moment'
 import { Can, Indicators } from '../../../components/custom'
 import { singleDateFormatter } from '../../../utility/helpers/functions'
 
+registerLocale('es', es)
 const DashboardUI = (props) => {
   const { performance, indicatorsParams, areas, temp } = props
   const { items } = areas
@@ -46,6 +48,7 @@ const DashboardUI = (props) => {
                   <div className="mx-1">
                     <h4 className="primary mb-0 font-weight-bold">Fecha Inicio</h4>
                     <DatePicker
+                      locale="es"
                       name="date_start"
                       dateFormat="dd/MM/yyyy"
                       className="form-control"
@@ -66,6 +69,7 @@ const DashboardUI = (props) => {
                   <div className="mx-1">
                     <h5 className="primary mb-0">Fecha Término</h5>
                     <DatePicker
+                      locale="es"
                       name="date_end"
                       dateFormat="dd/MM/yyyy"
                       className="form-control"
