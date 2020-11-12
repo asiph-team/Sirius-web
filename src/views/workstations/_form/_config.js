@@ -57,16 +57,6 @@ export const Editconfig = [
   ],
   [
     {
-      input: 'CustomInput',
-      key: 1,
-      name: 'name',
-      title: 'Nombre del puesto de trabajo*',
-      type: 'text',
-      grid: 12,
-    },
-  ],
-  [
-    {
       input: 'CustomTextArea',
       key: 3,
       name: 'description',
