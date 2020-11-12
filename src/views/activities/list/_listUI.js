@@ -32,7 +32,7 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Actividades" icon="Activity">
-        <Search placeholder="Buscar por nombre" search={search} temp={temp} icon="Search" param="filter" />
+        <Search placeholder="Buscar por nombre o puesto de trabajo" search={search} temp={temp} icon="Search" param="filter" />
         <Can rule="activities:add">
           <Link to="/dashboard/activities/add">
             <Button color="primary">
