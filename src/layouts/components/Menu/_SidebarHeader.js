@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import { NavLink } from 'react-router-dom'
 import classnames from 'classnames'
 import { X } from 'react-feather'
-import logo from '../../../assets/img/logo/logo.png'
 
 class SidebarHeader extends PureComponent {
   render() {
@@ -15,7 +14,6 @@ class SidebarHeader extends PureComponent {
         <ul className="nav navbar-nav flex-row">
           <li className="nav-item mr-auto">
             <NavLink to="/" className="navbar-brand">
-              <img className="brand-logo" src={logo} alt="Sinjury" />
               <h2 className="brand-text mb-0">Sinjury</h2>
             </NavLink>
           </li>
