@@ -11,6 +11,7 @@ const ContextAuth = createContext({
   accessToken: null,
   initiateLogin: () => { },
   handleAuthentication: () => { },
+  updateValidPassword: () => { },
   logout: () => { },
 })
 const authUrl = {
@@ -44,6 +45,12 @@ const Auth = (props) => {
     }
   }
 
+  const updateValidPassword = (data) => {
+    const { access_token } = JSON.parse(localStorage.getItem('user'))
+    const user = { ...data, valid_password: true }
+    dispatch(fetchSuccessAuth({ user, access_token }))
+  }
+
   const logout = () => {
     setSession(null, true)
   }
@@ -51,6 +58,7 @@ const Auth = (props) => {
   const authProviderValue = {
     ...state,
     handleAuthentication,
+    updateValidPassword,
     logout,
   }
   const { children } = props

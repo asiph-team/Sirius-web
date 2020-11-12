@@ -3,12 +3,13 @@ import {
   DropdownMenu, DropdownItem, DropdownToggle, UncontrolledDropdown,
 } from 'reactstrap'
 import * as Icon from 'react-feather'
-import { UpdateUserPassword } from '../../../components/custom/modals'
+import { UpdateUserPassword, RecoveryUserPassword } from '../../../components/custom/modals'
 import { profiles } from '../../../utility/helpers/consts'
 
 const UserDropdown = (props) => {
-  const { handleLogout, user } = props
+  const { handleLogout, user, updateValidPassword } = props
   const [visibility, setVisibility] = useState(false)
+  const [visibilityRecovery, setVisibilityRecovery] = useState(!user.valid_password)
   return (
     <DropdownMenu right>
       <DropdownItem
@@ -41,6 +42,13 @@ const UserDropdown = (props) => {
         setVisibility={setVisibility}
         userData={user}
         onClose={() => setVisibility(false)}
+      />
+      <RecoveryUserPassword
+        visibility={visibilityRecovery}
+        setVisibility={setVisibilityRecovery}
+        userData={user}
+        updateValidPassword={updateValidPassword}
+        onClose={() => setVisibilityRecovery(false)}
       />
     </DropdownMenu>
   )
