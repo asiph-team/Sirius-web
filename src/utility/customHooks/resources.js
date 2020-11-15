@@ -75,7 +75,7 @@ export function useFetchResources(url) {
 
   const indicatorsParams = async (data) => {
     dispatch(fetchStart())
-    const newUrl = data.area ? `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}&area_id=${data.area}` : `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}`
+    const newUrl = (data.area == null || !data.area) ? `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}` : `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}&area_id=${data.area}`
     await axios.get(`${newUrl}`, header)
       .then((response) => dispatch(fetchSearch(response.data, data)))
       .catch((error) => dispatch(fetchError(error)))
