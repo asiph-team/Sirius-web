@@ -15,32 +15,32 @@ const Indicators = ({ performance }) => {
           <CardBody>
             <div className="d-flex justify-content-between mb-25">
               <h4 className="mb-25 primary font-weight-bold">Desempeño Global</h4>
-              <h4 className="success">{`${globalPerformance}%`}</h4>
+              <h4 className="success">{`${Math.round(globalPerformance)}%`}</h4>
             </div>
-            <Progress className="mb-2" color="success" value={globalPerformance} />
+            <Progress className="mb-2" color="success" value={Math.round(globalPerformance)} />
             <div className="d-flex justify-content-between mb-25">
               <h4 className="mb-25 primary font-weight-bold">Planes de acción</h4>
-              <h4 className="success">{`${actionsPlans}%`}</h4>
+              <h4 className="success">{`${Math.round(actionsPlans)}%`}</h4>
             </div>
-            <Progress className="mb-2" color="success" value={actionsPlans} />
+            <Progress className="mb-2" color="success" value={Math.round(actionsPlans)} />
 
             <div className="d-flex justify-content-between mb-25">
               <h4 className="mb-25 primary font-weight-bold">Capacitación</h4>
-              <h4 className="danger">{`${trainings}%`}</h4>
+              <h4 className="danger">{`${Math.round(trainings)}%`}</h4>
             </div>
-            <Progress className="mb-2" color="danger" value={trainings} />
+            <Progress className="mb-2" color="danger" value={Math.round(trainings)} />
 
             <div className="d-flex justify-content-between mb-25">
               <h4 className="mb-25 primary font-weight-bold">PVE</h4>
-              <h4 className="success">{`${PVE}%`}</h4>
+              <h4 className="success">{`${Math.round(PVE)}%`}</h4>
             </div>
-            <Progress className="mb-2" color="success" value={PVE} />
+            <Progress className="mb-2" color="success" value={Math.round(PVE)} />
 
             <div className="d-flex justify-content-between mb-25">
               <h4 className="mb-25 primary font-weight-bold">Liderazgo</h4>
-              <h4 className="success">{`${leadership}%`}</h4>
+              <h4 className="success">{`${Math.round(leadership)}%`}</h4>
             </div>
-            <Progress className="mb-2" color="success" value={leadership} />
+            <Progress className="mb-2" color="success" value={Math.round(leadership)} />
           </CardBody>
         </Card>
       </Col>
