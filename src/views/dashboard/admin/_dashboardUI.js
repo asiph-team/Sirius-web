@@ -14,21 +14,25 @@ registerLocale('es', es)
 const DashboardUI = (props) => {
   const { performance, indicatorsParams, areas, temp } = props
   const { items } = areas
-  const todayInitial = new Date()
+  const todayInitial = moment(new Date(), 'YYYY-MM-DD').toDate()
   const todayEnd = new Date()
   const [dateStart, setDateStart] = useState((temp != null) ? moment(temp.dateStart, 'YYYY-MM-DD').toDate() : todayInitial.setDate(todayInitial.getDate() - 30))
   const [dateEnd, setDateEnd] = useState((temp != null) ? moment(temp.dateEnd, 'YYYY-MM-DD').toDate() : todayEnd.setDate(todayEnd.getDate() - 1))
   const [indicators, setIndicators] = useState({})
-  const [areasId, setAreasId] = useState((temp != null && temp.areas != null) ? temp.areas : '')
+  const [areasId, setAreasId] = useState((temp != null && temp.area != null) ? temp.area : '')
   const { data } = performance
   const activityRisk = { acceptable: 25, alert: 62, unacceptable: 13 }
   const options = items ? items.data.data.map((item) => ({ label: item.name, value: item.id, indicators: item.indicators })).sort((a, b) => { return a.label > b.label ? 1 : -1 }) : null
+  options.push({ label: 'Todas las Areas', value: null })
   const DateCustomInput = ({ value, onClick }) => (
     <h4 className="cursor-pointer" onClick={onClick}>
       {value}
     </h4>
   )
   useEffect(() => {
+    if (!temp) {
+      indicatorsParams({ dateStart: singleDateFormatter(dateStart, 'YYYY-MM-DD'), dateEnd: singleDateFormatter(dateEnd, 'YYYY-MM-DD') })
+    }
     setIndicators(
       {
         ...data,
@@ -105,7 +109,7 @@ const DashboardUI = (props) => {
                   />
                 </Col>
                 <Col sm="2" lg="3" className="d-flex flex-row-reverse">
-                  <Button onClick={() => indicatorsParams({ dateStart: singleDateFormatter(dateStart, 'YYYY-MM-DD'), dateEnd: singleDateFormatter(dateEnd, 'YYYY-MM-DD'), areas: areasId })} color="primary">Filtrar</Button>
+                  <Button onClick={() => indicatorsParams({ dateStart: singleDateFormatter(dateStart, 'YYYY-MM-DD'), dateEnd: singleDateFormatter(dateEnd, 'YYYY-MM-DD'), area: areasId })} color="primary">Filtrar</Button>
                 </Col>
               </CardBody>
             </Card>
