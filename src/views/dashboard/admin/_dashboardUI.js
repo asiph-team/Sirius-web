@@ -23,7 +23,7 @@ const DashboardUI = (props) => {
   const { data } = performance
   const activityRisk = { acceptable: 25, alert: 62, unacceptable: 13 }
   const options = items ? items.data.data.map((item) => ({ label: item.name, value: item.id, indicators: item.indicators })).sort((a, b) => { return a.label > b.label ? 1 : -1 }) : null
-  options.push({ label: 'Todas las Areas', value: null })
+  if (options) { options.push({ label: 'Todas las Areas', value: null }) }
   const DateCustomInput = ({ value, onClick }) => (
     <h4 className="cursor-pointer" onClick={onClick}>
       {value}
