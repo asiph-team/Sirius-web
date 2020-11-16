@@ -1,7 +1,7 @@
 export const headers = [
   {
     selector: 'name',
-    name: 'Nombre',
+    name: 'Nombre de actividad',
     sorteble: true,
   },
   {
