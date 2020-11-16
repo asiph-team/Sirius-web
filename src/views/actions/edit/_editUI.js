@@ -11,7 +11,7 @@ const EditUI = (props) => {
   return (
     <>
       <Header title="Editar plan de acción" icon="BookOpen" />
-      <FormUI handleSubmit={handleSubmit} title="Editar" options={options} placeholder={placeholder} />
+      <FormUI handleSubmit={handleSubmit} title="Guardar" options={options} placeholder={placeholder} />
     </>
   )
 }
