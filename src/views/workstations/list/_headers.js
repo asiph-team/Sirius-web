@@ -5,7 +5,7 @@ export const headers = [
     sortable: true,
   },
   {
-    name: 'Area',
+    name: 'Área de pertenencia',
     selector: 'area',
     sortable: true,
   },
