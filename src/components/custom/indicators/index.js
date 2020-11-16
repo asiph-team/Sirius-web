@@ -8,6 +8,7 @@ const Indicators = ({ performance }) => {
   const {
     globalPerformance, actionsPlans, trainings, PVE, leadership, activityRisk,
   } = performance
+  const indicatorColor = (data) => (data > 50) ? 'success' : 'danger'
   return (
     <Row>
       <Col lg="6" md="6" sm="6">
@@ -15,32 +16,32 @@ const Indicators = ({ performance }) => {
           <CardBody>
             <div className="d-flex justify-content-between mb-25">
               <h4 className="mb-25 primary font-weight-bold">Desempeño Global</h4>
-              <h4 className="success">{`${Math.round(globalPerformance)}%`}</h4>
+              <h4 className={indicatorColor(Math.round(globalPerformance))}>{`${Math.round(globalPerformance)}%`}</h4>
             </div>
-            <Progress className="mb-2" color="success" value={Math.round(globalPerformance)} />
+            <Progress className="mb-2" color={indicatorColor(Math.round(globalPerformance))} value={Math.round(globalPerformance)} />
             <div className="d-flex justify-content-between mb-25">
               <h4 className="mb-25 primary font-weight-bold">Planes de acción</h4>
-              <h4 className="success">{`${Math.round(actionsPlans)}%`}</h4>
+              <h4 className={indicatorColor(Math.round(actionsPlans))}>{`${Math.round(actionsPlans)}%`}</h4>
             </div>
-            <Progress className="mb-2" color="success" value={Math.round(actionsPlans)} />
+            <Progress className="mb-2" color={indicatorColor(Math.round(actionsPlans))} value={Math.round(actionsPlans)} />
 
             <div className="d-flex justify-content-between mb-25">
               <h4 className="mb-25 primary font-weight-bold">Capacitación</h4>
-              <h4 className="danger">{`${Math.round(trainings)}%`}</h4>
+              <h4 className={indicatorColor(Math.round(trainings))}>{`${Math.round(trainings)}%`}</h4>
             </div>
-            <Progress className="mb-2" color="danger" value={Math.round(trainings)} />
+            <Progress className="mb-2" color={indicatorColor(Math.round(trainings))} value={Math.round(trainings)} />
 
             <div className="d-flex justify-content-between mb-25">
               <h4 className="mb-25 primary font-weight-bold">PVE</h4>
-              <h4 className="success">{`${Math.round(PVE)}%`}</h4>
+              <h4 className={indicatorColor(Math.round(PVE))}>{`${Math.round(PVE)}%`}</h4>
             </div>
-            <Progress className="mb-2" color="success" value={Math.round(PVE)} />
+            <Progress className="mb-2" color={indicatorColor(Math.round(PVE))} value={Math.round(PVE)} />
 
             <div className="d-flex justify-content-between mb-25">
               <h4 className="mb-25 primary font-weight-bold">Liderazgo</h4>
-              <h4 className="success">{`${Math.round(leadership)}%`}</h4>
+              <h4 className={indicatorColor(Math.round(leadership))}>{`${Math.round(leadership)}%`}</h4>
             </div>
-            <Progress className="mb-2" color="success" value={Math.round(leadership)} />
+            <Progress className="mb-2" color={indicatorColor(Math.round(leadership))} value={Math.round(leadership)} />
           </CardBody>
         </Card>
       </Col>
