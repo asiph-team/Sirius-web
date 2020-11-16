@@ -1,6 +1,6 @@
 export const headers = [
   {
-    name: 'Nombre',
+    name: 'Nombre puesto de trabajo',
     selector: 'name',
     sortable: true,
   },
