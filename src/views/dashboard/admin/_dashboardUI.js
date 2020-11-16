@@ -71,7 +71,7 @@ const DashboardUI = (props) => {
                 <div className="d-flex">
                   <Calendar size={40} className="primary" />
                   <div className="mx-1">
-                    <h5 className="primary mb-0">Fecha Término</h5>
+                    <h4 className="primary mb-0 font-weight-bold">Fecha Término</h4>
                     <DatePicker
                       locale="es"
                       name="date_end"
