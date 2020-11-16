@@ -1,8 +1,9 @@
 export const headers = [
   {
     selector: 'name',
-    name: 'Nombre',
+    name: 'Nombre plan de acción',
     sortable: true,
+    minWidth: '250px',
   },
   {
     selector: 'date_initial',
@@ -23,7 +24,7 @@ export const headers = [
     selector: 'priority',
     name: 'Prioridad',
     sortable: true,
-    maxWidth: '100px',
+    maxWidth: '50px',
   },
   {
     selector: 'date_committed',
@@ -33,6 +34,6 @@ export const headers = [
   {
     selector: 'actions',
     name: '',
-    maxWidth: '100px',
+    maxWidth: '50px',
   },
 ]
