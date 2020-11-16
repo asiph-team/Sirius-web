@@ -1,7 +1,7 @@
 export const headers = [
   {
     selector: 'fullname',
-    name: 'Nombre',
+    name: 'Nombre del trabajador',
     sortable: true,
   },
   {
@@ -11,7 +11,7 @@ export const headers = [
   },
   {
     selector: 'area',
-    name: 'Area de Trabajo',
+    name: 'Área de Trabajo',
     sortable: true,
   },
   {
