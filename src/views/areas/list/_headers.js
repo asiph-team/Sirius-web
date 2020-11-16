@@ -1,17 +1,17 @@
 export const headers = [
   {
     selector: 'name',
-    name: 'Nombre',
+    name: 'Nombre del área',
     sortable: true,
   },
   {
     selector: 'description',
-    name: 'Descripción',
+    name: 'Descripción del área*',
     sortable: true,
   },
   {
     selector: 'user_id',
-    name: 'Responsable área',
+    name: 'Responsable del área',
     sortable: true,
   },
   {

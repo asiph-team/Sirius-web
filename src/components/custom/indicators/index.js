@@ -61,7 +61,7 @@ const Indicators = ({ performance }) => {
                   formatter: (val) => `${val}%`,
                 },
                 legend: { show: false },
-                labels: ['Aceptable', 'Alerta', 'Inaceptable'],
+                labels: ['Aceptable', 'Alerta', 'Crítico'],
                 colors: ['#06D6A0', '#FFD166', '#EF476F'],
               }}
               series={[activityRisk.acceptable, activityRisk.alert, activityRisk.unacceptable]}
@@ -103,7 +103,7 @@ const Indicators = ({ performance }) => {
                     margin: '0 5px',
                   }}
                 />
-                <span className="text-bold-600 mx-50">Inaceptable</span>
+                <span className="text-bold-600 mx-50">Crítico</span>
               </div>
             </div>
           </CardBody>
