@@ -9,7 +9,7 @@ const EditUI = (props) => {
   return (
     <>
       <Header title="Editar puesto de trabajo" icon="Briefcase" />
-      <FormUI handleSubmit={handleSubmit} options={options} title="Guardar cambios" config={Editconfig} placeholder={placeholder} />
+      <FormUI handleSubmit={handleSubmit} options={options} title="Guardar" config={Editconfig} placeholder={placeholder} />
     </>
   )
 }
