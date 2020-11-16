@@ -10,7 +10,7 @@ const EditUI = (props) => {
   return (
     <>
       <Header title="Editar programa de vigilancia" icon="Box" />
-      <FormUI handleSubmit={handleSubmit} title="Editar" config={editConfig} validationSchema={programsSchemaEdit} options={options} placeholder={placeholder} />
+      <FormUI handleSubmit={handleSubmit} title="Guardar" config={editConfig} validationSchema={programsSchemaEdit} options={options} placeholder={placeholder} />
     </>
   )
 }

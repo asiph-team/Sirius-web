@@ -14,7 +14,7 @@ const AddUI = (props) => {
   return (
     <>
       <Header title="Actualizar capacitación" icon="Clipboard" />
-      <FormUI handleSubmit={handleSubmit} title="Editar" config={editConfig} options={options} validationSchema={trainingSchemaEdit} defaultData={dataParticipants} placeholder={placeholder} />
+      <FormUI handleSubmit={handleSubmit} title="Guardar" config={editConfig} options={options} validationSchema={trainingSchemaEdit} defaultData={dataParticipants} placeholder={placeholder} />
     </>
   )
 }
