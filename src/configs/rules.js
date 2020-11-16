@@ -28,6 +28,7 @@ export const rules = {
   ],
   chief_of_area: [
     'dashboard:manager',
+    'dashboard:chief_of_area',
     'trainings:edit',
     'trainings:delete',
     'programs:edit',

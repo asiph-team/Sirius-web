@@ -42,61 +42,60 @@ const DashboardUI = (props) => {
   }, [])
   return (
     <>
-
-      <Row>
-        <Col lg="6" md="6" sm="12">
-          <Card>
-            <CardBody className="d-flex justify-content-between p-1">
-              <div className="d-flex">
-                <Calendar size={40} className="primary" />
-                <div className="mx-1">
-                  <h4 className="primary mb-0 font-weight-bold">Fecha Inicio</h4>
-                  <DatePicker
-                    locale="es"
-                    name="date_start"
-                    dateFormat="dd/MM/yyyy"
-                    className="form-control"
-                    selected={dateStart}
-                    autoComplete="off"
-                    onChange={(date) => {
-                      setDateStart(date)
-                    }}
-                    showMonthDropdown
-                    showYearDropdown
-                    dropdownMode="select"
-                    customInput={<DateCustomInput />}
-                  />
+      <Can rule="dashboard:admin">
+        <Row>
+          <Col lg="6" md="6" sm="12">
+            <Card>
+              <CardBody className="d-flex justify-content-between p-1">
+                <div className="d-flex">
+                  <Calendar size={40} className="primary" />
+                  <div className="mx-1">
+                    <h4 className="primary mb-0 font-weight-bold">Fecha Inicio</h4>
+                    <DatePicker
+                      locale="es"
+                      name="date_start"
+                      dateFormat="dd/MM/yyyy"
+                      className="form-control"
+                      selected={dateStart}
+                      autoComplete="off"
+                      onChange={(date) => {
+                        setDateStart(date)
+                      }}
+                      showMonthDropdown
+                      showYearDropdown
+                      dropdownMode="select"
+                      customInput={<DateCustomInput />}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="d-flex">
-                <Calendar size={40} className="primary" />
-                <div className="mx-1">
-                  <h4 className="primary mb-0 font-weight-bold">Fecha Término</h4>
-                  <DatePicker
-                    locale="es"
-                    name="date_end"
-                    dateFormat="dd/MM/yyyy"
-                    className="form-control"
-                    selected={dateEnd}
-                    autoComplete="off"
-                    onChange={(date) => {
-                      setDateEnd(date)
-                    }}
-                    showMonthDropdown
-                    showYearDropdown
-                    dropdownMode="select"
-                    customInput={<DateCustomInput />}
-                  />
+                <div className="d-flex">
+                  <Calendar size={40} className="primary" />
+                  <div className="mx-1">
+                    <h4 className="primary mb-0 font-weight-bold">Fecha Término</h4>
+                    <DatePicker
+                      locale="es"
+                      name="date_end"
+                      dateFormat="dd/MM/yyyy"
+                      className="form-control"
+                      selected={dateEnd}
+                      autoComplete="off"
+                      onChange={(date) => {
+                        setDateEnd(date)
+                      }}
+                      showMonthDropdown
+                      showYearDropdown
+                      dropdownMode="select"
+                      customInput={<DateCustomInput />}
+                    />
+                  </div>
                 </div>
-              </div>
-            </CardBody>
-          </Card>
-        </Col>
-        <Col lg="6" md="6" sm="12">
-          <Card>
-            <CardBody className="d-flex justify-content-between">
-              <Col sm="10" lg="9">
-                <Can rule="dashboard:admin">
+              </CardBody>
+            </Card>
+          </Col>
+          <Col lg="6" md="6" sm="12">
+            <Card>
+              <CardBody className="d-flex justify-content-between">
+                <Col sm="10" lg="9">
                   <Select
                     className="w-full"
                     classNamePrefix="select"
@@ -108,16 +107,72 @@ const DashboardUI = (props) => {
                     onChange={(e) => setAreasId(e.value)}
                     isMulti={false}
                   />
-                </Can>
-              </Col>
-              <Col sm="2" lg="3" className="d-flex flex-row-reverse">
-                <Button onClick={() => indicatorsParams({ dateStart: singleDateFormatter(dateStart, 'YYYY-MM-DD'), dateEnd: singleDateFormatter(dateEnd, 'YYYY-MM-DD'), area: areasId })} color="primary">Filtrar</Button>
-              </Col>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-
+                </Col>
+                <Col sm="2" lg="3" className="d-flex flex-row-reverse">
+                  <Button onClick={() => indicatorsParams({ dateStart: singleDateFormatter(dateStart, 'YYYY-MM-DD'), dateEnd: singleDateFormatter(dateEnd, 'YYYY-MM-DD'), area: areasId })} color="primary">Filtrar</Button>
+                </Col>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+      </Can>
+      <Can rule="dashboard:chief_of_area">
+        <Row>
+          <Col lg="12" md="12" sm="12">
+            <Card>
+              <CardBody className="d-flex justify-content-start p-1">
+                <div className="d-flex">
+                  <Calendar size={40} className="primary" />
+                  <div className="mx-1">
+                    <h4 className="primary mb-0 font-weight-bold">Fecha Inicio</h4>
+                    <DatePicker
+                      locale="es"
+                      name="date_start"
+                      dateFormat="dd/MM/yyyy"
+                      className="form-control"
+                      selected={dateStart}
+                      autoComplete="off"
+                      onChange={(date) => {
+                        setDateStart(date)
+                      }}
+                      showMonthDropdown
+                      showYearDropdown
+                      dropdownMode="select"
+                      customInput={<DateCustomInput />}
+                    />
+                  </div>
+                </div>
+                <div className="d-flex mr-2">
+                  <Calendar size={40} className="primary" />
+                  <div className="mx-1">
+                    <h4 className="primary mb-0 font-weight-bold">Fecha Término</h4>
+                    <DatePicker
+                      locale="es"
+                      name="date_end"
+                      dateFormat="dd/MM/yyyy"
+                      className="form-control"
+                      selected={dateEnd}
+                      autoComplete="off"
+                      onChange={(date) => {
+                        setDateEnd(date)
+                      }}
+                      showMonthDropdown
+                      showYearDropdown
+                      dropdownMode="select"
+                      customInput={<DateCustomInput />}
+                    />
+                  </div>
+                </div>
+                <div className="d-flex justify-content-center align-items-center">
+                  <div className="mx-1">
+                    <Button onClick={() => indicatorsParams({ dateStart: singleDateFormatter(dateStart, 'YYYY-MM-DD'), dateEnd: singleDateFormatter(dateEnd, 'YYYY-MM-DD'), area: areasId })} color="primary">Filtrar</Button>
+                  </div>
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+      </Can>
       <Can rule="dashboard:manager">
         {
           indicators.activityRisk && (
