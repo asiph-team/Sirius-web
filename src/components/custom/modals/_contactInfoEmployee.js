@@ -45,8 +45,36 @@ const ContactInfoEmployee = (props) => {
             <Col>+569{item.phone}</Col>
           </Row>
           <Row className="mb-1">
+            <Col><strong>Contacto de emergencia:</strong></Col>
+            <Col>+569{item.phone_emergency}</Col>
+          </Row>
+          <Row className="mb-1">
             <Col><strong>Fecha de inicio laboral:</strong></Col>
             <Col>{item.date_start}</Col>
+          </Row>
+          <Row className="mb-1">
+            <Container>
+              <strong>Información adicional del trabajador:</strong>
+              <Row>
+                <Col>
+                  Estatura:
+                  {item.height}
+                </Col>
+                <Col>
+                  Talla:
+                  {item.size}
+                </Col>
+                <Col>
+                  Pantalón:
+                  {item.size_pants}
+                </Col>
+                <Col>
+                  Zapato:
+                  {item.size_shoe}
+                </Col>
+
+              </Row>
+            </Container>
           </Row>
           <Row className="mb-1">
             <Col><strong>Capacitaciones:</strong></Col>
@@ -54,11 +82,17 @@ const ContactInfoEmployee = (props) => {
               {
                 trainingsList && trainingsList.length ? (
                   trainingsList.map((emp) => (
-                    <li> {emp.name} </li>
+                    <li>
+                      {emp.name}
+                    </li>
                   ))
                 ) : (<p>Sin capacitaciones registradas</p>)
               }
             </Col>
+          </Row>
+          <Row className="mb-1">
+            <Col><strong>Observaciones:</strong></Col>
+            <Col>{item.observation}</Col>
           </Row>
         </Container>
       </ModalBody>
