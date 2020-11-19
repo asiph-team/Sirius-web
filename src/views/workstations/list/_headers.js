@@ -16,15 +16,9 @@ export const headers = [
     sortable: true,
   },
   {
-    name: 'Total capacitaciones',
-    selector: 'total_trainings',
-    maxWidth: '80px',
-    sortable: true,
-  },
-  {
-    name: 'Total programas',
-    selector: 'total_programs',
-    maxWidth: '80px',
+    name: 'Total trabajadores por puesto de trabajo',
+    selector: 'total_employees',
+    maxWidth: '200px',
     sortable: true,
   },
   {
