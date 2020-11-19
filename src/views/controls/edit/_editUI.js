@@ -7,7 +7,6 @@ const EditUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } }, activities } = props
   const options = activities ? activities.data.data.map((item) => ({ label: item.name, value: item.id })) : null
   placeholder.date_start = placeholder.date_start ? moment(placeholder.date_start, 'YYYY-MM-DD').toDate() : moment(new Date(), 'YYYY-MM-DD').toDate()
-  console.log('placeholder', placeholder)
   return (
     <>
       <Header title="Editar medida de control" icon="Users" />
