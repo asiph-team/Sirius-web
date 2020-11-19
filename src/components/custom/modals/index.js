@@ -4,6 +4,7 @@ import UpdateUserPassword from './_updateUserPassword'
 import InfoWorkStations from './_infoWorkStations'
 import InfoTraining from './_infoTraining'
 import RecoveryUserPassword from './_recoveryUserPassword'
+import ContactInfoControlMeasure from './_contactControlMeasure'
 
 export {
   ContactInfoEmployee,
@@ -12,4 +13,5 @@ export {
   InfoWorkStations,
   InfoTraining,
   RecoveryUserPassword,
+  ContactInfoControlMeasure,
 }
