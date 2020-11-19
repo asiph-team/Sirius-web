@@ -167,3 +167,41 @@ export const CustomDatePicker = (props) => {
     </>
   )
 }
+
+const CustomFileInputField = (props) => {
+  const {
+    form, field,
+  } = props
+  const { name } = field
+  const { values } = form
+  console.log('field', field)
+  return (
+    <>
+      <Input
+        className="form-control"
+        name={name}
+        type="file"
+        onChange={(event) => {
+          form.setValues({
+            ...values,
+            [name]: event.target.files[0],
+          })
+        }}
+      />
+    </>
+  )
+}
+export const CustomFileInput = (props) => {
+  const {
+    name, title, small,
+  } = props
+  return (
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        name={name}
+        component={CustomFileInputField}
+      />
+    </>
+  )
+}
