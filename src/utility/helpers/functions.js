@@ -43,3 +43,9 @@ export const priorityES = (list, data, header) => {
   })
   return newData
 }
+export const formData = (values) => {
+  const keys = Object.keys(values)
+  const data = new FormData()
+  keys.forEach((key) => data.append(key, values[[key]]))
+  return data
+}
