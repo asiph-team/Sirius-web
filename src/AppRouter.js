@@ -34,6 +34,10 @@ const AreasEdit = lazy(() => import('./views/areas/edit'))
 const ProgramsList = lazy(() => import('./views/programs/list/'))
 const ProgramsAdd = lazy(() => import('./views/programs/add'))
 const ProgramsEdit = lazy(() => import('./views/programs/edit'))
+const ControlsList = lazy(() => import('./views/controls/list/'))
+const ControlsAdd = lazy(() => import('./views/controls/add'))
+const ControlsEdit = lazy(() => import('./views/controls/edit'))
+
 
 const AuthConfig = (props) => (
   <ContextAuth.Consumer>
@@ -100,6 +104,9 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/programs" component={ProgramsList} />
       <RouteConfig exact path="/dashboard/programs/add" component={ProgramsAdd} />
       <RouteConfig exact path="/dashboard/programs/edit" component={ProgramsEdit} />
+      <RouteConfig exact path="/dashboard/controls" component={ControlsList} />
+      <RouteConfig exact path="/dashboard/controls/add" component={ControlsAdd} />
+      <RouteConfig exact path="/dashboard/controls/edit" component={ControlsEdit} />
     </Switch>
   </Router>
 )
