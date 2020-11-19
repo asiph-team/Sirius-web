@@ -38,7 +38,6 @@ export function useFetchResources(url) {
   const remove = async (data) => {
     dispatch(fetchStart())
     await axios.delete(`${url.replace('?', '/')}${data.id}`, header)
-      .then((response) => console.log('response', response))
       .catch((error) => dispatch(fetchError(error)))
     await axios.get(`${url}`, header)
       .then((response) => dispatch(fetchSuccess(response.data)))
@@ -109,6 +108,13 @@ export function usePostResources() {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const updateFiles = async (data, url) => {
+    dispatch(fetchStart())
+    await axios.post(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+      .then((response) => dispatch(fetchSuccess(response.data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   const changeStatus = async (data, url) => {
     dispatch(fetchStart())
     await axios.put(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
@@ -125,5 +131,13 @@ export function usePostResources() {
 
   const clean = () => dispatch(cleanState())
 
-  return { data, postData, clean, update, patchData, changeStatus }
+  return {
+    data,
+    postData,
+    clean,
+    update,
+    patchData,
+    changeStatus,
+    updateFiles,
+  }
 }
