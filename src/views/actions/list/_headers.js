@@ -6,6 +6,11 @@ export const headers = [
     minWidth: '250px',
   },
   {
+    selector: 'area',
+    name: 'Área',
+    sortable: true,
+  },
+  {
     selector: 'date_initial',
     name: 'Fecha ingreso',
     sortable: true,
@@ -30,6 +35,7 @@ export const headers = [
     selector: 'date_committed',
     name: 'Fecha compromiso',
     sortable: true,
+    maxWidth: '100px',
   },
   {
     selector: 'actions',
