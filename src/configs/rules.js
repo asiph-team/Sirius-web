@@ -25,6 +25,9 @@ export const rules = {
     'programs:delete',
     'actions:edit',
     'actions:delete',
+    'controls:add',
+    'controls:edit',
+    'controls:delete',
   ],
   chief_of_area: [
     'dashboard:manager',
@@ -35,5 +38,7 @@ export const rules = {
     'programs:delete',
     'actions:edit',
     'actions:delete',
+    'controls:edit',
+    'controls:delete',
   ],
 }
