@@ -65,7 +65,7 @@ const ListUI = (props) => {
         visibility.remove && (
           <AlertDialog
             title={`¿Estás seguro de eliminar a ${selected.name}?`}
-            paragraph="Estas operación es irreversible, se eliminará toda la información relacionada al trabajador."
+            paragraph="Estas operación es irreversible, se eliminará toda la información relacionada con la medida de control."
             callback={() => remove({ id: selected.id }, null)}
             callbackCancel={() => setVisibility({ ...visibility, remove: false })}
           />

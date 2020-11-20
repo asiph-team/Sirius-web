@@ -8,6 +8,4 @@ export const controlsSchema = Yup.object().shape({
   activity_id: Yup.string()
     .ensure()
     .required('El área es requerida'),
-  image: Yup.string()
-    .required('La imagen es requerida'),
 })

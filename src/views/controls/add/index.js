@@ -18,7 +18,7 @@ const Add = () => {
   if (errorAreas) return <Error message={errorAreas} />
   return (
     <>
-      <AddUI handleSubmit={(values) => postData(formData(values), url)} areas={data} />
+      <AddUI handleSubmit={(values) => postData(formData({ name: values.name, activity_id: values.activity_id, ...(values.image && { image: values.image }) }), url)} areas={data} />
       {loading && <AlertLoading message="Almacenando medida de control" />}
       {error && <AlertError error={error} callback={() => clean()} />}
       {items && (
