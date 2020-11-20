@@ -21,7 +21,7 @@ const ListUI = (props) => {
     const newData = data.data.data.map((item) => {
       return {
         ...item,
-        area: item.area ? item.area.name : 'No Asignada',
+        area: item.area ? item.area.name : '--',
       }
     })
     return newData

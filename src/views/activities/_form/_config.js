@@ -23,7 +23,7 @@ export const config = [
       input: 'CustomTextArea',
       key: 3,
       name: 'description',
-      title: 'Descripción de la Actividad, principales tareas, consideraciones relevantes, principales riesgos*',
+      title: 'Descripción de la actividad, principales tareas, consideraciones relevantes, principales riesgos*',
       rows: 5,
       grid: 12,
     },

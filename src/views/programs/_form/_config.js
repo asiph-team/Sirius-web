@@ -37,7 +37,7 @@ export const editConfig = [
       input: 'CustomSelect',
       key: 2,
       name: 'workstations_id',
-      title: 'Puesto de Trabajo*',
+      title: 'Puesto de trabajo*',
       type: 'text',
       options: [],
       grid: 12,

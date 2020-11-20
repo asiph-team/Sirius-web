@@ -37,7 +37,7 @@ const InfoTraining = (props) => {
             <Col>{item.start_date}</Col>
           </Row>
           <Row className="mb-1">
-            <Col><strong>Fecha de Termino:</strong></Col>
+            <Col><strong>Fecha de término:</strong></Col>
             <Col>{item.end_date}</Col>
           </Row>
           <Row className="mb-1">

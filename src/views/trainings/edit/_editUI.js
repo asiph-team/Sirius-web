@@ -10,7 +10,7 @@ const AddUI = (props) => {
   placeholder.start_date = moment(placeholder.start_date, 'DD/MM/YYYY').toDate()
   placeholder.end_date = moment(placeholder.end_date, 'DD/MM/YYYY').toDate()
   const dataParticipants = participants ? participants.data.data.map((item) => ({ label: item.name, value: item.id })) : null
-  const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })) : null
+  const options = employees ? employees.data.data.map((item) => ({ label: `${item.name} ${item.lastname}`, value: item.id })).sort((a, b) => { return a.label > b.label ? 1 : -1 }) : null
   return (
     <>
       <Header title="Actualizar capacitación" icon="Clipboard" />

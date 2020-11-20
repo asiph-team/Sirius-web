@@ -6,7 +6,7 @@ export const headers = [
   },
   {
     selector: 'workstation',
-    name: 'Puesto de Trabajo',
+    name: 'Puesto de trabajo',
     sortable: true,
   },
   {

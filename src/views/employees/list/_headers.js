@@ -2,16 +2,18 @@ export const headers = [
   {
     selector: 'fullname',
     name: 'Nombre del trabajador',
+    minWidth: '250px',
     sortable: true,
   },
   {
     selector: 'rut',
     name: 'RUT',
     sortable: true,
+    maxWidth: '150px',
   },
   {
     selector: 'area',
-    name: 'Área de Trabajo',
+    name: 'Área de trabajo',
     sortable: true,
   },
   {
@@ -28,6 +30,6 @@ export const headers = [
   {
     selector: 'actions',
     name: '',
-    maxWidth: '100px',
+    minWidth: '50px',
   },
 ]

@@ -14,7 +14,7 @@ export const config = [
       input: 'CustomTextArea',
       key: 3,
       name: 'description',
-      title: 'Descripción del Cargo/ Funciones / Responsabilidades/ Competencias Requeridas / Principales Riesgos*',
+      title: 'Descripción del Cargo/ Funciones / Responsabilidades / Competencias Requeridas / Principales Riesgos*',
       rows: 5,
       grid: 12,
       maxLength: 300,
