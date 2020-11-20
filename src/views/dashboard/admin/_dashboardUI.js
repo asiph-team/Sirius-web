@@ -121,7 +121,7 @@ const DashboardUI = (props) => {
           <Col lg="12" md="12" sm="12">
             <Card>
               <CardBody className="d-flex justify-content-start p-1">
-                <div className="d-flex">
+                <div className="d-flex card-body">
                   <Calendar size={40} className="primary" />
                   <div className="mx-1">
                     <h4 className="primary mb-0 font-weight-bold">Fecha Inicio</h4>
@@ -142,7 +142,7 @@ const DashboardUI = (props) => {
                     />
                   </div>
                 </div>
-                <div className="d-flex mr-2">
+                <div className="d-flex mr-2 card-body">
                   <Calendar size={40} className="primary" />
                   <div className="mx-1">
                     <h4 className="primary mb-0 font-weight-bold">Fecha Término</h4>
@@ -163,7 +163,7 @@ const DashboardUI = (props) => {
                     />
                   </div>
                 </div>
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex align-items-center justify-content-end card-body">
                   <div className="mx-1">
                     <Button onClick={() => indicatorsParams({ dateStart: singleDateFormatter(dateStart, 'YYYY-MM-DD'), dateEnd: singleDateFormatter(dateEnd, 'YYYY-MM-DD'), area: areasId })} color="primary">Filtrar</Button>
                   </div>
