@@ -21,6 +21,7 @@ const ListUI = (props) => {
       return {
         ...item,
         manager: item.user ? item.user.name : 'No Asignado',
+        area: item.area ? item.area.name : '--',
       }
     })
     return newData
