@@ -12,7 +12,7 @@ import { singleDateFormatter } from '../../../utility/helpers/functions'
 const Edit = (props) => {
   const url = `${urlApi}/api/v1/actions`
   const { data: { loading, error, items }, update, clean } = usePostResources()
-  const { items: workstations } = useFetchResources(`${urlApi}/api/v1/employees?all`)
+  const { items: workstations } = useFetchResources(`${urlApi}/api/v1/employees?all&rol=chief_of_area`)
   const { items: data, loading: loadingEmployees, error: errorEmployees } = workstations
   if (loadingEmployees) return <LoadingSpinner />
   if (errorEmployees) return <Error message={errorEmployees} />
