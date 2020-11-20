@@ -107,7 +107,7 @@ const navigationConfig = [
   },
   {
     id: 'controls',
-    title: 'Medidas de Control',
+    title: 'Medidas de control',
     type: 'item',
     icon: <Icon.UserCheck size={20} />,
     permissions: ['administrator', 'chief_of_area'],

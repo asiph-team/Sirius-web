@@ -6,7 +6,7 @@ export const headers = [
   },
   {
     selector: 'description',
-    name: 'Descripción del área*',
+    name: 'Descripción del área',
     sortable: true,
   },
   {

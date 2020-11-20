@@ -17,7 +17,7 @@ export const headers = [
   },
   {
     selector: 'manager',
-    name: 'responsable',
+    name: 'Responsable',
     sortable: true,
   },
   {
