@@ -83,7 +83,7 @@ const navigationConfig = [
   },
   {
     id: 'programs',
-    title: 'Programas de vigilancia',
+    title: 'Vigilancia Médica',
     type: 'item',
     icon: <Icon.Video size={20} />,
     permissions: ['administrator', 'chief_of_area'],
