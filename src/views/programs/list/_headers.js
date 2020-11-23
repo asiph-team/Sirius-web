@@ -1,7 +1,7 @@
 export const headers = [
   {
     selector: 'name',
-    name: 'Nombre',
+    name: 'Nombre vigilancia médica',
     sortable: true,
   },
   {

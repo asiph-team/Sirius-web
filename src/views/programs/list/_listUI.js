@@ -20,7 +20,7 @@ const ListUI = (props) => {
     const newData = data.data.data.map((item) => {
       return {
         ...item,
-        workstation: item.workstation ? item.workstation.name : 'No Asignado',
+        workstation: item.workstation ? item.workstation.name : '--',
         workstations_id: item.workstation ? item.workstation.id : 'No Asignado',
       }
     })
@@ -31,7 +31,7 @@ const ListUI = (props) => {
   }
   return (
     <>
-      <Header title="Programas de Vigilancia" icon="Video">
+      <Header title="Vigilancia Médica" icon="Video">
         <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Can rule="programs:add">
           <Link to="/dashboard/programs/add">
@@ -59,8 +59,8 @@ const ListUI = (props) => {
       {
         visibility.remove && (
           <AlertDialog
-            title={`¿Estás seguro de eliminar el programa de vigilancia "${selected.name}"?`}
-            paragraph="Estas operación es irreversible, se eliminará toda la información respecto al programa de vigilancia."
+            title={`¿Estás seguro de eliminar la vigilancia médica "${selected.name}"?`}
+            paragraph="Estas operación es irreversible, se eliminará toda la información respecto a la vigilancia médica."
             callback={() => remove({ id: selected.id }, null)}
             callbackCancel={() => setVisibility({ ...visibility, remove: false })}
           />
