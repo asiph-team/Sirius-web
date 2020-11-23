@@ -9,7 +9,7 @@ const EditUI = (props) => {
   const options = workstations ? workstations.data.data.map((item) => ({ label: item.name, value: item.id })) : null
   return (
     <>
-      <Header title="Editar programa de vigilancia" icon="Box" />
+      <Header title="Editar vigilancia médica" icon="Box" />
       <FormUI handleSubmit={handleSubmit} title="Guardar" config={editConfig} validationSchema={programsSchemaEdit} options={options} placeholder={placeholder} />
     </>
   )
