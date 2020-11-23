@@ -16,11 +16,11 @@ const Add = () => {
   return (
     <>
       <AddUI handleSubmit={(values) => postData(values, url)} />
-      {loading && <AlertLoading message="Almacenando programa de vigilancia" />}
+      {loading && <AlertLoading message="Almacenando vigilancia médica" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
       <AlertSuccess
-        message="El programa de vigilancia ha sido creado."
+        message="La vigilancia médica ha sido creada."
         callback={() => {
           document.getElementById('form-programs').reset()
           clean()
