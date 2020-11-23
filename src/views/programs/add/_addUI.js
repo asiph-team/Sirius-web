@@ -9,7 +9,7 @@ const AddUI = (props) => {
   const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })) : null
   return (
     <>
-      <Header title="Agregar programas de vigilancia" icon="Box" />
+      <Header title="Agregar vigilancia médica" icon="Box" />
       <FormUI handleSubmit={handleSubmit} title="Agregar" options={options} config={config} validationSchema={programsSchema} />
     </>
   )
