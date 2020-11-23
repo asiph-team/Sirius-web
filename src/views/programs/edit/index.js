@@ -18,11 +18,11 @@ const Edit = (props) => {
   return (
     <>
       <EditUI handleSubmit={(values) => update({ name: values.name, description: values.description, workstations_id: [values.workstations_id] }, `${urlApi}/api/v1/programs/${values.id}`)} {...props} workstations={data} />
-      {loading && <AlertLoading message="Actualizando programa de vigilancia" />}
+      {loading && <AlertLoading message="Actualizando vigilancia médica" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
         <AlertSuccess
-          message="La información del programa de vigilancia ha sido actualizada."
+          message="La información de la vigilancia médica ha sido actualizada."
           callback={() => {
             document.getElementById('form-programs').reset()
             clean()
