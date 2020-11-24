@@ -39,7 +39,7 @@ const List = (props) => {
       return (
         <>
           <Can rule={`${resource}:edit`}><Link to={{ pathname: `/dashboard/${resource}/edit`, state: { placeholder: row } }}><Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
-          <Can rule={`${resource}:delete`}><Button onClick={() => show(row, 'remove')} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
+          <Can rule={`${resource}:delete`}><Button onClick={() => show(row, 'remove')} color="link" className="ml-1 p-0"><Icon.XCircle size={20} /></Button></Can>
         </>
       )
     },
