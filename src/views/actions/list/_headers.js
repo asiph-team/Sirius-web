@@ -3,7 +3,7 @@ export const headers = [
     selector: 'name',
     name: 'Nombre plan de acción',
     sortable: true,
-    minWidth: '250px',
+    minWidth: '200px',
   },
   {
     selector: 'area',
@@ -29,17 +29,23 @@ export const headers = [
     selector: 'priority',
     name: 'Prioridad',
     sortable: true,
-    maxWidth: '50px',
+    minWidth: '50px',
   },
   {
     selector: 'date_committed',
     name: 'Fecha compromiso',
     sortable: true,
-    maxWidth: '100px',
+    minWidth: '100px',
+  },
+  {
+    selector: 'status',
+    name: 'Estado',
+    sortable: true,
+    minWidth: '50px',
   },
   {
     selector: 'actions',
     name: '',
-    maxWidth: '50px',
+    minWidth: '50px',
   },
 ]
