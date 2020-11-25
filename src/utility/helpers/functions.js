@@ -1,4 +1,5 @@
 import moment from 'moment'
+import { rules } from '../../configs/rules'
 
 export function phoneFormat(phone) {
   return phone.replace('+569', '').replace(/\s/g, '')
@@ -48,4 +49,9 @@ export const formData = (values) => {
   const data = new FormData()
   keys.forEach((key) => data.append(key, values[[key]]))
   return data
+}
+
+export const permitted = (rule) => {
+  const { user: { role } } = JSON.parse(localStorage.getItem('user'))
+  return rules[role].includes(rule)
 }
