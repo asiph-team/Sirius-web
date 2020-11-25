@@ -7,6 +7,7 @@ import * as Icon from 'react-feather'
 import DataTable from 'react-data-table-component'
 import Can from '../can'
 import { priority } from '../../../utility/helpers/consts'
+import { permitted } from '../../../utility/helpers/functions'
 
 const CustomSwitch = (props) => {
   const { status, changeStatus } = props
@@ -46,9 +47,7 @@ const List = (props) => {
   }
   const updateStatus = {
     cell: (row) => {
-      return (
-        <CustomSwitch status={row.status} changeStatus={() => show(row, 'status')} />
-      )
+      if (permitted(`${resource}:edit`)) { return <CustomSwitch status={row.status} changeStatus={() => show(row, 'status')} /> } return (<>{row.state}</>)
     },
   }
   headers.forEach((obj) => {
