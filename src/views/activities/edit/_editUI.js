@@ -8,7 +8,7 @@ const EditUI = (props) => {
   return (
     <>
       <Header title="Editar actividad" icon="Activity" />
-      <FormUI handleSubmit={handleSubmit} title="Guardar" options={options} placeholder={{ name: placeholder.name, id: placeholder.id, description: placeholder.description, workstation: placeholder.workstations ? placeholder.workstations.id : null }} />
+      <FormUI handleSubmit={handleSubmit} title="Guardar" options={options} placeholder={{ risk: placeholder.risk, name: placeholder.name, id: placeholder.id, description: placeholder.description, workstation: placeholder.workstations ? placeholder.workstations.id : null }} />
     </>
   )
 }
