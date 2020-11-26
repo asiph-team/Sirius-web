@@ -23,8 +23,7 @@ const ListUI = (props) => {
         ...item,
         manager: item.user ? item.user.name : 'No Asignado',
         area: item.area ? item.area.name : '--',
-        status: item.status === 'open',
-        state: item.status === 'open' ? 'Abierto' : 'Cerrado',
+        state: item.status ? 'Abierto' : 'Cerrado',
       }
     })
     return newData
@@ -62,8 +61,12 @@ const ListUI = (props) => {
             paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} el plan de acción en la plataforma.`}
             callback={() => {
               changeStatus({
-                ...selected,
-                status: !selected.state,
+                id: selected.id,
+                name: selected.name,
+                origin: selected.origin,
+                priority: selected.priority,
+                manager_id: selected.manager_id,
+                status: !selected.status,
                 date_end: moment(selected.date_end, 'DD/MM/YYYY').format('YYYY-MM-DD'),
                 date_initial: moment(selected.date_initial, 'DD/MM/YYYY').format('YYYY-MM-DD'),
                 date_committed: moment(selected.date_committed, 'DD/MM/YYYY').format('YYYY-MM-DD'),
