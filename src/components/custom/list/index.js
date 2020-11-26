@@ -1,12 +1,12 @@
 import React from 'react'
-import { Button, Row } from 'reactstrap'
+import { Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import Switch from 'rc-switch'
 import 'rc-switch/assets/index.css'
 import * as Icon from 'react-feather'
 import DataTable from 'react-data-table-component'
 import Can from '../can'
-import { priority } from '../../../utility/helpers/consts'
+import { semaphore, semaphoreFields } from '../../../utility/helpers/consts'
 import { permitted } from '../../../utility/helpers/functions'
 
 const CustomSwitch = (props) => {
@@ -19,10 +19,10 @@ const CustomSwitch = (props) => {
   )
 }
 
-const PriorityChip = {
-  cell: (row) => {
+const SemaphoreChip = {
+  cell: (row, index, obj) => {
     return (
-      <div className={`rounded-circle bg-${priority[row.priority]} `} style={{ height: '20px', width: '20px' }} />
+      <div className={`rounded-circle bg-${semaphore[row[obj.selector]]} `} style={{ height: '20px', width: '20px' }} />
     )
   },
 }
@@ -53,7 +53,7 @@ const List = (props) => {
   headers.forEach((obj) => {
     // eslint-disable-next-line no-unused-expressions
     obj.selector === 'actions'
-      ? obj.cell = menu.cell : obj.selector === 'status' ? obj.cell = updateStatus.cell : obj.selector === 'priority' ? obj.cell = PriorityChip.cell : obj
+      ? obj.cell = menu.cell : obj.selector === 'status' ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector) ? obj.cell = SemaphoreChip.cell : obj
   })
   return (
     <DataTable
