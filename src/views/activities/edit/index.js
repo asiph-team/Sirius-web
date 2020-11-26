@@ -19,7 +19,7 @@ const Edit = (props) => {
     <>
       {
         data && (
-          <EditUI handleSubmit={(values) => update({ name: values.name, description: values.description, workstations_id: [values.workstation] }, `${url}/${values.id}`)} {...props} workstations={data.data.data} />
+          <EditUI handleSubmit={(values) => update({ name: values.name, description: values.description, workstations_id: [values.workstation], risk: values.risk }, `${url}/${values.id}`)} {...props} workstations={data.data.data} />
         )
       }
       {loading && <AlertLoading message="Actualizando actividad" />}
