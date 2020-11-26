@@ -8,6 +8,9 @@ export const workstationSchema = Yup.object().shape({
   workstation: Yup.string()
     .ensure()
     .required('El puesto de trabajo es requerido'),
+  risk: Yup.string()
+    .ensure()
+    .required('El riesgo es requerido'),
   description: Yup.string()
     .min(5, 'La descripción debe ser mayor a 5 caractéres')
     .max(80, 'La descripción debe ser menor a 80 caractéres')

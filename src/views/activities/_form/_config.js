@@ -1,3 +1,5 @@
+import { risks } from './_initialValues'
+
 export const config = [
   [
     {
@@ -10,7 +12,7 @@ export const config = [
     },
     {
       input: 'CustomSelect',
-      key: 3,
+      key: 2,
       name: 'workstation',
       title: 'Area de pertenencia*',
       type: 'text',
@@ -20,8 +22,19 @@ export const config = [
   ],
   [
     {
-      input: 'CustomTextArea',
+      input: 'CustomSelect',
       key: 3,
+      name: 'risk',
+      title: 'Riesgo de la actividad*',
+      type: 'text',
+      options: risks,
+      grid: 6,
+    },
+  ],
+  [
+    {
+      input: 'CustomTextArea',
+      key: 4,
       name: 'description',
       title: 'Descripción de la actividad, principales tareas, consideraciones relevantes, principales riesgos*',
       rows: 5,
