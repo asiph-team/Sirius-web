@@ -19,7 +19,7 @@ const Add = () => {
     <>
       {
         data && (
-          <AddUI handleSubmit={(values) => postData({ name: values.name, description: values.description, workstations_id: [values.workstation] }, url)} workstations={data.data.data} />
+          <AddUI handleSubmit={(values) => postData({ name: values.name, description: values.description, workstations_id: [values.workstation], risk: values.risk }, url)} workstations={data.data.data} />
         )
       }
       {loading && <AlertLoading message="Almacenando actividad" />}
