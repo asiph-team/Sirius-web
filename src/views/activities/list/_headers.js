@@ -15,6 +15,11 @@ export const headers = [
     sorteble: true,
   },
   {
+    selector: 'risk',
+    name: 'Riesgos',
+    sorteble: true,
+  },
+  {
     selector: 'actions',
     name: '',
     maxWidth: '100px',
