@@ -15,6 +15,11 @@ export const headers = [
     sortable: true,
   },
   {
+    selector: 'total_employees',
+    name: 'Total trabajadores del área',
+    sortable: true,
+  },
+  {
     selector: 'actions',
     name: '',
     maxWidth: '100px',

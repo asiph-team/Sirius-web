@@ -24,6 +24,7 @@ const ListUI = (props) => {
         description: item.description,
         user_id: item.user_chief_of_area.name,
         chief_areas_id: item.user_chief_of_area.id,
+        total_employees: item.total_employees,
       }
     })
     return newData
