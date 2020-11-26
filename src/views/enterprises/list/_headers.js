@@ -27,6 +27,11 @@ export const headers = [
     maxWidth: '50px',
   },
   {
+    selector: 'total_employees',
+    name: 'Total trabajadores del área',
+    sortable: true,
+  },
+  {
     selector: 'status',
     name: 'Estado',
     sortable: true,
