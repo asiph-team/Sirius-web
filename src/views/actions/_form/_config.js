@@ -1,5 +1,7 @@
 import { origins, priorities } from './_initialValues'
+import { userData } from '../../../utility/helpers/functions'
 
+const user = userData()
 export const config = [
   [
     {
@@ -18,6 +20,7 @@ export const config = [
       type: 'text',
       options: [],
       grid: 6,
+      disabled: (user.role === 'chief_of_area'),
     },
   ],
   [
