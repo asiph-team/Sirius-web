@@ -9,7 +9,7 @@ import Select from 'react-select'
 registerLocale('es', es)
 const SelectField = (props) => {
   const {
-    options, field, form, multiple,
+    options, field, form, multiple, disabled,
   } = props
   const { name, value } = field
   return (
@@ -23,6 +23,7 @@ const SelectField = (props) => {
       isSearchable
       placeholder=""
       isMulti={!!multiple}
+      isDisabled={disabled}
     />
   )
 }
@@ -119,7 +120,7 @@ export const CustomTextArea = (props) => {
 
 export const CustomSelect = (props) => {
   const {
-    name, title, options, small, multiple,
+    name, title, options, small, multiple, disabled,
   } = props
   return (
     <>
@@ -129,6 +130,7 @@ export const CustomSelect = (props) => {
         name={name}
         component={SelectField}
         multiple={multiple}
+        disabled={disabled}
       />
     </>
   )
@@ -174,7 +176,6 @@ const CustomFileInputField = (props) => {
   } = props
   const { name } = field
   const { values } = form
-  console.log('field', field)
   return (
     <>
       <Input

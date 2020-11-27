@@ -55,3 +55,8 @@ export const permitted = (rule) => {
   const { user: { role } } = JSON.parse(localStorage.getItem('user'))
   return rules[role].includes(rule)
 }
+
+export const userData = () => {
+  const { user } = JSON.parse(localStorage.getItem('user'))
+  return user
+}
