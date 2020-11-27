@@ -1,3 +1,9 @@
+import { permitted } from '../../../utility/helpers/functions'
+
+const actions = { selector: 'actions', name: '', minWidth: '50px' }
+const status = {
+  selector: 'status', name: 'Estado', sortable: true, maxWidth: '100px',
+}
 export const headers = [
   {
     selector: 'fullname',
@@ -21,15 +27,4 @@ export const headers = [
     name: 'Puesto de trabajo',
     sortable: true,
   },
-  {
-    selector: 'status',
-    name: 'Estado',
-    sortable: true,
-    maxWidth: '100px',
-  },
-  {
-    selector: 'actions',
-    name: '',
-    minWidth: '50px',
-  },
-]
+].concat((permitted('employees:edit') || permitted('employees:delete')) && status, actions).filter((x) => x !== false)
