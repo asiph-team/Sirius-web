@@ -27,4 +27,5 @@ export const headers = [
     name: 'Puesto de trabajo',
     sortable: true,
   },
-].concat((permitted('employees:edit') || permitted('employees:delete')) && status, actions).filter((x) => x !== false)
+].concat((permitted('employees:edit') || permitted('employees:delete')) && status)
+  .concat((permitted('employees:edit') || permitted('employees:delete')) && actions).filter((x) => x !== false)
