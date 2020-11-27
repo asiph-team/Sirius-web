@@ -36,7 +36,6 @@ export const rules = {
     'trainings:delete',
     'programs:edit',
     'programs:delete',
-    'actions:delete',
     'controls:edit',
     'controls:delete',
   ],

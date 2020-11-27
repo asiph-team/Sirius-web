@@ -52,7 +52,7 @@ const List = (props) => {
   }
   headers.forEach((obj) => {
     // eslint-disable-next-line no-unused-expressions
-    obj.selector === 'actions'
+    obj.selector === 'actions' && (permitted(`${resource}:edit`) || permitted(`${resource}:delete`))
       ? obj.cell = menu.cell : obj.selector === 'status' ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector) ? obj.cell = SemaphoreChip.cell : obj
   })
   return (
