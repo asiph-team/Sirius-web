@@ -32,6 +32,11 @@ export const headers = [
     sortable: true,
   },
   {
+    selector: 'global_performance',
+    name: 'Desempeño global',
+    sortable: true,
+  },
+  {
     selector: 'status',
     name: 'Estado',
     sortable: true,
