@@ -11,11 +11,26 @@ const EnterpriseList = () => {
     remove,
     changeStatus,
     pagination,
+    search,
   } = useFetchResources(`${urlApi}/api/v1/enterprises?`)
-  const { items, loading, error } = enterprises
+  const {
+    items,
+    loading,
+    error,
+    temp,
+  } = enterprises
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
-  return <ListUI data={items} remove={remove} changeStatus={changeStatus} pagination={pagination} />
+  return (
+    <ListUI
+      data={items}
+      search={search}
+      temp={temp}
+      remove={remove}
+      changeStatus={changeStatus}
+      pagination={pagination}
+    />
+  )
 }
 
 export default EnterpriseList

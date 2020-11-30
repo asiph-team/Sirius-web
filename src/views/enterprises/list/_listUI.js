@@ -5,7 +5,7 @@ import { PlusCircle } from 'react-feather'
 import { ContactInfoEnterprise } from '../../../components/custom/modals'
 
 import {
-  AlertDialog, Header, List,
+  AlertDialog, Header, List, Search, SelectSearch,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import PaginationBasic from '../../../components/custom/pagination'
@@ -16,6 +16,8 @@ const ListUI = (props) => {
     remove,
     changeStatus,
     pagination,
+    search,
+    temp,
   } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
@@ -35,6 +37,8 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Empresas" icon="Shield">
+        <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
+        <SelectSearch search={search} temp={temp} param="status" />
         <Link to="/dashboard/enterprises/add">
           <Button color="primary">
             <PlusCircle size={14} />
