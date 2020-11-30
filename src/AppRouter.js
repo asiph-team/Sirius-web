@@ -38,14 +38,14 @@ const ControlsList = lazy(() => import('./views/controls/list/'))
 const ControlsAdd = lazy(() => import('./views/controls/add'))
 const ControlsEdit = lazy(() => import('./views/controls/edit'))
 
-
 const AuthConfig = (props) => (
   <ContextAuth.Consumer>
     {({ user }) => {
       const { match } = props
       const login = !!((match.path === '/' || match.path === '/forgot-password'))
       if (!user && !login) { return <Redirect to="/" /> }
-      if (user && login) { return <Redirect to="/dashboard" /> }
+      if (user && login && user.role !== 'superadministrator') { return <Redirect to="/dashboard" /> }
+      if (user && login && user.role === 'superadministrator') { return <Redirect to="/dashboard/enterprises" /> }
       return props.children
     }}
   </ContextAuth.Consumer>
