@@ -23,6 +23,15 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
+  const transformData = () => {
+    const newData = data.data.data.map((item) => {
+      return {
+        ...item,
+        global_performance: item.global_permormance === undefined ? '--' : `${Math.round(item.global_permormance)}%`,
+      }
+    })
+    return newData
+  }
   return (
     <>
       <Header title="Empresas" icon="Shield">
@@ -38,7 +47,7 @@ const ListUI = (props) => {
           {
             data && (
               <List
-                data={data.data.data}
+                data={transformData()}
                 headers={headers}
                 show={show}
                 resource="enterprises"
@@ -68,7 +77,27 @@ const ListUI = (props) => {
           <AlertDialog
             title={`¿Estás seguro de ${selected.status ? 'desactivar' : 'activar'} a ${selected.name}?`}
             paragraph={`Esta operación ${selected.status ? 'desactivara' : 'activara'} a la empresa en la plataforma.`}
-            callback={() => { changeStatus({ ...selected, status: !selected.status }, 'status'); setVisibility({ ...visibility, status: false }) }}
+            callback={() => {
+              changeStatus(
+                {
+                  CLR: selected.CLR,
+                  CTR: selected.CTR,
+                  LR: selected.LR,
+                  TR: selected.TR,
+                  address: selected.address,
+                  email: selected.email,
+                  heading: selected.heading,
+                  id: selected.id,
+                  name: selected.name,
+                  phone: selected.phone,
+                  rut: selected.rut,
+                  size: selected.size,
+                  spin: selected.spin,
+                  status: !selected.status,
+                }, 'status',
+              )
+              setVisibility({ ...visibility, status: false })
+            }}
             callbackCancel={() => setVisibility({ ...visibility, status: false })}
           />
         )
