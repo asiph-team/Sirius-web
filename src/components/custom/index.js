@@ -11,7 +11,7 @@ import {
 import FormGroup from './formGroup'
 import FormSubmit from './formSubmit'
 import Indicators from './indicators'
-import Search from './search'
+import { Search, SelectSearch } from './search'
 
 export {
   AlertDialog,
@@ -26,4 +26,5 @@ export {
   Indicators,
   List,
   Search,
+  SelectSearch,
 }
