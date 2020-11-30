@@ -56,8 +56,6 @@ const List = (props) => {
       ? obj.cell = menu.cell : obj.selector === 'status' ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector) ? obj.cell = SemaphoreChip.cell : obj
   })
 
-  console.log('headers', headers)
-
   return (
     <DataTable
       data={data}
