@@ -60,7 +60,7 @@ export function useFetchResources(url) {
 
   const search = async (param, data) => {
     dispatch(fetchStart())
-    await axios.get(`${url}${param}=${data}`, header)
+    await axios.get(`${url}${param}=${data.value}`, header)
       .then((response) => dispatch(fetchSearch(response.data, data)))
       .catch((error) => dispatch(fetchError(error)))
   }
