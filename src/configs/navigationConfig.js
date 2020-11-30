@@ -7,6 +7,7 @@ const navigationConfig = [
     title: 'Inicio',
     type: 'item',
     icon: <Icon.Home size={20} />,
+    permissions: ['administrator', 'chief_of_area'],
     navLink: '/dashboard',
   },
   {
