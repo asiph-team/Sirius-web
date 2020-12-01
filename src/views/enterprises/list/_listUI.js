@@ -29,7 +29,7 @@ const ListUI = (props) => {
     const newData = data.data.data.map((item) => {
       return {
         ...item,
-        global_performance: item.global_permormance === undefined ? '--' : `${Math.round(item.global_permormance)}%`,
+        global_performance: item.global_performance === undefined ? '--' : `${Math.round(item.global_performance)}%`,
       }
     })
     return newData
