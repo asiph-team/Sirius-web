@@ -11,6 +11,7 @@ import {
   fetchSearch,
   updateStatus,
 } from '../../ducks/resources'
+import { urlApi, baseApiUrl } from '../helpers/consts'
 
 export function useFetchResources(url) {
   const [items, dispatch] = useReducer(resourcesReducer, initialState)
@@ -38,6 +39,15 @@ export function useFetchResources(url) {
   const remove = async (data) => {
     dispatch(fetchStart())
     await axios.delete(`${url.replace('?', '/')}${data.id}`, header)
+      .catch((error) => dispatch(fetchError(error)))
+    await axios.get(`${url}`, header)
+      .then((response) => dispatch(fetchSuccess(response.data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
+  const removeControl = async (data) => {
+    dispatch(fetchStart())
+    await axios.delete(`${urlApi}${baseApiUrl}control_measures/${data.id}`, header)
       .catch((error) => dispatch(fetchError(error)))
     await axios.get(`${url}`, header)
       .then((response) => dispatch(fetchSuccess(response.data)))
@@ -88,6 +98,7 @@ export function useFetchResources(url) {
     search,
     queryParams,
     indicatorsParams,
+    removeControl,
   }
 }
 
