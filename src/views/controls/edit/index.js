@@ -18,7 +18,7 @@ const Edit = (props) => {
   if (errorActivities) return <Error message={errorActivities} />
   return (
     <>
-      <EditUI handleSubmit={(values) => updateFiles(formData({ name: values.name, activity_id: values.activity_id, ...(values.image && { image: values.image }), _method: 'PUT' }), `${url}/${values.id}`)} {...props} activities={data} />
+      <EditUI handleSubmit={(values) => updateFiles(formData({ name: values.name, activity_id: values.activity_id, ...(!(typeof values.image === 'string' || values.image instanceof String) && { image: values.image }), _method: 'PUT' }), `${url}/${values.id}`)} {...props} activities={data} />
       {loading && <AlertLoading message="Actualizando medida de control" />}
       {error && <AlertError error={error} callback={() => clean()} />}
       {items && (
