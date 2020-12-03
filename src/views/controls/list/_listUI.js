@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Card, CardBody, Col, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import { PlusCircle } from 'react-feather'
+import { ChevronLeft, PlusCircle } from 'react-feather'
 import moment from 'moment'
 import { ContactInfoControlMeasure } from '../../../components/custom/modals'
 import {
@@ -11,7 +11,7 @@ import { headers } from './_headers'
 import Pagination from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, changeStatus, pagination, search, temp } = props
+  const { data, remove, changeStatus, pagination, search, temp, activity } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
   const show = (item, type, visible = true) => {
@@ -31,9 +31,15 @@ const ListUI = (props) => {
   return (
     <>
       <Header title="Medidas de control" icon="UserCheck">
+        <Link to="/dashboard/activities">
+          <Button size="" color="primary">
+            <ChevronLeft size={14} />
+                &nbsp;Volver
+          </Button>
+        </Link>
         <Search placeholder="Buscar por medida de control o actividad" search={search} icon="Search" temp={temp} param="filter" />
         <Can rule="controls:add">
-          <Link to="/dashboard/controls/add">
+          <Link to={{ pathname: '/dashboard/controls/add', state: { activity_id: activity } }}>
             <Button size="" color="primary">
               <PlusCircle size={14} />
                 &nbsp;Agregar medida de control

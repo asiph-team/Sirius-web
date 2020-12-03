@@ -10,7 +10,6 @@ import { urlApi } from '../../../utility/helpers/consts'
 import { formData } from '../../../utility/helpers/functions'
 
 const Edit = (props) => {
-  console.log('props', props)
   const url = `${urlApi}/api/v1/control_measures`
   const { data: { loading, error, items }, updateFiles, clean } = usePostResources()
   const { items: activities } = useFetchResources(`${urlApi}/api/v1/activities?all`)
