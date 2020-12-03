@@ -8,6 +8,7 @@ import {
   ModalBody,
   ModalFooter,
   Row,
+  CardImg,
 } from 'reactstrap'
 
 const ContactInfoControlMeasure = (props) => {
@@ -36,9 +37,16 @@ const ContactInfoControlMeasure = (props) => {
             <Col>{item.activity_name}</Col>
           </Row>
           <Row className="mb-1">
-            <Col><strong>Imagen:</strong></Col>
-            <Col>
-              <img src={`http://104.40.54.96/api/v1${item.image}`} />
+            <Col lg={6}><strong>Imagen:</strong></Col>
+            <Col sm={6} md={6} lg={4} className="justify-content-md-center row">
+              {item.image && (
+                <CardImg
+                  width="100px"
+                  className="img-fluid"
+                  src={item.image}
+                  alt="card image cap"
+                />
+              )}
             </Col>
           </Row>
         </Container>
