@@ -10,6 +10,7 @@ import {
   Row,
   CardImg,
 } from 'reactstrap'
+import noImg from '../../../assets/img/no_img.png'
 
 const ContactInfoControlMeasure = (props) => {
   const { onClose, visibility, item } = props
@@ -39,14 +40,16 @@ const ContactInfoControlMeasure = (props) => {
           <Row className="mb-1">
             <Col lg={6}><strong>Imagen:</strong></Col>
             <Col sm={6} md={6} lg={4} className="justify-content-md-center row">
-              {item.image && (
-                <CardImg
-                  width="100px"
-                  className="img-fluid"
-                  src={item.image}
-                  alt="card image cap"
-                />
-              )}
+              {
+                item.image && (
+                  <CardImg
+                    width="100px"
+                    className="img-fluid"
+                    src={item.image.length > 20 ? item.image : noImg}
+                    alt={item.activity_name}
+                  />
+                )
+              }
             </Col>
           </Row>
         </Container>
