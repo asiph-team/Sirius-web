@@ -10,8 +10,10 @@ import { config } from './_config'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, options,
+    handleSubmit, placeholder, title, options, activity,
   } = props
+  const activityId = (placeholder === undefined)
+    ? initialValues.activity_id = activity : placeholder.activity_id
   return (
     <Card>
       <CardBody>
@@ -40,7 +42,7 @@ const FormUI = (props) => {
                   </Row>
                 ))
               }
-              <FormSubmit back="/dashboard/controls" title={title} />
+              <FormSubmit activityId={activityId} title={title} />
             </Form>
           )}
         </Formik>

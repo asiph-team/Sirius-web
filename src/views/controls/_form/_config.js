@@ -16,6 +16,7 @@ export const config = [
       type: 'text',
       options: [],
       grid: 6,
+      disabled: true,
     },
   ],
   [
