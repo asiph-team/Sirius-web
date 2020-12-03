@@ -106,18 +106,6 @@ const navigationConfig = [
       '/dashboard/actions/edit',
     ],
   },
-  {
-    id: 'controls',
-    title: 'Medidas de control',
-    type: 'item',
-    icon: <Icon.UserCheck size={20} />,
-    permissions: ['administrator', 'chief_of_area'],
-    navLink: '/dashboard/controls',
-    parentOf: [
-      '/dashboard/controls/add',
-      '/dashboard/controls/edit',
-    ],
-  },
 ]
 
 export default navigationConfig
