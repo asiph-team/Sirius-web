@@ -9,8 +9,9 @@ import AddUI from './_addUI'
 import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 import { formData } from '../../../utility/helpers/functions'
 
-const Add = () => {
+const Add = (props) => {
   const url = `${urlApi}${baseApiUrl}control_measures`
+  const { location: { state } } = props
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   const { items: areas } = useFetchResources(`${urlApi}${baseApiUrl}activities?all`)
   const { items: data, loading: loadAreas, error: errorAreas } = areas
@@ -18,7 +19,7 @@ const Add = () => {
   if (errorAreas) return <Error message={errorAreas} />
   return (
     <>
-      <AddUI handleSubmit={(values) => postData(formData({ name: values.name, activity_id: values.activity_id, ...(values.image && { image: values.image }) }), url)} areas={data} />
+      <AddUI activity={state.activity_id} handleSubmit={(values) => postData(formData({ name: values.name, activity_id: values.activity_id, ...(values.image && { image: values.image }) }), url)} areas={data} />
       {loading && <AlertLoading message="Almacenando medida de control" />}
       {error && <AlertError error={error} callback={() => clean()} />}
       {items && (
