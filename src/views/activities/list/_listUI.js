@@ -22,6 +22,7 @@ const ListUI = (props) => {
       return {
         ...item,
         workstation: item.workstations ? item.workstations.name : 'No Asignada',
+        controlMenu: item.id,
       }
     })
     return newData
