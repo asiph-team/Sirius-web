@@ -45,6 +45,16 @@ const List = (props) => {
       )
     },
   }
+
+  const controlMenu = {
+    cell: (row) => {
+      return (
+        <>
+          <Link to={{ pathname: '/dashboard/controls', state: { activity_id: row.id } }}><Button color="link" className="p-0"><Icon.UserCheck size={20} /></Button></Link>
+        </>
+      )
+    },
+  }
   const updateStatus = {
     cell: (row) => {
       if (permitted(`${resource}:edit`)) { return <CustomSwitch status={row.status} changeStatus={() => show(row, 'status')} /> } return (<>{row.state}</>)
@@ -53,7 +63,10 @@ const List = (props) => {
   headers.forEach((obj) => {
     // eslint-disable-next-line no-unused-expressions
     obj.selector === 'actions' && (permitted(`${resource}:edit`) || permitted(`${resource}:delete`))
-      ? obj.cell = menu.cell : obj.selector === 'status' ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector) ? obj.cell = SemaphoreChip.cell : obj
+      ? obj.cell = menu.cell : obj.selector === 'status'
+        ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector)
+          ? obj.cell = SemaphoreChip.cell : obj.selector === 'controlMenu'
+            ? obj.cell = controlMenu.cell : obj
   })
 
   return (
