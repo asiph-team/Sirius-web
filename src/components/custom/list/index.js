@@ -1,12 +1,12 @@
 import React from 'react'
-import { Button } from 'reactstrap'
+import { Button, UncontrolledTooltip } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import Switch from 'rc-switch'
 import 'rc-switch/assets/index.css'
 import * as Icon from 'react-feather'
 import DataTable from 'react-data-table-component'
 import Can from '../can'
-import { semaphore, semaphoreFields } from '../../../utility/helpers/consts'
+import { semaphore, semaphoreFields, semaphoreText } from '../../../utility/helpers/consts'
 import { permitted } from '../../../utility/helpers/functions'
 
 const CustomSwitch = (props) => {
@@ -22,7 +22,12 @@ const CustomSwitch = (props) => {
 const SemaphoreChip = {
   cell: (row, index, obj) => {
     return (
-      <div className={`rounded-circle bg-${semaphore[row[obj.selector]]} `} style={{ height: '20px', width: '20px' }} />
+      <>
+        <div id={`semaforo-${index}`} className={`rounded-circle bg-${semaphore[row[obj.selector]]} `} style={{ height: '20px', width: '20px' }} />
+        <UncontrolledTooltip placement="right" target={`semaforo-${index}`}>
+          {semaphoreText[row[obj.selector]]}
+        </UncontrolledTooltip>
+      </>
     )
   },
 }
@@ -39,22 +44,20 @@ const List = (props) => {
     cell: (row) => {
       return (
         <>
-          <Can rule={`${resource}:edit`}><Link to={{ pathname: `/dashboard/${resource}/edit`, state: { placeholder: row } }}><Button color="link" className="p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
-          <Can rule={`${resource}:delete`}><Button onClick={() => show(row, 'remove')} color="link" className="ml-1 p-0"><Icon.XCircle size={20} /></Button></Can>
+          <Can rule="controls:edit">
+            {
+              resource === 'activities' && (
+                <Link to={{ pathname: '/dashboard/controls', state: { activity_id: row.id } }}><Button color="link" className="p-0"><Icon.UserCheck size={20} /></Button></Link>
+              )
+            }
+          </Can>
+          <Can rule={`${resource}:edit`}><Link to={{ pathname: `/dashboard/${resource}/edit`, state: { placeholder: row } }}><Button color="link" className="mx-1 p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
+          <Can rule={`${resource}:delete`}><Button onClick={() => show(row, 'remove')} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
         </>
       )
     },
   }
 
-  const controlMenu = {
-    cell: (row) => {
-      return (
-        <>
-          <Link to={{ pathname: '/dashboard/controls', state: { activity_id: row.id } }}><Button color="link" className="p-0"><Icon.UserCheck size={20} /></Button></Link>
-        </>
-      )
-    },
-  }
   const updateStatus = {
     cell: (row) => {
       if (permitted(`${resource}:edit`)) { return <CustomSwitch status={row.status} changeStatus={() => show(row, 'status')} /> } return (<>{row.state}</>)
@@ -65,10 +68,8 @@ const List = (props) => {
     obj.selector === 'actions' && (permitted(`${resource}:edit`) || permitted(`${resource}:delete`))
       ? obj.cell = menu.cell : obj.selector === 'status'
         ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector)
-          ? obj.cell = SemaphoreChip.cell : obj.selector === 'controlMenu'
-            ? obj.cell = controlMenu.cell : obj
+          ? obj.cell = SemaphoreChip.cell : obj
   })
-
   return (
     <DataTable
       data={data}
