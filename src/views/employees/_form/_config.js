@@ -25,6 +25,7 @@ export const config = [
       title: 'RUT*',
       type: 'text',
       grid: 6,
+      placeholder: 'Ej: 99999999-9',
     },
     {
       input: 'CustomInput',
