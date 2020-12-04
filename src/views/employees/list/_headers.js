@@ -1,14 +1,13 @@
 import { permitted } from '../../../utility/helpers/functions'
 
-const actions = { selector: 'actions', name: '', minWidth: '50px' }
+const actions = { selector: 'actions', name: '', maxWidth: '50px' }
 const status = {
-  selector: 'status', name: 'Estado', sortable: true, maxWidth: '100px',
+  selector: 'status', name: 'Estado', sortable: true, maxWidth: '50px', center: true,
 }
 export const headers = [
   {
     selector: 'fullname',
     name: 'Nombre del trabajador',
-    minWidth: '250px',
     sortable: true,
   },
   {
