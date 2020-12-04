@@ -1,13 +1,11 @@
 import React from 'react'
 import {
   Button,
-  Col,
   Container,
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Row,
 } from 'reactstrap'
 
 const InfoWorkStations = (props) => {
@@ -23,13 +21,13 @@ const InfoWorkStations = (props) => {
         {' '}
         |
         {' '}
-        <small>Información del programa</small>
+        <small>Información del puesto de trabajo</small>
       </ModalHeader>
       <ModalBody className="modal-dialog-centered">
         <Container className="my-2">
           <div className="w-full flex flex-wrap">
             <div className="w-full">
-              <strong>Area de Trabajo:</strong>
+              <strong>Area de pertenencia:</strong>
             </div>
             <div className="w-full">
               {item.area}
@@ -47,21 +45,6 @@ const InfoWorkStations = (props) => {
               {item.information}
             </div>
           </div>
-          {/* <Row className="mb-1">
-            <Row className="mt-1">
-              <strong>Descripción:</strong>
-            </Row>
-
-
-            <Row className="mb-1">
-              {item.description}
-            </Row>
-
-          </Row>
-          <Row className="mb-1">
-            <Col><strong>Información Adicional:</strong></Col>
-            <Col>{item.information}</Col>
-          </Row> */}
         </Container>
       </ModalBody>
       <ModalFooter>
