@@ -5,4 +5,5 @@ export const profiles = { superadministrator: 'Super Administrador', administrat
 export const updatePasswordUrl = { superadministrator: 'admin/password', administrator: 'users/password', chief_of_area: 'users/password', employees: 'users/password' }
 export const baseApiUrl = '/api/v1/'
 export const semaphore = { high: 'danger', media: 'warning', middle: 'warning', low: 'success' }
+export const semaphoreText = { high: 'Alto', media: 'Medio', middle: 'Medio', low: 'Bajo' }
 export const semaphoreFields = ['priority', 'risk']
