@@ -70,7 +70,7 @@ const DatePickerField = (props) => {
 
 export const CustomInput = (props) => {
   const {
-    name, title, type, small, disabled,
+    name, title, type, small, disabled, placeholder,
   } = props
   return (
     <>
@@ -81,6 +81,7 @@ export const CustomInput = (props) => {
         type={type}
         autoComplete="nofill"
         disabled={!!disabled}
+        placeholder={placeholder}
       />
     </>
   )
