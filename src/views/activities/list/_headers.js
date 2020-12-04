@@ -18,16 +18,11 @@ export const headers = [
     selector: 'risk',
     name: 'Riesgos',
     sorteble: true,
-    maxWidth: '50px',
-  },
-  {
-    selector: 'controlMenu',
-    name: 'Medidas de control',
-    sorteble: true,
+    center: true,
   },
   {
     selector: 'actions',
     name: '',
-    maxWidth: '50px',
+    maxWidth: '150px',
   },
 ]

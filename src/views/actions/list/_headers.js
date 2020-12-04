@@ -33,6 +33,7 @@ export const headers = [
     name: 'Prioridad',
     sortable: true,
     minWidth: '50px',
+    center: true,
   },
   {
     selector: 'date_committed',

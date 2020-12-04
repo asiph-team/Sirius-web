@@ -12,14 +12,14 @@ export const headers = [
   {
     name: 'Total actividades',
     selector: 'total_activities',
-    maxWidth: '80px',
     sortable: true,
+    center: true,
   },
   {
     name: 'Total trabajadores por puesto de trabajo',
     selector: 'total_employees',
-    maxWidth: '200px',
     sortable: true,
+    center: true,
   },
   {
     name: '',
