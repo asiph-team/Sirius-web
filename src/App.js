@@ -1,12 +1,9 @@
-import React from "react"
-import Router from "./router"
-import "./components/@vuexy/rippleButton/RippleButton"
+import React from 'react'
+import AppRouter from './AppRouter'
 
-import "react-perfect-scrollbar/dist/css/styles.css"
-import "prismjs/themes/prism-tomorrow.css"
+import 'react-perfect-scrollbar/dist/css/styles.css'
+import 'prismjs/themes/prism-tomorrow.css'
 
-const App = props => {
-  return <Router />
-}
+const App = () => <AppRouter />
 
 export default App

@@ -1,0 +1,56 @@
+export const config = [
+  [
+    {
+      input: 'CustomInput',
+      key: 1,
+      name: 'name',
+      title: 'Nombre de la vigilancia médica*',
+      type: 'text',
+      grid: 12,
+    },
+  ],
+  [
+    {
+      input: 'CustomTextArea',
+      key: 3,
+      name: 'description',
+      title: 'Descripción*',
+      rows: 5,
+      grid: 12,
+    },
+  ],
+]
+
+export const editConfig = [
+  [
+    {
+      input: 'CustomInput',
+      key: 1,
+      name: 'name',
+      title: 'Nombre*',
+      type: 'text',
+      grid: 12,
+    },
+  ],
+  [
+    {
+      input: 'CustomSelect',
+      key: 2,
+      name: 'workstations_id',
+      title: 'Puesto de trabajo*',
+      type: 'text',
+      options: [],
+      grid: 12,
+    },
+  ],
+  [
+    {
+      input: 'CustomTextArea',
+      key: 3,
+      name: 'description',
+      title: 'Descripción*',
+      rows: 5,
+      grid: 12,
+    },
+  ],
+]

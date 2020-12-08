@@ -1,0 +1,16 @@
+import React from 'react'
+import { Header } from '../../../components/custom'
+import { phoneFormat } from '../../../utility/helpers/functions'
+import FormUI from '../_form'
+
+const EditUI = (props) => {
+  const { handleSubmit, location: { state: { placeholder } } } = props
+  return (
+    <>
+      <Header title="Editar empresa" icon="Shield" />
+      <FormUI handleSubmit={handleSubmit} title="Editar" placeholder={placeholder} />
+    </>
+  )
+}
+
+export default EditUI

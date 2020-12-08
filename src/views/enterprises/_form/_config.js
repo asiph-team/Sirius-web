@@ -1,0 +1,116 @@
+import { options } from './_initialValues'
+
+export const config = [
+  [
+    {
+      input: 'CustomInput',
+      key: 1,
+      name: 'name',
+      title: 'Nombre o razón social*',
+      type: 'text',
+      grid: 6,
+    },
+    {
+      input: 'CustomInput',
+      key: 2,
+      name: 'spin',
+      title: 'Giro*',
+      type: 'text',
+      grid: 6,
+    },
+  ], [
+    {
+      input: 'CustomInput',
+      key: 3,
+      name: 'heading',
+      title: 'Rubro*',
+      type: 'text',
+      grid: 6,
+    },
+    {
+      input: 'CustomInput',
+      key: 4,
+      name: 'address',
+      title: 'Dirección*',
+      type: 'text',
+      grid: 6,
+    },
+  ],
+  [
+    {
+      input: 'CustomInput',
+      key: 5,
+      name: 'rut',
+      title: 'RUT*',
+      type: 'text',
+      small: '(ej: 99999999-9)',
+      grid: 6,
+    },
+    {
+      input: 'CustomInputAddon',
+      key: 6,
+      name: 'phone',
+      title: 'Teléfono contacto*',
+      type: 'phone',
+      prepend: '+569',
+      grid: 6,
+    },
+  ],
+  [
+    {
+      input: 'CustomInput',
+      key: 7,
+      name: 'email',
+      title: 'Correo electrónico*',
+      type: 'email',
+      grid: 6,
+    },
+    {
+      input: 'CustomSelect',
+      key: 8,
+      name: 'size',
+      title: 'Tamaño*',
+      type: 'text',
+      options,
+      grid: 6,
+    },
+  ],
+  [
+    {
+      input: 'CustomInput',
+      key: 9,
+      name: 'LR',
+      title: 'Representante legal*',
+      type: 'text',
+      grid: 6,
+    },
+    {
+      input: 'CustomInputAddon',
+      key: 10,
+      name: 'CLR',
+      title: 'Contacto Representante legal*',
+      type: 'phone',
+      prepend: '+569',
+      grid: 6,
+    },
+  ],
+  [
+    {
+      input: 'CustomInput',
+      key: 11,
+      name: 'TR',
+      title: 'Representante técnico*',
+      type: 'text',
+      grid: 6,
+    },
+    {
+      input: 'CustomInputAddon',
+      key: 12,
+      name: 'CTR',
+      title: 'Contacto Representante técnico*',
+      type: 'phone',
+      prepend: '+569',
+      grid: 6,
+    },
+  ],
+]

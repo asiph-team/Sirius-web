@@ -1,0 +1,107 @@
+import jwt from 'jsonwebtoken'
+import mock from '../mock'
+
+const users = [
+  {
+    id: 1,
+    email: 'superadmin@test.com',
+    password: '123456',
+    name: 'Jorge Verdugo',
+    role: 'Superadministrador',
+    enterprise: null,
+  },
+  {
+    id: 2,
+    email: 'admin@test.com',
+    password: '123456',
+    name: 'Carlos Knopel',
+    role: 'Administrador',
+    enterprise: 'Asiph',
+  },
+  {
+    id: 3,
+    email: 'jefearea@test.com',
+    password: '123456',
+    name: 'Jorge Almonacid',
+    role: 'Jefe Area',
+    enterprise: 'Asiph',
+  },
+]
+
+const jwtConfig = {
+  secret: 'dd5f3089-40c3-403d-af14-d0c228b05cb4',
+  expireTime: 8000,
+}
+
+mock.onPost('/api/v1/authenticate/login/user').reply((request) => {
+  const { email, password } = JSON.parse(request.data)
+  let error = 'Se ha producido un error, intentalo más tarde'
+
+  const user = users.find((item) => item.email === email && item.password === password)
+
+  if (user) {
+    try {
+      const accessToken = jwt.sign({ id: user.id }, jwtConfig.secret,
+        { expiresIn: jwtConfig.expireTime })
+      const userData = { ...user }
+      delete userData.password
+      const response = {
+        user: userData,
+        accessToken,
+      }
+
+      return [200, response]
+    } catch (e) {
+      error = e
+    }
+  } else {
+    error = 'Correo electronico o contraseña inválida'
+  }
+
+  return [422, { error }]
+})
+
+mock.onPost('api/v1/user/password').reply((request) => {
+  const { email, password, newPassword } = JSON.parse(request.data)
+  let error = 'Se ha producido un error, intentalo más tarde'
+  const user = users.find((item) => item.email === email && item.password === password)
+
+  if (user) {
+    try {
+      user.password = newPassword
+      const response = {
+        email,
+      }
+
+      return [200, response]
+    } catch (e) {
+      error = e
+    }
+  } else {
+    error = 'Correo electronico o contraseña inválida'
+  }
+
+  return [422, { error }]
+})
+
+mock.onPost('api/v1/user/forget-password').reply((request) => {
+  const { email } = JSON.parse(request.data)
+  let error = 'Se ha producido un error, intentalo más tarde'
+  const user = users.find((item) => item.email === email)
+
+  if (user) {
+    try {
+      const response = {
+        email,
+      }
+
+      return [200, response]
+    } catch (e) {
+      error = e
+    }
+  } else {
+    error = 'Correo electronico no encontrado'
+  }
+
+  return [422, { error }]
+})
