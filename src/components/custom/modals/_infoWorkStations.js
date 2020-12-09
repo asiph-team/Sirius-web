@@ -32,7 +32,7 @@ const InfoWorkStations = (props) => {
             <div className="w-full">
               {item.area}
             </div>
-            <div className="w-full">
+            <div className="w-full mt-2">
               <strong>Descripción del Cargo / Funciones / Responsabilidades/ Competencias Requeridas / Principales Riesgos:</strong>
             </div>
             <div className="w-full">
