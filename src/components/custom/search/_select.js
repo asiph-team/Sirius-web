@@ -3,8 +3,8 @@ import { Col } from 'reactstrap'
 import Select from 'react-select'
 
 const Search = (props) => {
-  const { search, param, temp } = props
-  const selected = (temp !== null && temp.type === 'select') ? temp.value : ''
+  const { search, param, temp, title } = props
+  const selected = (temp !== null && temp !== undefined && temp.type === param) ? temp.value : ''
   const options = [
     { value: 'active', label: 'Activas' },
     { value: 'inactive', label: 'Inactivas' },
@@ -12,14 +12,13 @@ const Search = (props) => {
   ]
 
   return (
-    <Col>
+    <Col lg="3" sm="mt-1">
       <Select
-        className="w-full"
         classNamePrefix="select"
         name="select-list"
         options={options}
         isSearchable
-        placeholder="Estado"
+        placeholder={title}
         defaultValue={options && options.find((option) => (option.value === selected) || (option.label === selected))}
         onChange={(e) => search(param, { type: 'select', value: e.value })}
         isMulti={false}

@@ -1,7 +1,7 @@
 export const headers = [
   {
     selector: 'name',
-    name: 'Medida de control',
+    name: 'Nombre medida de control',
     sortable: true,
   },
   {

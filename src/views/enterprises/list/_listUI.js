@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Card, CardBody } from 'reactstrap'
+import { Button, Card, CardBody, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
 import { ContactInfoEnterprise } from '../../../components/custom/modals'
@@ -38,13 +38,15 @@ const ListUI = (props) => {
     <>
       <Header title="Empresas" icon="Shield">
         <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
-        <SelectSearch search={search} temp={temp} param="status" />
-        <Link to="/dashboard/enterprises/add">
-          <Button color="primary">
-            <PlusCircle size={14} />
+        <SelectSearch search={search} temp={temp} param="status" title="Estado de empresas" />
+        <Col lg="auto">
+          <Link to="/dashboard/enterprises/add">
+            <Button color="primary">
+              <PlusCircle size={14} />
                 &nbsp;Agregar empresa
-          </Button>
-        </Link>
+            </Button>
+          </Link>
+        </Col>
       </Header>
       <Card>
         <CardBody>
