@@ -34,7 +34,7 @@ const SemaphoreChip = {
 
 const List = (props) => {
   const {
-    headers, data, show, resource, contact,
+    headers, data, show, resource, contact, ordering, order, temp,
   } = props
   const handleChange = (row) => {
     show(row, 'contact')
@@ -47,7 +47,7 @@ const List = (props) => {
           <Can rule="controls:edit">
             {
               resource === 'activities' && (
-                <Link to={{ pathname: '/dashboard/controls', state: { activity_id: row.id } }}><Button color="link" className="p-0"><Icon.UserCheck size={20} /></Button></Link>
+                <Link to={{ pathname: '/dashboard/controls', state: { activity_id: row.id, activity_name: row.name } }}><Button color="link" className="p-0"><Icon.UserCheck size={20} /></Button></Link>
               )
             }
           </Can>
@@ -70,6 +70,9 @@ const List = (props) => {
         ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector)
           ? obj.cell = SemaphoreChip.cell : obj
   })
+  const handleSort = (column, sortDirection) => {
+    ordering(column.selector, sortDirection.toUpperCase())
+  }
   return (
     <DataTable
       data={data}
@@ -78,6 +81,8 @@ const List = (props) => {
       pointerOnHover={contact}
       onRowClicked={contact ? (row) => handleChange(row) : null}
       noDataComponent="No se encontraron coincidencias."
+      sortServer
+      onSort={handleSort}
     />
   )
 }
