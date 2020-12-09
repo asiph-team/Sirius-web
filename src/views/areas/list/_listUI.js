@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Card, CardBody, Col } from 'reactstrap'
+import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
 import {
@@ -9,7 +9,7 @@ import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, pagination, search, temp, ordering } = props
+  const { data, remove, pagination, search, temp } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ remove: false, status: false })
   const show = (item, type, visible = true) => {
@@ -36,14 +36,12 @@ const ListUI = (props) => {
     <>
       <Header title="Áreas de trabajo" icon="Box">
         <Search placeholder="Buscar nombre" search={search} icon="Search" temp={temp} param="filter" />
-        <Col lg="auto" sm="mt-1" className="d-flex align-items-center justify-content-end">
-          <Link to="/dashboard/areas/add">
-            <Button color="primary">
-              <PlusCircle size={14} />
+        <Link to="/dashboard/areas/add">
+          <Button color="primary">
+            <PlusCircle size={14} />
                 &nbsp;Agregar área
-            </Button>
-          </Link>
-        </Col>
+          </Button>
+        </Link>
       </Header>
       <Card>
         <CardBody>
@@ -54,7 +52,6 @@ const ListUI = (props) => {
                 headers={headers}
                 resource="areas"
                 show={show}
-                ordering={ordering}
               />
             )
           }

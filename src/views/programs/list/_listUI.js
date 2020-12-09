@@ -9,7 +9,7 @@ import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, pagination, search, temp, ordering } = props
+  const { data, remove, pagination, search, temp } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ remove: false })
   const show = (item, type, visible = true) => {
@@ -51,7 +51,6 @@ const ListUI = (props) => {
                 headers={headers}
                 resource="programs"
                 show={show}
-                ordering={ordering}
               />
             )
           }

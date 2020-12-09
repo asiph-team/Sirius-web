@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
   Card, CardBody, Row, Col, Button,
 } from 'reactstrap'
-import { Calendar, ChevronDown } from 'react-feather'
+import { Calendar } from 'react-feather'
 import Select from 'react-select'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { es } from 'date-fns/locale'
@@ -27,7 +27,6 @@ const DashboardUI = (props) => {
   const DateCustomInput = ({ value, onClick }) => (
     <h4 className="cursor-pointer" onClick={onClick}>
       {value}
-      <ChevronDown className="ml-1" size={14} />
     </h4>
   )
   useEffect(() => {

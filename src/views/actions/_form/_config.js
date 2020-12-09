@@ -29,15 +29,17 @@ export const config = [
       key: 3,
       name: 'date_initial',
       title: 'Fecha de inicio*',
-      grid: 3,
+      grid: 6,
     },
     {
       input: 'CustomDatePicker',
       key: 4,
       name: 'date_committed',
       title: 'Fecha compromiso*',
-      grid: 3,
+      grid: 6,
     },
+  ],
+  [
     {
       input: 'CustomSelect',
       key: 5,
@@ -45,7 +47,7 @@ export const config = [
       title: 'Origen*',
       type: 'text',
       options: origins,
-      grid: 3,
+      grid: 6,
     },
     {
       input: 'CustomSelect',
@@ -54,8 +56,7 @@ export const config = [
       title: 'Prioridad*',
       type: 'text',
       options: priorities,
-      grid: 3,
+      grid: 6,
     },
   ],
-
 ]
