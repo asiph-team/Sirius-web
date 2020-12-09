@@ -32,7 +32,7 @@ const Indicators = ({ performance }) => {
             <Progress className="ml-2 mb-2" color={indicatorColor(Math.round(trainings))} value={Math.round(trainings)} />
 
             <div className="ml-2 d-flex justify-content-between mb-25">
-              <h4 className="mb-25 primary font-weight-bold">VM</h4>
+              <h4 className="mb-25 primary font-weight-bold">Vigilancia Médica</h4>
               <h4 className={indicatorColor(Math.round(PVE))}>{`${Math.round(PVE)}%`}</h4>
             </div>
             <Progress className="ml-2 mb-2" color={indicatorColor(Math.round(PVE))} value={Math.round(PVE)} />
