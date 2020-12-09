@@ -10,7 +10,7 @@ import { headers } from './_headers'
 import Pagination from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, pagination, search, temp, changeStatus } = props
+  const { data, remove, pagination, search, temp, changeStatus, ordering, order } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ remove: false })
   const show = (item, type, visible = true) => {
@@ -49,6 +49,9 @@ const ListUI = (props) => {
                 headers={headers}
                 show={show}
                 resource="actions"
+                ordering={ordering}
+                order={order}
+                temp={temp}
               />
             )
           }
@@ -88,7 +91,7 @@ const ListUI = (props) => {
       }
       {
         data && (
-          <Pagination data={data.data} pagination={pagination} temp={temp} param="filter" />
+          <Pagination data={data.data} pagination={pagination} temp={temp} />
         )
       }
     </>

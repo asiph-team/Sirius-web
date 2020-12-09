@@ -11,7 +11,7 @@ import { headers } from './_headers'
 import Pagination from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, changeStatus, pagination, search, temp } = props
+  const { data, remove, changeStatus, pagination, search, temp, ordering } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
   const show = (item, type, visible = true) => {
@@ -54,6 +54,7 @@ const ListUI = (props) => {
                 show={show}
                 resource="employees"
                 contact
+                ordering={ordering}
               />
             )
           }
