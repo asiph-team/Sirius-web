@@ -9,7 +9,6 @@ import {
   cleanState,
   removeItem,
   fetchSearch,
-  fetchOrder,
   updateStatus,
 } from '../../ducks/resources'
 import { urlApi, baseApiUrl } from '../helpers/consts'
@@ -63,17 +62,16 @@ export function useFetchResources(url) {
 
   const pagination = async (pageNumber, search) => {
     dispatch(fetchStart())
-    const paginated = search.data
-    await axios.get(`${url}${paginated}&page=${pageNumber}`, header)
+    const paginated = search.temp ? `${url}${search.param}=${search.temp}&page=${pageNumber}` : `${url}&page=${pageNumber}`
+    await axios.get(`${paginated}`, header)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
-  const search = async (param, values) => {
+  const search = async (param, data) => {
     dispatch(fetchStart())
-    const params = `${param}=${values.value}`
-    await axios.get(`${url}${params}`, header)
-      .then((response) => dispatch(fetchSearch(response.data, { type: param, data: params, value: values.value })))
+    await axios.get(`${url}${param}=${data.value}`, header)
+      .then((response) => dispatch(fetchSearch(response.data, data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
@@ -92,13 +90,6 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
-  const orderBy = async (orderby, ordering) => {
-    const orderParams = `orderBy=${orderby}&order=${ordering}`
-    await axios.get(`${url}${orderParams}`, header)
-      .then((response) => dispatch(fetchOrder(response.data, !ordering, { type: 'order', data: orderParams, order: ordering })))
-      .catch((error) => dispatch(fetchError(error)))
-  }
-
   return {
     items,
     remove,
@@ -108,7 +99,6 @@ export function useFetchResources(url) {
     queryParams,
     indicatorsParams,
     removeControl,
-    orderBy,
   }
 }
 

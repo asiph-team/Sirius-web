@@ -39,7 +39,7 @@ const PaginationSeprated = (props) => {
             {
               showArrows && (
                 <PaginationItem href="#" className="prev-item">
-                  <PaginationLink onClick={() => pagination(1, temp)} href="#">
+                  <PaginationLink onClick={() => pagination(1, { temp, param })} href="#">
                     <ChevronLeft />
                     {' '}
                   </PaginationLink>
@@ -53,7 +53,7 @@ const PaginationSeprated = (props) => {
                   <PaginationItem className={classnames({
                     active: current_page === i,
                   })}>
-                    <PaginationLink onClick={() => pagination(i, temp)} href="#">
+                    <PaginationLink onClick={() => pagination(i, { temp, param })} href="#">
                       {i}
                     </PaginationLink>
                   </PaginationItem>,
@@ -64,7 +64,7 @@ const PaginationSeprated = (props) => {
             {
               showArrows && (
                 <PaginationItem href="#" className="next-item">
-                  <PaginationLink onClick={() => pagination(last_page, temp)} href="#" last>
+                  <PaginationLink onClick={() => pagination(last_page, { temp, param })} href="#" last>
                     <ChevronRight />
                   </PaginationLink>
                 </PaginationItem>

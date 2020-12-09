@@ -4,13 +4,13 @@ import * as Icon from 'react-feather'
 
 const SelectSearch = (props) => {
   const { placeholder, search, param, temp } = props
-  const [data, setData] = useState(temp !== null && temp !== undefined && temp.type === param ? temp.value : '')
+  const [data, setData] = useState(temp !== null && temp.type === 'search' ? temp.value : '')
   const [status, setStatus] = useState(true)
   const handleSearch = () => {
-    search(param, { type: param, value: data })
+    search(param, { type: 'search', value: data })
   }
   const handleCleanSearch = () => {
-    search(param, { type: ' ', value: '' })
+    search(param, { type: 'search', value: '' })
   }
 
   const handleClean = () => {
@@ -23,12 +23,12 @@ const SelectSearch = (props) => {
     }
   }
   return (
-    <Col lg="auto" sm="mt-1">
+    <Col>
       <InputGroup className="mr-2">
         <Input autoFocus="true" value={data} placeholder={placeholder} onChange={(e) => setData(e.target.value)} onKeyDown={(e) => enterCheck(e)} onClick={() => handleClean()} />
         <InputGroupAddon addonType="append">
           {
-            temp !== null && temp !== undefined && temp.type === param && temp.value ? (
+            temp !== null && temp.type === 'search' && status ? (
               <Button onClick={() => handleCleanSearch()} color="primary">
                 <Icon.XCircle size={15} />
               </Button>

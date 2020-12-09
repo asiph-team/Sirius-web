@@ -6,11 +6,11 @@ import ListUI from './_listUI'
 import { urlApi } from '../../../utility/helpers/consts'
 
 const TrainingsList = () => {
-  const { items: trainings, remove, pagination, search, orderBy } = useFetchResources(`${urlApi}/api/v1/trainings?`)
+  const { items: trainings, remove, pagination, search } = useFetchResources(`${urlApi}/api/v1/trainings?`)
   const { items, loading, error, temp } = trainings
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
-  return <ListUI data={items} remove={remove} ordering={orderBy} search={search} temp={temp} pagination={pagination} />
+  return <ListUI data={items} remove={remove} search={search} temp={temp} pagination={pagination} />
 }
 
 export default TrainingsList

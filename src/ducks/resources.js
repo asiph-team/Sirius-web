@@ -2,7 +2,6 @@ const FETCH_START = 'FETCH_START'
 const FETCH_SUCCESS = 'FETCH_SUCCESS'
 const FETCH_SEARCH = 'FETCH_SEARCH'
 const FETCH_ERROR = 'FETCH_ERROR'
-const FETCH_ORDER = 'FETCH_ORDER'
 const CLEAN = 'CLEAN'
 const UPDATE_STATUS = 'UPDATE_STATUS'
 
@@ -35,19 +34,11 @@ export const updateStatus = (payload, field) => ({
   field,
 })
 
-export const fetchOrder = (payload, order, data) => ({
-  type: FETCH_ORDER,
-  payload,
-  order,
-  data,
-})
-
 export const initialState = {
   error: null,
   loading: false,
   items: null,
   temp: null,
-  order: null,
 }
 
 export const resourcesReducer = (state = initialState, action) => {
@@ -57,21 +48,9 @@ export const resourcesReducer = (state = initialState, action) => {
     case FETCH_SUCCESS:
       return { ...state, loading: false, items: action.payload }
     case FETCH_SEARCH:
-      return {
-        ...state,
-        loading: false,
-        items: action.payload,
-        temp: action.data,
-      }
+      return { ...state, loading: false, items: action.payload, temp: action.data }
     case FETCH_ERROR:
       return { ...state, loading: false, error: action.payload }
-    case FETCH_ORDER:
-      return {
-        ...state,
-        loading: false,
-        items: action.payload,
-        temp: action.data,
-      }
     case CLEAN:
       return { ...state, ...initialState }
     case UPDATE_STATUS:
