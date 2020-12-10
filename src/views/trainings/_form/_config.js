@@ -1,3 +1,5 @@
+import { frecuency } from './_initialValues'
+
 export const editConfig = [
   [
     {
@@ -11,11 +13,12 @@ export const editConfig = [
   ],
   [
     {
-      input: 'CustomInput',
+      input: 'CustomSelect',
       key: 3,
       name: 'frequency',
       title: 'Frecuencia*',
       type: 'text',
+      options: frecuency,
       grid: 4,
     },
     {
@@ -71,11 +74,12 @@ export const addConfig = [
   ],
   [
     {
-      input: 'CustomInput',
+      input: 'CustomSelect',
       key: 3,
       name: 'frequency',
       title: 'Frecuencia*',
       type: 'text',
+      options: frecuency,
       grid: 4,
     },
     {
