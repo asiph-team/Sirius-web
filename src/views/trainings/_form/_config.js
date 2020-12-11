@@ -1,4 +1,4 @@
-import { frecuency } from './_initialValues'
+import { frequency } from './_initialValues'
 
 export const editConfig = [
   [
@@ -18,7 +18,7 @@ export const editConfig = [
       name: 'frequency',
       title: 'Frecuencia*',
       type: 'text',
-      options: frecuency,
+      options: frequency,
       grid: 4,
     },
     {
@@ -79,7 +79,7 @@ export const addConfig = [
       name: 'frequency',
       title: 'Frecuencia*',
       type: 'text',
-      options: frecuency,
+      options: frequency,
       grid: 4,
     },
     {
