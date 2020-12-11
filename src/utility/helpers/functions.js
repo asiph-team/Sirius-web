@@ -60,3 +60,7 @@ export const userData = () => {
   const { user } = JSON.parse(localStorage.getItem('user'))
   return user
 }
+
+export const capitalizeFirstLetter = (string) => {
+  return string[0].toUpperCase() + string.slice(1).toLowerCase()
+}
