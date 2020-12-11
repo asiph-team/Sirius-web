@@ -5,10 +5,12 @@ import {
 import { Formik, Form } from 'formik'
 import { FormGroup, FormSubmit } from '../../../components/custom'
 import { initialValues } from './_initialValues'
+import { validationSchema } from './_validation'
+import { config } from './_config'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, options, config, validationSchema
+    handleSubmit, placeholder, title, options, employees, defaultData,
   } = props
   return (
     <Card>
@@ -21,23 +23,29 @@ const FormUI = (props) => {
           {() => (
             <Form id="form-programs">
               {
-              config.map((row) => (
-                <Row key={row[0].key}>
-                  {
-                    row.map((item) => {
-                      if (options && item.options) {
-                        Object.assign(item, { ...item, options })
-                      }
-                      return (
-                        <Col sm={item.grid} key={item.key}>
-                          <FormGroup {...item} />
-                        </Col>
-                      )
-                    })
-                  }
-                </Row>
-              ))
-            }
+                config.map((row) => (
+                  <Row key={row[0].key}>
+                    {
+                      row.map((item) => {
+                        if (options && item.name === 'workstations_id') {
+                          Object.assign(item, { ...item, options })
+                        }
+                        if (employees && item.name === 'employees_id') {
+                          Object.assign(item, { ...item, options: employees })
+                        }
+                        if (defaultData && item.selected) {
+                          Object.assign(item, { ...item, defaultData })
+                        }
+                        return (
+                          <Col sm={item.grid} key={item.key}>
+                            <FormGroup {...item} />
+                          </Col>
+                        )
+                      })
+                    }
+                  </Row>
+                ))
+              }
               <FormSubmit back="/dashboard/programs" title={title} />
             </Form>
           )}
