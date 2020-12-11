@@ -1,7 +1,7 @@
 import Can from './can'
-import Header from './header'
+import { Header, HeaderTrainingDetail } from './header'
 import Error from './error'
-import List from './list'
+import { List, ListCourse } from './list'
 import {
   AlertDialog,
   AlertError,
@@ -23,8 +23,10 @@ export {
   FormSubmit,
   Error,
   Header,
+  HeaderTrainingDetail,
   Indicators,
   List,
   Search,
   SelectSearch,
+  ListCourse,
 }
