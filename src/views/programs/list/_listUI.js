@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
+import moment from 'moment'
 import {
   AlertDialog, Can, Header, List, Search,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
+import { capitalizeFirstLetter } from '../../../utility/helpers/functions'
 
 const ListUI = (props) => {
   const { data, remove, pagination, search, temp, ordering } = props
@@ -21,13 +23,14 @@ const ListUI = (props) => {
       return {
         ...item,
         workstation: item.workstation ? item.workstation.name : '--',
-        workstations_id: item.workstation ? item.workstation.id : 'No Asignado',
+        workstations_id: item.workstation ? item.workstation.id : '--',
+        frequency: item.frequency ? capitalizeFirstLetter(item.frequency) : '--',
+        start_date: moment(item.start_date).format('DD/MM/YYYY'),
+        end_date: moment(item.end_date).format('DD/MM/YYYY'),
+
       }
     })
     return newData
-  }
-  if (data) {
-    transformData()
   }
   return (
     <>

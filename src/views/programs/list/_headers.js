@@ -10,6 +10,21 @@ export const headers = [
     sortable: true,
   },
   {
+    selector: 'start_date',
+    name: 'Fecha comienzo',
+    sortable: true,
+  },
+  {
+    selector: 'end_date',
+    name: 'Fecha termino',
+    sortable: true,
+  },
+  {
+    selector: 'frequency',
+    name: 'Frecuencia',
+    sortable: true,
+  },
+  {
     selector: 'description',
     name: 'Descripción',
     sortable: true,

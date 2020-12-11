@@ -6,7 +6,7 @@ export const initialValues = {
   end_date: '',
 }
 
-export const frecuency = [
+export const frequency = [
   { value: 'semanal', label: 'Semanal' },
   { value: 'quincenal', label: 'Bisemanal' },
   { value: 'mensual', label: 'Mensual' },
