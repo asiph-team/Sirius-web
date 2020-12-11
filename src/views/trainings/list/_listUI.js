@@ -8,6 +8,7 @@ import {
 } from '../../../components/custom'
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
+import { capitalizeFirstLetter } from '../../../utility/helpers/functions'
 
 const ListUI = (props) => {
   const { data, remove, pagination, search, temp, ordering } = props
@@ -26,7 +27,7 @@ const ListUI = (props) => {
         total_invited: item.total_invited,
         start_date: item.start_date,
         end_date: item.end_date,
-        frequency: item.frequency,
+        frequency: capitalizeFirstLetter(item.frequency),
         employees_id: [],
       }
     })
