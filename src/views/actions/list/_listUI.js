@@ -21,7 +21,7 @@ const ListUI = (props) => {
     const newData = data.data.data.map((item) => {
       return {
         ...item,
-        manager: item.user ? item.user.name : 'No Asignado',
+        manager: item.user ? item.user.name : '--',
         area: item.area ? item.area.name : '--',
         state: item.status ? 'Abierto' : 'Cerrado',
       }
