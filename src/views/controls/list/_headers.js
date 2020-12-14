@@ -8,6 +8,7 @@ export const headers = [
     selector: 'activity_name',
     name: 'Actividad',
     sortable: true,
+    orderKey: 'activity.name',
   },
   {
     selector: 'actions',
