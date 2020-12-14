@@ -78,7 +78,7 @@ const List = (props) => {
           ? obj.cell = SemaphoreChip.cell : obj
   })
   const handleSort = (column, sortDirection) => {
-    ordering(column.selector, sortDirection.toUpperCase())
+    ordering(column.orderKey ? column.orderKey : column.selector, sortDirection.toUpperCase())
   }
   return (
     <DataTable
