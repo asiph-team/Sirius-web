@@ -25,7 +25,7 @@ const SelectSearch = (props) => {
   return (
     <Col lg="auto" sm="mt-1">
       <InputGroup className="mr-2">
-        <Input autoFocus="true" value={data} placeholder={placeholder} onChange={(e) => setData(e.target.value)} onKeyDown={(e) => enterCheck(e)} onClick={() => handleClean()} />
+        <Input autoFocus value={data} placeholder={placeholder} onChange={(e) => setData(e.target.value)} onKeyDown={(e) => enterCheck(e)} onClick={() => handleClean()} />
         <InputGroupAddon addonType="append">
           {
             temp !== null && temp !== undefined && temp.type === param && temp.value && status ? (

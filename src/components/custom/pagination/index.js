@@ -50,9 +50,11 @@ const PaginationSeprated = (props) => {
               const items = []
               for (let i = startPage; i <= endPage; i++) {
                 items.push(
-                  <PaginationItem className={classnames({
-                    active: current_page === i,
-                  })}>
+                  <PaginationItem
+                    key={i}
+                    className={classnames({
+                      active: current_page === i,
+                    })}>
                     <PaginationLink onClick={() => pagination(i, temp)} href="#">
                       {i}
                     </PaginationLink>
