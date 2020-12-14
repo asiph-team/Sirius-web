@@ -28,7 +28,7 @@ const SelectSearch = (props) => {
         <Input autoFocus="true" value={data} placeholder={placeholder} onChange={(e) => setData(e.target.value)} onKeyDown={(e) => enterCheck(e)} onClick={() => handleClean()} />
         <InputGroupAddon addonType="append">
           {
-            temp !== null && temp !== undefined && temp.type === param && temp.value ? (
+            temp !== null && temp !== undefined && temp.type === param && temp.value && status ? (
               <Button onClick={() => handleCleanSearch()} color="primary">
                 <Icon.XCircle size={15} />
               </Button>

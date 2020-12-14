@@ -7,7 +7,6 @@ import {
   fetchSuccess,
   fetchError,
   cleanState,
-  removeItem,
   fetchSearch,
   fetchOrder,
   updateStatus,

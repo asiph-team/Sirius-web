@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 import rutRegex from 'rut-regex'
-import { cellRegExp, phoneRegExp } from '../../../utility/helpers/consts'
+import { cellRegExp } from '../../../utility/helpers/consts'
 
 export const enterpriseSchema = Yup.object().shape({
   name: Yup.string()
