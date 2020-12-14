@@ -33,11 +33,6 @@ const ListUI = (props) => {
     })
     return newData
   }
-  if (data) {
-    transformData()
-  }
-
-
   return (
     <>
       <Header title="Capacitaciones" icon="Clipboard">
