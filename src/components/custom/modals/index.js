@@ -5,6 +5,7 @@ import InfoWorkStations from './_infoWorkStations'
 import InfoTraining from './_infoTraining'
 import RecoveryUserPassword from './_recoveryUserPassword'
 import ContactInfoControlMeasure from './_contactControlMeasure'
+import ActionsExport from './_actionsExport'
 
 export {
   ContactInfoEmployee,
@@ -14,4 +15,5 @@ export {
   InfoTraining,
   RecoveryUserPassword,
   ContactInfoControlMeasure,
+  ActionsExport,
 }

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import { PlusCircle } from 'react-feather'
+import { PlusCircle, File } from 'react-feather'
 import moment from 'moment'
+import { ActionsExport } from '../../../components/custom/modals'
+
 import {
   AlertDialog, Header, List, Search,
 } from '../../../components/custom'
@@ -39,6 +41,10 @@ const ListUI = (props) => {
                 &nbsp;Agregar plan
           </Button>
         </Link>
+        <Button color="primary" className="ml-1">
+          <File size={14} />
+                &nbsp;Exportar
+          </Button>
       </Header>
       <Card>
         <CardBody>
