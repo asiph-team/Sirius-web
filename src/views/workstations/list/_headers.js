@@ -8,6 +8,7 @@ export const headers = [
     name: 'Área de pertenencia',
     selector: 'area',
     sortable: true,
+    orderKey: 'area.name',
   },
   {
     name: 'Total actividades',
