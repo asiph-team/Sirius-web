@@ -18,6 +18,7 @@ const ListUI = (props) => {
     pagination,
     search,
     temp,
+    ordering,
   } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
@@ -58,6 +59,7 @@ const ListUI = (props) => {
                 show={show}
                 resource="enterprises"
                 contact
+                ordering={ordering}
               />
             )
           }
