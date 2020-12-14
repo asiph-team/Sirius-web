@@ -8,6 +8,7 @@ export const headers = [
     selector: 'workstation',
     name: 'Puesto de trabajo',
     sortable: true,
+    orderKey: 'workstation.name',
   },
   {
     selector: 'start_date',
