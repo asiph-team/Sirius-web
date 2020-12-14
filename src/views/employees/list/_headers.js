@@ -9,6 +9,7 @@ export const headers = [
     selector: 'fullname',
     name: 'Nombre del trabajador',
     sortable: true,
+    orderKey: 'name',
   },
   {
     selector: 'rut',
@@ -20,11 +21,13 @@ export const headers = [
     selector: 'area',
     name: 'Área de trabajo',
     sortable: true,
+    orderKey: 'area.name',
   },
   {
     selector: 'workstation',
     name: 'Puesto de trabajo',
     sortable: true,
+    orderKey: 'workstation.name',
   },
 ].concat((permitted('employees:edit') || permitted('employees:delete')) && status)
   .concat((permitted('employees:edit') || permitted('employees:delete')) && actions).filter((x) => x !== false)
