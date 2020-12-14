@@ -12,6 +12,7 @@ const EnterpriseList = () => {
     changeStatus,
     pagination,
     search,
+    orderBy
   } = useFetchResources(`${urlApi}/api/v1/enterprises?`)
   const {
     items,
@@ -29,6 +30,7 @@ const EnterpriseList = () => {
       remove={remove}
       changeStatus={changeStatus}
       pagination={pagination}
+      ordering={orderBy}
     />
   )
 }
