@@ -13,6 +13,7 @@ export const headers = [
     selector: 'user_id',
     name: 'Responsable del área',
     sortable: true,
+    orderKey: 'user_chief_of_area.name',
   },
   {
     selector: 'total_employees',
