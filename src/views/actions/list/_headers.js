@@ -12,6 +12,7 @@ export const headers = [
     selector: 'area',
     name: 'Área',
     sortable: true,
+    orderKey: 'area.name',
   },
   {
     selector: 'date_initial',
@@ -22,6 +23,7 @@ export const headers = [
     selector: 'manager',
     name: 'Responsable',
     sortable: true,
+    orderKey: 'user.name',
   },
   {
     selector: 'origin',
