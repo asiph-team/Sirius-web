@@ -2,22 +2,23 @@ export const headers = [
   {
     selector: 'name',
     name: 'Nombre de actividad',
-    sorteble: true,
+    sortable: true,
   },
   {
     selector: 'description',
     name: 'Descripción',
-    sorteble: true,
+    sortable: true,
   },
   {
     selector: 'workstation',
     name: 'Puesto de trabajo',
-    sorteble: true,
+    sortable: true,
+    orderKey: 'workstations.name',
   },
   {
     selector: 'risk',
     name: 'Riesgos',
-    sorteble: true,
+    sortable: true,
     center: true,
   },
   {

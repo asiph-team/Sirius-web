@@ -21,14 +21,11 @@ const ListUI = (props) => {
     const newData = data.data.data.map((item) => {
       return {
         ...item,
-        workstation: item.workstations ? item.workstations.name : 'No Asignada',
+        workstation: item.workstations ? item.workstations.name : '--',
         controlMenu: item.id,
       }
     })
     return newData
-  }
-  if (data) {
-    transformData()
   }
   return (
     <>
