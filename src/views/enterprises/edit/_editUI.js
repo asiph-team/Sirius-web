@@ -1,6 +1,5 @@
 import React from 'react'
 import { Header } from '../../../components/custom'
-import { phoneFormat } from '../../../utility/helpers/functions'
 import FormUI from '../_form'
 
 const EditUI = (props) => {

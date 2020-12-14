@@ -10,7 +10,7 @@ import classnames from 'classnames'
 import { ChevronLeft, ChevronRight } from 'react-feather'
 
 const PaginationSeprated = (props) => {
-  const { data, pagination, param, temp } = props
+  const { data, pagination, temp } = props
   const { current_page, last_page } = data
   let startPage = 0
   let endPage = 0

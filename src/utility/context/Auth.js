@@ -14,10 +14,6 @@ const ContextAuth = createContext({
   updateValidPassword: () => { },
   logout: () => { },
 })
-const authUrl = {
-  'admin@test.com': 'admin/login',
-  'superadmin@test.comn': 'users/login',
-}
 const Auth = (props) => {
   const savedState = localStorage.getItem('user')
   const [state, dispatch] = useReducer(authReducer, savedState

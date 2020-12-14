@@ -7,7 +7,7 @@ import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
 import AddUI from './_addUI'
 import { urlApi } from '../../../utility/helpers/consts'
-import { singleDateFormatter, rutFormatter } from '../../../utility/helpers/functions'
+import { singleDateFormatter } from '../../../utility/helpers/functions'
 
 const Add = () => {
   const url = `${urlApi}/api/v1/employees`

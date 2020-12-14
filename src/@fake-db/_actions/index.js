@@ -61,16 +61,6 @@ mock.onPost('/api/v1/actions/remove').reply((request) => {
 })
 
 mock.onPost('/api/v1/actions/update').reply((request) => {
-  const data = JSON.parse(request.data)
-  // data.date_committed = '01/01/21'
-  // data.date_initial = '02/01/21'
-  // actions.map((item) => {
-  //   if (item.id === data.id) {
-  //     return Object.assign(item, { ...data })
-  //   }
-
-  //   return item
-  // })
 
   return [200, []]
 })
