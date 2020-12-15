@@ -57,8 +57,12 @@ export const permitted = (rule) => {
 }
 
 export const userData = () => {
-  const { user } = JSON.parse(localStorage.getItem('user'))
-  return user
+  try {
+    const { user } = JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')) : null
+    return user
+  } catch (e) {
+    return e
+  }
 }
 
 export const capitalizeFirstLetter = (string) => {
