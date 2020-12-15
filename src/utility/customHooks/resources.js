@@ -120,6 +120,20 @@ export function usePostResources() {
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
+  const postExport = async (values, url, config) => {
+    dispatch(fetchStart())
+    await axios.post(url, values, { headers: { Authorization: `Bearer ${access_token}` }, responseType: 'arraybuffer' })
+      .then((response) => {
+        const type = response.headers['content-type']
+        const date = new Date()
+        const fileUrl = window.URL.createObjectURL(new Blob([response.data]), { type })
+        const link = document.createElement('a')
+        link.href = fileUrl
+        link.setAttribute('download', `actions-${date}.xlsx`)
+        dispatch(fetchSuccess(link))
+      })
+      .catch((error) => dispatch(fetchError(error)))
+  }
 
   const update = async (data, url) => {
     dispatch(fetchStart())
@@ -159,5 +173,6 @@ export function usePostResources() {
     patchData,
     changeStatus,
     updateFiles,
+    postExport,
   }
 }
