@@ -8,12 +8,13 @@ import { Formik, Form } from 'formik'
 import { FormGroup, FormSubmit } from '../../..'
 import { actionSchema } from './_validation'
 import { initialValues } from './_initialValues'
-import { config } from './_config'
+import { configForm, areas } from './_config'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, options, onClose, items,
+    handleSubmit, placeholder, title, options, onClose, items, user,
   } = props
+  const config = (user.role !== 'chief_of_area') ? configForm.concat([areas]) : configForm
   const handleDownload = (link) => {
     document.getElementById('form-actions-export').reset()
     document.body.appendChild(link)
