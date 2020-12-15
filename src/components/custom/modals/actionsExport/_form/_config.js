@@ -1,7 +1,7 @@
 import { userData } from '../../../../../utility/helpers/functions'
 
 const user = userData()
-
+console.log('user', user)
 const areas = [
   {
     input: 'CustomSelect',
