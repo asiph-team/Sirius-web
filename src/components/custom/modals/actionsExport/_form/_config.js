@@ -1,11 +1,7 @@
-import { userData } from '../../../../../utility/helpers/functions'
-
-const user = userData()
-console.log('user', user)
-const areas = [
+export const areas = [
   {
     input: 'CustomSelect',
-    key: 2,
+    key: 3,
     name: 'area_id',
     title: 'Áreas*',
     type: 'text',
@@ -14,21 +10,21 @@ const areas = [
   },
 ]
 
-export const config = [
+export const configForm = [
   [
     {
       input: 'CustomDatePicker',
-      key: 3,
+      key: 1,
       name: 'date_start',
       title: 'Fecha de inicio*',
       grid: 6,
     },
     {
       input: 'CustomDatePicker',
-      key: 4,
+      key: 2,
       name: 'date_end',
       title: 'Fecha termino*',
       grid: 6,
     },
-  ].concat((user.role === 'administrator' || user.role === 'superadministrator') && areas).filter((x) => x !== false),
+  ],
 ]

@@ -57,11 +57,9 @@ export const permitted = (rule) => {
 }
 
 export const userData = () => {
-  try {
+  if (localStorage.getItem('user')) {
     const { user } = JSON.parse(localStorage.getItem('user'))
     return user
-  } catch (e) {
-    return e
   }
 }
 
