@@ -41,10 +41,10 @@ const ListUI = (props) => {
                 &nbsp;Agregar plan
           </Button>
         </Link>
-        <Button color="primary" className="ml-1">
+        <Button color="primary" className="ml-1" onClick={() => show(null, 'contact')}>
           <File size={14} />
                 &nbsp;Exportar
-          </Button>
+        </Button>
       </Header>
       <Card>
         <CardBody>
@@ -63,6 +63,12 @@ const ListUI = (props) => {
           }
         </CardBody>
       </Card>
+      <ActionsExport
+        visibility={visibility.contact}
+        // visibility
+        onClose={() => setVisibility({ ...visibility, contact: false })}
+        item={selected}
+      />
       {
         visibility.status && (
           <AlertDialog
