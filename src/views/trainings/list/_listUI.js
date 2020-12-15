@@ -53,7 +53,6 @@ const ListUI = (props) => {
                 headers={headers}
                 show={show}
                 resource="trainings"
-                contact
                 ordering={ordering}
               />
             )
