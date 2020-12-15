@@ -30,5 +30,5 @@ export const config = [
       title: 'Fecha termino*',
       grid: 6,
     },
-  ].concat((user.role !== 'chief_of_area') && areas).filter((x) => x !== false)
+  ].concat((user.role === 'administrator' || user.role === 'superadministrator') && areas).filter((x) => x !== false),
 ]
