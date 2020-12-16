@@ -1,5 +1,5 @@
 import Can from './can'
-import { Header, HeaderTrainingDetail } from './header'
+import { Header, HeaderDetail } from './header'
 import Error from './error'
 import { List, ListCourse } from './list'
 import {
@@ -23,7 +23,7 @@ export {
   FormSubmit,
   Error,
   Header,
-  HeaderTrainingDetail,
+  HeaderDetail,
   Indicators,
   List,
   Search,
