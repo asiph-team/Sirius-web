@@ -44,12 +44,8 @@ const List = (props) => {
     cell: (row) => {
       return (
         <>
-          <Can rule="trainings:edit">
-            {
-              resource === 'trainings' && (
-                <Link to={{ pathname: '/dashboard/training/detail', state: { training: row } }}><Button color="link" className="p-0"><Icon.ZoomIn size={20} /></Button></Link>
-              )
-            }
+          <Can rule={`${resource}:detail`}>
+            <Link to={{ pathname: `/dashboard/${resource}/detail`, state: { training: row } }}><Button color="link" className="p-0"><Icon.ZoomIn size={20} /></Button></Link>
           </Can>
           <Can rule="controls:edit">
             {
