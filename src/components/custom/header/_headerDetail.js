@@ -3,15 +3,15 @@ import { Row, Col, Button, Card, CardBody } from 'reactstrap'
 import { ChevronLeft } from 'react-feather'
 import { Link } from 'react-router-dom'
 
-const HeaderTrainingDetail = (props) => {
-  const { detail } = props
+const HeaderDetail = (props) => {
+  const { detail, title, back } = props
   return (
     <Row className="mb-2">
       <Col sm="12" lg="12" className="d-flex align-items-center justify-items-between">
-        <Link to="/dashboard/trainings/">
+        <Link to={back}>
           <Button color="primary">
             <ChevronLeft size={14} />
-                &nbsp;Volver a capacitaciones
+                &nbsp;Volver a {title}
           </Button>
         </Link>
       </Col>
@@ -47,4 +47,4 @@ const HeaderTrainingDetail = (props) => {
   )
 }
 
-export default HeaderTrainingDetail
+export default HeaderDetail

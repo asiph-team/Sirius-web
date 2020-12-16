@@ -1,7 +1,7 @@
 import Header from './_header'
-import HeaderTrainingDetail from './_headerTrainingDetail'
+import HeaderDetail from './_headerDetail'
 
 export {
   Header,
-  HeaderTrainingDetail,
+  HeaderDetail,
 }
