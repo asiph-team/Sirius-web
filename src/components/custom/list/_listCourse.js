@@ -5,7 +5,7 @@ import { Card, CardBody } from 'reactstrap'
 import moment from 'moment'
 
 const ListCourse = (props) => {
-  const { data } = props
+  const { data, show } = props
   const compareDates = (date) => {
     const now = Date()
     return moment(date) > now ? 'Por realizar' : 'Realizado '
@@ -25,7 +25,7 @@ const ListCourse = (props) => {
                 <h3 className="mr-1">
                   {moment(item.date).format('DD/MM/YYYY')}
                 </h3>
-                <Icon.ZoomIn size={24} />
+                <Icon.ZoomIn size={24} onClick={() => show(item, 'contact')} className="cursor-pointer" />
               </div>
             </CardBody>
           </Card>
