@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  HeaderTrainingDetail, ListCourse,
+  HeaderDetail, ListCourse,
 } from '../../../components/custom'
 import PaginationSeprated from '../../../components/custom/pagination'
 
@@ -9,7 +9,7 @@ const DetailUI = (props) => {
 
   return (
     <>
-      <HeaderTrainingDetail detail={training} icon="Clipboard" />
+      <HeaderDetail detail={training} back="/dashboard/trainings" title="capacitaciones" />
       {
         data && (
           <ListCourse
