@@ -37,7 +37,7 @@ const ProgramsEdit = lazy(() => import('./views/programs/edit'))
 const ControlsList = lazy(() => import('./views/controls/list/'))
 const ControlsAdd = lazy(() => import('./views/controls/add'))
 const ControlsEdit = lazy(() => import('./views/controls/edit'))
-const TrainingDetailList = lazy(() => import('./views/trainingDetail/list'))
+const TrainingDetail = lazy(() => import('./views/trainings/detail'))
 
 const AuthConfig = (props) => (
   <ContextAuth.Consumer>
@@ -96,6 +96,7 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/trainings" component={TrainingsList} />
       <RouteConfig path="/dashboard/trainings/add" component={TrainingsAdd} />
       <RouteConfig path="/dashboard/trainings/edit" component={TrainingsEdit} />
+      <RouteConfig exact path="/dashboard/trainings/detail" component={TrainingDetail} />
       <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
       <RouteConfig path="/dashboard/actions/add" component={ActionsAdd} />
       <RouteConfig path="/dashboard/actions/edit" component={ActionsEdit} />
@@ -108,7 +109,6 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/controls" component={ControlsList} />
       <RouteConfig exact path="/dashboard/controls/add" component={ControlsAdd} />
       <RouteConfig exact path="/dashboard/controls/edit" component={ControlsEdit} />
-      <RouteConfig exact path="/dashboard/training/detail" component={TrainingDetailList} />
     </Switch>
   </Router>
 )

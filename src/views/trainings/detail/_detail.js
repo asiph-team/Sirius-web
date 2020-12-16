@@ -4,7 +4,7 @@ import {
 } from '../../../components/custom'
 import PaginationSeprated from '../../../components/custom/pagination'
 
-const ListUI = (props) => {
+const DetailUI = (props) => {
   const { data, pagination, temp, training } = props
 
   return (
@@ -26,4 +26,4 @@ const ListUI = (props) => {
   )
 }
 
-export default ListUI
+export default DetailUI
