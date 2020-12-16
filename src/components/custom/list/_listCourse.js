@@ -8,7 +8,7 @@ const ListCourse = (props) => {
   const { data } = props
   const compareDates = (date) => {
     const now = Date()
-    return moment(date) > now ? 'Curso por realizar' : 'Curso realizado '
+    return moment(date) > now ? 'Por realizar' : 'Realizado '
   }
   return (
     <>
