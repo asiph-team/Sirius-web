@@ -7,6 +7,7 @@ import RecoveryUserPassword from './_recoveryUserPassword'
 import ContactInfoControlMeasure from './_contactControlMeasure'
 import ActionsExport from './actionsExport'
 import CourseAssistance from './_courseAssistance'
+import MedicalSurveillance from './_medicalSurveillance'
 
 export {
   ContactInfoEmployee,
@@ -18,4 +19,5 @@ export {
   ContactInfoControlMeasure,
   ActionsExport,
   CourseAssistance,
+  MedicalSurveillance,
 }
