@@ -60,7 +60,7 @@ export const config = [
       input: 'CustomSelect',
       key: 7,
       name: 'workstation_id',
-      title: 'Puesto de trabajo*',
+      title: 'Puesto de trabajo (En caso de no asignar un área, el trabajador pasa a ser jefe de área)',
       type: 'text',
       options: [],
       grid: 6,
