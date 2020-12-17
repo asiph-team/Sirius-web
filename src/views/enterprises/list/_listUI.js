@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import { Button, Card, CardBody, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import { PlusCircle } from 'react-feather'
+import { PlusCircle, Eye } from 'react-feather'
 import { ContactInfoEnterprise } from '../../../components/custom/modals'
 
 import {
-  AlertDialog, Header, List, Search, SelectSearch,
+  AlertDialog, Header, List, Search, SelectSearch, AlertWorkon
 } from '../../../components/custom'
 import { headers } from './_headers'
 import PaginationBasic from '../../../components/custom/pagination'
+import { ContextAuth } from '../../../utility/context/Auth'
 
 const ListUI = (props) => {
   const {
@@ -35,6 +36,19 @@ const ListUI = (props) => {
     })
     return newData
   }
+  const ButtonWorkon = (info) => {
+    const { login } = info
+    return (
+      <Button color="link" className="p-0" onClick={() => login({ email: 'superadmin@asiph.cl', password: '123456' })}> <Eye size={20} /></Button >
+    )
+  }
+  const WorkAs = () => (
+    <ContextAuth.Consumer>
+      {({ handleAuthentication }) => (
+        <ButtonWorkon login={handleAuthentication} />
+      )}
+    </ContextAuth.Consumer>
+  )
   return (
     <>
       <Header title="Empresas" icon="Shield">
@@ -70,6 +84,16 @@ const ListUI = (props) => {
         onClose={() => setVisibility({ ...visibility, contact: false })}
         item={selected}
       />
+      {
+        visibility.workon && (
+          <AlertWorkon
+            title={`¿Quiere actuar en ${selected.name}?`}
+            paragraph="Podrás operar como administrador de la empresa seleccionada."
+            callback={() => WorkAs}
+            callbackCancel={() => setVisibility({ ...visibility, workon: false })}
+          />
+        )
+      }
       {
         visibility.remove && (
           <AlertDialog

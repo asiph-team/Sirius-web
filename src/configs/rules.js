@@ -3,6 +3,7 @@ export const rules = {
     'dashboard:superadmin',
     'enterprises:edit',
     'enterprises:delete',
+    'enterprises:workon',
   ],
   administrator: [
     'dashboard:admin',
