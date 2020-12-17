@@ -8,6 +8,7 @@ import DataTable from 'react-data-table-component'
 import Can from '../can'
 import { semaphore, semaphoreFields, semaphoreText } from '../../../utility/helpers/consts'
 import { permitted } from '../../../utility/helpers/functions'
+import { ContextAuth } from '../../../utility/context/Auth'
 
 const CustomSwitch = (props) => {
   const { status, changeStatus } = props
@@ -18,6 +19,19 @@ const CustomSwitch = (props) => {
     />
   )
 }
+const ButtonWorkon = (props) => {
+  const { login } = props
+  return (
+    <Button color="link" className="p-0" onClick={() => login({ email: 'superadmin@asiph.cl', password: '123456' })}> <Icon.Eye size={20} /></Button >
+  )
+}
+const WorkAs = () => (
+  <ContextAuth.Consumer>
+    {({ handleAuthentication }) => (
+      <ButtonWorkon login={handleAuthentication} />
+    )}
+  </ContextAuth.Consumer>
+)
 
 const SemaphoreChip = {
   cell: (row, index, obj) => {
@@ -44,6 +58,13 @@ const List = (props) => {
     cell: (row) => {
       return (
         <>
+          {
+            permitted('enterprises:workon') && (
+              <Can rule="enterprises:workon">
+                <Button onClick={() => show(row, 'workon')} color="link" className="p-0"><Icon.Eye size={20} /></Button>
+              </Can>
+            )
+          }
           <Can rule={`${resource}:detail`}>
             <Link to={{ pathname: `/dashboard/${resource}/detail`, state: { training: row } }}><Button color="link" className="p-0"><Icon.ZoomIn size={20} /></Button></Link>
           </Can>
