@@ -5,6 +5,5 @@ export const initialValues = {
   address: '',
   phone: '',
   email: '',
-  workstation_id: '',
   date_start: '',
 }
