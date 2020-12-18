@@ -5,7 +5,7 @@ import FormUI from '../_form'
 
 const EditUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } }, employees } = props
-  const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })) : null
+  const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })).concat({ label: 'No asignar puesto de trabajo', value: null }) : null
   placeholder.date_start = placeholder.date_start ? moment(placeholder.date_start, 'YYYY-MM-DD').toDate() : moment(new Date(), 'YYYY-MM-DD').toDate()
   return (
     <>
