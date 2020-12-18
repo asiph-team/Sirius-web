@@ -5,6 +5,7 @@ import {
 import * as Icon from 'react-feather'
 import { UpdateUserPassword, RecoveryUserPassword } from '../../../components/custom/modals'
 import { profiles } from '../../../utility/helpers/consts'
+import { Notification } from '../../../components/custom'
 
 const UserDropdown = (props) => {
   const { handleLogout, user, updateValidPassword } = props
@@ -46,32 +47,35 @@ const UserDropdown = (props) => {
   )
 }
 
-class NavbarUser extends React.PureComponent {
-  render() {
-    const { user: { name, role }, userImg } = this.props
-    return (
-      <ul className="nav navbar-nav navbar-nav-user float-right">
-        <UncontrolledDropdown tag="li" className="dropdown-user nav-item">
-          <DropdownToggle tag="a" className="nav-link dropdown-user-link">
-            <div className="user-nav d-sm-flex d-none">
-              <span className="user-name text-bold-600">{name}</span>
-              <span className="user-status">{profiles[role]}</span>
-            </div>
-            <span data-tour="user">
-              <img
-                src={userImg}
-                className="round"
-                height="40"
-                width="40"
-                alt="avatar"
-              />
-            </span>
-          </DropdownToggle>
-          <UserDropdown {...this.props} />
-        </UncontrolledDropdown>
-      </ul>
-    )
-  }
+const NavbarUser = (props) => {
+  const { user: { name, role }, userImg } = props
+  return (
+    <ul className="nav navbar-nav navbar-nav-user float-right">
+      {
+        name && (
+          <Notification />
+        )
+      }
+      <UncontrolledDropdown tag="li" className="dropdown-user nav-item">
+        <DropdownToggle tag="a" className="nav-link dropdown-user-link">
+          <div className="user-nav d-sm-flex d-none">
+            <span className="user-name text-bold-600">{name}</span>
+            <span className="user-status">{profiles[role]}</span>
+          </div>
+          <span data-tour="user">
+            <img
+              src={userImg}
+              className="round"
+              height="40"
+              width="40"
+              alt="avatar"
+            />
+          </span>
+        </DropdownToggle>
+        <UserDropdown {...props} />
+      </UncontrolledDropdown>
+    </ul>
+  )
 }
 
 export default NavbarUser
