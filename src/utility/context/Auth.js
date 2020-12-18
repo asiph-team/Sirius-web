@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react'
 import axios from 'axios'
 import {
-  initialState, authReducer, fetchStartAuth, fetchSuccessAuth, fetchErrorAuth,
+  initialState, authReducer, fetchStartAuth, fetchSuccessAuth, fetchErrorAuth, fetchUserAlert,
 } from '../../ducks/session'
 import { urlApi } from '../helpers/consts'
 
@@ -13,11 +13,17 @@ const ContextAuth = createContext({
   handleAuthentication: () => { },
   updateValidPassword: () => { },
   logout: () => { },
+  alert: null,
 })
 const Auth = (props) => {
   const savedState = localStorage.getItem('user')
   const [state, dispatch] = useReducer(authReducer, savedState
     ? JSON.parse(savedState) : initialState)
+
+  const getAlert = (token) => {
+    axios.get(`${urlApi}/api/v1/courses/today`, { headers: { Authorization: `Bearer ${token}` } })
+      .then((response) => dispatch(fetchUserAlert(response.data)))
+  }
 
   const setSession = (data, remove = false) => {
     if (remove) return localStorage.clear()
@@ -35,6 +41,7 @@ const Auth = (props) => {
       user.role = rol
       dispatch(fetchSuccessAuth({ user, access_token }))
       setSession({ user, access_token })
+      getAlert(access_token)
     } catch (error) {
       const { response: { data: { message } } } = error
       dispatch(fetchErrorAuth(message))
