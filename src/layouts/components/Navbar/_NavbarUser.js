@@ -48,14 +48,10 @@ const UserDropdown = (props) => {
 }
 
 const NavbarUser = (props) => {
-  const { user: { name, role }, userImg } = props
+  const { user: { name, role }, userImg, alert } = props
   return (
     <ul className="nav navbar-nav navbar-nav-user float-right">
-      {
-        name && (
-          <Notification />
-        )
-      }
+      {alert && <Notification alerts={alert} />}
       <UncontrolledDropdown tag="li" className="dropdown-user nav-item">
         <DropdownToggle tag="a" className="nav-link dropdown-user-link">
           <div className="user-nav d-sm-flex d-none">
