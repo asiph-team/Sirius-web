@@ -10,6 +10,7 @@ import {
   fetchSearch,
   fetchOrder,
   updateStatus,
+  fetchSignature,
 } from '../../ducks/resources'
 import { urlApi, baseApiUrl } from '../helpers/consts'
 
@@ -98,6 +99,14 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const updateSignature = async (data, url, id, items) => {
+    dispatch(fetchStart())
+    await axios.post(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+      .then(dispatch(fetchSuccess(items)))
+      .then(dispatch(fetchSignature(data, { id, signature: data, status: 'attended' }, items)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   return {
     items,
     remove,
@@ -108,6 +117,7 @@ export function useFetchResources(url) {
     indicatorsParams,
     removeControl,
     orderBy,
+    updateSignature,
   }
 }
 
@@ -149,6 +159,15 @@ export function usePostResources() {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const updateSignature = async (data, url, id, items) => {
+    console.log('updateSignature items', items)
+    dispatch(fetchStart())
+    await axios.post(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+      .then(dispatch(fetchSuccess(items)))
+      .then(dispatch(fetchSignature(data, { id, signature: data, status: 'attended' }, items)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   const changeStatus = async (data, url) => {
     dispatch(fetchStart())
     await axios.put(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
@@ -174,5 +193,6 @@ export function usePostResources() {
     changeStatus,
     updateFiles,
     postExport,
+    updateSignature,
   }
 }

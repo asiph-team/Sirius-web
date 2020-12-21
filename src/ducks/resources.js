@@ -5,6 +5,7 @@ const FETCH_ERROR = 'FETCH_ERROR'
 const FETCH_ORDER = 'FETCH_ORDER'
 const CLEAN = 'CLEAN'
 const UPDATE_STATUS = 'UPDATE_STATUS'
+const UPDATE_SIGNATURE = 'UPDATE_SIGNATURE'
 
 export const fetchStart = () => ({
   type: FETCH_START,
@@ -29,10 +30,18 @@ export const cleanState = () => ({
   type: CLEAN,
 })
 
-export const updateStatus = (payload, field) => ({
+export const updateStatus = (payload, field, sw) => ({
   type: UPDATE_STATUS,
   payload,
   field,
+  sw,
+})
+
+export const fetchSignature = (payload, field, list) => ({
+  type: UPDATE_SIGNATURE,
+  payload,
+  field,
+  list,
 })
 
 export const fetchOrder = (payload, order, data) => ({
@@ -51,6 +60,7 @@ export const initialState = {
 }
 
 export const resourcesReducer = (state = initialState, action) => {
+  let newData = null
   switch (action.type) {
     case FETCH_START:
       return { ...state, loading: true }
@@ -78,8 +88,12 @@ export const resourcesReducer = (state = initialState, action) => {
       const { items } = state
       const { data: dataItems } = items
       const { data: { data } } = items
-      const { payload: { id }, field } = action
-      const newData = data.map((obj) => obj.id === id ? { ...obj, [field]: !obj[field] } : obj)
+      const { payload: { id }, field, sw } = action
+      if (sw) {
+        newData = data.map((obj) => obj.id === id ? { ...obj, signature: field.signature, status: field.status } : obj)
+      } else {
+        newData = data.map((obj) => obj.id === id ? { ...obj, [field]: !obj[field] } : obj)
+      }
       const newItems = {
         ...items,
         data: {
@@ -91,6 +105,20 @@ export const resourcesReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         items: newItems,
+      }
+    case UPDATE_SIGNATURE:
+      const dataNew = action.list.data.data.map((obj) => obj.id === action.field.id ? { ...obj, signature: action.field.signature.signature, assistance: 'attended', status: 'attended' } : obj)
+      const newList = {
+        ...action.list,
+        data: {
+          ...action.list.data,
+          data: dataNew,
+        },
+      }
+      return {
+        ...state,
+        loading: false,
+        items: newList,
       }
     default:
       return state
