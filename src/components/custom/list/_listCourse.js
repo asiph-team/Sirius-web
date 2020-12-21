@@ -2,10 +2,12 @@ import React from 'react'
 import 'rc-switch/assets/index.css'
 import * as Icon from 'react-feather'
 import { Card, CardBody } from 'reactstrap'
+import { Link } from 'react-router-dom'
+
 import moment from 'moment'
 
 const ListCourse = (props) => {
-  const { data, show } = props
+  const { data, show, url, instance } = props
   const compareDates = (date) => {
     const now = Date()
     return moment(date) > now ? 'Por realizar' : 'Realizado '
@@ -25,7 +27,15 @@ const ListCourse = (props) => {
                 <h3 className="mr-1">
                   {moment(item.date).format('DD/MM/YYYY')}
                 </h3>
-                <Icon.ZoomIn size={24} onClick={() => show(item, 'contact')} className="cursor-pointer" />
+                {
+                  (url !== null) ? (
+                    <Link to={{ pathname: url, state: { item } }}>
+                      <Icon.ZoomIn size={24} className="cursor-pointer" />
+                    </Link>
+                  ) : (
+                      <Icon.ZoomIn size={24} onClick={() => show(item, 'contact')} className="cursor-pointer" />
+                    )
+                }
               </div>
             </CardBody>
           </Card>
