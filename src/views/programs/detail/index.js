@@ -6,6 +6,7 @@ import DetailUI from './_detail'
 import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const ProgramsDetail = (props) => {
+  console.log('props', props)
   const { location: { state: { training } } } = props
   const { items: trainings, remove, pagination, search, orderBy } = useFetchResources(`${urlApi}${baseApiUrl}programs/${training.id}/courses?`)
   const { items, loading, error, temp } = trainings

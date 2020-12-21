@@ -21,14 +21,19 @@ const DetailUI = (props) => {
           <ListCourse
             data={data.data.data}
             show={show}
+            url="participants"
           />
         )
       }
-      <MedicalSurveillance
-        visibility={visibility.contact}
-        onClose={() => setVisibility({ ...visibility, contact: false })}
-        item={selected}
-      />
+      {
+        visibility.contact && (
+          <MedicalSurveillance
+            visibility={visibility.contact}
+            onClose={() => setVisibility({ ...visibility, contact: false })}
+            item={selected}
+          />
+        )
+      }
       {
         data && (
           <PaginationSeprated data={data.data} pagination={pagination} temp={temp} param="filter" />
