@@ -13,7 +13,6 @@ const ParticipantList = (props) => {
   const {
     items, loading, error, temp,
   } = trainings
-  console.log('items', items)
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
   return (

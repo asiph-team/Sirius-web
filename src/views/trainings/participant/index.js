@@ -8,12 +8,11 @@ import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 const ProgramsParticipantList = (props) => {
   const { location: { state: { item } } } = props
   const {
-    items: trainings, remove, pagination, search, orderBy, updateSignature
+    items: trainings, remove, pagination, search, orderBy, updateSignature,
   } = useFetchResources(`${urlApi}${baseApiUrl}trainings/courses/${item.id}/assistance`)
   const {
     items, loading, error, temp,
   } = trainings
-  console.log('items', items)
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
   return (

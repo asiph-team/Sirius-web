@@ -160,7 +160,6 @@ export function usePostResources() {
   }
 
   const updateSignature = async (data, url, id, items) => {
-    console.log('updateSignature items', items)
     dispatch(fetchStart())
     await axios.post(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
       .then(dispatch(fetchSuccess(items)))
