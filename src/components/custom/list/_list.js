@@ -68,6 +68,16 @@ const List = (props) => {
     },
   }
 
+  const Signature = {
+    cell: (row, index, obj) => {
+      return (
+        <>
+          { row.signature ? 'Firmado' : <Button onClick={() => show(row, 'signature')} color="link" className="p-0"><Icon.Edit3 size={20} /> Firmar</Button>}
+        </>
+      )
+    },
+  }
+
   const updateStatus = {
     cell: (row) => {
       if (permitted(`${resource}:edit`)) { return <CustomSwitch status={row.status} changeStatus={() => show(row, 'status')} /> } return (<>{row.state}</>)
@@ -78,7 +88,8 @@ const List = (props) => {
     obj.selector === 'actions' && (permitted(`${resource}:edit`) || permitted(`${resource}:delete`))
       ? obj.cell = menu.cell : obj.selector === 'status'
         ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector)
-          ? obj.cell = SemaphoreChip.cell : obj
+          ? obj.cell = SemaphoreChip.cell : obj.selector === '_signature_'
+            ? obj.cell = Signature.cell : obj
   })
   const handleSort = (column, sortDirection) => {
     ordering(column.orderKey ? column.orderKey : column.selector, sortDirection.toUpperCase())

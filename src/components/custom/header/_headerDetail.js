@@ -2,18 +2,29 @@ import React from 'react'
 import { Row, Col, Button, Card, CardBody } from 'reactstrap'
 import { ChevronLeft } from 'react-feather'
 import { Link } from 'react-router-dom'
+import { history } from '../../../history'
 
 const HeaderDetail = (props) => {
   const { detail, title, back } = props
   return (
     <Row className="mb-2">
       <Col sm="12" lg="12" className="d-flex align-items-center justify-items-between">
-        <Link to={back}>
-          <Button color="primary">
-            <ChevronLeft size={14} />
-                &nbsp;Volver a {title}
-          </Button>
-        </Link>
+        {back ? (
+          <Link to={back}>
+            <Button color="primary">
+              <ChevronLeft size={14} />
+                &nbsp;Volver a
+                {' '}
+                {title}
+            </Button>
+          </Link>
+        ) : (
+            <Button color="primary" onClick={() => history.goBack()}>
+              <ChevronLeft size={14} />
+                &nbsp;Volver a {' '}
+              {title}
+            </Button>
+          )}
       </Col>
       <Col sm="12" lg="12" className="d-flex flex-wrap align-items-center mt-1">
         <Card className="d-flex flex-wrap col-lg-12">
@@ -25,18 +36,21 @@ const HeaderDetail = (props) => {
             <Col>
               <h4>
                 Fecha inicio:
+                {' '}
                 {detail.start_date}
               </h4>
             </Col>
             <Col>
               <h4>
                 Fecha Termino:
+                {' '}
                 {detail.end_date}
               </h4>
             </Col>
             <Col>
               <h4>
                 Frecuencia:
+                {' '}
                 {detail.frequency}
               </h4>
             </Col>
