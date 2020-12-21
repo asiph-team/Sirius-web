@@ -1,6 +1,6 @@
 import { frequency } from './_initialValues'
 
-export const editConfig = [
+export const config = [
   [
     {
       input: 'CustomInput',
