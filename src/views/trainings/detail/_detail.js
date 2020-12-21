@@ -22,11 +22,13 @@ const DetailUI = (props) => {
           <ListCourse
             data={data.data.data}
             show={show}
+            url="participants"
+            instance={training}
           />
         )
       }
       {
-        data && (
+        visibility.contact && (
           <CourseAssistance
             visibility={visibility.contact}
             onClose={() => setVisibility({ ...visibility, contact: false })}

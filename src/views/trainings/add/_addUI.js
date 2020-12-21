@@ -10,7 +10,7 @@ const AddUI = (props) => {
   return (
     <>
       <Header title="Agregar capacitación" icon="Clipboard" />
-      <FormUI handleSubmit={handleSubmit} title="Agregar" validationSchema={trainingSchemaAdd} config={addConfig} options={options} />
+      <FormUI handleSubmit={handleSubmit} title="Agregar" validationSchema={trainingSchemaAdd} options={options} />
     </>
   )
 }
