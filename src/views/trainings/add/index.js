@@ -18,7 +18,7 @@ const Add = () => {
   if (errorEmployees) return <Error message={errorEmployees} />
   return (
     <>
-      <AddUI handleSubmit={(values) => postData({ description: values.description, end_date: moment(values.end_date).format('YYYY-MM-DD'), frequency: values.frequency, name: values.name, start_date: moment(values.start_date).format('YYYY-MM-DD') }, url)} employees={data} />
+      <AddUI handleSubmit={(values) => postData({ description: values.description, end_date: moment(values.end_date).format('YYYY-MM-DD'), frequency: values.frequency, name: values.name, start_date: moment(values.start_date).format('YYYY-MM-DD'), employees_id: values.employees_id }, url)} employees={data} />
       {loading && <AlertLoading message="Almacenando capacitación" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
