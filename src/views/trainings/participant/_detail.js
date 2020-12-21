@@ -9,7 +9,6 @@ import { headers } from './_headers'
 
 const DetailUI = (props) => {
   const { data, pagination, temp, training, updateSignature } = props
-  console.log('updateSignature', updateSignature)
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
@@ -55,6 +54,7 @@ const DetailUI = (props) => {
             item={selected}
             data={data}
             updateSignature={updateSignature}
+            title={training}
           />
         )
       }
