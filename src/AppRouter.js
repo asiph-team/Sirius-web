@@ -26,6 +26,7 @@ const TrainingsList = lazy(() => import('./views/trainings/list'))
 const TrainingsAdd = lazy(() => import('./views/trainings/add'))
 const TrainingsEdit = lazy(() => import('./views/trainings/edit'))
 const TrainingDetail = lazy(() => import('./views/trainings/detail'))
+const ParticipantList = lazy(() => import('./views/trainings/participant'))
 const ActionsList = lazy(() => import('./views/actions/list'))
 const ActionsAdd = lazy(() => import('./views/actions/add'))
 const ActionsEdit = lazy(() => import('./views/actions/edit'))
@@ -36,6 +37,7 @@ const ProgramsList = lazy(() => import('./views/programs/list/'))
 const ProgramsAdd = lazy(() => import('./views/programs/add'))
 const ProgramsEdit = lazy(() => import('./views/programs/edit'))
 const ProgramsDetail = lazy(() => import('./views/programs/detail'))
+const ProgramsParticipantList = lazy(() => import('./views/programs/participant'))
 const ControlsList = lazy(() => import('./views/controls/list/'))
 const ControlsAdd = lazy(() => import('./views/controls/add'))
 const ControlsEdit = lazy(() => import('./views/controls/edit'))
@@ -98,6 +100,7 @@ const AppRouter = () => (
       <RouteConfig path="/dashboard/trainings/add" component={TrainingsAdd} />
       <RouteConfig path="/dashboard/trainings/edit" component={TrainingsEdit} />
       <RouteConfig exact path="/dashboard/trainings/detail" component={TrainingDetail} />
+      <RouteConfig exact path="/dashboard/trainings/participants" component={ParticipantList} />
       <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
       <RouteConfig path="/dashboard/actions/add" component={ActionsAdd} />
       <RouteConfig path="/dashboard/actions/edit" component={ActionsEdit} />
@@ -108,6 +111,7 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/programs/add" component={ProgramsAdd} />
       <RouteConfig exact path="/dashboard/programs/edit" component={ProgramsEdit} />
       <RouteConfig exact path="/dashboard/programs/detail" component={ProgramsDetail} />
+      <RouteConfig exact path="/dashboard/programs/participants" component={ProgramsParticipantList} />
       <RouteConfig exact path="/dashboard/controls" component={ControlsList} />
       <RouteConfig exact path="/dashboard/controls/add" component={ControlsAdd} />
       <RouteConfig exact path="/dashboard/controls/edit" component={ControlsEdit} />
