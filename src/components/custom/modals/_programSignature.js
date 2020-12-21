@@ -8,11 +8,12 @@ import {
   ModalFooter,
   CardBody,
 } from 'reactstrap'
+import moment from 'moment'
 import SignatureCanvas from 'react-signature-canvas'
 import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const ProgramSignature = (props) => {
-  const { onClose, visibility, item, data, updateSignature } = props
+  const { onClose, visibility, item, data, updateSignature, title } = props
   const url = `${urlApi}${baseApiUrl}programs/courses/${item.id}/signature`
   const sigCanvas = useRef({})
   const clear = () => sigCanvas.current.clear()
@@ -27,7 +28,7 @@ const ProgramSignature = (props) => {
       className="modal-dialog-centered modal-lg"
     >
       <ModalHeader toggle={onClose} className="bg-primary">
-        <strong>{item.name}</strong>
+        <strong>{title.name}</strong>
         {' '}
         |
         {' '}
@@ -35,7 +36,11 @@ const ProgramSignature = (props) => {
       </ModalHeader>
       <ModalBody className="modal-dialog-centered">
         <Container>
-          <CardBody className="d-flex align-items-center justify-content-center">
+          <CardBody className="d-flex flex-wrap align-items-center justify-content-center">
+            <h3 className="col-lg-12 text-center">Firmar Asistencia</h3>
+            <h4 className="col-lg-12 text-center">{item.name}</h4>
+            <h4 className="col-lg-12 text-center">{item.rut}</h4>
+            <h4 className="col-lg-12 text-center">{moment(title.date).format('DD/MM/YYYY')}</h4>
             <SignatureCanvas
               ref={sigCanvas}
               canvasProps={{ width: 500, height: 200, className: 'sigCanvas border' }}
