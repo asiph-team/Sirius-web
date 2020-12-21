@@ -8,6 +8,8 @@ import ContactInfoControlMeasure from './_contactControlMeasure'
 import ActionsExport from './actionsExport'
 import CourseAssistance from './_courseAssistance'
 import MedicalSurveillance from './_medicalSurveillance'
+import CourseSignature from './_courseSignature'
+import ProgramSignature from './_programSignature'
 
 export {
   ContactInfoEmployee,
@@ -20,4 +22,6 @@ export {
   ActionsExport,
   CourseAssistance,
   MedicalSurveillance,
+  CourseSignature,
+  ProgramSignature,
 }

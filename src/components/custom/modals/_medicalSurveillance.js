@@ -12,6 +12,7 @@ import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 import { useFetchResources } from '../../../utility/customHooks/resources'
 
 const MedicalSurveillance = (props) => {
+  console.log('MedicalSurveillance', props)
   const { onClose, visibility, item } = props
   const { items: participants } = useFetchResources(`${urlApi}${baseApiUrl}programs/courses/${item.id}/assistance`)
   const { items: data } = participants
