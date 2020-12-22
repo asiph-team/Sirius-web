@@ -24,9 +24,7 @@ const ListUI = (props) => {
       >
         <Icon.Bell size={21} />
         <Badge pill color="primary" className="badge-up">
-          {' '}
-          {programs.length + trainings.length}
-          {' '}
+          {(programs.length + trainings.length) ? ` ${programs.length + trainings.length} ` : ''}
         </Badge>
       </DropdownToggle>
       <DropdownMenu
