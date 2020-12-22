@@ -1,3 +1,5 @@
+import { sizes } from './_initialValues'
+
 export const config = [
   [
     {
@@ -94,18 +96,19 @@ export const config = [
   ],
   [
     {
-      input: 'CustomInput',
+      input: 'CustomSelect',
       key: 11,
       name: 'size',
-      title: 'Talla (Nacional Ej: 38, 40 42)',
+      title: 'Talla',
       type: 'text',
+      options: sizes,
       grid: 4,
     },
     {
       input: 'CustomInput',
       key: 12,
       name: 'size_pants',
-      title: 'Pantalón',
+      title: 'Pantalón (Ej: 52)',
       type: 'text',
       grid: 4,
     },
