@@ -27,7 +27,7 @@ const FormUI = (props) => {
                 <Row key={row[0].key}>
                   {
                     row.map((item) => {
-                      if (options && item.options) {
+                      if (options && item.options && item.name === 'workstation_id') {
                         Object.assign(item, { ...item, options })
                       }
                       return (
