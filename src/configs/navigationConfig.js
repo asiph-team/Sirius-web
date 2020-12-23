@@ -23,18 +23,6 @@ const navigationConfig = [
     ],
   },
   {
-    id: 'areas',
-    title: 'Areas de trabajo',
-    type: 'item',
-    icon: <Icon.Box size={20} />,
-    permissions: ['administrator'],
-    navLink: '/dashboard/areas',
-    parentOf: [
-      '/dashboard/areas/add',
-      '/dashboard/areas/edit',
-    ],
-  },
-  {
     id: 'workstations',
     title: 'Puestos de trabajo',
     type: 'item',
@@ -56,6 +44,18 @@ const navigationConfig = [
     parentOf: [
       '/dashboard/employees/add',
       '/dashboard/employees/edit',
+    ],
+  },
+  {
+    id: 'areas',
+    title: 'Areas de trabajo',
+    type: 'item',
+    icon: <Icon.Box size={20} />,
+    permissions: ['administrator'],
+    navLink: '/dashboard/areas',
+    parentOf: [
+      '/dashboard/areas/add',
+      '/dashboard/areas/edit',
     ],
   },
   {
