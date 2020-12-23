@@ -38,7 +38,7 @@ export const config = [
   ],
   [
     {
-      input: 'CustomInput',
+      input: 'CustomInputRUT',
       key: 5,
       name: 'rut',
       title: 'RUT*',
