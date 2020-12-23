@@ -5,6 +5,7 @@ import { InputGroup, InputGroupAddon, Input } from 'reactstrap'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { es } from 'date-fns/locale'
 import Select from 'react-select'
+import { formatRut, validateRut } from '@fdograph/rut-utilities'
 
 registerLocale('es', es)
 const SelectField = (props) => {
@@ -82,6 +83,40 @@ export const CustomInput = (props) => {
         autoComplete="nofill"
         disabled={!!disabled}
         placeholder={placeholder}
+      />
+    </>
+  )
+}
+
+const CustomInputFieldRUT = (props) => {
+  const { field, form } = props
+  const { name, value } = field
+  const rutFormatting = (e) => {
+    return validateRut(e) ? form.setFieldValue('rut', formatRut(e)) : form.setFieldValue('rut', e)
+  }
+  return (
+    <Input
+      name={name}
+      className="form-control"
+      value={value}
+      onChange={(e) => rutFormatting(e.target.value)}
+      autoComplete="off"
+    />
+  )
+}
+
+export const CustomInputRUT = (props) => {
+  const {
+    name, title, type, small, disabled, placeholder,
+  } = props
+  return (
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        className="form-control"
+        name={name}
+        type={type}
+        component={CustomInputFieldRUT}
       />
     </>
   )
