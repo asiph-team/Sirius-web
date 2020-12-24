@@ -9,7 +9,7 @@ export const config = [
       grid: 6,
     },
     {
-      input: 'CustomSelect',
+      input: 'CustomSelectModal',
       key: 2,
       name: 'user_id',
       title: 'Responsable del área*',
