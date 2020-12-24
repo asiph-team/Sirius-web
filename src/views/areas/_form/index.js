@@ -10,7 +10,7 @@ import { config } from './_config'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, options,
+    handleSubmit, placeholder, title, options, show
   } = props
   return (
     <Card>
@@ -23,23 +23,26 @@ const FormUI = (props) => {
           {() => (
             <Form id="form-areas">
               {
-              config.map((row) => (
-                <Row key={row[0].key}>
-                  {
-                    row.map((item) => {
-                      if (options && item.options) {
-                        Object.assign(item, { ...item, options })
-                      }
-                      return (
-                        <Col sm={item.grid} key={item.key}>
-                          <FormGroup {...item} />
-                        </Col>
-                      )
-                    })
-                  }
-                </Row>
-              ))
-            }
+                config.map((row) => (
+                  <Row key={row[0].key}>
+                    {
+                      row.map((item) => {
+                        if (options && item.options) {
+                          Object.assign(item, { ...item, options })
+                        }
+                        if (options && item.name === 'user_id') {
+                          Object.assign(item, { ...item, options, show })
+                        }
+                        return (
+                          <Col sm={item.grid} key={item.key}>
+                            <FormGroup {...item} />
+                          </Col>
+                        )
+                      })
+                    }
+                  </Row>
+                ))
+              }
               <FormSubmit back="/dashboard/areas" title={title} />
             </Form>
           )}
