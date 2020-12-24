@@ -4,10 +4,10 @@ import {
   Modal,
   ModalBody,
 } from 'reactstrap'
-import Add from '../../../views/employees/add'
+import { AddFORM } from '../../../views/employees/add'
 
 const CreateModal = (props) => {
-  const { onClose, visibility, item } = props
+  const { onClose, visibility } = props
 
   return (
     <Modal
@@ -16,8 +16,8 @@ const CreateModal = (props) => {
       className="modal-dialog-centered modal-lg"
     >
       <ModalBody className="modal-dialog-centered">
-        <Container className="my-2">
-          <Add />
+        <Container>
+          <AddFORM onClose={onClose} />
         </Container>
 
       </ModalBody>
