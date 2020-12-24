@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field } from 'formik'
 import 'react-datepicker/dist/react-datepicker.css'
-import { InputGroup, InputGroupAddon, Input } from 'reactstrap'
+import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { es } from 'date-fns/locale'
 import Select from 'react-select'
@@ -26,6 +26,37 @@ const SelectField = (props) => {
       isMulti={!!multiple}
       isDisabled={disabled}
     />
+  )
+}
+const SelectFieldModal = (props) => {
+  const {
+    options, field, form, multiple, disabled, show,
+  } = props
+  const { name, value } = field
+  const handleModal = (e) =>{
+    e.preventDefault()
+    show(null, 'contact')
+  }
+  return (
+    <div className="row">
+      <div className="col-10">
+        <Select
+          className="basic-single w-full"
+          classNamePrefix="select"
+          name={name}
+          options={options}
+          onChange={(option) => option && form.setFieldValue(name, option.value)}
+          defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
+          isSearchable
+          placeholder=""
+          isMulti={!!multiple}
+          isDisabled={disabled}
+        />
+      </div>
+      <div className="col d-flex justify-content-end">
+        <Button color="primary" onClick={(e) => handleModal(e)}>+</Button>
+      </div>
+    </div>
   )
 }
 
@@ -167,6 +198,25 @@ export const CustomSelect = (props) => {
         component={SelectField}
         multiple={multiple}
         disabled={disabled}
+      />
+    </>
+  )
+}
+
+export const CustomSelectModal = (props) => {
+  const {
+    name, title, options, small, multiple, disabled, show,
+  } = props
+  return (
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        options={options}
+        name={name}
+        component={SelectFieldModal}
+        multiple={multiple}
+        disabled={disabled}
+        show={show}
       />
     </>
   )
