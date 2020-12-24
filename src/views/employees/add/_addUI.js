@@ -1,16 +1,34 @@
 import React from 'react'
+import {
+  Card, CardBody,
+} from 'reactstrap'
 import { Header } from '../../../components/custom'
 import FormUI from '../_form'
 
 const AddUI = (props) => {
-  const { handleSubmit, workstations } = props
+  const { handleSubmit, workstations, back } = props
   const options = workstations ? workstations.data.data.map((item) => ({ label: item.name, value: item.id })) : null
   return (
     <>
       <Header title="Agregar trabajador" icon="Users" />
-      <FormUI handleSubmit={handleSubmit} title="Agregar" options={options} />
+      <Card>
+        <CardBody>
+          <FormUI handleSubmit={handleSubmit} title="Agregar" options={options} back={back} />
+        </CardBody>
+      </Card>
+
+    </>
+  )
+}
+const AddUIForm = (props) => {
+  const { handleSubmit, workstations, onClose } = props
+  const options = workstations ? workstations.data.data.map((item) => ({ label: item.name, value: item.id })) : null
+  return (
+    <>
+      <Header title="Agregar trabajador" icon="Users" />
+      <FormUI handleSubmit={handleSubmit} title="Agregar" options={options} onClose={onClose} />
     </>
   )
 }
 
-export default AddUI
+export { AddUI, AddUIForm }
