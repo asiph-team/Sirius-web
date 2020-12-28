@@ -60,11 +60,15 @@ const ListUI = (props) => {
           }
         </CardBody>
       </Card>
-      <ContactInfoEmployee
-        visibility={visibility.contact}
-        onClose={() => setVisibility({ ...visibility, contact: false })}
-        item={selected}
-      />
+      {
+        visibility.contact && (
+          <ContactInfoEmployee
+            visibility={visibility.contact}
+            onClose={() => setVisibility({ ...visibility, contact: false })}
+            item={selected}
+          />
+        )
+      }
       {
         visibility.remove && (
           <AlertDialog
