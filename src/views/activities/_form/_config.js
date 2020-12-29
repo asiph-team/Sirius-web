@@ -14,7 +14,7 @@ export const config = [
       input: 'CustomSelect',
       key: 2,
       name: 'workstation',
-      title: 'Area de pertenencia*',
+      title: 'Puesto de trabajo*',
       type: 'text',
       options: [],
       grid: 6,
