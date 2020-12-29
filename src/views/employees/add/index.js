@@ -36,7 +36,7 @@ const Add = () => {
 }
 
 const AddFORM = (props) => {
-  const { onClose } = props
+  const { onClose, addEmployee } = props
   const url = `${urlApi}/api/v1/employees`
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   const { items: workstations } = useFetchResources(`${urlApi}/api/v1/workstations?`)
@@ -54,6 +54,7 @@ const AddFORM = (props) => {
             document.getElementById('form-employees').reset()
             clean()
             onClose()
+            addEmployee(items.data)
           }}
         />
       )}

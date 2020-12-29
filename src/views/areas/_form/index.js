@@ -10,12 +10,13 @@ import { config } from './_config'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, options, show
+    handleSubmit, placeholder, title, options, show,
   } = props
   return (
     <Card>
       <CardBody>
         <Formik
+          enableReinitialize
           initialValues={placeholder || initialValues}
           validationSchema={areaSchema}
           onSubmit={(values) => handleSubmit(values)}

@@ -10,7 +10,7 @@ import { urlApi } from '../../../utility/helpers/consts'
 
 const Add = () => {
   const url = `${urlApi}/api/v1/areas`
-  const { data: { loading, error, items }, postData, clean } = usePostResources()
+  const { data: { loading, error, items, temp }, postData, clean } = usePostResources()
   const { items: workstations } = useFetchResources(`${urlApi}/api/v1/employees?all`)
   const { items: data, loading: loadingEmployees, error: errorEmployees } = workstations
   if (loadingEmployees) return <LoadingSpinner />
@@ -18,11 +18,11 @@ const Add = () => {
   return (
     <>
       <AddUI handleSubmit={(values) => postData(values, url)} employees={data} />
-      {loading && <AlertLoading message="Almacenando trabajador" />}
+      {loading && <AlertLoading message="Almacenando area de trabajo" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
       <AlertSuccess
-        message="El trabajador ha sido creado."
+        message="El area de trabajo ha sido creada."
         callback={() => {
           document.getElementById('form-areas').reset()
           clean()

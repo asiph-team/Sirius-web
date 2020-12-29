@@ -7,7 +7,7 @@ import {
 import { AddFORM } from '../../../views/employees/add'
 
 const CreateModal = (props) => {
-  const { onClose, visibility } = props
+  const { onClose, visibility, addEmployee } = props
 
   return (
     <Modal
@@ -17,7 +17,7 @@ const CreateModal = (props) => {
     >
       <ModalBody className="modal-dialog-centered">
         <Container>
-          <AddFORM onClose={onClose} />
+          <AddFORM onClose={onClose} addEmployee={addEmployee} />
         </Container>
 
       </ModalBody>
