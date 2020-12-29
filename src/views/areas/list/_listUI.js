@@ -22,15 +22,12 @@ const ListUI = (props) => {
         id: item.id,
         name: item.name,
         description: item.description,
-        user_id: item.user_chief_of_area.name,
-        chief_areas_id: item.user_chief_of_area.id,
+        user_id: item.user_chief_of_area ? `${item.user_chief_of_area.name} ${item.user_chief_of_area.lastname}` : '--',
+        chief_areas_id: item.user_chief_of_area ? item.user_chief_of_area.id : '--',
         total_employees: item.total_employees,
       }
     })
     return newData
-  }
-  if (data) {
-    transformData()
   }
   return (
     <>

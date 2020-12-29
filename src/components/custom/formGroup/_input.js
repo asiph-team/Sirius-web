@@ -33,7 +33,7 @@ const SelectFieldModal = (props) => {
     options, field, form, multiple, disabled, show,
   } = props
   const { name, value } = field
-  const handleModal = (e) =>{
+  const handleModal = (e) => {
     e.preventDefault()
     show(null, 'contact')
   }
@@ -46,7 +46,7 @@ const SelectFieldModal = (props) => {
           name={name}
           options={options}
           onChange={(option) => option && form.setFieldValue(name, option.value)}
-          defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
+          value={options.find((option) => (option.value === value) || (option.label === value))}
           isSearchable
           placeholder=""
           isMulti={!!multiple}
@@ -205,7 +205,7 @@ export const CustomSelect = (props) => {
 
 export const CustomSelectModal = (props) => {
   const {
-    name, title, options, small, multiple, disabled, show,
+    name, title, options, small, disabled, show, placeholder
   } = props
   return (
     <>
@@ -214,9 +214,9 @@ export const CustomSelectModal = (props) => {
         options={options}
         name={name}
         component={SelectFieldModal}
-        multiple={multiple}
         disabled={disabled}
         show={show}
+        placeholder={placeholder}
       />
     </>
   )

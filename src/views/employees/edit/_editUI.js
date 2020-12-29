@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import { Card, CardBody } from 'reactstrap'
 import { Header } from '../../../components/custom'
 import FormUI from '../_form'
 
@@ -10,7 +11,11 @@ const EditUI = (props) => {
   return (
     <>
       <Header title="Editar trabajador" icon="Users" />
-      <FormUI handleSubmit={handleSubmit} title="Guardar cambios" options={options} placeholder={placeholder} />
+      <Card>
+        <CardBody>
+          <FormUI handleSubmit={handleSubmit} title="Guardar cambios" options={options} placeholder={placeholder} />
+        </CardBody>
+      </Card>
     </>
   )
 }
