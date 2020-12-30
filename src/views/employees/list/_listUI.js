@@ -24,9 +24,10 @@ const ListUI = (props) => {
         ...item,
         fullname: `${item.name} ${item.lastname}`,
         workstation: item.workstation ? item.workstation.name : '--',
-        workstation_id: item.workstation ? item.workstation.id : '--',
+        workstation_id: item.workstation ? item.workstation.id : null,
         status: item.state,
         area: item.area ? item.area.name : '--',
+        rol: item.rol,
       }
     })
     return newData
