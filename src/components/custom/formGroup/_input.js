@@ -210,7 +210,8 @@ const SelectFieldCheckbox = (props) => {
     options, field, form, multiple, disabled,
   } = props
   const { name, value } = field
-  const [isDisabled, setDisabled] = useState(disabled)
+  const { values: { rol } } = form
+  const [isDisabled, setDisabled] = useState(rol === 'chief_of_area' ? !disabled : disabled)
   const toggleSelect = (e) => {
     setDisabled(e)
     form.setFieldValue('is_chief_of_area', e)
@@ -230,7 +231,7 @@ const SelectFieldCheckbox = (props) => {
         isDisabled={isDisabled}
       />
       <div className="form-check d-flex align-items-center">
-        <Input value={isDisabled} type="checkbox" name="is_chief_of_area" className="form-check-input" id="ChiefOfAreaCheck" onChange={() => toggleSelect(!isDisabled)} />
+        <Input value={isDisabled} type="checkbox" checked={isDisabled} name="is_chief_of_area" className="form-check-input" id="ChiefOfAreaCheck" onChange={() => toggleSelect(!isDisabled)} />
         <label className="form-check-label" htmlFor="ChiefOfAreaCheck">Jefe área</label>
       </div>
     </>
