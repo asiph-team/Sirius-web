@@ -23,6 +23,12 @@ export const headers = [
     center: true,
   },
   {
+    name: 'Revisiones',
+    selector: 'revisions',
+    sortable: true,
+    center: true,
+  },
+  {
     name: '',
     selector: 'actions',
     maxWidth: '100px',
