@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Field } from 'formik'
 import 'react-datepicker/dist/react-datepicker.css'
+import { PlusCircle } from 'react-feather'
 import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { es } from 'date-fns/locale'
@@ -54,7 +55,9 @@ const SelectFieldModal = (props) => {
         />
       </div>
       <div className="col d-flex justify-content-end">
-        <Button color="primary" onClick={(e) => handleModal(e)}>+</Button>
+        <Button color="primary" onClick={(e) => handleModal(e)}>
+          <PlusCircle size={14} />
+        </Button>
       </div>
     </div>
   )
