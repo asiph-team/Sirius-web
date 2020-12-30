@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, CardBody } from 'reactstrap'
 import {
-  HeaderDetail, List,
+  HeaderSign, List,
 } from '../../../components/custom'
 import { ProgramSignature } from '../../../components/custom/modals'
 import PaginationSeprated from '../../../components/custom/pagination'
@@ -31,7 +31,7 @@ const DetailUI = (props) => {
   }
   return (
     <>
-      <HeaderDetail detail={training} title="cursos" />
+      <HeaderSign detail={training} title="cursos" />
       <Card>
         <CardBody>
           {
