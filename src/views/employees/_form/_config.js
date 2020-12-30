@@ -59,7 +59,7 @@ export const config = [
   ],
   [
     {
-      input: 'CustomSelect',
+      input: 'CustomSelectCheckbox',
       key: 7,
       name: 'workstation_id',
       title: 'Puesto de trabajo',
@@ -124,7 +124,7 @@ export const config = [
   [
     {
       input: 'CustomTextArea',
-      key: 3,
+      key: 14,
       name: 'observation',
       title: 'Observaciones',
       rows: 5,
