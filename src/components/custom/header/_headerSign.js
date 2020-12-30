@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import { Row, Col, Button, Card, CardBody } from 'reactstrap'
 import { ChevronLeft } from 'react-feather'
 import { Link } from 'react-router-dom'
@@ -30,14 +31,13 @@ const HeaderSign = (props) => {
         <Card className="d-flex flex-wrap col-lg-12">
           <CardBody className="col-lg-12">
             <h1>{detail.name}</h1>
-            <h3>{detail.description}</h3>
           </CardBody>
           <Row className="px-2">
             <Col>
               <h4>
                 Fecha:
                 {' '}
-                {detail.date}
+                {moment(detail.date).format('DD/MM/YYYY')}
               </h4>
             </Col>
             <Col>
