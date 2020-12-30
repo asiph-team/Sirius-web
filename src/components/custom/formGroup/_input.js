@@ -343,3 +343,49 @@ export const CustomFileInput = (props) => {
     </>
   )
 }
+
+const CustomInputFieldAddonCheckbox = (props) => {
+  const { field, form, disabled, type } = props
+  const { name, value } = field
+  const [isDisabled, setDisabled] = useState(value !== '' ? !disabled : disabled)
+  return (
+    <>
+      <div className="mb-3 input-group">
+        <div className="input-group-prepend">
+          <span className="input-group-text">
+            <input
+              type="checkbox"
+              checked={!isDisabled}
+              onChange={() => setDisabled(!isDisabled)}
+            />
+          </span>
+        </div>
+        <Input
+          placeholder="Revisiones mensuales"
+          type={type}
+          value={value}
+          onChange={(e) => form.setFieldValue(name, e.target.value)}
+          className="form-control"
+          disabled={isDisabled}
+        />
+      </div>
+    </>
+  )
+}
+
+export const CustomInputAddonCheckbox = (props) => {
+  const {
+    name, title, small, disabled, type,
+  } = props
+  return (
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        name={name}
+        component={CustomInputFieldAddonCheckbox}
+        disabled={disabled}
+        type={type}
+      />
+    </>
+  )
+}
