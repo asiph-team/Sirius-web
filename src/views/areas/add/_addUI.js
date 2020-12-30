@@ -5,7 +5,7 @@ import FormUI from '../_form'
 
 const AddUI = (props) => {
   const { handleSubmit, employees } = props
-  const options = employees ? employees.data.data.map((item) => ({ label: `${item.name} ${item.lastname}`, value: item.id })) : null
+  const options = employees ? employees.data.map((item) => ({ label: `${item.name} ${item.lastname}`, value: item.id })) : null
   const [placeholder, setPlaceholder] = useState({ user_id: '' })
   const [visibility, setVisibility] = useState({ contact: false, remove: false, status: false })
   const [selected, setSelected] = useState({})
