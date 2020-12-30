@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Field } from 'formik'
 import 'react-datepicker/dist/react-datepicker.css'
 import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap'
@@ -196,6 +196,54 @@ export const CustomSelect = (props) => {
         options={options}
         name={name}
         component={SelectField}
+        multiple={multiple}
+        disabled={disabled}
+      />
+    </>
+  )
+}
+const SelectFieldCheckbox = (props) => {
+  const {
+    options, field, form, multiple, disabled,
+  } = props
+  const { name, value } = field
+  const [isDisabled, setDisabled] = useState(disabled)
+  const toggleSelect = (e) => {
+    setDisabled(e)
+    form.setFieldValue('is_chief_of_area', e)
+  }
+  return (
+    <>
+      <Select
+        className="basic-single"
+        classNamePrefix="select"
+        name={name}
+        options={options}
+        onChange={(option) => option && form.setFieldValue(name, option.value)}
+        defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
+        isSearchable
+        placeholder=""
+        isMulti={!!multiple}
+        isDisabled={isDisabled}
+      />
+      <div className="form-check d-flex align-items-center">
+        <Input value={isDisabled} type="checkbox" name="is_chief_of_area" className="form-check-input" id="ChiefOfAreaCheck" onChange={() => toggleSelect(!isDisabled)} />
+        <label className="form-check-label" htmlFor="ChiefOfAreaCheck">Jefe área</label>
+      </div>
+    </>
+  )
+}
+export const CustomSelectCheckbox = (props) => {
+  const {
+    name, title, options, small, multiple, disabled,
+  } = props
+  return (
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        options={options}
+        name={name}
+        component={SelectFieldCheckbox}
         multiple={multiple}
         disabled={disabled}
       />
