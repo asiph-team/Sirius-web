@@ -6,7 +6,16 @@ export const config = [
       name: 'name',
       title: 'Nombre del puesto de trabajo*',
       type: 'text',
-      grid: 12,
+      grid: 6,
+    },
+    {
+      input: 'CustomInputAddonCheckbox',
+      key: 1,
+      name: 'revisions',
+      title: 'El puesto de trabajo es supervisor',
+      type: 'number',
+      grid: 6,
+      disabled: true,
     },
   ],
   [
@@ -41,7 +50,16 @@ export const Editconfig = [
       name: 'name',
       title: 'Nombre del puesto de trabajo*',
       type: 'text',
-      grid: 12,
+      grid: 6,
+    },
+    {
+      input: 'CustomInputAddonCheckbox',
+      key: 1,
+      name: 'revisions',
+      title: 'El puesto de trabajo es supervisor',
+      type: 'number',
+      grid: 6,
+      disabled: true,
     },
   ],
   [
@@ -72,7 +90,6 @@ export const Editconfig = [
       key: 3,
       name: 'information',
       title: 'Licencias / Permisos / Certificaciones / Cursos / Conocimientos obligatorios.',
-
       rows: 5,
       grid: 12,
     },
