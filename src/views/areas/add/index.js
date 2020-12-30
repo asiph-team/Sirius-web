@@ -6,12 +6,12 @@ import {
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
 import AddUI from './_addUI'
-import { urlApi } from '../../../utility/helpers/consts'
+import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Add = () => {
-  const url = `${urlApi}/api/v1/areas`
-  const { data: { loading, error, items, temp }, postData, clean } = usePostResources()
-  const { items: workstations } = useFetchResources(`${urlApi}/api/v1/employees?all`)
+  const url = `${urlApi}${baseApiUrl}areas`
+  const { data: { loading, error, items }, postData, clean } = usePostResources()
+  const { items: workstations } = useFetchResources(`${urlApi}${baseApiUrl}chief_area/unset`)
   const { items: data, loading: loadingEmployees, error: errorEmployees } = workstations
   if (loadingEmployees) return <LoadingSpinner />
   if (errorEmployees) return <Error message={errorEmployees} />
@@ -21,14 +21,14 @@ const Add = () => {
       {loading && <AlertLoading message="Almacenando area de trabajo" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (
-      <AlertSuccess
-        message="El area de trabajo ha sido creada."
-        callback={() => {
-          document.getElementById('form-areas').reset()
-          clean()
-          history.goBack()
-        }}
-      />
+        <AlertSuccess
+          message="El area de trabajo ha sido creada."
+          callback={() => {
+            document.getElementById('form-areas').reset()
+            clean()
+            history.goBack()
+          }}
+        />
       )}
     </>
   )
