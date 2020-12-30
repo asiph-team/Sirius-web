@@ -6,14 +6,14 @@ import FormUI from '../_form'
 
 const EditUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } }, employees } = props
-  const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })).concat({ label: 'No asignar puesto de trabajo', value: null }) : null
+  const options = employees ? employees.data.data.map((item) => ({ label: item.name, value: item.id })).sort((a, b) => { return a.label > b.label ? 1 : -1 }) : null
   placeholder.date_start = placeholder.date_start ? moment(placeholder.date_start, 'YYYY-MM-DD').toDate() : moment(new Date(), 'YYYY-MM-DD').toDate()
   return (
     <>
       <Header title="Editar trabajador" icon="Users" />
       <Card>
         <CardBody>
-          <FormUI handleSubmit={handleSubmit} title="Guardar cambios" options={options} placeholder={placeholder} />
+          <FormUI handleSubmit={handleSubmit} title="Guardar cambios" options={options} placeholder={placeholder} back="/dashboard/employees" />
         </CardBody>
       </Card>
     </>
