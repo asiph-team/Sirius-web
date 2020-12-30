@@ -15,7 +15,7 @@ const HeaderDetail = (props) => {
               <ChevronLeft size={14} />
                 &nbsp;Volver a
                 {' '}
-              {title}
+                {title}
             </Button>
           </Link>
         ) : (
@@ -35,23 +35,23 @@ const HeaderDetail = (props) => {
           <Row className="px-2">
             <Col>
               <h4>
-                Fecha:
+                Fecha inicio:
                 {' '}
-                {detail.date}
+                {detail.start_date}
               </h4>
             </Col>
             <Col>
               <h4>
-                Invitados:
+                Fecha Termino:
                 {' '}
-                {detail.total_invited}
+                {detail.end_date}
               </h4>
             </Col>
             <Col>
               <h4>
-                Asistencia:
+                Frecuencia:
                 {' '}
-                {detail.total_assisted}
+                {detail.frequency}
               </h4>
             </Col>
           </Row>
