@@ -29,7 +29,7 @@ const ListCourse = (props) => {
                 </h3>
                 {
                   (url !== null) ? (
-                    <Link to={{ pathname: url, state: { item } }}>
+                    <Link to={{ pathname: url, state: { item, instance } }}>
                       <Icon.ZoomIn size={24} className="cursor-pointer" />
                     </Link>
                   ) : (
