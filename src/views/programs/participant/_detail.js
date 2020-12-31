@@ -21,8 +21,8 @@ const DetailUI = (props) => {
         id: item.id,
         name: `${item.user.name} ${item.user.lastname}`,
         rut: item.user.rut,
-        area: '--',
-        workstation: '--',
+        area: item.user.area ? item.user.area.name : null,
+        workstation: item.user.workstation ? item.user.workstation.name : null,
         signature: item.signature,
         assistance: item.status === 'invited' ? 'Invitado' : 'Asistió',
       }
