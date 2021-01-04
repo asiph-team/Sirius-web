@@ -47,10 +47,38 @@ const UserDropdown = (props) => {
   )
 }
 
+const UserWorkon = (props) => {
+  const { switchUser } = props
+  return (
+    <DropdownMenu left>
+      <DropdownItem
+        tag="a"
+        href="#"
+        onClick={() => switchUser()}
+      >
+        <Icon.ArrowLeftCircle size={14} />
+        <span className="align-middle"> Volver a Administración</span>
+      </DropdownItem>
+    </DropdownMenu>
+  )
+}
+
 const NavbarUser = (props) => {
-  const { user: { name, role }, userImg, alert } = props
+  const { user: { name, role }, userImg, alert, enterprise } = props
   return (
     <ul className="nav navbar-nav navbar-nav-user float-right">
+      {
+        enterprise && (
+          <UncontrolledDropdown tag="li" className="dropdown-notification nav-item">
+            <DropdownToggle tag="a" className="nav-link nav-link-label">
+
+              <Icon.Eye size={21} />
+
+            </DropdownToggle>
+            <UserWorkon {...props} />
+          </UncontrolledDropdown>
+        )
+      }
       {alert && <Notification alerts={alert} />}
       <UncontrolledDropdown tag="li" className="dropdown-user nav-item">
         <DropdownToggle tag="a" className="nav-link dropdown-user-link">

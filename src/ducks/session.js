@@ -28,6 +28,7 @@ export const initialState = {
   loading: false,
   user: null,
   alert: null,
+  enterprise: null,
 }
 
 export const authReducer = (state = initialState, action) => {
@@ -35,8 +36,8 @@ export const authReducer = (state = initialState, action) => {
     case FETCH_START_AUTH:
       return { ...state, loading: true }
     case FETCH_SUCCESS_AUTH:
-      const { user, access_token } = action.payload
-      return { ...state, user, accessToken: access_token }
+      const { user, access_token, enterprise } = action.payload
+      return { ...state, user, accessToken: access_token, enterprise }
     case FETCH_ERROR_AUTH:
       return { ...state, loading: false, error: action.payload }
     case FETCH_USER_ALERT:

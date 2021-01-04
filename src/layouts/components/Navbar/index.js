@@ -7,7 +7,7 @@ import { ContextAuth } from '../../../utility/context/Auth'
 
 const ThemeNavbar = (props) => (
   <ContextAuth.Consumer>
-    {({ user, logout, updateValidPassword, alert }) => (
+    {({ user, logout, updateValidPassword, alert, enterprise, switchAuthentication }) => (
       <>
         <div className="content-overlay" />
         <div className="header-navbar-shadow" />
@@ -20,12 +20,12 @@ const ThemeNavbar = (props) => (
               >
                 <div className="bookmark-wrapper">
                   <NavbarBookmarks
-                    enterprise={user.enterprise}
+                    enterprise={enterprise}
                     sidebarVisibility={props.sidebarVisibility}
                     handleAppOverlay={props.handleAppOverlay}
                   />
                 </div>
-                <NavbarUser user={user} userImg={userImg} alert={alert} handleLogout={logout} updateValidPassword={updateValidPassword} />
+                <NavbarUser user={user} enterprise={enterprise} userImg={userImg} alert={alert} handleLogout={logout} switchUser={switchAuthentication} updateValidPassword={updateValidPassword} />
               </div>
             </div>
           </div>

@@ -48,6 +48,32 @@ const Auth = (props) => {
     }
   }
 
+  const workonAuthentication = async (values) => {
+    const { enterprise } = values
+    const prevAuth = localStorage.getItem('user')
+    localStorage.setItem('user_aux', prevAuth)
+    dispatch(fetchErrorAuth(null))
+    try {
+      const url = values.email === 'superadmin@test.com' ? 'admin/login' : 'users/login'
+      const response = await axios.post(`${urlApi}/api/v1/${url}`, values)
+      const { user, access_token, rol } = response.data.data
+      user.role = rol
+      dispatch(fetchSuccessAuth({ user, access_token, enterprise }))
+      setSession({ user, access_token })
+      getAlert(access_token)
+      localStorage.setItem('workon', true)
+    } catch (error) {
+      const { response: { data: { message } } } = error
+      dispatch(fetchErrorAuth(message))
+    }
+  }
+
+  const switchAuthentication = async () => {
+    const { user, access_token } = JSON.parse(localStorage.getItem('user_aux'))
+    dispatch(fetchSuccessAuth({ user, access_token }))
+    setSession({ user, access_token })
+  }
+
   const updateValidPassword = (data) => {
     const { access_token } = JSON.parse(localStorage.getItem('user'))
     const user = { ...data, valid_password: true }
@@ -61,6 +87,8 @@ const Auth = (props) => {
   const authProviderValue = {
     ...state,
     handleAuthentication,
+    workonAuthentication,
+    switchAuthentication,
     updateValidPassword,
     logout,
   }

@@ -5,7 +5,7 @@ import { ContextAuth } from '../../../utility/context/Auth'
 
 const AlertWorkon = (props) => {
   const {
-    callback, title, paragraph, callbackCancel,
+    callback, title, paragraph, callbackCancel, enterprise,
   } = props
   const ButtonWorkon = (info) => {
     const { login } = info
@@ -13,7 +13,7 @@ const AlertWorkon = (props) => {
       <Button
         color="primary"
         onClick={() => {
-          login({ email: 'superadmin@asiph.cl', password: '123456' })
+          login({ email: 'superadmin@asiph.cl', password: '123456', enterprise })
           callbackCancel()
         }}
       >
@@ -23,8 +23,8 @@ const AlertWorkon = (props) => {
   }
   const WorkAs = () => (
     <ContextAuth.Consumer>
-      {({ handleAuthentication }) => (
-        <ButtonWorkon login={handleAuthentication} />
+      {({ workonAuthentication }) => (
+        <ButtonWorkon login={workonAuthentication} />
       )}
     </ContextAuth.Consumer>
   )
