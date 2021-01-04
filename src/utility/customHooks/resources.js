@@ -92,6 +92,14 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const risksParams = async (data) => {
+    dispatch(fetchStart())
+    const newUrl = (data.area == null || !data.area) ? `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}` : `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}&area_id=${data.area}`
+    await axios.get(`${newUrl}`, header)
+      .then((response) => dispatch(fetchSearch(response.data, data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   const orderBy = async (orderby, ordering) => {
     const orderParams = `orderBy=${orderby}&order=${ordering}`
     await axios.get(`${url}${orderParams}`, header)
@@ -115,6 +123,7 @@ export function useFetchResources(url) {
     search,
     queryParams,
     indicatorsParams,
+    risksParams,
     removeControl,
     orderBy,
     updateSignature,

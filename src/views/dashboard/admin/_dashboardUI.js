@@ -9,6 +9,7 @@ import { es } from 'date-fns/locale'
 import moment from 'moment'
 import { Can, Indicators } from '../../../components/custom'
 import { singleDateFormatter } from '../../../utility/helpers/functions'
+import Risk from '../risks'
 
 registerLocale('es', es)
 const DashboardUI = (props) => {
@@ -175,11 +176,16 @@ const DashboardUI = (props) => {
         </Row>
       </Can>
       <Can rule="dashboard:manager">
-        {
-          indicators.activityRisk && (
+        <Row>
+          <Col lg="6" md="6" sm="6">
             <Indicators performance={indicators} />
-          )
-        }
+          </Col>
+          <Col lg="6" md="6" sm="6">
+            {
+              temp && <Risk data={temp} />
+            }
+          </Col>
+        </Row>
       </Can>
     </>
   )

@@ -5,7 +5,7 @@ import { PlusCircle, Eye } from 'react-feather'
 import { ContactInfoEnterprise } from '../../../components/custom/modals'
 
 import {
-  AlertDialog, Header, List, Search, SelectSearch, AlertWorkon
+  AlertDialog, Header, List, Search, SelectSearch, AlertWorkon,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import PaginationBasic from '../../../components/custom/pagination'
@@ -37,15 +37,18 @@ const ListUI = (props) => {
     return newData
   }
   const ButtonWorkon = (info) => {
-    const { login } = info
+    const { login, enterprise } = info
     return (
-      <Button color="link" className="p-0" onClick={() => login({ email: 'superadmin@asiph.cl', password: '123456' })}> <Eye size={20} /></Button >
+      <Button color="link" className="p-0" onClick={() => login({ email: 'superadmin@asiph.cl', password: '123456', enterprise })}>
+        {' '}
+        <Eye size={20} />
+      </Button>
     )
   }
-  const WorkAs = () => (
+  const WorkAs = (enterprise) => (
     <ContextAuth.Consumer>
-      {({ handleAuthentication }) => (
-        <ButtonWorkon login={handleAuthentication} />
+      {({ workonAuthentication }) => (
+        <ButtonWorkon login={workonAuthentication} enterprise={enterprise} />
       )}
     </ContextAuth.Consumer>
   )
@@ -79,18 +82,23 @@ const ListUI = (props) => {
           }
         </CardBody>
       </Card>
-      <ContactInfoEnterprise
-        visibility={visibility.contact}
-        onClose={() => setVisibility({ ...visibility, contact: false })}
-        item={selected}
-      />
+      {
+        visibility.contact && (
+          <ContactInfoEnterprise
+            visibility={visibility.contact}
+            onClose={() => setVisibility({ ...visibility, contact: false })}
+            item={selected}
+          />
+        )
+      }
       {
         visibility.workon && (
           <AlertWorkon
             title={`¿Quiere actuar en ${selected.name}?`}
             paragraph="Podrás operar como administrador de la empresa seleccionada."
-            callback={() => WorkAs}
+            callback={() => WorkAs()}
             callbackCancel={() => setVisibility({ ...visibility, workon: false })}
+            enterprise={selected.name}
           />
         )
       }

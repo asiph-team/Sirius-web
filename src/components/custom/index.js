@@ -11,7 +11,7 @@ import {
 } from './alerts'
 import FormGroup from './formGroup'
 import FormSubmit from './formSubmit'
-import Indicators from './indicators'
+import { Indicators, Risks } from './indicators'
 import { Search, SelectSearch } from './search'
 import Notification from './notifications'
 
@@ -29,6 +29,7 @@ export {
   HeaderDetail,
   HeaderSign,
   Indicators,
+  Risks,
   List,
   Search,
   SelectSearch,
