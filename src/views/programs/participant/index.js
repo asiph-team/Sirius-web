@@ -8,7 +8,7 @@ import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 const ParticipantList = (props) => {
   const { location: { state: { item } } } = props
   const {
-    items: trainings, remove, pagination, search, orderBy, updateSignature
+    items: trainings, remove, pagination, search, orderBy, updateSignature, cleanTempState
   } = useFetchResources(`${urlApi}${baseApiUrl}programs/courses/${item.id}/assistance`)
   const {
     items, loading, error, temp,
@@ -25,6 +25,7 @@ const ParticipantList = (props) => {
       temp={temp}
       pagination={pagination}
       updateSignature={updateSignature}
+      cleanTempState={cleanTempState}
     />
   )
 }
