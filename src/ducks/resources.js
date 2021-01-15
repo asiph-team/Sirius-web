@@ -1,9 +1,12 @@
+import moment from 'moment'
+
 const FETCH_START = 'FETCH_START'
 const FETCH_SUCCESS = 'FETCH_SUCCESS'
 const FETCH_SEARCH = 'FETCH_SEARCH'
 const FETCH_ERROR = 'FETCH_ERROR'
 const FETCH_ORDER = 'FETCH_ORDER'
 const CLEAN = 'CLEAN'
+const CLEAN_TEMP = 'CLEAN_TEMP'
 const UPDATE_STATUS = 'UPDATE_STATUS'
 const UPDATE_SIGNATURE = 'UPDATE_SIGNATURE'
 
@@ -28,6 +31,10 @@ export const fetchError = (payload) => ({
 
 export const cleanState = () => ({
   type: CLEAN,
+})
+
+export const cleanTemp = () => ({
+  type: CLEAN_TEMP,
 })
 
 export const updateStatus = (payload, field, sw) => ({
@@ -63,7 +70,7 @@ export const resourcesReducer = (state = initialState, action) => {
   let newData = null
   switch (action.type) {
     case FETCH_START:
-      return { ...state, loading: true }
+      return { ...state, loading: true, temp: null }
     case FETCH_SUCCESS:
       return { ...state, loading: false, items: action.payload }
     case FETCH_SEARCH:
@@ -84,6 +91,8 @@ export const resourcesReducer = (state = initialState, action) => {
       }
     case CLEAN:
       return { ...state, ...initialState }
+    case CLEAN_TEMP:
+      return { ...state, temp: null }
     case UPDATE_STATUS:
       const { items } = state
       const { data: dataItems } = items
@@ -107,7 +116,7 @@ export const resourcesReducer = (state = initialState, action) => {
         items: newItems,
       }
     case UPDATE_SIGNATURE:
-      const dataNew = action.list.data.data.map((obj) => obj.id === action.field.id ? { ...obj, signature: action.field.signature.signature, assistance: 'attended', status: 'attended' } : obj)
+      const dataNew = action.list.data.data.map((obj) => obj.id === action.field.id ? { ...obj, signature: action.field.signature.signature, assistance: 'attended', status: 'attended', date_signature: moment(new Date()).format("DD/MM/YYYY HH:mm:ss") } : obj)
       const newList = {
         ...action.list,
         data: {
@@ -119,6 +128,7 @@ export const resourcesReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         items: newList,
+        temp: 'signature',
       }
     default:
       return state

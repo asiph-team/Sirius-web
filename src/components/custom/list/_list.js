@@ -72,7 +72,7 @@ const List = (props) => {
     cell: (row, index, obj) => {
       return (
         <>
-          { row.signature ? 'Firmado' : <Button onClick={() => show(row, 'signature')} color="link" className="p-0"><Icon.Edit3 size={20} /> Firmar</Button>}
+          { row.signature ? <Button onClick={() => show(row, 'signature')} color="link" className="p-0"><Icon.CheckCircle size={20} /></Button> : <Button onClick={() => show(row, 'signature')} color="link" className="p-0"><Icon.AlertCircle size={20} /></Button>}
         </>
       )
     },
