@@ -10,7 +10,7 @@ import { config } from './_config'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, options, show,
+    handleSubmit, placeholder, title, options, show, userId,
   } = props
   return (
     <Card>
@@ -32,7 +32,12 @@ const FormUI = (props) => {
                           Object.assign(item, { ...item, options })
                         }
                         if (options && item.name === 'user_id') {
-                          Object.assign(item, { ...item, options, show })
+                          Object.assign(item, {
+                            ...item,
+                            options,
+                            show,
+                            userId,
+                          })
                         }
                         return (
                           <Col sm={item.grid} key={item.key}>

@@ -4,7 +4,7 @@ import { cellRegExp } from '../../../utility/helpers/consts'
 
 export const workstationSchema = Yup.object().shape({
   name: Yup.string()
-    .min(5, 'Los nombres del trabajador debe ser mayores a 5 caractéres')
+    .min(3, 'Los nombres del trabajador debe ser mayores a 3 caractéres')
     .max(50, 'Los nombres del trabajador debe ser menores a 50 caractéres')
     .required('Los nombres del trabajador son requeridos'),
   lastname: Yup.string()
