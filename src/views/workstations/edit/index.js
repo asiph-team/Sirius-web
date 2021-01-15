@@ -16,7 +16,7 @@ const Edit = (props) => {
   if (error) return <Error message={error} />
   return (
     <>
-      <EditUI handleSubmit={(values) => update({ name: values.name, description: values.description, ...(values.information && { information: values.information }), area_id: values.area_id }, `${url}/${values.id}`)} {...props} areas={data} />
+      <EditUI handleSubmit={(values) => update({ name: values.name, description: values.description, ...(values.information && { information: values.information }), area_id: values.area_id, ...(values.revisions && { revisions: values.revisions }) }, `${url}/${values.id}`)} {...props} areas={data} />
       {loading && <AlertLoading message="Actualizando puesto de trabajo" />}
       {error && <AlertError error={error} callback={() => clean()} />}
       {items && (

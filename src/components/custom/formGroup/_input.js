@@ -31,9 +31,11 @@ const SelectField = (props) => {
 }
 const SelectFieldModal = (props) => {
   const {
-    options, field, form, multiple, disabled, show,
+    options, field, form, multiple, disabled, show, userId,
   } = props
+  const { values } = form
   const { name, value } = field
+  if (userId) { values.user_id = userId }
   const handleModal = (e) => {
     e.preventDefault()
     show(null, 'contact')
@@ -46,8 +48,8 @@ const SelectFieldModal = (props) => {
           classNamePrefix="select"
           name={name}
           options={options}
-          onChange={(option) => option && form.setFieldValue(name, option.value)}
-          value={options.find((option) => (option.value === value) || (option.label === value))}
+          onChange={(option) => option && form.setValues({ ...values, [name]: option.value })}
+          value={options.find((option) => (option.value === (value || userId)) || (option.label === (value || userId)))}
           isSearchable
           placeholder=""
           isMulti={!!multiple}
@@ -257,7 +259,7 @@ export const CustomSelectCheckbox = (props) => {
 
 export const CustomSelectModal = (props) => {
   const {
-    name, title, options, small, disabled, show, placeholder
+    name, title, options, small, disabled, show, placeholder, userId
   } = props
   return (
     <>
@@ -269,6 +271,7 @@ export const CustomSelectModal = (props) => {
         disabled={disabled}
         show={show}
         placeholder={placeholder}
+        userId={userId}
       />
     </>
   )

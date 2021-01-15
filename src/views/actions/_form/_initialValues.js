@@ -8,7 +8,7 @@ export const initialValues = {
 }
 
 export const origins = [
-  { value: 'CHPS', label: 'CHPS' },
+  { value: 'CPHS', label: 'CPHS' },
   { value: 'OAL', label: 'OAL' },
   { value: 'SS', label: 'SS' },
   { value: 'IDT', label: 'IDT' },

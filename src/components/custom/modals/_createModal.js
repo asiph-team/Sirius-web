@@ -21,12 +21,6 @@ const CreateModal = (props) => {
         </Container>
 
       </ModalBody>
-      {/* <ModalFooter>
-        <Button color="primary" onClick={onClose}>
-          Aceptar
-        </Button>
-        {' '}
-      </ModalFooter> */}
     </Modal>
   )
 }
