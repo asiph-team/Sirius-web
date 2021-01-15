@@ -11,6 +11,7 @@ import {
   fetchOrder,
   updateStatus,
   fetchSignature,
+  cleanTemp,
 } from '../../ducks/resources'
 import { urlApi, baseApiUrl } from '../helpers/consts'
 
@@ -115,6 +116,9 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const cleanTempState = () => dispatch(cleanTemp())
+
+
   return {
     items,
     remove,
@@ -127,6 +131,7 @@ export function useFetchResources(url) {
     removeControl,
     orderBy,
     updateSignature,
+    cleanTempState,
   }
 }
 

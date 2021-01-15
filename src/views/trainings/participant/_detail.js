@@ -11,7 +11,6 @@ import { headers } from './_headers'
 
 const DetailUI = (props) => {
   const { data, pagination, temp, training, updateSignature, cleanTempState } = props
-  console.log('clean', cleanTempState)
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
