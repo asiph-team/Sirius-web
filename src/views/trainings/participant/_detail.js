@@ -5,7 +5,7 @@ import {
   AlertSuccess,
   HeaderSign, List,
 } from '../../../components/custom'
-import { CourseSignature } from '../../../components/custom/modals'
+import { CourseSignature, TrainerSignature } from '../../../components/custom/modals'
 import PaginationSeprated from '../../../components/custom/pagination'
 import { headers } from './_headers'
 
@@ -34,7 +34,7 @@ const DetailUI = (props) => {
   }
   return (
     <>
-      <HeaderSign detail={training} title="cursos" />
+      <HeaderSign detail={training} title="cursos" relator show={show} />
       <Card>
         <CardBody>
           {
@@ -55,6 +55,17 @@ const DetailUI = (props) => {
           callback={() => { cleanTempState() }}
         />
       )}
+      {
+        data && (
+          <TrainerSignature
+            visibility={visibility.trainerSignature}
+            onClose={() => setVisibility({ ...visibility, trainerSignature: false })}
+            label="Capacitaciones"
+            view="trainings"
+            item={training}
+          />
+        )
+      }
       {
         data && (
           <CourseSignature
