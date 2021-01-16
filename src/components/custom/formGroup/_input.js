@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Field } from 'formik'
 import 'react-datepicker/dist/react-datepicker.css'
 import { PlusCircle } from 'react-feather'
@@ -7,6 +7,7 @@ import DatePicker, { registerLocale } from 'react-datepicker'
 import { es } from 'date-fns/locale'
 import Select from 'react-select'
 import { formatRut, validateRut } from '@fdograph/rut-utilities'
+import SignatureCanvas from 'react-signature-canvas'
 
 registerLocale('es', es)
 const SelectField = (props) => {
@@ -389,6 +390,48 @@ export const CustomInputAddonCheckbox = (props) => {
         component={CustomInputFieldAddonCheckbox}
         disabled={disabled}
         type={type}
+      />
+    </>
+  )
+}
+
+const CustomSignature = (props) => {
+  const { field, form } = props
+  const { name } = field
+  const sigCanvas = useRef({})
+  const clear = () => { sigCanvas.current.clear(); form.setFieldValue(name, '') }
+  const toForm = () => form.setFieldValue(name, sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'))
+  return (
+    <>
+      <div className="d-flex align-items-center justify-content-end">
+        <SignatureCanvas
+          ref={sigCanvas}
+          canvasProps={
+            {
+              width: 600,
+              height: 200,
+              className: 'sigCanvas border',
+              style: { width: '100%' },
+            }
+          }
+          onEnd={() => toForm()}
+        />
+      </div>
+      <div className="mt-1 d-flex align-items-center justify-content-end">
+        <Button onClick={() => clear()}>Limpiar firma</Button>
+      </div>
+    </>
+  )
+}
+
+export const CustomSignatureInput = (props) => {
+  const { name, title, small } = props
+  return (
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        name={name}
+        component={CustomSignature}
       />
     </>
   )
