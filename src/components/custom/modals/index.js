@@ -11,6 +11,7 @@ import MedicalSurveillance from './_medicalSurveillance'
 import CourseSignature from './_courseSignature'
 import ProgramSignature from './_programSignature'
 import CreateModal from './_createModal'
+import TrainerSignature from './trainerSignature'
 
 export {
   ContactInfoEmployee,
@@ -26,4 +27,5 @@ export {
   CourseSignature,
   ProgramSignature,
   CreateModal,
+  TrainerSignature,
 }
