@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
-import { ContactInfoEmployee } from '../../../components/custom/modals'
 import {
   AlertDialog, Can, Header, List, Search,
 } from '../../../components/custom'
@@ -55,11 +54,6 @@ const ListUI = (props) => {
           }
         </CardBody>
       </Card>
-      <ContactInfoEmployee
-        visibility={visibility.contact}
-        onClose={() => setVisibility({ ...visibility, contact: false })}
-        item={selected}
-      />
       {
         visibility.remove && (
           <AlertDialog
