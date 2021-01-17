@@ -41,4 +41,15 @@ export const config = [
       grid: 12,
     },
   ],
+  [
+    {
+      input: 'CustomCheckboxGroup',
+      key: 5,
+      name: 'risks_id',
+      title: 'Riesgos de la actividad*',
+      options: [],
+      rows: 5,
+      grid: 12,
+    },
+  ],
 ]

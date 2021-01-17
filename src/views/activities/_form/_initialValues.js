@@ -3,6 +3,7 @@ export const initialValues = {
   workstation: '',
   description: '',
   risk: '',
+  risks_id: '',
 }
 
 export const risks = [

@@ -10,8 +10,9 @@ import { config } from './_config'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, options,
+    handleSubmit, placeholder, title, options, risks,
   } = props
+  console.log('FORMUI placeholder', placeholder)
   return (
     <Card>
       <CardBody>
@@ -29,6 +30,9 @@ const FormUI = (props) => {
                     row.map((item) => {
                       if (options && item.options && item.name === 'workstation') {
                         Object.assign(item, { ...item, options })
+                      }
+                      if (item.name === 'risks_id') {
+                        Object.assign(item, { ...item, options: risks })
                       }
                       return (
                         <Col sm={item.grid} key={item.key}>
