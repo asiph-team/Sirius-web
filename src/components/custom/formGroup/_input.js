@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { Field } from 'formik'
 import 'react-datepicker/dist/react-datepicker.css'
 import { PlusCircle } from 'react-feather'
-import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap'
+import { InputGroup, InputGroupAddon, Input, Button, FormGroup, Label } from 'reactstrap'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { es } from 'date-fns/locale'
 import Select from 'react-select'
@@ -432,6 +432,47 @@ export const CustomSignatureInput = (props) => {
       <Field
         name={name}
         component={CustomSignature}
+      />
+    </>
+  )
+}
+
+const CheckboxGroup = (props) => {
+  const { field, options } = props
+  const { name, value } = field
+  return (
+    <>
+      <div className="d-flex flex-wrap my-1">
+        {
+          options && options.map((risk) => (
+            <FormGroup check className="col-lg-3 my-1">
+              <Label check className={value && value.includes(risk.id) ? 'font-weight-bold' : null}>
+                <Field
+                  name={name}
+                  value={risk.id}
+                  type="checkbox"
+                />
+                {' '}
+                {risk.name}
+              </Label>
+            </FormGroup>
+          ))
+        }
+      </div>
+    </>
+  )
+}
+
+export const CustomCheckboxGroup = (props) => {
+  const { name, title, small, risks, options } = props
+  return (
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        name={name}
+        component={CheckboxGroup}
+        risks={risks}
+        options={options}
       />
     </>
   )
