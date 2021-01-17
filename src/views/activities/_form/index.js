@@ -12,7 +12,7 @@ const FormUI = (props) => {
   const {
     handleSubmit, placeholder, title, options, risks,
   } = props
-  console.log('FORMUI placeholder', placeholder)
+  const orderedRisks = risks.sort((a, b) => { return a.name > b.name ? 1 : -1 })
   return (
     <Card>
       <CardBody>
@@ -32,7 +32,7 @@ const FormUI = (props) => {
                         Object.assign(item, { ...item, options })
                       }
                       if (item.name === 'risks_id') {
-                        Object.assign(item, { ...item, options: risks })
+                        Object.assign(item, { ...item, options: orderedRisks })
                       }
                       return (
                         <Col sm={item.grid} key={item.key}>
