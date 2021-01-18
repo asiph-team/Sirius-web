@@ -4,6 +4,8 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
+  Row,
+  Col,
 } from 'reactstrap'
 import { urlApi, baseApiUrl } from '../../../../utility/helpers/consts'
 import { usePostResources } from '../../../../utility/customHooks/resources'
@@ -29,7 +31,36 @@ const TrainerSignature = (props) => {
         </ModalHeader>
         <ModalBody className="modal-dialog-centered">
           <Container className="my-2">
-            <FormUI handleSubmit={(values) => patchData({ ...values, _method: 'PATCH' }, url)} title="Enviar" onClose={onClose} />
+            {
+              item.relator_signature
+                ? (
+                  <>
+                    <Row className="mb-1">
+                      <Col><strong>Nombre:</strong></Col>
+                      <Col>{item.relator_name}</Col>
+                    </Row>
+                    <Row className="mb-1">
+                      <Col><strong>Rut:</strong></Col>
+                      <Col>{item.relator_rut}</Col>
+                    </Row>
+                    <Row className="mb-1">
+                      <Col><strong>Firma:</strong></Col>
+                      <Col><img src={item.relator_signature} className="border" alt={item.relator_name} /></Col>
+                    </Row>
+                  </>
+                ) : (
+                  <FormUI
+                    handleSubmit={
+                      (values) => {
+                        patchData({ ...values, _method: 'PATCH' }, url)
+                        onClose()
+                      }
+                    }
+                    title="Enviar"
+                    onClose={onClose}
+                  />
+                )
+            }
           </Container>
         </ModalBody>
       </Modal>
