@@ -30,7 +30,7 @@ const ListUI = (props) => {
   }
   return (
     <>
-      <Header title={`Medidas de control / ${activityName}`} icon="UserCheck">
+      <Header title={`Medidas de control para ${activityName}`} icon="UserCheck">
         <Col sm="mt-1" lg="auto" className="d-flex align-items-center justify-content-end">
           <Link to="/dashboard/activities">
             <Button size="" color="primary">
@@ -39,7 +39,7 @@ const ListUI = (props) => {
             </Button>
           </Link>
         </Col>
-        <Search placeholder="Buscar por nombre / actividad" search={search} icon="Search" temp={temp} param="filter" />
+        <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Can rule="controls:add">
           <Col lg="auto" sm="mt-1" md="mt-1" className="d-flex align-items-center justify-content-end">
             <Link to={{ pathname: '/dashboard/controls/add', state: { activity_id: activity } }}>
