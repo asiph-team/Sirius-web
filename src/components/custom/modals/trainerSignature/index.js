@@ -14,7 +14,7 @@ import FormUI from './_form'
 const TrainerSignature = (props) => {
   const { onClose, visibility, item } = props
   const url = `${urlApi}${baseApiUrl}trainings/courses/${item.id}/relator`
-  const { patchData } = usePostResources()
+  const { data: { items }, patchData } = usePostResources()
   return (
     <>
       <Modal
@@ -32,20 +32,20 @@ const TrainerSignature = (props) => {
         <ModalBody className="modal-dialog-centered">
           <Container className="my-2">
             {
-              item.relator_signature
+              item.relator_signature || (items && items.data.relator_signature)
                 ? (
                   <>
                     <Row className="mb-1">
                       <Col><strong>Nombre:</strong></Col>
-                      <Col>{item.relator_name}</Col>
+                      <Col>{item.relator_name || items.data.relator_name}</Col>
                     </Row>
                     <Row className="mb-1">
                       <Col><strong>Rut:</strong></Col>
-                      <Col>{item.relator_rut}</Col>
+                      <Col>{item.relator_rut || items.data.relator_rut}</Col>
                     </Row>
                     <Row className="mb-1">
                       <Col><strong>Firma:</strong></Col>
-                      <Col><img src={item.relator_signature} className="border" alt={item.relator_name} /></Col>
+                      <Col><img src={item.relator_signature || items.data.relator_signature} className="border" alt={item.relator_name} /></Col>
                     </Row>
                   </>
                 ) : (
