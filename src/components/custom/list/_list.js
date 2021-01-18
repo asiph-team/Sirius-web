@@ -41,41 +41,72 @@ const List = (props) => {
   }
 
   const menu = {
-    cell: (row) => {
-      return (
-        <>
-          {
-            permitted('enterprises:workon') && (
+    cell: (row) => (
+      <>
+        {
+          permitted('enterprises:workon') && (
+            <>
+              <UncontrolledTooltip placement="bottom" target={`workon-${row.id}`}>
+                Acceder a empresa
+              </UncontrolledTooltip>
               <Can rule="enterprises:workon">
-                <Button onClick={() => show(row, 'workon')} color="link" className="p-0"><Icon.Eye size={20} /></Button>
+                <Button id={`workon-${row.id}`} onClick={() => show(row, 'workon')} color="link" className="p-0"><Icon.Eye size={20} /></Button>
               </Can>
+            </>
+          )
+        }
+        {
+          permitted(`${resource}:detail`) && (
+            <UncontrolledTooltip placement="bottom" target={`detail-${row.id}`}>
+              Detalle
+            </UncontrolledTooltip>
+          )
+        }
+        <Can rule={`${resource}:detail`}>
+          <Link id={`detail-${row.id}`} to={{ pathname: `/dashboard/${resource}/detail`, state: { training: row } }}><Button color="link" className="p-0"><Icon.ZoomIn size={20} /></Button></Link>
+        </Can>
+
+        <Can rule="controls:edit">
+          {
+            resource === 'activities' && (
+              <>
+                <UncontrolledTooltip placement="bottom" target={`amc-${row.id}`}>
+                  Medidas de control
+                </UncontrolledTooltip>
+                <Link id={`amc-${row.id}`} to={{ pathname: '/dashboard/controls', state: { activity_id: row.id, activity_name: row.name } }}><Button color="link" className="p-0"><Icon.UserCheck size={20} /></Button></Link>
+              </>
             )
           }
-          <Can rule={`${resource}:detail`}>
-            <Link to={{ pathname: `/dashboard/${resource}/detail`, state: { training: row } }}><Button color="link" className="p-0"><Icon.ZoomIn size={20} /></Button></Link>
-          </Can>
-          <Can rule="controls:edit">
-            {
-              resource === 'activities' && (
-                <Link to={{ pathname: '/dashboard/controls', state: { activity_id: row.id, activity_name: row.name } }}><Button color="link" className="p-0"><Icon.UserCheck size={20} /></Button></Link>
-              )
-            }
-          </Can>
-          <Can rule={`${resource}:edit`}><Link to={{ pathname: `/dashboard/${resource}/edit`, state: { placeholder: row } }}><Button color="link" className="mx-1 p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
-          <Can rule={`${resource}:delete`}><Button onClick={() => show(row, 'remove')} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
-        </>
-      )
-    },
+        </Can>
+        <UncontrolledTooltip placement="bottom" target={`edit-${resource}`}>
+          Editar
+        </UncontrolledTooltip>
+        <UncontrolledTooltip placement="bottom" target={`delete-${resource}`}>
+          Eliminar
+        </UncontrolledTooltip>
+        <Can rule={`${resource}:edit`}><Link id={`edit-${resource}`} to={{ pathname: `/dashboard/${resource}/edit`, state: { placeholder: row } }}><Button color="link" className="mx-1 p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
+
+        <Can rule={`${resource}:delete`}><Button id={`delete-${resource}`} onClick={() => show(row, 'remove')} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
+      </>
+    ),
   }
 
   const Signature = {
-    cell: (row, index, obj) => {
-      return (
-        <>
-          { row.signature ? <Button onClick={() => show(row, 'signature')} color="link" className="p-0"><Icon.CheckCircle size={20} /></Button> : <Button onClick={() => show(row, 'signature')} color="link" className="p-0"><Icon.AlertCircle size={20} /></Button>}
-        </>
-      )
-    },
+    cell: (row) => (
+      <>
+        <UncontrolledTooltip placement="bottom" target={`sign-${row.id}`}>
+          {row.signature ? 'Firmado' : 'Firmar'}
+        </UncontrolledTooltip>
+        { row.signature
+          ? (
+            <>
+              <Button id={`sign-${row.id}`} onClick={() => show(row, 'signature')} color="link" className="p-0">
+                <Icon.CheckCircle size={20} />
+              </Button>
+            </>
+          ) : <Button id={`sign-${row.id}`} onClick={() => show(row, 'signature')} color="link" className="p-0"><Icon.AlertCircle size={20} /></Button>}
+      </>
+    ),
   }
 
   const updateStatus = {
