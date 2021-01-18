@@ -21,7 +21,7 @@ const Risks = (props) => {
             },
             legend: { show: false },
             labels: ['Aceptable', 'Alerta', 'Crítico'],
-            colors: ['#06D6A0', '#FFD166', '#EF476F'],
+            colors: ['#EF476F', '#FFD166', '#06D6A0'],
           }}
           series={[high, middle, low]}
           type="donut"
