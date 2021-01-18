@@ -75,7 +75,7 @@ const CourseSignature = (props) => {
               </>
             ) : (
               <>
-                <Button onClick={() => clear()}>Limpiar</Button>
+                <Button onClick={() => clear()}>Limpiar firma</Button>
                 {' '}
                 <Button color="primary" onClick={() => send()}>
                   Enviar firma
