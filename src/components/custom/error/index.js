@@ -3,18 +3,15 @@ import { Alert, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 const Error = (props) => {
-  const { message } = props
   try {
-    const values = Object.values(message.response.data.error.message)
+    const { message: { response: { data: { error: { message } } } } } = props
     return (
       <Row className="m-2">
-        {
-          values.map((item) => (
-            <Alert color="danger" className="w-100">
-              <span>{item}</span>
-            </Alert>
-          ))
-        }
+
+        <Alert color="danger" className="w-100">
+          <span>{message}</span>
+        </Alert>
+
       </Row>
     )
   } catch (error) {
