@@ -24,7 +24,7 @@ export const config = [
       input: 'CustomFileInput',
       key: 8,
       name: 'image',
-      title: 'Imagen*',
+      title: 'Imagen',
       type: 'file',
       grid: 6,
     },
