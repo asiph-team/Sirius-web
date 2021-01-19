@@ -20,7 +20,7 @@ const Risks = (props) => {
               formatter: (val) => `${Math.round(val)}%`,
             },
             legend: { show: false },
-            labels: ['Aceptable', 'Alerta', 'Crítico'],
+            labels: ['Crítico', 'Alerta', 'Aceptable'],
             colors: ['#EF476F', '#FFD166', '#06D6A0'],
           }}
           series={[high, middle, low]}
