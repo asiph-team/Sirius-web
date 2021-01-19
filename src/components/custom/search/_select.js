@@ -12,7 +12,7 @@ const Search = (props) => {
   ]
 
   return (
-    <Col lg="3" sm="mt-1">
+    <Col lg="3" sm="mt-1" className="my-1">
       <Select
         classNamePrefix="select"
         name="select-list"
