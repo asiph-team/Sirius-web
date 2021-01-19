@@ -35,7 +35,7 @@ const ListUI = (props) => {
         <Search placeholder="Buscar nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Col lg="auto" sm="mt-1" className="d-flex align-items-center justify-content-end">
           <Link to="/dashboard/areas/add">
-            <Button color="primary">
+            <Button color="primary" className="my-1">
               <PlusCircle size={14} />
                 &nbsp;Agregar área
             </Button>
