@@ -38,7 +38,7 @@ const ListUI = (props) => {
         <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Can rule="programs:add">
           <Link to="/dashboard/programs/add">
-            <Button color="primary">
+            <Button color="primary" className="my-1">
               <PlusCircle size={14} />
                 &nbsp;Agregar
             </Button>

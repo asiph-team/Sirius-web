@@ -36,7 +36,7 @@ const ListUI = (props) => {
       <Header title="Planes de acción" icon="BookOpen">
         <Search placeholder="Buscar por nombre u origen" search={search} icon="Search" temp={temp} param="filter" />
         <Link to="/dashboard/actions/add">
-          <Button color="primary">
+          <Button color="primary" className="my-1">
             <PlusCircle size={14} />
                 &nbsp;Agregar plan
           </Button>
