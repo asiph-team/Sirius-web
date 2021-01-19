@@ -23,7 +23,7 @@ const SelectSearch = (props) => {
     }
   }
   return (
-    <Col lg="auto" sm="mt-1">
+    <Col lg="auto" sm="my-1">
       <InputGroup className="mr-2">
         <Input autoFocus value={data} placeholder={placeholder} onChange={(e) => setData(e.target.value)} onKeyDown={(e) => enterCheck(e)} onClick={() => handleClean()} />
         <InputGroupAddon addonType="append">
