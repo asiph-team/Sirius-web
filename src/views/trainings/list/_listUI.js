@@ -38,7 +38,7 @@ const ListUI = (props) => {
       <Header title="Capacitaciones" icon="Clipboard">
         <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Link to="/dashboard/trainings/add">
-          <Button color="primary">
+          <Button color="primary" className="my-1">
             <PlusCircle size={14} />
                 &nbsp;Agregar capacitación
           </Button>
