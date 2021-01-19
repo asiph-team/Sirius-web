@@ -33,7 +33,7 @@ const ListUI = (props) => {
       <Header title={`Medidas de control para ${activityName}`} icon="UserCheck">
         <Col sm="mt-1" lg="auto" className="d-flex align-items-center justify-content-end">
           <Link to="/dashboard/activities">
-            <Button size="" color="primary">
+            <Button size="" color="primary" className="my-1">
               <ChevronLeft size={14} />
                 &nbsp;Volver
             </Button>
@@ -41,7 +41,7 @@ const ListUI = (props) => {
         </Col>
         <Search placeholder="Buscar por nombre" search={search} icon="Search" temp={temp} param="filter" />
         <Can rule="controls:add">
-          <Col lg="auto" sm="mt-1" md="mt-1" className="d-flex align-items-center justify-content-end">
+          <Col lg="auto" sm="mt-1" md="mt-1" className="d-flex align-items-center justify-content-end my-1">
             <Link to={{ pathname: '/dashboard/controls/add', state: { activity_id: activity } }}>
               <Button size="" color="primary">
                 <PlusCircle size={14} />
