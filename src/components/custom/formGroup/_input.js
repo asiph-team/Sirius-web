@@ -8,6 +8,7 @@ import { es } from 'date-fns/locale'
 import Select from 'react-select'
 import { formatRut, validateRut } from '@fdograph/rut-utilities'
 import SignatureCanvas from 'react-signature-canvas'
+import CardImg from 'reactstrap/lib/CardImg'
 
 registerLocale('es', es)
 const SelectField = (props) => {
@@ -316,8 +317,17 @@ const CustomFileInputField = (props) => {
   const {
     form, field,
   } = props
-  const { name } = field
+  const { name, value } = field
+  const [img, setImg] = useState(value)
   const { values } = form
+  const handleFileUpload = (event) => {
+    let reader = new FileReader()
+    let file = event.target.files[0]
+    reader.onloadend = () => {
+      setImg(reader.result)
+    }
+    reader.readAsDataURL(file)
+  }
   return (
     <>
       <Input
@@ -329,8 +339,10 @@ const CustomFileInputField = (props) => {
             ...values,
             [name]: event.target.files[0],
           })
+          handleFileUpload(event)
         }}
       />
+      <CardImg src={img} className="mt-1" />
     </>
   )
 }
