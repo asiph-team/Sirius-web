@@ -2,15 +2,16 @@ import React, { useState } from 'react'
 import { Card, CardBody } from 'reactstrap'
 import moment from 'moment'
 import {
+  AlertDialog,
   AlertSuccess,
   HeaderSign, List,
 } from '../../../components/custom'
-import { CourseAssistance, CourseSignature, ProgramSignature } from '../../../components/custom/modals'
+import { CourseSignature } from '../../../components/custom/modals'
 import PaginationSeprated from '../../../components/custom/pagination'
 import { headers } from './_headers'
 
 const DetailUI = (props) => {
-  const { data, pagination, temp, training, updateSignature, cleanTempState } = props
+  const { data, pagination, temp, training, updateSignature, cleanTempState, changeStatus } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
@@ -26,6 +27,7 @@ const DetailUI = (props) => {
         area: item.user.area ? item.user.area.name : null,
         workstation: item.user.workstation ? item.user.workstation.name : null,
         signature: item.signature,
+        assisted: item.assisted,
         date_signature: item.date_signature ? moment(item.date_signature, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY') : '',
         assistance: item.status === 'invited' ? 'Invitado' : 'Asistió',
       }
@@ -41,6 +43,7 @@ const DetailUI = (props) => {
             data && (
               <List
                 headers={headers}
+                resource="programs_participants"
                 data={transformData()}
                 show={show}
                 url="participants/"
@@ -49,23 +52,21 @@ const DetailUI = (props) => {
           }
         </CardBody>
       </Card>
-      {temp && (
-        <AlertSuccess
-          message="Se ha firmado exitosamente"
-          callback={() => { cleanTempState() }}
-        />
-      )}
       {
-        visibility.signature && (
-          <CourseSignature
-            label="Vigilancia Médica"
-            view="programs"
-            visibility={visibility.signature}
-            onClose={() => setVisibility({ ...visibility, signature: false })}
-            item={selected}
-            data={data}
-            updateSignature={updateSignature}
-            title={training}
+        visibility.status && (
+          <AlertDialog
+            title={`¿Estás seguro de actualizar el estado del exámen de ${selected.name} como ${!selected.assisted ? 'rendido' : 'pendiente'}?`}
+            paragraph={`Esta operación dejara el exámen como ${!selected.assisted ? 'rendido' : 'pendiente'} en la plataforma.`}
+            callback={() => {
+              changeStatus(
+                {
+                  id: selected.id,
+                  assisted: !selected.assisted,
+                }, 'assisted',
+              )
+              setVisibility({ ...visibility, status: false })
+            }}
+            callbackCancel={() => setVisibility({ ...visibility, status: false })}
           />
         )
       }
