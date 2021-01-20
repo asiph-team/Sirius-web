@@ -8,10 +8,8 @@ export const config = [
       name: 'name',
       title: 'Nombre de capacitación*',
       type: 'text',
-      grid: 12,
+      grid: 6,
     },
-  ],
-  [
     {
       input: 'CustomSelect',
       key: 3,
@@ -19,24 +17,24 @@ export const config = [
       title: 'Frecuencia*',
       type: 'text',
       options: frequency,
-      grid: 4,
+      grid: 6,
     },
+  ],
+  [
     {
       input: 'CustomDatePicker',
       key: 2,
       name: 'start_date',
       title: 'Fecha de inicio*',
-      grid: 4,
+      grid: 3,
     },
     {
       input: 'CustomDatePicker',
       key: 4,
       name: 'end_date',
       title: 'Fecha de termino*',
-      grid: 4,
+      grid: 3,
     },
-  ],
-  [
     {
       input: 'MultipleCustomSelect',
       key: 6,
