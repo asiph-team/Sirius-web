@@ -26,6 +26,8 @@ export const rules = {
     'programs:edit',
     'programs:delete',
     'programs:detail',
+    'programs_participants:edit',
+    'programs_participants:delete',
     'actions:edit',
     'actions:delete',
     'controls:add',
