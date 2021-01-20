@@ -25,13 +25,8 @@ export const headers = [
     sortable: true,
   },
   {
-    selector: 'date_signature',
-    name: 'Fecha Firma',
-    sortable: true,
-  },
-  {
-    selector: '_signature_',
-    name: 'Asistencia',
+    selector: 'assisted',
+    name: 'Exámen',
     sortable: true,
   },
 ]
