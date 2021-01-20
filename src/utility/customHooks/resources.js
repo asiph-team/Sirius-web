@@ -61,6 +61,12 @@ export function useFetchResources(url) {
       .then(dispatch(updateStatus(data, field)))
       .catch((error) => dispatch(fetchError(error)))
   }
+  const changeStatusAssisted = async (data, field) => {
+    const putUrl = `${urlApi}${baseApiUrl}programs/courses/assistance/`
+    await axios.put(`${putUrl}${data.id}/assisted`, data, header)
+      .then(dispatch(updateStatus(data, field)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
 
   const pagination = async (pageNumber, search) => {
     const params = search != null ? `${search.data}&page=${pageNumber}` : `&page=${pageNumber}`
@@ -132,6 +138,7 @@ export function useFetchResources(url) {
     orderBy,
     updateSignature,
     cleanTempState,
+    changeStatusAssisted,
   }
 }
 
