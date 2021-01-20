@@ -36,6 +36,7 @@ const List = (props) => {
   const {
     headers, data, show, resource, contact, ordering,
   } = props
+
   const handleChange = (row) => {
     show(row, 'contact')
   }
@@ -114,13 +115,20 @@ const List = (props) => {
       if (permitted(`${resource}:edit`)) { return <CustomSwitch status={row.status} changeStatus={() => show(row, 'status')} /> } return (<>{row.state}</>)
     },
   }
+
+  const participantStatus = {
+    cell: (row) => {
+      if (permitted(`${resource}:edit`)) { return <CustomSwitch status={row.status || row.assisted} changeStatus={() => show(row, 'status')} /> } return (<>{row.state}</>)
+    },
+  }
   headers.forEach((obj) => {
     // eslint-disable-next-line no-unused-expressions
     obj.selector === 'actions' && (permitted(`${resource}:edit`) || permitted(`${resource}:delete`))
       ? obj.cell = menu.cell : obj.selector === 'status'
         ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector)
           ? obj.cell = SemaphoreChip.cell : obj.selector === '_signature_'
-            ? obj.cell = Signature.cell : obj
+            ? obj.cell = Signature.cell : obj.selector === 'assisted'
+              ? obj.cell = participantStatus.cell : obj
   })
   const handleSort = (column, sortDirection) => {
     ordering(column.orderKey ? column.orderKey : column.selector, sortDirection.toUpperCase())
