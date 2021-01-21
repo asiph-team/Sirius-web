@@ -9,19 +9,21 @@ const HeaderDetail = (props) => {
   return (
     <Row className="mb-2">
       <Col sm="12" lg="12" className="d-flex align-items-center justify-items-between">
-        {back ? (
-          <Link to={back}>
-            <Button color="primary">
-              <ChevronLeft size={14} />
+        {back
+          ? (
+            <Link to={back}>
+              <Button color="primary">
+                <ChevronLeft size={14} />
                 &nbsp;Volver a
                 {' '}
                 {title}
-            </Button>
-          </Link>
-        ) : (
+              </Button>
+            </Link>
+          ) : (
             <Button color="primary" onClick={() => history.goBack()}>
               <ChevronLeft size={14} />
-                &nbsp;Volver a {' '}
+                &nbsp;Volver a
+              {' '}
               {title}
             </Button>
           )}
