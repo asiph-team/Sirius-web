@@ -6,7 +6,7 @@ import 'rc-switch/assets/index.css'
 import * as Icon from 'react-feather'
 import DataTable from 'react-data-table-component'
 import Can from '../can'
-import { semaphore, semaphoreFields, semaphoreText } from '../../../utility/helpers/consts'
+import { semaphore, semaphoreFields, semaphoreText, assistText, assistTextColor } from '../../../utility/helpers/consts'
 import { permitted } from '../../../utility/helpers/functions'
 
 const CustomSwitch = (props) => {
@@ -30,6 +30,17 @@ const SemaphoreChip = {
       </>
     )
   },
+}
+
+const AssistedChip = {
+  cell: (row, index, obj) => (
+    <>
+      <div id={`semaforo-${index}`} className={`rounded-circle bg-${assistTextColor[row.status]} `} style={{ height: '20px', width: '20px' }} />
+      <UncontrolledTooltip placement="right" target={`semaforo-${index}`}>
+        {assistText[row.status]}
+      </UncontrolledTooltip>
+    </>
+  ),
 }
 
 const List = (props) => {
@@ -85,6 +96,26 @@ const List = (props) => {
         <UncontrolledTooltip placement="bottom" target={`delete-${resource}`}>
           Eliminar
         </UncontrolledTooltip>
+        {
+          resource === 'employees' && (
+            <>
+              <UncontrolledTooltip placement="bottom" target={`medical-${row.id}`}>
+                Vigilancias médicas
+              </UncontrolledTooltip>
+              <Can rule="trainings:historical">
+                <UncontrolledTooltip placement="bottom" target={`trainings-${row.id}`}>
+                  Capacitaciones
+                </UncontrolledTooltip>
+                <Link id={`trainings-${row.id}`} to={{ pathname: `/dashboard/trainings/historical/${row.id}`, state: { employee: row } }}>
+                  <Button color="link" className="p-0">
+                    <Icon.Clipboard size={20} />
+                  </Button>
+                </Link>
+              </Can>
+              <Can rule={`${resource}:edit`}><Link id={`medical-${row.id}`} to={{ pathname: '/dashboard/trainigs/historical', state: { placeholder: row } }}><Button color="link" className="ml-1 p-0"><Icon.Video size={20} /></Button></Link></Can>
+            </>
+          )
+        }
         <Can rule={`${resource}:edit`}><Link id={`edit-${resource}`} to={{ pathname: `/dashboard/${resource}/edit`, state: { placeholder: row } }}><Button color="link" className="mx-1 p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
 
         <Can rule={`${resource}:delete`}><Button id={`delete-${resource}`} onClick={() => show(row, 'remove')} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
@@ -128,7 +159,8 @@ const List = (props) => {
         ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector)
           ? obj.cell = SemaphoreChip.cell : obj.selector === '_signature_'
             ? obj.cell = Signature.cell : obj.selector === 'assisted'
-              ? obj.cell = participantStatus.cell : obj
+              ? obj.cell = participantStatus.cell : obj.selector === '_assisted_'
+                ? obj.cell = AssistedChip.cell : obj
   })
   const handleSort = (column, sortDirection) => {
     ordering(column.orderKey ? column.orderKey : column.selector, sortDirection.toUpperCase())

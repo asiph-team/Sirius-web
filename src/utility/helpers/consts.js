@@ -6,4 +6,6 @@ export const updatePasswordUrl = { superadministrator: 'admin/password', adminis
 export const baseApiUrl = '/api/v1/'
 export const semaphore = { high: 'danger', media: 'warning', middle: 'warning', low: 'success' }
 export const semaphoreText = { high: 'Alto', media: 'Medio', middle: 'Medio', low: 'Bajo' }
+export const assistText = { invited: 'Invitado', attended: 'Asistió', not_assist: 'No asistió' }
+export const assistTextColor = { invited: 'warning', attended: 'success', not_assist: 'danger' }
 export const semaphoreFields = ['priority', 'risk']

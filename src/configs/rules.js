@@ -22,6 +22,7 @@ export const rules = {
     'trainings:edit',
     'trainings:delete',
     'trainings:detail',
+    'trainings:historical',
     'programs:add',
     'programs:edit',
     'programs:delete',
