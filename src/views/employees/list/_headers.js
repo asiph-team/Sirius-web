@@ -1,8 +1,8 @@
 import { permitted } from '../../../utility/helpers/functions'
 
-const actions = { selector: 'actions', name: '', maxWidth: '50px' }
+const actions = { selector: 'actions', name: '', right: true }
 const status = {
-  selector: 'status', name: 'Estado', sortable: true, maxWidth: '50px', center: true,
+  selector: 'status', name: 'Estado', sortable: true, center: true,
 }
 export const headers = [
   {
@@ -15,7 +15,6 @@ export const headers = [
     selector: 'rut',
     name: 'RUT',
     sortable: true,
-    maxWidth: '150px',
   },
   {
     selector: 'area',
@@ -28,6 +27,7 @@ export const headers = [
     name: 'Puesto de trabajo',
     sortable: true,
     orderKey: 'workstation.name',
+    minWidth: '300px',
   },
 ].concat((permitted('employees:edit') || permitted('employees:delete')) && status)
   .concat((permitted('employees:edit') || permitted('employees:delete')) && actions).filter((x) => x !== false)
