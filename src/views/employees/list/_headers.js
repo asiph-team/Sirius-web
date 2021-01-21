@@ -10,6 +10,7 @@ export const headers = [
     name: 'Nombre del trabajador',
     sortable: true,
     orderKey: 'name',
+    minWidth: '250px',
   },
   {
     selector: 'rut',
