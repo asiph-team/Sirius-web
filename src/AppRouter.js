@@ -26,6 +26,7 @@ const TrainingsList = lazy(() => import('./views/trainings/list'))
 const TrainingsAdd = lazy(() => import('./views/trainings/add'))
 const TrainingsEdit = lazy(() => import('./views/trainings/edit'))
 const TrainingDetail = lazy(() => import('./views/trainings/detail'))
+const TrainingsHistorical = lazy(() => import('./views/trainings/historical'))
 const ParticipantList = lazy(() => import('./views/trainings/participant'))
 const ActionsList = lazy(() => import('./views/actions/list'))
 const ActionsAdd = lazy(() => import('./views/actions/add'))
@@ -101,6 +102,7 @@ const AppRouter = () => (
       <RouteConfig path="/dashboard/trainings/edit" component={TrainingsEdit} />
       <RouteConfig exact path="/dashboard/trainings/detail" component={TrainingDetail} />
       <RouteConfig exact path="/dashboard/trainings/participants" component={ParticipantList} />
+      <RouteConfig exact path="/dashboard/trainings/historical/:employeeId" component={TrainingsHistorical} />
       <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
       <RouteConfig path="/dashboard/actions/add" component={ActionsAdd} />
       <RouteConfig path="/dashboard/actions/edit" component={ActionsEdit} />
