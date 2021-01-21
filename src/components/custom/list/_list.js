@@ -99,9 +99,9 @@ const List = (props) => {
         {
           resource === 'employees' && (
             <>
-              <UncontrolledTooltip placement="bottom" target={`medical-${row.id}`}>
+              {/* <UncontrolledTooltip placement="bottom" target={`medical-${row.id}`}>
                 Vigilancias médicas
-              </UncontrolledTooltip>
+              </UncontrolledTooltip> */}
               <Can rule="trainings:historical">
                 <UncontrolledTooltip placement="bottom" target={`trainings-${row.id}`}>
                   Capacitaciones
@@ -112,7 +112,7 @@ const List = (props) => {
                   </Button>
                 </Link>
               </Can>
-              <Can rule={`${resource}:edit`}><Link id={`medical-${row.id}`} to={{ pathname: '/dashboard/trainigs/historical', state: { placeholder: row } }}><Button color="link" className="ml-1 p-0"><Icon.Video size={20} /></Button></Link></Can>
+              {/* <Can rule={`${resource}:edit`}><Link id={`medical-${row.id}`} to={{ pathname: '/dashboard/trainigs/historical', state: { placeholder: row } }}><Button color="link" className="ml-1 p-0"><Icon.Video size={20} /></Button></Link></Can> */}
             </>
           )
         }
