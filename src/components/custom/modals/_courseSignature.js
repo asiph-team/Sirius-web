@@ -14,7 +14,7 @@ import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const CourseSignature = (props) => {
   const { onClose, visibility, item, data, updateSignature, title, label, view } = props
-  const url = `${urlApi}${baseApiUrl}${view}/courses/${item.id}/signature`
+  const url = `${urlApi}${baseApiUrl}${view}/courses/assistance/${item.id}/signature`
   const sigCanvas = useRef({})
   const clear = () => sigCanvas.current.clear()
   const send = () => {
