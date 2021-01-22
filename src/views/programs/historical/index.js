@@ -5,7 +5,7 @@ import { Error } from '../../../components/custom'
 import ListUI from './_listUI'
 import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
-const ProgramsHistorical = (props) => {
+const TrainingsHistorical = (props) => {
   const { match: { params: { employeeId } } } = props
   const {
     items: trainings,
@@ -13,8 +13,8 @@ const ProgramsHistorical = (props) => {
     pagination,
     search,
     orderBy,
-  } = useFetchResources(`${urlApi}${baseApiUrl}employees/${employeeId}/trainings/courses/assistance?`)
-  const { items: summary } = useFetchResources(`${urlApi}${baseApiUrl}employees/${employeeId}/trainings/courses/assistance/summary`)
+  } = useFetchResources(`${urlApi}${baseApiUrl}employees/${employeeId}/programs/courses/assistance?`)
+  const { items: summary } = useFetchResources(`${urlApi}${baseApiUrl}employees/${employeeId}/programs/courses/assistance/summary`)
   const { items, loading, error, temp } = trainings
   const { items: summaryData } = summary
   if (loading) return <LoadingSpinner />
@@ -32,4 +32,4 @@ const ProgramsHistorical = (props) => {
   )
 }
 
-export default ProgramsHistorical
+export default TrainingsHistorical
