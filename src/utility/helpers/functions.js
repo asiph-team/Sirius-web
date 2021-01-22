@@ -66,3 +66,5 @@ export const userData = () => {
 export const capitalizeFirstLetter = (string) => {
   return string[0].toUpperCase() + string.slice(1).toLowerCase()
 }
+
+export const percent = (done, total) => total > 0 ? `${Math.ceil((done / total) * 100).toFixed(0)}%` : '--'
