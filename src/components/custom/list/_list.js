@@ -33,11 +33,22 @@ const SemaphoreChip = {
 }
 
 const AssistedChip = {
-  cell: (row, index, obj) => (
+  cell: (row, index) => (
     <>
       <div id={`semaforo-${index}`} className={`rounded-circle bg-${assistTextColor[row.status]} `} style={{ height: '20px', width: '20px' }} />
       <UncontrolledTooltip placement="right" target={`semaforo-${index}`}>
         {assistText[row.status]}
+      </UncontrolledTooltip>
+    </>
+  ),
+}
+
+const ExamChip = {
+  cell: (row, index) => (
+    <>
+      <div id={`semaforo-${index}`} className={`rounded-circle bg-${row.assisted ? 'success' : 'danger'} `} style={{ height: '20px', width: '20px' }} />
+      <UncontrolledTooltip placement="right" target={`semaforo-${index}`}>
+        {row.assisted ? 'Sí' : 'No'}
       </UncontrolledTooltip>
     </>
   ),
@@ -99,9 +110,9 @@ const List = (props) => {
         {
           resource === 'employees' && (
             <>
-              {/* <UncontrolledTooltip placement="bottom" target={`medical-${row.id}`}>
+              <UncontrolledTooltip placement="bottom" target={`medical-${row.id}`}>
                 Vigilancias médicas
-              </UncontrolledTooltip> */}
+              </UncontrolledTooltip>
               <Can rule="trainings:historical">
                 <UncontrolledTooltip placement="bottom" target={`trainings-${row.id}`}>
                   Capacitaciones
@@ -112,12 +123,11 @@ const List = (props) => {
                   </Button>
                 </Link>
               </Can>
-              {/* <Can rule={`${resource}:edit`}><Link id={`medical-${row.id}`} to={{ pathname: '/dashboard/trainigs/historical', state: { placeholder: row } }}><Button color="link" className="ml-1 p-0"><Icon.Video size={20} /></Button></Link></Can> */}
+              <Can rule={`${resource}:edit`}><Link id={`medical-${row.id}`} to={{ pathname: `/dashboard/programs/historical/${row.id}` }}><Button color="link" className="ml-1 p-0"><Icon.Video size={20} /></Button></Link></Can>
             </>
           )
         }
         <Can rule={`${resource}:edit`}><Link id={`edit-${resource}`} to={{ pathname: `/dashboard/${resource}/edit`, state: { placeholder: row } }}><Button color="link" className="mx-1 p-0"><Icon.Edit2 size={20} /></Button></Link></Can>
-
         <Can rule={`${resource}:delete`}><Button id={`delete-${resource}`} onClick={() => show(row, 'remove')} color="link" className="p-0"><Icon.XCircle size={20} /></Button></Can>
       </>
     ),
@@ -160,7 +170,8 @@ const List = (props) => {
           ? obj.cell = SemaphoreChip.cell : obj.selector === '_signature_'
             ? obj.cell = Signature.cell : obj.selector === 'assisted'
               ? obj.cell = participantStatus.cell : obj.selector === '_assisted_'
-                ? obj.cell = AssistedChip.cell : obj
+                ? obj.cell = AssistedChip.cell : obj.selector === '_exam_'
+                  ? obj.cell = ExamChip.cell : obj
   })
   const handleSort = (column, sortDirection) => {
     ordering(column.orderKey ? column.orderKey : column.selector, sortDirection.toUpperCase())
