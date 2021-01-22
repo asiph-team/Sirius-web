@@ -39,6 +39,7 @@ const ProgramsAdd = lazy(() => import('./views/programs/add'))
 const ProgramsEdit = lazy(() => import('./views/programs/edit'))
 const ProgramsDetail = lazy(() => import('./views/programs/detail'))
 const ProgramsParticipantList = lazy(() => import('./views/programs/participant'))
+const ProgramsHistorical = lazy(() => import('./views/programs/historical'))
 const ControlsList = lazy(() => import('./views/controls/list/'))
 const ControlsAdd = lazy(() => import('./views/controls/add'))
 const ControlsEdit = lazy(() => import('./views/controls/edit'))
@@ -114,6 +115,7 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/programs/edit" component={ProgramsEdit} />
       <RouteConfig exact path="/dashboard/programs/detail" component={ProgramsDetail} />
       <RouteConfig exact path="/dashboard/programs/participants" component={ProgramsParticipantList} />
+      <RouteConfig exact path="/dashboard/programs/historical/:employeeId" component={ProgramsHistorical} />
       <RouteConfig exact path="/dashboard/controls" component={ControlsList} />
       <RouteConfig exact path="/dashboard/controls/add" component={ControlsAdd} />
       <RouteConfig exact path="/dashboard/controls/edit" component={ControlsEdit} />
