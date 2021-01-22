@@ -15,6 +15,6 @@ export const workstationSchema = Yup.object().shape({
     .ensure(),
   description: Yup.string()
     .min(5, 'La descripción debe ser mayor a 5 caractéres')
-    .max(80, 'La descripción debe ser menor a 80 caractéres')
+    .max(300, 'La descripción debe ser menor a 80 caractéres')
     .required('Una descripción es requerida'),
 })
