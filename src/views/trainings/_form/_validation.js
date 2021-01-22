@@ -22,7 +22,7 @@ export const trainingSchemaAdd = Yup.object().shape({
     .required('La frecuencia es requerida'),
   description: Yup.string()
     .min(5, 'La descripción debe ser mayor a 5 caractéres')
-    .max(80, 'La descripción debe ser menor a 80 caractéres')
+    .max(300, 'La descripción debe ser menor a 80 caractéres')
     .required('Una descripción es requerida'),
 })
 
@@ -47,6 +47,6 @@ export const trainingSchemaEdit = Yup.object().shape({
     .required('La frecuencia es requerida'),
   description: Yup.string()
     .min(5, 'La descripción debe ser mayor a 5 caractéres')
-    .max(80, 'La descripción debe ser menor a 80 caractéres')
+    .max(300, 'La descripción debe ser menor a 80 caractéres')
     .required('Una descripción es requerida'),
 })
