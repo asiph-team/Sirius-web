@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col, Button, Card, CardBody } from 'reactstrap'
 import { ChevronLeft } from 'react-feather'
+import { Link } from 'react-router-dom'
 import { history } from '../../../history'
 import { percent } from '../../../utility/helpers/functions'
 
@@ -18,42 +19,35 @@ const HeaderSummary = (props) => {
       <Col sm="12" lg="12" className="d-flex flex-wrap align-items-center mt-1">
         <Card className="d-flex flex-wrap col-lg-12">
           <CardBody className="col-lg-12">
-            <h1>Cursos de {detail && `${detail.user.name} ${detail.user.lastname}`}</h1>
+            <h1>Exámenes de {detail && `${detail.user.name} ${detail.user.lastname}`}</h1>
           </CardBody>
           <Row className="p-2">
-            <Col sm="6" lg="2">
-              <h4>
-                Invitado:
-                {' '}
-                {detail && detail.invited}
-              </h4>
-            </Col>
-            <Col sm="6" lg="2">
+            <Col sm="6" lg="3">
               <h4>
                 Asistido:
                 {' '}
-                {detail && detail.attended}
+                {detail && detail.assisted}
               </h4>
             </Col>
-            <Col sm="6" lg="2">
+            <Col sm="6" lg="3">
               <h4>
                 Ausente:
                 {' '}
-                {detail && detail.not_assist}
+                {detail && detail.not_assisted}
               </h4>
             </Col>
-            <Col sm="6" lg="2">
+            <Col sm="6" lg="3">
               <h4>
                 Total:
                 {' '}
                 {detail && detail.total}
               </h4>
             </Col>
-            <Col sm="6" lg="2">
+            <Col sm="6" lg="3">
               <h4>
                 Asistencia:
                 {' '}
-                {detail && percent(detail.attended, detail.total)}
+                {detail && percent(detail.assisted, detail.total)}
               </h4>
             </Col>
           </Row>
