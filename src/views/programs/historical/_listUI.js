@@ -5,13 +5,13 @@ import { ChevronLeft } from 'react-feather'
 import moment from 'moment'
 import { InfoTraining } from '../../../components/custom/modals'
 import {
-  AlertDialog, Header, HeaderSummary, List,
+  AlertDialog, Header, HeaderSummary, HeaderSummaryPrograms, List, Search,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, pagination, temp, ordering, summary } = props
+  const { data, remove, pagination, search, temp, ordering, summary } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
@@ -19,15 +19,15 @@ const ListUI = (props) => {
     setVisibility({ ...visibility, [type]: visible })
   }
   const transformData = () => data.data.data.map((item) => ({
-    id: item.id,
     name: item.name,
+    course: item.course.name,
     date: item.date ? moment(item.date).format('DD/MM/YYYY') : '',
-    status: item.status,
+    assisted: item.assisted,
   }))
   return (
     <>
       {
-        summary && <HeaderSummary detail={summary.data} />
+        summary && <HeaderSummaryPrograms detail={summary.data} />
       }
       <Card>
         <CardBody>
