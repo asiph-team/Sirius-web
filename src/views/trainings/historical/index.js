@@ -7,7 +7,6 @@ import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const TrainingsHistorical = (props) => {
   const { match: { params: { employeeId } } } = props
-  console.log('props', props)
   const {
     items: trainings,
     remove,
@@ -15,13 +14,9 @@ const TrainingsHistorical = (props) => {
     search,
     orderBy,
   } = useFetchResources(`${urlApi}${baseApiUrl}employees/${employeeId}/trainings/courses/assistance?`)
-  const {
-    items,
-    loading,
-    error,
-    temp,
-  } = trainings
-  const employee = 0
+  const { items: summary } = useFetchResources(`${urlApi}${baseApiUrl}employees/${employeeId}/trainings/courses/assistance/summary`)
+  const { items, loading, error, temp } = trainings
+  const { items: summaryData } = summary
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />
   return (
@@ -32,7 +27,7 @@ const TrainingsHistorical = (props) => {
       search={search}
       temp={temp}
       pagination={pagination}
-      employee={employee}
+      summary={summaryData}
     />
   )
 }

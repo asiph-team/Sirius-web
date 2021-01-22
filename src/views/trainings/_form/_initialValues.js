@@ -7,7 +7,7 @@ export const initialValues = {
 }
 
 export const frequency = [
-  { value: 'unica', label: 'Única' },
+  { value: 'única', label: 'Única' },
   { value: 'semanal', label: 'Semanal' },
   { value: 'quincenal', label: 'Bisemanal' },
   { value: 'mensual', label: 'Mensual' },

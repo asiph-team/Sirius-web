@@ -1,5 +1,5 @@
 import Can from './can'
-import { Header, HeaderDetail, HeaderSign } from './header'
+import { Header, HeaderDetail, HeaderSign, HeaderSummary } from './header'
 import Error from './error'
 import { List, ListCourse } from './list'
 import {
@@ -28,6 +28,7 @@ export {
   Header,
   HeaderDetail,
   HeaderSign,
+  HeaderSummary,
   Indicators,
   Risks,
   List,
