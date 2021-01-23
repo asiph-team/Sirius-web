@@ -26,7 +26,7 @@ const Edit = (props) => {
             handleSubmit={(values) => update({
               name: values.name,
               description: values.description,
-              employees_id: [values.employees_id],
+              employees_id: values.employees_id,
               end_date: moment(values.end_date).format('YYYY-MM-DD'),
               start_date: moment(values.start_date).format('YYYY-MM-DD'),
               frequency: values.frequency,
