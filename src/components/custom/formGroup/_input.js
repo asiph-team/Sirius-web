@@ -67,27 +67,6 @@ const SelectFieldModal = (props) => {
   )
 }
 
-const MultipleSelectField = (props) => {
-  const {
-    options, field, form, multiple,
-  } = props
-  const { name, value } = field
-  return (
-    <Select
-      className="basic-single"
-      classNamePrefix="select"
-      name={name}
-      options={options}
-      onChange={(option) => option && form.setFieldValue(name, option.map((item) => item.value))}
-      defaultValue={options.filter((option) => value.includes(option.value))}
-      isSearchable
-      isMulti={!!multiple}
-      closeMenuOnSelect={false}
-      placeholder=""
-    />
-  )
-}
-
 const DatePickerField = (props) => {
   const { field, form } = props
   const { name, value } = field
@@ -280,9 +259,30 @@ export const CustomSelectModal = (props) => {
   )
 }
 
+const MultipleSelectField = (props) => {
+  const {
+    options, field, form, multiple,
+  } = props
+  const { name, value } = field
+  return (
+    <Select
+      className="basic-single"
+      classNamePrefix="select"
+      name={name}
+      options={options}
+      onChange={(option) => option && form.setFieldValue(name, option.map((item) => item.value))}
+      defaultValue={options.filter((option) => value.includes(option.value))}
+      isSearchable
+      isMulti={!!multiple}
+      closeMenuOnSelect={false}
+      placeholder=""
+    />
+  )
+}
+
 export const MultipleCustomSelect = (props) => {
   const {
-    name, title, options, small, multiple, defaultData,
+    name, title, options, small, multiple,
   } = props
   return (
     <>
@@ -292,7 +292,6 @@ export const MultipleCustomSelect = (props) => {
         name={name}
         component={MultipleSelectField}
         multiple={multiple}
-        defaultData={defaultData}
       />
     </>
   )
