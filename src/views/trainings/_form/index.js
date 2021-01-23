@@ -9,7 +9,7 @@ import {config } from './_config'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, options, validationSchema, defaultData,
+    handleSubmit, placeholder, title, options, validationSchema, employees,
   } = props
   return (
     <Card>
@@ -26,11 +26,8 @@ const FormUI = (props) => {
                   <Row key={row[0].key}>
                     {
                       row.map((item) => {
-                        if (options && item.options && item.name === 'employees_id') {
-                          Object.assign(item, { ...item, options })
-                        }
-                        if (defaultData && item.selected) {
-                          Object.assign(item, { ...item, defaultData })
+                        if (employees && item.name === 'employees_id') {
+                          Object.assign(item, { ...item, options: employees })
                         }
                         return (
                           <Col sm={item.grid} key={item.key}>

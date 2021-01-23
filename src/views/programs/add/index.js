@@ -12,15 +12,23 @@ import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 const Add = () => {
   const url = `${urlApi}${baseApiUrl}programs`
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: employees } = useFetchResources(`${urlApi}${baseApiUrl}employees?`)
-  const { items: workstations } = useFetchResources(`${urlApi}${baseApiUrl}workstations?all`)
+  const { items: employees, loading: loadingEmployees } = useFetchResources(`${urlApi}${baseApiUrl}employees?`)
+  const { items: workstations, loading: loadingWorkstations } = useFetchResources(`${urlApi}${baseApiUrl}workstations?all`)
   const { items: data } = workstations
   const { items: employeesData } = employees
-  if (loading) return <LoadingSpinner />
+  if (loading && loadingEmployees && loadingWorkstations) return <LoadingSpinner />
   if (error) return <Error message={error} />
   return (
     <>
-      <AddUI handleSubmit={(values) => postData({ ...values, start_date: moment(values.start_date).format('YYYY-MM-DD'), end_date: moment(values.start_date).format('YYYY-MM-DD') }, url)} workstations={data} employees={employeesData} />
+      <AddUI
+        handleSubmit={(values) => postData({
+          ...values,
+          start_date: moment(values.start_date).format('YYYY-MM-DD'),
+          end_date: moment(values.start_date).format('YYYY-MM-DD'),
+        }, url)}
+        workstations={data}
+        employees={employeesData}
+      />
       {loading && <AlertLoading message="Almacenando vigilancia médica" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (

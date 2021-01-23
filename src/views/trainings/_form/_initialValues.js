@@ -4,6 +4,7 @@ export const initialValues = {
   frequency: '',
   start_date: '',
   end_date: '',
+  employees_id: '',
 }
 
 export const frequency = [
