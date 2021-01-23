@@ -22,9 +22,6 @@ export const validationSchema = Yup.object().shape({
     // eslint-disable-next-line camelcase
     .when('start_date', (start_date, yup) => start_date && yup.min(start_date, 'La fecha final no puede ser antes de la inicial'))
     .required('La fecha final es requerida'),
-  workstations_id: Yup.string()
-    .ensure()
-    .required('El puesto de trabajo es requerido'),
   employees_id: Yup.string()
     .ensure()
     .required('Empleados invitados es requerido'),

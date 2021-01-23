@@ -46,60 +46,6 @@ export const config = [
       options: frequency,
       grid: 3,
     },
-    {
-      input: 'CustomSelect',
-      key: 2,
-      name: 'workstations_id',
-      title: 'Puesto de trabajo*',
-      type: 'text',
-      options: [],
-      grid: 3,
-    },
-  ],
-  [
-    {
-      input: 'CustomTextArea',
-      key: 3,
-      name: 'description',
-      title: 'Descripción*',
-      rows: 5,
-      grid: 12,
-    },
-  ],
-]
-
-export const editConfig = [
-  [
-    {
-      input: 'CustomInput',
-      key: 1,
-      name: 'name',
-      title: 'Nombre*',
-      type: 'text',
-      grid: 12,
-    },
-  ],
-  [
-    {
-      input: 'CustomSelect',
-      key: 2,
-      name: 'workstations_id',
-      title: 'Puesto de trabajo*',
-      type: 'text',
-      options: [],
-      grid: 6,
-    },
-    {
-      input: 'MultipleCustomSelect',
-      key: 6,
-      name: 'employees_id',
-      title: 'Empleados invitados*',
-      type: 'text',
-      options: [],
-      selected: [],
-      grid: 6,
-      multiple: true,
-    },
   ],
   [
     {
