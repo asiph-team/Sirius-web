@@ -69,9 +69,9 @@ const SelectFieldModal = (props) => {
 
 const MultipleSelectField = (props) => {
   const {
-    options, field, form, multiple, defaultData,
+    options, field, form, multiple,
   } = props
-  const { name } = field
+  const { name, value } = field
   return (
     <Select
       className="basic-single"
@@ -79,10 +79,11 @@ const MultipleSelectField = (props) => {
       name={name}
       options={options}
       onChange={(option) => option && form.setFieldValue(name, option.map((item) => item.value))}
-      defaultValue={defaultData}
+      defaultValue={options.filter((option) => value.includes(option.value))}
       isSearchable
-      placeholder=""
       isMulti={!!multiple}
+      closeMenuOnSelect={false}
+      placeholder=""
     />
   )
 }
