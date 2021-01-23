@@ -1,11 +1,10 @@
 export const initialValues = {
   name: '',
-  description: '',
-  frequency: '',
+  employees_id: '',
   start_date: '',
   end_date: '',
-  workstations_id: '',
-  employees_id: '',
+  frequency: '',
+  description: '',
 }
 
 export const frequency = [
