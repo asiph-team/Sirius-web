@@ -2,6 +2,7 @@ import React from 'react'
 import { Header } from '../../../components/custom'
 import FormUI from '../_form'
 import { config } from '../_form/_config'
+import { validationSchemaAdd } from '../_form/_validation'
 
 const AddUI = (props) => {
   const { handleSubmit, employees, workstations } = props
@@ -16,6 +17,7 @@ const AddUI = (props) => {
         config={config}
         options={options}
         employees={employeesList}
+        validationSchema={validationSchemaAdd}
       />
     </>
   )

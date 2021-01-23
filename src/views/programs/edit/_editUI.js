@@ -2,6 +2,8 @@ import React from 'react'
 import moment from 'moment'
 import { Header } from '../../../components/custom'
 import FormUI from '../_form'
+import { validationSchemaEdit } from '../_form/_validation'
+
 
 const EditUI = (props) => {
   const { handleSubmit, location: { state: { placeholder } }, employees, participants } = props
@@ -27,6 +29,8 @@ const EditUI = (props) => {
         }}
         employees={employeesList}
         defaultData={participantsList}
+        validationSchema={validationSchemaEdit}
+
       />
     </>
   )
