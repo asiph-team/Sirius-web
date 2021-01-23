@@ -10,7 +10,7 @@ import AddUI from './_addUI'
 import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Add = () => {
-  const url = `${urlApi}/api/v1/programs`
+  const url = `${urlApi}${baseApiUrl}programs`
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   const { items: employees } = useFetchResources(`${urlApi}${baseApiUrl}employees?`)
   const { items: workstations } = useFetchResources(`${urlApi}${baseApiUrl}workstations?all`)

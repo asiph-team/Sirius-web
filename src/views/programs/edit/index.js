@@ -10,29 +10,33 @@ import EditUI from './_editUI'
 import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
+  const { location: { state: { placeholder } } } = props
   const { data: { loading, error, items }, clean, update } = usePostResources()
-  const { items: workstations } = useFetchResources(`${urlApi}${baseApiUrl}workstations?all`)
   const { items: employees } = useFetchResources(`${urlApi}${baseApiUrl}employees?`)
-  const { items: data, loading: loadingWorkstations, error: errorWorkstations } = workstations
-  const { items: employeesData } = employees
-  if (loadingWorkstations) return <LoadingSpinner />
-  if (errorWorkstations) return <Error message={error.message} />
+  const { items: participants } = useFetchResources(`${urlApi}${baseApiUrl}programs/${placeholder.id}/employees?all`)
+  const { items: employeesData, loading: loadingEmployees, error: errorEmployees } = employees
+  const { items: participantsData, loading: loadingParticipants, error: errorParticipants } = participants
+  if (loadingEmployees && loadingParticipants) return <LoadingSpinner />
+  if (errorEmployees && errorParticipants) return <Error message={error.message} />
   return (
     <>
-      <EditUI
-        handleSubmit={(values) => update({
-          name: values.name,
-          description: values.description,
-          workstations_id: [values.workstations_id],
-          employees_id: [values.employees_id],
-          end_date: moment(values.end_date).format('YYYY-MM-DD'),
-          start_date: moment(values.start_date).format('YYYY-MM-DD'),
-          frequency: values.frequency,
-        }, `${urlApi}${baseApiUrl}programs/${values.id}`)}
-        {...props}
-        workstations={data}
-        employees={employeesData}
-      />
+      {
+        employeesData && participantsData && (
+          <EditUI
+            handleSubmit={(values) => update({
+              name: values.name,
+              description: values.description,
+              employees_id: [values.employees_id],
+              end_date: moment(values.end_date).format('YYYY-MM-DD'),
+              start_date: moment(values.start_date).format('YYYY-MM-DD'),
+              frequency: values.frequency,
+            }, `${urlApi}${baseApiUrl}programs/${values.id}`)}
+            {...props}
+            employees={employeesData && employeesData}
+            participants={participantsData && participantsData}
+          />
+        )
+      }
       {loading && <AlertLoading message="Actualizando vigilancia médica" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (

@@ -18,20 +18,15 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
-  const transformData = () => {
-    const newData = data.data.data.map((item) => {
-      return {
-        ...item,
-        workstation: item.workstation ? item.workstation.name : '--',
-        workstations_id: item.workstation ? item.workstation.id : '--',
-        frequency: item.frequency ? capitalizeFirstLetter(item.frequency) : '--',
-        start_date: moment(item.start_date).format('DD/MM/YYYY'),
-        end_date: moment(item.end_date).format('DD/MM/YYYY'),
-
-      }
-    })
-    return newData
-  }
+  const transformData = () => data.data.data.map((item) => ({
+    id: item.id,
+    name: item.name,
+    workstation: item.workstation.name,
+    frequency: item.frequency ? capitalizeFirstLetter(item.frequency) : '--',
+    start_date: moment(item.start_date).format('DD/MM/YYYY'),
+    end_date: moment(item.end_date).format('DD/MM/YYYY'),
+    description: item.description,
+  }))
   return (
     <>
       <Header title="Vigilancia Médica" icon="Video">
