@@ -16,12 +16,25 @@ const Edit = (props) => {
   const { items: employees } = useFetchResources(`${urlApi}/api/v1/employees?all`)
   const { items: participants } = useFetchResources(`${urlApi}/api/v1/trainings/${placeholder.id}/employees?all`)
   const { items: data, loading: loadingEmployees, error: errorEmployees } = employees
-  const { items: dataParticipants } = participants
-  if (loadingEmployees) return <LoadingSpinner />
+  const { items: dataParticipants, loading: loadingParticipants } = participants
+  if (loadingEmployees && loadingParticipants) return <LoadingSpinner />
   if (errorEmployees) return <Error message={errorEmployees} />
   return (
     <>
-      <EditUI handleSubmit={(values) => update({ id: values.id, description: values.description, end_date: moment(values.end_date).format('YYYY-MM-DD'), start_date: moment(values.start_date).format('YYYY-MM-DD'), frequency: values.frequency.toLowerCase(), name: values.name, employees_id: values.employees_id }, `${url}/${values.id}`)} {...props} participants={dataParticipants} employees={data} />
+      <EditUI
+        handleSubmit={(values) => update({
+          id: values.id,
+          description: values.description,
+          end_date: moment(values.end_date).format('YYYY-MM-DD'),
+          start_date: moment(values.start_date).format('YYYY-MM-DD'),
+          frequency: values.frequency.toLowerCase(),
+          name: values.name,
+          employees_id: values.employees_id,
+        }, `${url}/${values.id}`)}
+        {...props}
+        participants={dataParticipants}
+        employees={data}
+      />
       {loading && <AlertLoading message="Actualizando capacitación" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (

@@ -28,7 +28,6 @@ const EditUI = (props) => {
           employees_id: participantsList,
         }}
         employees={employeesList}
-        defaultData={participantsList}
         validationSchema={validationSchemaEdit}
 
       />
