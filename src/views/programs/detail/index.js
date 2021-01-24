@@ -6,12 +6,24 @@ import DetailUI from './_detail'
 import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const ProgramsDetail = (props) => {
-  const { location: { state: { training } } } = props
-  const { items: trainings, remove, pagination, search, orderBy } = useFetchResources(`${urlApi}${baseApiUrl}programs/${training.id}/courses?`)
+  const { match: { params: { programId } } } = props
+  const { items: trainings, remove, pagination, search, orderBy } = useFetchResources(`${urlApi}${baseApiUrl}programs/${programId}/courses?`)
   const { items, loading, error, temp } = trainings
-  if (loading) return <LoadingSpinner />
+  const { items: summary, loading: loadingTraining } = useFetchResources(`${urlApi}${baseApiUrl}programs/${programId}`)
+  const { items: summaryData } = summary
+  if (loading || loadingTraining) return <LoadingSpinner />
   if (error) return <Error message={error} />
-  return <DetailUI data={items} training={training} remove={remove} ordering={orderBy} search={search} temp={temp} pagination={pagination} />
+  return (
+    <DetailUI
+      data={items}
+      training={summaryData}
+      remove={remove}
+      ordering={orderBy}
+      search={search}
+      temp={temp}
+      pagination={pagination}
+    />
+  )
 }
 
 export default ProgramsDetail

@@ -16,14 +16,16 @@ const DetailUI = (props) => {
   }
   return (
     <>
-      <HeaderDetail detail={training} back="/dashboard/trainings" title="capacitaciones" />
       {
-        data && (
+        training && <HeaderDetail detail={training.data} back="/dashboard/trainings" title="capacitaciones" />
+      }
+      {
+        data && training && (
           <ListCourse
             data={data.data.data}
             show={show}
-            url="participants"
-            instance={training}
+            url="/dashboard/trainings/participants"
+            instance={training.data}
           />
         )
       }
