@@ -86,7 +86,7 @@ const List = (props) => {
           )
         }
         <Can rule={`${resource}:detail`}>
-          <Link id={`detail-${row.id}`} to={{ pathname: `/dashboard/${resource}/detail`, state: { training: row } }}><Button color="link" className="p-0"><Icon.ZoomIn size={20} /></Button></Link>
+          <Link id={`detail-${row.id}`} to={{ pathname: `/dashboard/${resource}/detail/${row.id}` }}><Button color="link" className="p-0"><Icon.ZoomIn size={20} /></Button></Link>
         </Can>
 
         <Can rule="controls:edit">

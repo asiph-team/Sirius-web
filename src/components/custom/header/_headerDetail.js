@@ -2,7 +2,9 @@ import React from 'react'
 import { Row, Col, Button, Card, CardBody } from 'reactstrap'
 import { ChevronLeft } from 'react-feather'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 import { history } from '../../../history'
+import { capitalizeFirstLetter } from '../../../utility/helpers/functions'
 
 const HeaderDetail = (props) => {
   const { detail, title, back } = props
@@ -39,21 +41,21 @@ const HeaderDetail = (props) => {
               <h4>
                 Fecha inicio:
                 {' '}
-                {detail.start_date}
+                {moment(detail.start_date).format('DD/MM/YYYY')}
               </h4>
             </Col>
             <Col>
               <h4>
                 Fecha Termino:
                 {' '}
-                {detail.end_date}
+                {moment(detail.end_date).format('DD/MM/YYYY')}
               </h4>
             </Col>
             <Col>
               <h4>
                 Frecuencia:
                 {' '}
-                {detail.frequency}
+                {capitalizeFirstLetter(detail.frequency)}
               </h4>
             </Col>
           </Row>

@@ -10,13 +10,13 @@ const ListCourse = (props) => {
   const { data, show, url, instance } = props
   const compareDates = (date) => {
     const now = Date()
-    return moment(date) > now ? 'Por realizar' : 'Realizado '
+    return moment(date) > moment(now) ? 'Por realizar' : 'Realizado '
   }
   return (
     <>
       {
         data.map((item) => (
-          <Card>
+          <Card key={item.id}>
             <CardBody className="d-flex justify-content-between align-items-center">
               <h3>
                 {compareDates(item.date)}
@@ -28,11 +28,12 @@ const ListCourse = (props) => {
                   {moment(item.date).format('DD/MM/YYYY')}
                 </h3>
                 {
-                  (url !== null) ? (
-                    <Link to={{ pathname: url, state: { item, instance } }}>
-                      <Icon.ZoomIn size={24} className="cursor-pointer" />
-                    </Link>
-                  ) : (
+                  (url !== null)
+                    ? (
+                      <Link to={{ pathname: url, state: { item, instance } }}>
+                        <Icon.ZoomIn size={24} className="cursor-pointer" />
+                      </Link>
+                    ) : (
                       <Icon.ZoomIn size={24} onClick={() => show(item, 'contact')} className="cursor-pointer" />
                     )
                 }
