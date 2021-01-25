@@ -24,6 +24,9 @@ export const fetchUserAlert = (payload) => ({
 
 export const initialState = {
   accessToken: null,
+  refreshToken: null,
+  tokenType: null,
+  expiresAt: null,
   error: null,
   loading: false,
   user: null,
@@ -36,8 +39,16 @@ export const authReducer = (state = initialState, action) => {
     case FETCH_START_AUTH:
       return { ...state, loading: true }
     case FETCH_SUCCESS_AUTH:
-      const { user, access_token, enterprise } = action.payload
-      return { ...state, user, accessToken: access_token, enterprise }
+      const { user, access_token, refresh_token, token_type, expires_at, enterprise } = action.payload
+      return {
+        ...state,
+        user,
+        accessToken: access_token,
+        refreshToken: refresh_token,
+        tokenType: token_type,
+        expiresAt: expires_at,
+        enterprise,
+      }
     case FETCH_ERROR_AUTH:
       return { ...state, loading: false, error: action.payload }
     case FETCH_USER_ALERT:
