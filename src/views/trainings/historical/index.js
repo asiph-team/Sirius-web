@@ -3,7 +3,6 @@ import { useFetchResources } from '../../../utility/customHooks/resources'
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { Error } from '../../../components/custom'
 import ListUI from './_listUI'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const ProgramsHistorical = (props) => {
   const { match: { params: { employeeId } } } = props
@@ -13,8 +12,8 @@ const ProgramsHistorical = (props) => {
     pagination,
     search,
     orderBy,
-  } = useFetchResources(`${urlApi}${baseApiUrl}employees/${employeeId}/trainings/courses/assistance?`)
-  const { items: summary } = useFetchResources(`${urlApi}${baseApiUrl}employees/${employeeId}/trainings/courses/assistance/summary`)
+  } = useFetchResources(`employees/${employeeId}/trainings/courses/assistance?`)
+  const { items: summary } = useFetchResources(`employees/${employeeId}/trainings/courses/assistance/summary`)
   const { items, loading, error, temp } = trainings
   const { items: summaryData } = summary
   if (loading) return <LoadingSpinner />

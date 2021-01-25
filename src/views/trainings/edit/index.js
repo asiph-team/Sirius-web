@@ -10,11 +10,11 @@ import EditUI from './_editUI'
 import { urlApi } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
-  const url = `${urlApi}/api/v1/trainings`
+  const url = 'trainings'
   const { location: { state: { placeholder } } } = props
   const { data: { loading, error, items }, update, clean } = usePostResources()
-  const { items: employees } = useFetchResources(`${urlApi}/api/v1/employees?all`)
-  const { items: participants } = useFetchResources(`${urlApi}/api/v1/trainings/${placeholder.id}/employees?all`)
+  const { items: employees } = useFetchResources('employees?all')
+  const { items: participants } = useFetchResources(`trainings/${placeholder.id}/employees?all`)
   const { items: data, loading: loadingEmployees, error: errorEmployees } = employees
   const { items: dataParticipants, loading: loadingParticipants } = participants
   if (loadingEmployees && loadingParticipants) return <LoadingSpinner />

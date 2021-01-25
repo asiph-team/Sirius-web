@@ -10,9 +10,9 @@ import { urlApi } from '../../../utility/helpers/consts'
 import { formData } from '../../../utility/helpers/functions'
 
 const Edit = (props) => {
-  const url = `${urlApi}/api/v1/control_measures`
+  const url = 'control_measures'
   const { data: { loading, error, items }, updateFiles, clean } = usePostResources()
-  const { items: activities } = useFetchResources(`${urlApi}/api/v1/activities?all`)
+  const { items: activities } = useFetchResources('activities?all')
   const { items: data, loading: loadingActivities, error: errorActivities } = activities
   if (loadingActivities) return <LoadingSpinner />
   if (errorActivities) return <Error message={errorActivities} />

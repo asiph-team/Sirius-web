@@ -3,13 +3,12 @@ import { useFetchResources } from '../../../utility/customHooks/resources'
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { Error } from '../../../components/custom'
 import DetailUI from './_detail'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const ProgramsDetail = (props) => {
   const { match: { params: { programId } } } = props
-  const { items: trainings, remove, pagination, search, orderBy } = useFetchResources(`${urlApi}${baseApiUrl}programs/${programId}/courses?`)
+  const { items: trainings, remove, pagination, search, orderBy } = useFetchResources(`programs/${programId}/courses?`)
   const { items, loading, error, temp } = trainings
-  const { items: summary, loading: loadingTraining } = useFetchResources(`${urlApi}${baseApiUrl}programs/${programId}`)
+  const { items: summary, loading: loadingTraining } = useFetchResources(`programs/${programId}`)
   const { items: summaryData } = summary
   if (loading || loadingTraining) return <LoadingSpinner />
   if (error) return <Error message={error} />

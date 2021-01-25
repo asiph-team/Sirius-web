@@ -3,10 +3,9 @@ import { history } from '../../../history'
 import { AlertError, AlertLoading, AlertSuccess } from '../../../components/custom'
 import { usePostResources } from '../../../utility/customHooks/resources'
 import EditUI from './_editUI'
-import { urlApi } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
-  const url = `${urlApi}/api/v1/enterprises`
+  const url = 'enterprises'
   const { data: { loading, error, items }, update, clean } = usePostResources()
   return (
     <>

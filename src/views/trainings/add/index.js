@@ -7,12 +7,11 @@ import {
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
 import AddUI from './_addUI'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Add = () => {
-  const url = `${urlApi}${baseApiUrl}trainings`
+  const url = 'trainings'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: employees } = useFetchResources(`${urlApi}${baseApiUrl}employees?`)
+  const { items: employees } = useFetchResources('employees?')
   const { items: data, loading: loadingEmployees, error: errorEmployees } = employees
   if (loadingEmployees) return <LoadingSpinner />
   if (errorEmployees) return <Error message={errorEmployees} />
