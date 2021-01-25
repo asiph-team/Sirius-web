@@ -37,10 +37,10 @@ const Auth = (props) => {
     try {
       const url = values.email === 'superadmin@test.com' ? 'admin/login' : 'users/login'
       const response = await axios.post(`${urlApi}/api/v1/${url}`, values)
-      const { user, access_token, rol } = response.data.data
+      const { user, access_token, refresh_token, token_type, expires_at, rol } = response.data.data
       user.role = rol
-      dispatch(fetchSuccessAuth({ user, access_token }))
-      setSession({ user, access_token })
+      dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at }))
+      setSession({ user, access_token, refresh_token, token_type, expires_at })
       getAlert(access_token)
     } catch (error) {
       const { response: { data: { message } } } = error
