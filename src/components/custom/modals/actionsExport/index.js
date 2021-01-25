@@ -12,9 +12,9 @@ import FormUI from './_form'
 
 const ActionsExport = (props) => {
   const { onClose, visibility } = props
-  const url = `${urlApi}${baseApiUrl}actions/export`
+  const url = 'actions/export'
   const { data: { items }, postExport } = usePostResources()
-  const { items: areas } = useFetchResources(`${urlApi}${baseApiUrl}areas?all`)
+  const { items: areas } = useFetchResources('areas?all')
   const { items: data } = areas
   const user = userData()
   const options = data ? data.data.data.map((area) => ({ label: area.name, value: area.id })) : null
