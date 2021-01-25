@@ -3,7 +3,6 @@ import { useFetchResources } from '../../../utility/customHooks/resources'
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { Error } from '../../../components/custom'
 import DetailUI from './_detail'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const ParticipantList = (props) => {
   const { location: { state: { item } } } = props
@@ -16,7 +15,7 @@ const ParticipantList = (props) => {
     updateSignature,
     cleanTempState,
     changeStatusAssisted,
-  } = useFetchResources(`${urlApi}${baseApiUrl}programs/courses/${item.id}/assistance`)
+  } = useFetchResources(`programs/courses/${item.id}/assistance`)
   const {
     items, loading, error, temp,
   } = trainings

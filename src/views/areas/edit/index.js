@@ -11,13 +11,13 @@ import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 const Edit = (props) => {
   const { location: { state: { placeholder: { id } } } } = props
   const { data: { loading, error, items }, clean, update } = usePostResources()
-  const { items: employees } = useFetchResources(`${urlApi}${baseApiUrl}chief_area/unset?area_id=${id}`)
+  const { items: employees } = useFetchResources(`chief_area/unset?area_id=${id}`)
   const { items: data, loading: loadingEmployees, error: errorEmployees } = employees
   if (loadingEmployees) return <LoadingSpinner />
   if (errorEmployees) return <Error message={errorEmployees} />
   return (
     <>
-      <EditUI handleSubmit={(values) => update(values, `${urlApi}/api/v1/areas/${values.id}`)} {...props} employees={data} />
+      <EditUI handleSubmit={(values) => update(values, `areas/${values.id}`)} {...props} employees={data} />
       {loading && <AlertLoading message="Actualizando área de trabajo" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (

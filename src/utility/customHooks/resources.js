@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from 'react'
 import axios from 'axios'
+import api from '../../service/api'
 import {
   initialState,
   resourcesReducer,
@@ -13,18 +14,14 @@ import {
   fetchSignature,
   cleanTemp,
 } from '../../ducks/resources'
-import { urlApi, baseApiUrl } from '../helpers/consts'
 
 export function useFetchResources(url) {
   const [items, dispatch] = useReducer(resourcesReducer, initialState)
-  const { access_token } = JSON.parse(localStorage.getItem('user'))
-  const header = { headers: { Authorization: `Bearer ${access_token}` } }
-
   useEffect(() => {
     let unmounted = false
     const source = axios.CancelToken.source()
     dispatch(fetchStart())
-    axios.get(url, { CancelToken: source.token, headers: { Authorization: `Bearer ${access_token}` } })
+    api.get(url, { CancelToken: source.token })
       .then((response) => {
         if (!unmounted) dispatch(fetchSuccess(response.data))
       })
@@ -40,30 +37,30 @@ export function useFetchResources(url) {
 
   const remove = async (data) => {
     dispatch(fetchStart())
-    await axios.delete(`${url.replace('?', '/')}${data.id}`, header)
+    await api.delete(`${url.replace('?', '/')}${data.id}`)
       .catch((error) => dispatch(fetchError(error)))
-    await axios.get(`${url}`, header)
+    await api.get(`${url}`)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const removeControl = async (data) => {
     dispatch(fetchStart())
-    await axios.delete(`${urlApi}${baseApiUrl}control_measures/${data.id}`, header)
+    await api.delete(`control_measures/${data.id}`)
       .catch((error) => dispatch(fetchError(error)))
-    await axios.get(`${url}`, header)
+    await api.get(`${url}`)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const changeStatus = async (data, field) => {
-    await axios.put(`${url.replace('?', '/')}${data.id}`, data, header)
+    await api.put(`${url.replace('?', '/')}${data.id}`, data)
       .then(dispatch(updateStatus(data, field)))
       .catch((error) => dispatch(fetchError(error)))
   }
   const changeStatusAssisted = async (data, field) => {
-    const putUrl = `${urlApi}${baseApiUrl}programs/courses/assistance/`
-    await axios.put(`${putUrl}${data.id}/assisted`, data, header)
+    const putUrl = 'programs/courses/assistance/'
+    await api.put(`${putUrl}${data.id}/assisted`, data)
       .then(dispatch(updateStatus(data, field)))
       .catch((error) => dispatch(fetchError(error)))
   }
@@ -71,7 +68,7 @@ export function useFetchResources(url) {
   const pagination = async (pageNumber, search) => {
     const params = search != null ? `${search.data}&page=${pageNumber}` : `&page=${pageNumber}`
     dispatch(fetchStart())
-    await axios.get(`${url}${params}`, header)
+    await api.get(url + params)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
@@ -79,14 +76,14 @@ export function useFetchResources(url) {
   const search = async (param, values) => {
     dispatch(fetchStart())
     const params = `${param}=${values.value}`
-    await axios.get(`${url}${params}`, header)
+    await api.get(url + params)
       .then((response) => dispatch(fetchSearch(response.data, { type: param, data: params, value: values.value })))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const queryParams = async (params) => {
     dispatch(fetchStart())
-    await axios.get(`${url}${params}`, header)
+    await api.get(url + params)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
@@ -94,7 +91,7 @@ export function useFetchResources(url) {
   const indicatorsParams = async (data) => {
     dispatch(fetchStart())
     const newUrl = (data.area == null || !data.area) ? `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}` : `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}&area_id=${data.area}`
-    await axios.get(`${newUrl}`, header)
+    await api.get(newUrl)
       .then((response) => dispatch(fetchSearch(response.data, data)))
       .catch((error) => dispatch(fetchError(error)))
   }
@@ -102,28 +99,27 @@ export function useFetchResources(url) {
   const risksParams = async (data) => {
     dispatch(fetchStart())
     const newUrl = (data.area == null || !data.area) ? `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}` : `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}&area_id=${data.area}`
-    await axios.get(`${newUrl}`, header)
+    await api.get(newUrl)
       .then((response) => dispatch(fetchSearch(response.data, data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const orderBy = async (orderby, ordering) => {
     const orderParams = `orderBy=${orderby}&order=${ordering}`
-    await axios.get(`${url}${orderParams}`, header)
+    await api.get(url + orderParams)
       .then((response) => dispatch(fetchOrder(response.data, !ordering, { type: 'order', data: orderParams, order: ordering })))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const updateSignature = async (data, url, id, items) => {
     dispatch(fetchStart())
-    await axios.post(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+    await api.post(url, data)
       .then(dispatch(fetchSuccess(items)))
       .then(dispatch(fetchSignature(data, { id, signature: data, status: 'attended' }, items)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const cleanTempState = () => dispatch(cleanTemp())
-
 
   return {
     items,
@@ -144,16 +140,15 @@ export function useFetchResources(url) {
 
 export function usePostResources() {
   const [data, dispatch] = useReducer(resourcesReducer, initialState)
-  const { access_token } = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : 'null'
-  const postData = async (values, url, config) => {
+  const postData = async (values, url) => {
     dispatch(fetchStart())
-    await axios.post(url, values, { headers: { Authorization: `Bearer ${access_token}` } })
+    await api.post(url, values)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
-  const postExport = async (values, url, config) => {
+  const postExport = async (values, url) => {
     dispatch(fetchStart())
-    await axios.post(url, values, { headers: { Authorization: `Bearer ${access_token}` }, responseType: 'arraybuffer' })
+    await api.post(url, values, { responseType: 'arraybuffer' })
       .then((response) => {
         const type = response.headers['content-type']
         const date = new Date()
@@ -168,21 +163,21 @@ export function usePostResources() {
 
   const update = async (data, url) => {
     dispatch(fetchStart())
-    await axios.put(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+    await api.put(url, data)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const updateFiles = async (data, url) => {
     dispatch(fetchStart())
-    await axios.post(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+    await api.post(url, data)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const updateSignature = async (data, url, id, items) => {
     dispatch(fetchStart())
-    await axios.post(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+    await api.post(url, data)
       .then(dispatch(fetchSuccess(items)))
       .then(dispatch(fetchSignature(data, { id, signature: data, status: 'attended' }, items)))
       .catch((error) => dispatch(fetchError(error)))
@@ -190,14 +185,14 @@ export function usePostResources() {
 
   const changeStatus = async (data, url) => {
     dispatch(fetchStart())
-    await axios.put(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+    await api.put(url, data)
       .then(dispatch(updateStatus(data)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
   const patchData = async (data, url) => {
     dispatch(fetchStart())
-    await axios.patch(url, data, { headers: { Authorization: `Bearer ${access_token}` } })
+    await api.patch(url, data)
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }

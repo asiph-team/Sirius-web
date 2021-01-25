@@ -6,13 +6,12 @@ import {
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
 import AddUI from './_addUI'
-import { urlApi } from '../../../utility/helpers/consts'
 import { singleDateFormatter } from '../../../utility/helpers/functions'
 
 const Add = () => {
-  const url = `${urlApi}/api/v1/actions`
+  const url = 'actions'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: workstations } = useFetchResources(`${urlApi}/api/v1/employees?all&rol=chief_of_area`)
+  const { items: workstations } = useFetchResources('employees?all&rol=chief_of_area')
   const { items: data, loading: loadingEmployees, error: errorEmployees } = workstations
   if (loadingEmployees) return <LoadingSpinner />
   if (errorEmployees) return <Error message={errorEmployees} />

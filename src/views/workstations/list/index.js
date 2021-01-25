@@ -6,7 +6,7 @@ import ListUI from './_listUI'
 import { urlApi } from '../../../utility/helpers/consts'
 
 const List = () => {
-  const { items: workstations, remove, pagination, search, orderBy } = useFetchResources(`${urlApi}/api/v1/workstations?`)
+  const { items: workstations, remove, pagination, search, orderBy } = useFetchResources('workstations?')
   const { items, loading, error, temp } = workstations
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />

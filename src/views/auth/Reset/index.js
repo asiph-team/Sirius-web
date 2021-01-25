@@ -6,7 +6,7 @@ import ResetUI from './_resetUI'
 import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
-  const url = `${urlApi}${baseApiUrl}users/forgetPassword`
+  const url = 'users/forgetPassword'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
   return (
     <>

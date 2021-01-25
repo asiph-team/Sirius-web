@@ -8,9 +8,9 @@ import EditUI from './_editUI'
 import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
-  const url = `${urlApi}/api/v1/workstations`
+  const url = 'workstations'
   const { data: { loading, error, items }, update, clean } = usePostResources()
-  const { items: areas } = useFetchResources(`${urlApi}${baseApiUrl}areas?all`)
+  const { items: areas } = useFetchResources('areas?all')
   const { items: data } = areas
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />

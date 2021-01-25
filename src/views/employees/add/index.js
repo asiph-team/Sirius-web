@@ -6,13 +6,12 @@ import {
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
 import { AddUI, AddUIForm } from './_addUI'
-import { urlApi } from '../../../utility/helpers/consts'
 import { singleDateFormatter } from '../../../utility/helpers/functions'
 
 const Add = () => {
-  const url = `${urlApi}/api/v1/employees`
+  const url = 'employees'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: workstations } = useFetchResources(`${urlApi}/api/v1/workstations?`)
+  const { items: workstations } = useFetchResources('workstations?')
   const { items: data, loading: loadingWorkstations, error: errorWorkstations } = workstations
   if (loadingWorkstations) return <LoadingSpinner />
   if (errorWorkstations) return <Error message={errorWorkstations} />
@@ -37,9 +36,9 @@ const Add = () => {
 
 const AddFORM = (props) => {
   const { onClose, addEmployee } = props
-  const url = `${urlApi}/api/v1/employees`
+  const url = `employees`
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: workstations } = useFetchResources(`${urlApi}/api/v1/workstations?`)
+  const { items: workstations } = useFetchResources(`workstations?`)
   const { items: data, error: errorWorkstations } = workstations
   if (errorWorkstations) return <Error message={errorWorkstations} />
   return (

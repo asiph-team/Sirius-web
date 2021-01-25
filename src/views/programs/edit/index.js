@@ -12,8 +12,8 @@ import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 const Edit = (props) => {
   const { location: { state: { placeholder } } } = props
   const { data: { loading, error, items }, clean, update } = usePostResources()
-  const { items: employees } = useFetchResources(`${urlApi}${baseApiUrl}employees?`)
-  const { items: participants } = useFetchResources(`${urlApi}${baseApiUrl}programs/${placeholder.id}/employees?all`)
+  const { items: employees } = useFetchResources('employees?')
+  const { items: participants } = useFetchResources(`programs/${placeholder.id}/employees?all`)
   const { items: employeesData, loading: loadingEmployees, error: errorEmployees } = employees
   const { items: participantsData, loading: loadingParticipants, error: errorParticipants } = participants
   if (loadingEmployees && loadingParticipants) return <LoadingSpinner />
@@ -30,7 +30,7 @@ const Edit = (props) => {
               end_date: moment(values.end_date).format('YYYY-MM-DD'),
               start_date: moment(values.start_date).format('YYYY-MM-DD'),
               frequency: values.frequency,
-            }, `${urlApi}${baseApiUrl}programs/${values.id}`)}
+            }, `programs/${values.id}`)}
             {...props}
             employees={employeesData && employeesData}
             participants={participantsData && participantsData}

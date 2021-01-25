@@ -7,8 +7,8 @@ import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const ControlsList = (props) => {
   const { location: { state } } = props
-  const url = `${urlApi}${baseApiUrl}control_measures`
-  const { items: controls, removeControl, changeStatus, pagination, search, orderBy } = useFetchResources(`${urlApi}${baseApiUrl}activities/${state.activity_id}/control_measures?`)
+  const url = 'control_measures'
+  const { items: controls, removeControl, changeStatus, pagination, search, orderBy } = useFetchResources(`activities/${state.activity_id}/control_measures?`)
   const { items, loading, error, temp } = controls
   if (loading) return <LoadingSpinner />
   if (error) return <Error message={error} />

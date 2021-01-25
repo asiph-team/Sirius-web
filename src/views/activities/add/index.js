@@ -6,13 +6,12 @@ import {
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
 import AddUI from './_addUI'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Add = () => {
-  const url = `${urlApi}/api/v1/activities`
+  const url = 'activities'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: workstations } = useFetchResources(`${urlApi}${baseApiUrl}workstations`)
-  const { items: risksList } = useFetchResources(`${urlApi}${baseApiUrl}risks`)
+  const { items: workstations } = useFetchResources('workstations')
+  const { items: risksList } = useFetchResources('risks')
   const { items: data, loading: loadingWorkstations, error: errorWorkstations } = workstations
   if (loadingWorkstations) return <LoadingSpinner />
   if (errorWorkstations) return <Error message={errorWorkstations} />
