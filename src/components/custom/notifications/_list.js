@@ -19,7 +19,7 @@ const ListUI = (props) => {
       <DropdownToggle
         tag="a"
         data-toggle="dropdown"
-        aria-expanded={''}
+        aria-expanded={false}
         className="nav-link nav-link-label"
       >
         <Icon.Bell size={21} />

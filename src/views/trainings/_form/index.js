@@ -5,11 +5,11 @@ import {
 import { Formik, Form } from 'formik'
 import { FormGroup, FormSubmit } from '../../../components/custom'
 import { initialValues } from './_initialValues'
-import {config } from './_config'
+import { config } from './_config'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, title, options, validationSchema, employees,
+    handleSubmit, placeholder, title, validationSchema, employees,
   } = props
   return (
     <Card>

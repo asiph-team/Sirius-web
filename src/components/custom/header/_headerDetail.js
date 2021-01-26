@@ -2,7 +2,6 @@ import React from 'react'
 import { Row, Col, Button, Card, CardBody } from 'reactstrap'
 import { ChevronLeft } from 'react-feather'
 import { Link } from 'react-router-dom'
-import moment from 'moment'
 import { history } from '../../../history'
 import { capitalizeFirstLetter } from '../../../utility/helpers/functions'
 

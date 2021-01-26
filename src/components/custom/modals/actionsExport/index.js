@@ -5,7 +5,6 @@ import {
   ModalHeader,
   ModalBody,
 } from 'reactstrap'
-import { urlApi, baseApiUrl } from '../../../../utility/helpers/consts'
 import { userData } from '../../../../utility/helpers/functions'
 import { usePostResources, useFetchResources } from '../../../../utility/customHooks/resources'
 import FormUI from './_form'
