@@ -6,7 +6,6 @@ import {
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
 import EditUI from './_editUI'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
   const { location: { state: { placeholder: { id } } } } = props

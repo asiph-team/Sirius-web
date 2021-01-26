@@ -7,7 +7,6 @@ import {
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
 import EditUI from './_editUI'
-import { urlApi } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
   const url = 'trainings'

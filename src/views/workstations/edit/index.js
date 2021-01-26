@@ -5,7 +5,6 @@ import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 
 import { usePostResources, useFetchResources } from '../../../utility/customHooks/resources'
 import EditUI from './_editUI'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
   const url = 'workstations'
