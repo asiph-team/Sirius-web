@@ -3,7 +3,7 @@ import axios from 'axios'
 import {
   initialState, authReducer, fetchStartAuth, fetchSuccessAuth, fetchErrorAuth, fetchUserAlert,
 } from '../../ducks/session'
-import { urlApi } from '../helpers/consts'
+import { urlApi, baseApiUrl } from '../helpers/consts'
 
 const ContextAuth = createContext({
   authenticated: false,
@@ -35,12 +35,12 @@ const Auth = (props) => {
     dispatch(fetchStartAuth())
     dispatch(fetchErrorAuth(null))
     try {
-      const url = values.email === 'superadmin@test.com' ? 'admin/login' : 'users/login'
-      const response = await axios.post(`${urlApi}/api/v1/${url}`, values)
+      const url = values.email === 'superadmin@test.com' ? 'admin/' : 'users/'
+      const response = await axios.post(`${urlApi}${baseApiUrl}${url}login`, values)
       const { user, access_token, refresh_token, token_type, expires_at, rol } = response.data.data
       user.role = rol
       dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at }))
-      setSession({ user, access_token, refresh_token, token_type, expires_at })
+      setSession({ user, access_token, refresh_token, token_type, expires_at, url })
       getAlert(access_token)
     } catch (error) {
       const { response: { data: { message } } } = error

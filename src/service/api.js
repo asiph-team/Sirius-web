@@ -9,13 +9,14 @@ const api = axios.create({
   timeoutErrorMessage: 'No fue posible conectarse al servidor',
 })
 
-const setAuthHeader = (props) => {
+const setAuthHeader = (props, url) => {
   const { access_token, refresh_token, token_type, expires_at, rol, user } = props
   const data = {
     access_token,
     expires_at,
     refresh_token,
     token_type,
+    url,
     user: {
       ...user,
       role: rol,
@@ -45,7 +46,7 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const originalRequest = error.config
-    const { refresh_token: refreshToken } = JSON.parse(localStorage.getItem('user'))
+    const { refresh_token: refreshToken, url } = JSON.parse(localStorage.getItem('user'))
     if (refreshToken
       && error.response.status === 500
       && originalRequest.url === 'users/refresh-token') { logout() }
@@ -56,10 +57,10 @@ api.interceptors.response.use(
     ) {
       originalRequest._retry = true
       return api
-        .post('users/refresh-token', { refresh_token: refreshToken })
+        .post(`${url}refresh-token`, { refresh_token: refreshToken })
         .then((res) => {
           if (res.status === 200) {
-            setAuthHeader(res.data.data)
+            setAuthHeader(res.data.data, url)
             return api(originalRequest)
           }
           logout()
