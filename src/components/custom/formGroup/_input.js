@@ -124,9 +124,7 @@ const CustomInputFieldRUT = (props) => {
 }
 
 export const CustomInputRUT = (props) => {
-  const {
-    name, title, type, small, disabled, placeholder,
-  } = props
+  const { name, title, type, small } = props
   return (
     <>
       <label htmlFor={name}>{`${title} ${small || ''}`}</label>
