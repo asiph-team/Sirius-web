@@ -6,7 +6,6 @@ import {
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
 import EditUI from './_editUI'
-import { urlApi } from '../../../utility/helpers/consts'
 import { formData } from '../../../utility/helpers/functions'
 
 const Edit = (props) => {

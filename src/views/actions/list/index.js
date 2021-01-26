@@ -3,7 +3,6 @@ import { useFetchResources } from '../../../utility/customHooks/resources'
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { Error } from '../../../components/custom'
 import ListUI from './_listUI'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const ActionsList = () => {
   const { items: actions, remove, pagination, search, changeStatus, orderBy } = useFetchResources('actions?')

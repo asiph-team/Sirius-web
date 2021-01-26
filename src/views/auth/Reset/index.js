@@ -3,7 +3,6 @@ import { history } from '../../../history'
 import { AlertError, AlertLoading, AlertSuccess } from '../../../components/custom'
 import { usePostResources } from '../../../utility/customHooks/resources'
 import ResetUI from './_resetUI'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const Edit = (props) => {
   const url = 'users/forgetPassword'

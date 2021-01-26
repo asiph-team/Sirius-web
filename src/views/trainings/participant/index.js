@@ -3,7 +3,6 @@ import { useFetchResources } from '../../../utility/customHooks/resources'
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
 import { Error } from '../../../components/custom'
 import DetailUI from './_detail'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const ProgramsParticipantList = (props) => {
   const { location: { state: { item } } } = props
