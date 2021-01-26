@@ -400,6 +400,7 @@ export const CustomInputAddonCheckbox = (props) => {
         component={CustomInputFieldAddonCheckbox}
         disabled={disabled}
         type={type}
+        value
       />
     </>
   )
@@ -455,7 +456,7 @@ const CheckboxGroup = (props) => {
       <div className="d-flex flex-wrap my-1">
         {
           options && options.map((risk) => (
-            <FormGroup check className="col-lg-3 my-1">
+            <FormGroup key={risk.id} check className="col-lg-3 my-1">
               <Label check className={value && value.includes(risk.id) ? 'font-weight-bold' : null}>
                 <Field
                   name={name}
