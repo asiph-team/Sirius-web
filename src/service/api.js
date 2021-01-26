@@ -51,7 +51,7 @@ api.interceptors.response.use(
       && originalRequest.url === 'users/refresh-token') { logout() }
     if (
       refreshToken
-      && error.response.status === 500
+      && (error.response.status === 500 || error.response.status === 401)
       && !originalRequest._retry
     ) {
       originalRequest._retry = true
