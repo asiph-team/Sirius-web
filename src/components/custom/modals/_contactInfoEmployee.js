@@ -82,7 +82,7 @@ const ContactInfoEmployee = (props) => {
               {
                 trainingsList && trainingsList.length ? (
                   trainingsList.map((emp) => (
-                    <li>
+                    <li key={emp.id}>
                       {emp.name}
                     </li>
                   ))

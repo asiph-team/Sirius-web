@@ -49,7 +49,7 @@ const InfoTraining = (props) => {
             <Col>
               {
                 data && list.map((emp) => (
-                  <li> {emp.name} </li>
+                  <li key={emp.id}> {emp.name} </li>
                 ))
               }
             </Col>
