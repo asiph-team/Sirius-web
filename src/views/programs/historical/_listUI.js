@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
-import { Button, Card, CardBody } from 'reactstrap'
-import { Link } from 'react-router-dom'
-import { ChevronLeft } from 'react-feather'
+import { Card, CardBody } from 'reactstrap'
 import moment from 'moment'
 import { InfoTraining } from '../../../components/custom/modals'
 import {
-  AlertDialog, Header, HeaderSummary, HeaderSummaryPrograms, List, Search,
+  AlertDialog, HeaderSummaryPrograms, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
 
 const ListUI = (props) => {
-  const { data, remove, pagination, search, temp, ordering, summary } = props
+  const { data, remove, pagination, temp, ordering, summary } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {

@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import { Button, Card, CardBody } from 'reactstrap'
-import { Link } from 'react-router-dom'
-import { ChevronLeft } from 'react-feather'
+import { Card, CardBody } from 'reactstrap'
 import moment from 'moment'
 import { InfoTraining } from '../../../components/custom/modals'
 import {
-  AlertDialog, Header, HeaderSummary, List,
+  AlertDialog, HeaderSummary, List,
 } from '../../../components/custom'
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'

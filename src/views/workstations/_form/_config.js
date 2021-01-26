@@ -10,7 +10,7 @@ export const config = [
     },
     {
       input: 'CustomInputAddonCheckbox',
-      key: 1,
+      key: 2,
       name: 'revisions',
       title: 'El puesto de trabajo es supervisor',
       type: 'number',
@@ -32,10 +32,9 @@ export const config = [
   [
     {
       input: 'CustomTextArea',
-      key: 3,
+      key: 4,
       name: 'information',
       title: 'Licencias / Permisos / Certificaciones / Cursos / Conocimientos obligatorios.',
-
       rows: 5,
       grid: 12,
     },
@@ -54,7 +53,7 @@ export const Editconfig = [
     },
     {
       input: 'CustomInputAddonCheckbox',
-      key: 1,
+      key: 2,
       name: 'revisions',
       title: 'El puesto de trabajo es supervisor',
       type: 'number',
@@ -65,7 +64,7 @@ export const Editconfig = [
   [
     {
       input: 'CustomSelect',
-      key: 2,
+      key: 3,
       name: 'area_id',
       title: 'Area de pertenencia*',
       type: 'text',
@@ -76,7 +75,7 @@ export const Editconfig = [
   [
     {
       input: 'CustomTextArea',
-      key: 3,
+      key: 4,
       name: 'description',
       title: 'Descripción del Cargo/ Funciones / Responsabilidades/ Competencias Requeridas / Principales Riesgos*',
       rows: 5,
@@ -87,7 +86,7 @@ export const Editconfig = [
   [
     {
       input: 'CustomTextArea',
-      key: 3,
+      key: 5,
       name: 'information',
       title: 'Licencias / Permisos / Certificaciones / Cursos / Conocimientos obligatorios.',
       rows: 5,

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { PlusCircle } from 'react-feather'
-import moment from 'moment'
 import {
   AlertDialog, Can, Header, List, Search,
 } from '../../../components/custom'
