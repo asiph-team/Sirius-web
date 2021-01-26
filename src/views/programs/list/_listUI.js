@@ -23,8 +23,8 @@ const ListUI = (props) => {
     name: item.name,
     workstation: item.workstation.name,
     frequency: item.frequency ? capitalizeFirstLetter(item.frequency) : '--',
-    start_date: moment(item.start_date).format('DD/MM/YYYY'),
-    end_date: moment(item.end_date).format('DD/MM/YYYY'),
+    start_date: item.start_date,
+    end_date: item.end_date,
     description: item.description,
   }))
   return (
