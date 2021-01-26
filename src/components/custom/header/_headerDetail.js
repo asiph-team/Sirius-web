@@ -41,14 +41,14 @@ const HeaderDetail = (props) => {
               <h4>
                 Fecha inicio:
                 {' '}
-                {moment(detail.start_date).format('DD/MM/YYYY')}
+                {detail.start_date}
               </h4>
             </Col>
             <Col>
               <h4>
                 Fecha Termino:
                 {' '}
-                {moment(detail.end_date).format('DD/MM/YYYY')}
+                {detail.end_date}
               </h4>
             </Col>
             <Col>
