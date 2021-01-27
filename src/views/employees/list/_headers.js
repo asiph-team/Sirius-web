@@ -31,4 +31,4 @@ export const headers = [
     minWidth: '300px',
   },
 ].concat((permitted('employees:edit') || permitted('employees:delete')) && status)
-  .concat((permitted('employees:edit') || permitted('employees:delete')) && actions).filter((x) => x !== false)
+  .concat(actions).filter((x) => x !== false)

@@ -101,29 +101,47 @@ const List = (props) => {
             )
           }
         </Can>
-        <UncontrolledTooltip placement="bottom" target={`edit-${resource}`}>
-          Editar
-        </UncontrolledTooltip>
-        <UncontrolledTooltip placement="bottom" target={`delete-${resource}`}>
-          Eliminar
-        </UncontrolledTooltip>
+        {
+          permitted(`${resource}:detail`) && (
+            <UncontrolledTooltip placement="bottom" target={`edit-${resource}`}>
+              Editar
+            </UncontrolledTooltip>
+          )
+        }
+        {
+          permitted(`${resource}:delete`) && (
+            <UncontrolledTooltip placement="bottom" target={`delete-${resource}`}>
+              Eliminar
+            </UncontrolledTooltip>
+          )
+        }
         {
           resource === 'employees' && (
             <>
-              <UncontrolledTooltip placement="bottom" target={`medical-${row.id}`}>
-                Vigilancias médicas
-              </UncontrolledTooltip>
-              <Can rule="trainings:historical">
-                <UncontrolledTooltip placement="bottom" target={`trainings-${row.id}`}>
-                  Capacitaciones
-                </UncontrolledTooltip>
-                <Link id={`trainings-${row.id}`} to={{ pathname: `/dashboard/trainings/historical/${row.id}`, state: { employee: row } }}>
-                  <Button color="link" className="p-0">
-                    <Icon.Clipboard size={20} />
-                  </Button>
-                </Link>
-              </Can>
-              <Can rule={`${resource}:edit`}><Link id={`medical-${row.id}`} to={{ pathname: `/dashboard/programs/historical/${row.id}` }}><Button color="link" className="ml-1 p-0"><Icon.Video size={20} /></Button></Link></Can>
+              {permitted('trainings:historical') && (
+                <>
+                  <UncontrolledTooltip placement="bottom" target={`trainings-${row.id}`}>
+                    Capacitaciones
+                  </UncontrolledTooltip>
+                  <Link id={`trainings-${row.id}`} to={{ pathname: `/dashboard/trainings/historical/${row.id}`, state: { employee: row } }}>
+                    <Button color="link" className="p-0">
+                      <Icon.Clipboard size={20} />
+                    </Button>
+                  </Link>
+                </>
+              )}
+              { permitted('programs:historical') && (
+                <>
+                  <UncontrolledTooltip placement="bottom" target={`medical-${row.id}`}>
+                    Vigilancias médicas
+                  </UncontrolledTooltip>
+                  <Link id={`medical-${row.id}`} to={{ pathname: `/dashboard/programs/historical/${row.id}` }}>
+                    <Button color="link" className="ml-1 p-0">
+                      <Icon.Video size={20} />
+                    </Button>
+                  </Link>
+                </>
+              )}
             </>
           )
         }
@@ -164,7 +182,7 @@ const List = (props) => {
   }
   headers.forEach((obj) => {
     // eslint-disable-next-line no-unused-expressions
-    obj.selector === 'actions' && (permitted(`${resource}:edit`) || permitted(`${resource}:delete`))
+    obj.selector === 'actions' && ((permitted(`${resource}:edit`) || permitted(`${resource}:delete`) || permitted('trainings:historical')))
       ? obj.cell = menu.cell : obj.selector === 'status'
         ? obj.cell = updateStatus.cell : semaphoreFields.includes(obj.selector)
           ? obj.cell = SemaphoreChip.cell : obj.selector === '_signature_'
