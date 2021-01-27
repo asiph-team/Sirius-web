@@ -7,7 +7,12 @@ import FormUI from '../_form'
 
 const AddUI = (props) => {
   const { handleSubmit, workstations, back } = props
-  const options = workstations ? workstations.data.data.map((item) => ({ label: item.name, value: item.id })) : null
+  const options = workstations
+    ? workstations.data.data
+      .filter((ws) => ws.type !== 'chief_of_area')
+      .map((item) => ({ label: item.name, value: item.id }))
+      .sort((a, b) => (a.label > b.label ? 1 : -1)) : null
+
   return (
     <>
       <Header title="Agregar trabajador" icon="Users" />
@@ -22,7 +27,11 @@ const AddUI = (props) => {
 }
 const AddUIForm = (props) => {
   const { handleSubmit, workstations, onClose } = props
-  const options = workstations ? workstations.data.data.map((item) => ({ label: item.name, value: item.id })) : null
+  const options = workstations
+    ? workstations.data.data
+      .filter((ws) => ws.type !== 'chief_of_area')
+      .map((item) => ({ label: item.name, value: item.id }))
+      .sort((a, b) => (a.label > b.label ? 1 : -1)) : null
   return (
     <>
       <Header title="Agregar trabajador" icon="Users" />
