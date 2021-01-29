@@ -371,7 +371,7 @@ const CustomInputFieldAddonCheckbox = (props) => {
             <input
               type="checkbox"
               checked={!isDisabled}
-              onChange={() => setDisabled(!isDisabled)}
+              onChange={() => { setDisabled(!isDisabled); form.setFieldValue(name, '') }}
             />
           </span>
         </div>
