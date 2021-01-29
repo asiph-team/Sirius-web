@@ -26,6 +26,8 @@ const Edit = (props) => {
           rut: values.rut,
           email: values.email,
           phone: values.phone,
+          phone_emergency: values.phone_emergency,
+          height: values.height,
           size: values.size,
           size_pants: values.size_pants,
           size_shoe: values.size_shoe,
