@@ -6,10 +6,10 @@ import ResetUI from './_resetUI'
 
 const Edit = (props) => {
   const url = 'users/forgetPassword'
-  const { data: { loading, error, items }, postData, clean } = usePostResources()
+  const { data: { loading, error, items }, postDataAxios, clean } = usePostResources()
   return (
     <>
-      <ResetUI handleSubmit={(values) => postData(values, url)} {...props} />
+      <ResetUI handleSubmit={(values) => postDataAxios(values, url)} {...props} />
       {loading && <AlertLoading message="Recuperando contraseña" />}
       {error && <AlertError error={error} callback={() => clean()} />}
       {items && (

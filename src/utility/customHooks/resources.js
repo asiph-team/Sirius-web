@@ -14,6 +14,8 @@ import {
   fetchSignature,
   cleanTemp,
 } from '../../ducks/resources'
+import { baseApiUrl, urlApi } from '../helpers/consts'
+
 
 export function useFetchResources(url) {
   const [items, dispatch] = useReducer(resourcesReducer, initialState)
@@ -146,6 +148,12 @@ export function usePostResources() {
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
+  const postDataAxios = async (values, url) => {
+    dispatch(fetchStart())
+    await axios.post(urlApi + baseApiUrl + url, values)
+      .then((response) => dispatch(fetchSuccess(response.data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
   const postExport = async (values, url) => {
     dispatch(fetchStart())
     await api.post(url, values, { responseType: 'arraybuffer' })
@@ -202,6 +210,7 @@ export function usePostResources() {
   return {
     data,
     postData,
+    postDataAxios,
     clean,
     update,
     patchData,
