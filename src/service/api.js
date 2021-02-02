@@ -4,6 +4,7 @@ import { getSubdomain } from '../utility/helpers/functions'
 import { history } from '../history'
 
 console.log('window.location', window.location)
+console.log('getSubdomain().sub', getSubdomain().sub)
 
 const BASE_URL = urlApi + baseApiUrl
 const api = axios.create({
