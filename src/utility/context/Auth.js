@@ -4,6 +4,7 @@ import {
   initialState, authReducer, fetchStartAuth, fetchSuccessAuth, fetchErrorAuth, fetchUserAlert,
 } from '../../ducks/session'
 import { urlApi, baseApiUrl } from '../helpers/consts'
+import { getSubdomain } from '../helpers/functions'
 
 const ContextAuth = createContext({
   authenticated: false,
@@ -21,7 +22,7 @@ const Auth = (props) => {
     ? JSON.parse(savedState) : initialState)
 
   const getAlert = (token) => {
-    axios.get(`${urlApi}/api/v1/courses/today`, { headers: { Authorization: `Bearer ${token}` } })
+    axios.get(`${getSubdomain().protocol + getSubdomain().sub}${urlApi}${baseApiUrl}courses/today`, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => dispatch(fetchUserAlert(response.data)))
   }
 
@@ -35,8 +36,8 @@ const Auth = (props) => {
     dispatch(fetchStartAuth())
     dispatch(fetchErrorAuth(null))
     try {
-      const url = values.email === 'superadmin@test.com' ? 'admin/' : 'users/'
-      const response = await axios.post(`${urlApi}${baseApiUrl}${url}login`, values)
+      const url = getSubdomain().sub === '' ? 'admin/' : 'users/'
+      const response = await axios.post(`${getSubdomain().protocol}${getSubdomain().sub}${urlApi}${baseApiUrl}${url}login`, values)
       const { user, access_token, refresh_token, token_type, expires_at, rol } = response.data.data
       user.role = rol
       dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at }))
@@ -52,10 +53,11 @@ const Auth = (props) => {
     const { enterprise } = values
     const prevAuth = localStorage.getItem('user')
     localStorage.setItem('user_aux', prevAuth)
+    localStorage.setItem('subDomain', `${enterprise}.`)
     dispatch(fetchErrorAuth(null))
     try {
       const url = values.email === 'superadmin@test.com' ? 'admin/login' : 'users/login'
-      const response = await axios.post(`${urlApi}/api/v1/${url}`, values)
+      const response = await axios.post(`${getSubdomain().protocol + getSubdomain().sub + urlApi + baseApiUrl}users/login`, values)
       const { user, access_token, rol } = response.data.data
       user.role = rol
       dispatch(fetchSuccessAuth({ user, access_token, enterprise }))
