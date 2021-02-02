@@ -4,7 +4,7 @@ import {
   initialState, authReducer, fetchStartAuth, fetchSuccessAuth, fetchErrorAuth, fetchUserAlert,
 } from '../../ducks/session'
 import { urlApi, baseApiUrl } from '../helpers/consts'
-import { getSubdomain } from '../helpers/functions'
+import { getSubdomain } from '../../service/api'
 
 const ContextAuth = createContext({
   authenticated: false,
