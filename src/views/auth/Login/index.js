@@ -14,6 +14,7 @@ import LoginForm from './_LoginForm'
 
 const setSubdomain = () => {
   const { hostname, protocol } = window.parent.location
+  console.log('window', window)
   const parts = hostname.split('.')
   localStorage.setItem('sub', JSON.stringify({ protocol: `${protocol}//`, sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
 }
