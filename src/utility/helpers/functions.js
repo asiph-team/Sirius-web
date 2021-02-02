@@ -67,10 +67,9 @@ export const capitalizeFirstLetter = (string) => {
   return string[0].toUpperCase() + string.slice(1).toLowerCase()
 }
 
-export const percent = (done, total) => total > 0 ? `${Math.ceil((done / total) * 100).toFixed(0)}%` : '--'
+export const percent = (done, total) => (total > 0 ? `${Math.ceil((done / total) * 100).toFixed(0)}%` : '--')
 
 export const getSubdomain = () => {
-  const { host, protocol } = window.location
-  const parts = host.split('.')
-  return { protocol: `${protocol}//`, sub: parts[0] === 'app' ? '' : `${parts[0]}.` }
+  if (JSON.parse(localStorage.getItem('sub'))) return JSON.parse(localStorage.getItem('sub'))
+  return { protocol: '', sub: '' }
 }
