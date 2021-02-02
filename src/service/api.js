@@ -3,6 +3,8 @@ import { baseApiUrl, urlApi } from '../utility/helpers/consts'
 import { getSubdomain } from '../utility/helpers/functions'
 import { history } from '../history'
 
+console.log('window.location', window.location)
+
 const BASE_URL = urlApi + baseApiUrl
 const api = axios.create({
   baseURL: getSubdomain().protocol + getSubdomain().sub + BASE_URL,
