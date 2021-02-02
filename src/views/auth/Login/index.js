@@ -13,8 +13,8 @@ import { ContextAuth } from '../../../utility/context/Auth'
 import LoginForm from './_LoginForm'
 
 const setSubdomain = () => {
-  const { host, protocol } = window.parent.location
-  const parts = host.split('.')
+  const { hostname, protocol } = window.parent.location
+  const parts = hostname.split('.')
   localStorage.setItem('sub', JSON.stringify({ protocol: `${protocol}//`, sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
 }
 
