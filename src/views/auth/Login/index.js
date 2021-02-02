@@ -14,12 +14,12 @@ import LoginForm from './_LoginForm'
 
 const setSubdomain = () => {
   const os = require('os')
-  const { protocol } = window.parent.location
+  // const { protocol } = window.parent.location
   const hostname = os.hostname()
   const parts = hostname.split('.')
-  localStorage.setItem('sub', JSON.stringify({ protocol: `http://`, sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
+  localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
 }
-
+console.log('v1.0')
 setSubdomain()
 
 const Login = () => (
