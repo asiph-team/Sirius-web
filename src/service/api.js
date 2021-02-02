@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { baseApiUrl, urlApi } from '../utility/helpers/consts'
+import { getSubdomain } from '../utility/helpers/functions'
 import { history } from '../history'
 
 const BASE_URL = urlApi + baseApiUrl
-
 const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: getSubdomain().protocol + getSubdomain().sub + BASE_URL,
   timeoutErrorMessage: 'No fue posible conectarse al servidor',
 })
 
