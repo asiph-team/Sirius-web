@@ -1,14 +1,7 @@
 import axios from 'axios'
 import { baseApiUrl, urlApi } from '../utility/helpers/consts'
 import { history } from '../history'
-
-export const getSubdomain = () => {
-  const { host, protocol } = window.location
-  const parts = host.split('.')
-  return { protocol: `${protocol}//`, sub: parts[0] === 'app' ? '' : `${parts[0]}.` }
-}
-
-console.log('getSubdomain', getSubdomain())
+import { getSubdomain } from '../utility/helpers/functions'
 
 const BASE_URL = urlApi + baseApiUrl
 const api = axios.create({
