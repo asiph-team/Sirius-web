@@ -32,8 +32,6 @@ const Login = () => {
                     </CardHeader>
                     <LoginForm handleLogin={handleAuthentication} loading={loading} />
                   </Card>
-                  psl: {JSON.stringify(parsed)}
-                  host: {JSON.stringify(url)}
                 </Col>
               </Row>
             </Card>
