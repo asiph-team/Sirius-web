@@ -5,7 +5,6 @@ import { getSubdomain } from '../utility/helpers/functions'
 
 const BASE_URL = urlApi + baseApiUrl
 const api = axios.create({
-  baseURL: getSubdomain().protocol + getSubdomain().sub + BASE_URL,
   timeoutErrorMessage: 'No fue posible conectarse al servidor',
 })
 
@@ -35,6 +34,7 @@ api.interceptors.request.use(
   async (config) => {
     const { access_token: accessToken } = JSON.parse(localStorage.getItem('user'))
     if (accessToken) {
+      config.baseURL = `http://${await getSubdomain() + BASE_URL}`
       config.headers.Authorization = `Bearer ${accessToken}`
     }
     return config
@@ -47,12 +47,12 @@ api.interceptors.response.use(
   (error) => {
     const originalRequest = error.config
     const { refresh_token: refreshToken, url } = JSON.parse(localStorage.getItem('user'))
-    if (refreshToken
-      && error.response.status === 500
-      && originalRequest.url === 'users/refresh-token') { logout() }
+    // if (refreshToken
+    //   && (error.response.status === 401)
+    //   && originalRequest.url === 'users/refresh-token') { history.push('/') }
     if (
       refreshToken
-      && (error.response.status === 500 || error.response.status === 401)
+      && (error.response.status === 401)
       && !originalRequest._retry
     ) {
       originalRequest._retry = true

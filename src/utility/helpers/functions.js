@@ -71,9 +71,9 @@ export const percent = (done, total) => (total > 0 ? `${Math.ceil((done / total)
 
 export const setDomain = (domain) => {
   const parts = domain.split('.')
-  localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
+  localStorage.setItem('sub', JSON.stringify(parts[0] === 'app' ? '' : `${parts[0]}.`))
 }
 export const getSubdomain = () => {
-  if (JSON.parse(localStorage.getItem('sub'))) return JSON.parse(localStorage.getItem('sub'))
-  return { protocol: '', sub: '' }
+  if (localStorage.getItem('sub')) return JSON.parse(localStorage.getItem('sub'))
+  return false
 }
