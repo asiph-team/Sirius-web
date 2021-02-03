@@ -40,7 +40,7 @@ const Auth = (props) => {
       const parts = hostname.split('.')
       localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
       const url = getSubdomain().sub === '' ? 'admin/' : 'users/'
-      const response = await axios.post(`${getSubdomain().protocol}${getSubdomain().sub}${urlApi}${baseApiUrl}${url}login`, values)
+      const response = await axios.post(`http://${parts[0]}${urlApi}${baseApiUrl}${url}login`, values)
       const { user, access_token, refresh_token, token_type, expires_at, rol } = response.data.data
       user.role = rol
       dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at }))
