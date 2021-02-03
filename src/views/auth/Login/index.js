@@ -29,7 +29,7 @@ const Login = () => {
                     </CardHeader>
                     <LoginForm handleLogin={handleAuthentication} loading={loading} />
                   </Card>
-                  {JSON.stringify(url)}
+                  host: {JSON.stringify(url)}
                 </Col>
               </Row>
             </Card>
