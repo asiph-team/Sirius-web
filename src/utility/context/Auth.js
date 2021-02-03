@@ -11,9 +11,10 @@ const setSubdomain = () => {
   // const { protocol } = window.parent.location
   // const hostname = os.hostname()
   // const { hostname } = window.location.href
-  const hostname = require('os').hostname().split('.').shift()
-  console.log('hostname', hostname)
-  const parts = hostname.split('.')
+  // const hostname = require('os').hostname().split('.').shift()
+  const hostname = window.location.origin
+  console.log('hostname', window.location.origin)
+  const parts = hostname.replace('http://', '').split('.')
   localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
   console.log('v1.0')
 }
