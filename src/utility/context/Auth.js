@@ -6,20 +6,11 @@ import {
 import { urlApi, baseApiUrl } from '../helpers/consts'
 import { getSubdomain } from '../helpers/functions'
 
-const setSubdomain = () => {
-  // const os = require('os')
-  // const { protocol } = window.parent.location
-  // const hostname = os.hostname()
-  // const { hostname } = window.location.href
-  // const hostname = require('os').hostname().split('.').shift()
-  const { hostname } = document.location
-  console.log('hostname', window.location.origin)
+const setSubdomain = async () => {
+  const { hostname } = window.location
   const parts = hostname.split('.')
-  localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
-  console.log('v1.0')
+  await localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
 }
-console.log('document.location.origin', document.location.origin)
-
 const ContextAuth = createContext({
   authenticated: false,
   user: null,
