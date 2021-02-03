@@ -12,11 +12,12 @@ const setSubdomain = () => {
   // const hostname = os.hostname()
   // const { hostname } = window.location.href
   // const hostname = require('os').hostname().split('.').shift()
-  const hostname = window.location.origin
+  const { hostname } = document.location
   console.log('hostname', window.location.origin)
-  const parts = hostname.replace('http://', '').split('.')
+  const parts = hostname.split('.')
   localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
   console.log('v1.0')
+  console.log('request', document.location.hostname)
 }
 
 const ContextAuth = createContext({
