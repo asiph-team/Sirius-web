@@ -13,7 +13,10 @@ import { ContextAuth } from '../../../utility/context/Auth'
 import LoginForm from './_LoginForm'
 
 const Login = () => {
-  const url = typeof window !== 'undefined' ? window.location.host : '.'
+  const psl = require('psl')
+
+  const url = typeof window !== 'undefined' ? window.location.hostname : '.'
+  var parsed = psl.parse(url);
   return (
     <Row className="m-0 justify-content-center">
       <Col lg="4" md="5" sm="7" xs="10" className="d-flex justify-content-center">
@@ -29,6 +32,7 @@ const Login = () => {
                     </CardHeader>
                     <LoginForm handleLogin={handleAuthentication} loading={loading} />
                   </Card>
+                  psl: {JSON.stringify(parsed)}
                   host: {JSON.stringify(url)}
                 </Col>
               </Row>
