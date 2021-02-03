@@ -69,6 +69,10 @@ export const capitalizeFirstLetter = (string) => {
 
 export const percent = (done, total) => (total > 0 ? `${Math.ceil((done / total) * 100).toFixed(0)}%` : '--')
 
+export const setDomain = (domain) => {
+  const parts = domain.split('.')
+  localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
+}
 export const getSubdomain = () => {
   if (JSON.parse(localStorage.getItem('sub'))) return JSON.parse(localStorage.getItem('sub'))
   return { protocol: '', sub: '' }
