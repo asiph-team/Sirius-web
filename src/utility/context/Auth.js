@@ -4,7 +4,7 @@ import {
   initialState, authReducer, fetchStartAuth, fetchSuccessAuth, fetchErrorAuth, fetchUserAlert,
 } from '../../ducks/session'
 import { urlApi, baseApiUrl } from '../helpers/consts'
-import { getSubdomain } from '../helpers/functions'
+import { setDomain, getSubdomain } from '../helpers/functions'
 
 const ContextAuth = createContext({
   authenticated: false,
@@ -27,11 +27,12 @@ const Auth = (props) => {
   }
 
   const setSession = (data, remove = false) => {
-    if (remove) return localStorage.removeItem('user')
+    if (remove) return localStorage.clear()
     localStorage.setItem('user', JSON.stringify(data))
     return null
   }
   const handleAuthentication = async (values) => {
+    setDomain(window.location.hostname)
     dispatch(fetchStartAuth())
     dispatch(fetchErrorAuth(null))
     try {
