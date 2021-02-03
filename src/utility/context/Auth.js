@@ -31,7 +31,7 @@ const Auth = (props) => {
     localStorage.setItem('user', JSON.stringify(data))
     return null
   }
-
+console.log('pathname', window.location.pathname)
   const handleAuthentication = async (values) => {
     dispatch(fetchStartAuth())
     dispatch(fetchErrorAuth(null))
