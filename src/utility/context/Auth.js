@@ -17,8 +17,8 @@ const setSubdomain = () => {
   const parts = hostname.split('.')
   localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
   console.log('v1.0')
-  console.log('request', document.location.hostname)
 }
+console.log('document.location.origin', document.location.origin)
 
 const ContextAuth = createContext({
   authenticated: false,
