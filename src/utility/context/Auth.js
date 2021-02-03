@@ -22,7 +22,7 @@ const Auth = (props) => {
     ? JSON.parse(savedState) : initialState)
 
   const getAlert = (token) => {
-    axios.get(`${getSubdomain().protocol + getSubdomain().sub}${urlApi}${baseApiUrl}courses/today`, { headers: { Authorization: `Bearer ${token}` } })
+    axios.get('http://' + JSON.parse(localStorage.getItem('sub')) + urlApi + baseApiUrl + 'courses/today', { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => dispatch(fetchUserAlert(response.data)))
   }
 
@@ -35,8 +35,8 @@ const Auth = (props) => {
     dispatch(fetchStartAuth())
     dispatch(fetchErrorAuth(null))
     try {
-      const url = getSubdomain().sub === '' ? 'admin/' : 'users/'
-      const response = await axios.post(`http://${getSubdomain().sub + urlApi + baseApiUrl + url}login`, values)
+      const url = getSubdomain() === '' ? 'admin/' : 'users/'
+      const response = await axios.post(`http://${JSON.parse(localStorage.getItem('sub')) + urlApi + baseApiUrl + url}login`, values)
       const { user, access_token, refresh_token, token_type, expires_at, rol } = response.data.data
       user.role = rol
       dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at }))
@@ -56,7 +56,7 @@ const Auth = (props) => {
     dispatch(fetchErrorAuth(null))
     try {
       const url = values.email === 'superadmin@test.com' ? 'admin/login' : 'users/login'
-      const response = await axios.post(`${getSubdomain().protocol + getSubdomain().sub + urlApi + baseApiUrl}users/login`, values)
+      const response = await axios.post(`http://${JSON.parse(localStorage.getItem('sub')) + urlApi + baseApiUrl}users/login`, values)
       const { user, access_token, rol } = response.data.data
       user.role = rol
       dispatch(fetchSuccessAuth({ user, access_token, enterprise }))
