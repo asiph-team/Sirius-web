@@ -6,11 +6,6 @@ import {
 import { urlApi, baseApiUrl } from '../helpers/consts'
 import { getSubdomain } from '../helpers/functions'
 
-const setSubdomain = async () => {
-  const { hostname } = window.location
-  const parts = hostname.split('.')
-  await localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
-}
 const ContextAuth = createContext({
   authenticated: false,
   user: null,
@@ -38,10 +33,12 @@ const Auth = (props) => {
   }
 
   const handleAuthentication = async (values) => {
-    setSubdomain()
     dispatch(fetchStartAuth())
     dispatch(fetchErrorAuth(null))
     try {
+      const { hostname } = window.location
+      const parts = hostname.split('.')
+      localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
       const url = getSubdomain().sub === '' ? 'admin/' : 'users/'
       const response = await axios.post(`${getSubdomain().protocol}${getSubdomain().sub}${urlApi}${baseApiUrl}${url}login`, values)
       const { user, access_token, refresh_token, token_type, expires_at, rol } = response.data.data
