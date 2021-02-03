@@ -31,16 +31,12 @@ const Auth = (props) => {
     localStorage.setItem('user', JSON.stringify(data))
     return null
   }
-console.log('pathname', window.location.pathname)
   const handleAuthentication = async (values) => {
     dispatch(fetchStartAuth())
     dispatch(fetchErrorAuth(null))
     try {
-      const { hostname } = window.location
-      const parts = hostname.split('.')
-      localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
       const url = getSubdomain().sub === '' ? 'admin/' : 'users/'
-      const response = await axios.post(`http://${parts[0] === 'app' ? '' : `${parts[0]}.`}${urlApi}${baseApiUrl}${url}login`, values)
+      const response = await axios.post(`http://${getSubdomain().sub + urlApi + baseApiUrl + url}login`, values)
       const { user, access_token, refresh_token, token_type, expires_at, rol } = response.data.data
       user.role = rol
       dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at }))
