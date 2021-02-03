@@ -6,6 +6,18 @@ import {
 import { urlApi, baseApiUrl } from '../helpers/consts'
 import { getSubdomain } from '../helpers/functions'
 
+const setSubdomain = () => {
+  // const os = require('os')
+  // const { protocol } = window.parent.location
+  // const hostname = os.hostname()
+  // const { hostname } = window.location.href
+  const hostname = require('os').hostname().split('.').shift()
+  console.log('hostname', hostname)
+  const parts = hostname.split('.')
+  localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
+  console.log('v1.0')
+}
+
 const ContextAuth = createContext({
   authenticated: false,
   user: null,
@@ -33,6 +45,7 @@ const Auth = (props) => {
   }
 
   const handleAuthentication = async (values) => {
+    setSubdomain()
     dispatch(fetchStartAuth())
     dispatch(fetchErrorAuth(null))
     try {

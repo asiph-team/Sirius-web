@@ -12,16 +12,6 @@ import logoImg from '../../../assets/img/logo/logo-brand.png'
 import { ContextAuth } from '../../../utility/context/Auth'
 import LoginForm from './_LoginForm'
 
-const setSubdomain = () => {
-  const os = require('os')
-  // const { protocol } = window.parent.location
-  const hostname = os.hostname()
-  const parts = hostname.split('.')
-  localStorage.setItem('sub', JSON.stringify({ protocol: 'http://', sub: parts[0] === 'app' ? '' : `${parts[0]}.` }))
-}
-console.log('v1.0')
-setSubdomain()
-
 const Login = () => (
   <Row className="m-0 justify-content-center">
     <Col lg="4" md="5" sm="7" xs="10" className="d-flex justify-content-center">
