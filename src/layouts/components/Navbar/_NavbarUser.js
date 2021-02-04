@@ -68,7 +68,7 @@ const NavbarUser = (props) => {
   return (
     <ul className="nav navbar-nav navbar-nav-user float-right">
       {
-        enterprise && (
+        localStorage.getItem('workon') && (
           <UncontrolledDropdown tag="li" className="dropdown-notification nav-item">
             <DropdownToggle tag="a" className="nav-link nav-link-label">
 

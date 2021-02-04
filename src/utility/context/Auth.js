@@ -37,11 +37,16 @@ const Auth = (props) => {
     dispatch(fetchStartAuth())
     dispatch(fetchErrorAuth(null))
     try {
+      let enterpriseData = { name: 'Super Administrador', subDomain: null }
       const url = getSubdomain() === '' ? 'admin/' : 'users/'
       const response = await axios.post(`http://${JSON.parse(localStorage.getItem('sub')) + urlApi + baseApiUrl + url}login`, values)
       const { user, access_token, refresh_token, token_type, expires_at, rol } = response.data.data
       user.role = rol
-      dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at }))
+      if (rol !== 'superadministrator') {
+        const { enterprise } = response.data.data
+        enterpriseData = enterprise
+      }
+      dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at, enterprise: enterpriseData.name }))
       setSession({ user, access_token, refresh_token, token_type, expires_at, url })
       if (rol !== 'superadministrator') { getAlert(access_token) }
     } catch (error) {
@@ -55,14 +60,13 @@ const Auth = (props) => {
     setDomain(`${enterprise}.app.sinjury.cl`)
     const prevAuth = localStorage.getItem('user')
     localStorage.setItem('user_aux', prevAuth)
-    localStorage.setItem('sub', JSON.stringify(`${enterprise}.`))
-    localStorage.setItem('prevSub', '')
+    localStorage.setItem('sub', JSON.stringify(`${enterprise.subDomain}.`))
     dispatch(fetchErrorAuth(null))
     try {
-      const response = await axios.post(`http://${`${enterprise}.${urlApi + baseApiUrl}`}users/login`, values)
+      const response = await axios.post(`http://${`${enterprise.subDomain}.${urlApi + baseApiUrl}`}users/login`, values)
       const { user, access_token, rol } = response.data.data
       user.role = rol
-      dispatch(fetchSuccessAuth({ user, access_token, enterprise }))
+      dispatch(fetchSuccessAuth({ user, access_token, enterprise: enterprise.name }))
       setSession({ user, access_token })
       getAlert(access_token)
       localStorage.setItem('workon', true)
@@ -78,6 +82,7 @@ const Auth = (props) => {
     dispatch(fetchSuccessAuth({ user, access_token }))
     setSession({ user, access_token })
     setDomain('app.sinjury.cl')
+    localStorage.removeItem('workon')
     return history.push('/dashboard/enterprises')
   }
 
