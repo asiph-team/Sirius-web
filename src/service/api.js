@@ -4,6 +4,7 @@ import { history } from '../history'
 import { getSubdomain } from '../utility/helpers/functions'
 
 const BASE_URL = urlApi + baseApiUrl
+
 const api = axios.create({
   timeoutErrorMessage: 'No fue posible conectarse al servidor',
 })
@@ -32,10 +33,10 @@ const logout = () => {
 
 api.interceptors.request.use(
   async (config) => {
-    const { access_token: accessToken } = JSON.parse(localStorage.getItem('user'))
-    if (accessToken) {
-      config.baseURL = `http://${await getSubdomain() + BASE_URL}`
-      config.headers.Authorization = `Bearer ${accessToken}`
+    const { access_token } = JSON.parse(localStorage.getItem('user'))
+    if (access_token) {
+      config.baseURL = `http://${getSubdomain() + BASE_URL}`
+      config.headers.Authorization = `Bearer ${access_token}`
     }
     return config
   },

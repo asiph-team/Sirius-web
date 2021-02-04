@@ -27,15 +27,10 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
-  const transformData = () => {
-    const newData = data.data.data.map((item) => {
-      return {
-        ...item,
-        global_performance: item.global_performance === undefined ? '--' : `${Math.round(item.global_performance)}%`,
-      }
-    })
-    return newData
-  }
+  const transformData = () => data.data.data.map((item) => ({
+    ...item,
+    global_performance: item.global_performance === undefined ? '--' : `${Math.round(item.global_performance)}%`,
+  }))
   const ButtonWorkon = (info) => {
     const { login, enterprise } = info
     return (
