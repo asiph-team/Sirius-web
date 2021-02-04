@@ -93,7 +93,10 @@ const ListUI = (props) => {
             paragraph="Podrás operar como administrador de la empresa seleccionada."
             callback={() => WorkAs()}
             callbackCancel={() => setVisibility({ ...visibility, workon: false })}
-            enterprise={selected.name}
+            enterprise={{
+              name: selected.name,
+              subDomain: selected.sub_domain,
+            }}
           />
         )
       }
