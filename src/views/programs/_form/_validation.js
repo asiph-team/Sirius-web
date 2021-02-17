@@ -10,7 +10,7 @@ export const validationSchemaAdd = Yup.object().shape({
     .required('El nombre de la vigilancia médica es requerido'),
   description: Yup.string()
     .min(5, 'La descripción debe ser mayor a 5 caractéres')
-    .max(300, 'La descripción debe ser menor a 80 caractéres')
+    .max(300, 'La descripción debe ser menor a 300 caractéres')
     .required('Una descripción es requerida'),
   frequency: Yup.string()
     .ensure()
@@ -34,7 +34,7 @@ export const validationSchemaEdit = Yup.object().shape({
     .required('El nombre de la vigilancia médica es requerido'),
   description: Yup.string()
     .min(5, 'La descripción debe ser mayor a 5 caractéres')
-    .max(300, 'La descripción debe ser menor a 80 caractéres')
+    .max(300, 'La descripción debe ser menor a 300 caractéres')
     .required('Una descripción es requerida'),
   frequency: Yup.string()
     .ensure()
