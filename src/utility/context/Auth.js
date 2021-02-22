@@ -23,7 +23,7 @@ const Auth = (props) => {
     ? JSON.parse(savedState) : initialState)
 
   const getAlert = (token) => {
-    axios.get('http://' + JSON.parse(localStorage.getItem('sub')) + urlApi + baseApiUrl + 'courses/today', { headers: { Authorization: `Bearer ${token}` } })
+    axios.get('https://' + JSON.parse(localStorage.getItem('sub')) + urlApi + baseApiUrl + 'courses/today', { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => dispatch(fetchUserAlert(response.data)))
   }
 
