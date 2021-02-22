@@ -35,7 +35,7 @@ api.interceptors.request.use(
   async (config) => {
     const { access_token } = JSON.parse(localStorage.getItem('user'))
     if (access_token) {
-      config.baseURL = `http://${getSubdomain() + BASE_URL}`
+      config.baseURL = `https://${getSubdomain() + BASE_URL}`
       config.headers.Authorization = `Bearer ${access_token}`
     }
     return config
