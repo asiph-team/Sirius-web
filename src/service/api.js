@@ -28,7 +28,7 @@ const setAuthHeader = (props, url) => {
 
 const logout = () => {
   localStorage.removeItem('user')
-  history.push('/')
+  return history.push('/')
 }
 
 api.interceptors.request.use(
@@ -48,9 +48,9 @@ api.interceptors.response.use(
   (error) => {
     const originalRequest = error.config
     const { refresh_token: refreshToken, url } = JSON.parse(localStorage.getItem('user'))
-    // if (refreshToken
-    //   && (error.response.status === 401)
-    //   && originalRequest.url === 'users/refresh-token') { history.push('/') }
+    if (refreshToken
+      && (error.response.status === 401)
+      && originalRequest.url.includes('refresh-token')) { logout() }
     if (
       refreshToken
       && (error.response.status === 401)
