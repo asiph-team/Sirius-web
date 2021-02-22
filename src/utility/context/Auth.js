@@ -39,7 +39,10 @@ const Auth = (props) => {
     try {
       let enterpriseData = { name: 'Super Administrador', subDomain: null }
       const url = getSubdomain() === '' ? 'admin/' : 'users/'
-      const response = await axios.post(`https://${JSON.parse(localStorage.getItem('sub')) + urlApi + baseApiUrl + url}login`, values)
+
+      const mainUrl = getSubdomain() === '' ? `https://${urlApi + baseApiUrl + url}login` : `https://${JSON.parse(localStorage.getItem('sub')) + urlApi + baseApiUrl + url}login`
+
+      const response = await axios.post(mainUrl, values)
       const { user, access_token, refresh_token, token_type, expires_at, rol } = response.data.data
       user.role = rol
       if (rol !== 'superadministrator') {
