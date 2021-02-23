@@ -96,7 +96,7 @@ const List = (props) => {
                 <UncontrolledTooltip placement="bottom" target={`amc-${row.id}`}>
                   Medidas de control
                 </UncontrolledTooltip>
-                <Link id={`amc-${row.id}`} to={{ pathname: '/dashboard/controls', state: { activity_id: row.id, activity_name: row.name } }}><Button color="link" className="p-0"><Icon.UserCheck size={20} /></Button></Link>
+                <Link id={`amc-${row.id}`} to={{ pathname: `/dashboard/controls/${row.id}` }}><Button color="link" className="p-0"><Icon.UserCheck size={20} /></Button></Link>
               </>
             )
           }
