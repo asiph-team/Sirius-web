@@ -10,11 +10,10 @@ import {
 } from 'reactstrap'
 import moment from 'moment'
 import SignatureCanvas from 'react-signature-canvas'
-import { urlApi, baseApiUrl } from '../../../utility/helpers/consts'
 
 const CourseSignature = (props) => {
   const { onClose, visibility, item, data, updateSignature, title, view } = props
-  const url = `${urlApi}${baseApiUrl}${view}/courses/assistance/${item.id}/signature`
+  const url = `${view}/courses/assistance/${item.id}/signature`
   const sigCanvas = useRef({})
   const clear = () => sigCanvas.current.clear()
   const send = () => {
