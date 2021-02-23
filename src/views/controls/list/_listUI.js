@@ -18,16 +18,11 @@ const ListUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
-  const transformData = () => {
-    const newData = data.data.data.map((item) => {
-      return {
-        ...item,
-        activity_name: item.activity ? item.activity.name : '--',
-        activity_id: item.activity ? item.activity.id : '--',
-      }
-    })
-    return newData
-  }
+  const transformData = () => data.data.data.map((item) => ({
+    ...item,
+    activity_name: item.activity ? item.activity.name : '--',
+    activity_id: item.activity ? item.activity.id : '--',
+  }))
   return (
     <>
       <Header title="Medidas de control" icon="UserCheck">
