@@ -17,21 +17,16 @@ const DetailUI = (props) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
-  const transformData = () => {
-    const newData = data.data.data.map((item) => {
-      return {
-        id: item.id,
-        name: `${item.user.name} ${item.user.lastname}`,
-        rut: item.user.rut,
-        area: item.user.area ? item.user.area.name : null,
-        workstation: item.user.workstation ? item.user.workstation.name : null,
-        signature: item.signature,
-        date_signature: item.date_signature ? moment(item.date_signature, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY') : '',
-        assistance: item.status === 'invited' ? 'Invitado' : 'Asistió',
-      }
-    })
-    return newData
-  }
+  const transformData = () => data.data.data.map((item) => ({
+    id: item.id,
+    name: `${item.user.name} ${item.user.lastname}`,
+    rut: item.user.rut,
+    area: item.user.area ? item.user.area.name : null,
+    workstation: item.user.workstation ? item.user.workstation.name : null,
+    signature: item.signature,
+    date_signature: item.date_signature ? moment(item.date_signature, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY') : '',
+    assistance: item.status === 'invited' ? 'Invitado' : 'Asistió',
+  }))
   return (
     <>
       <HeaderSign detail={training} title="cursos" relator show={show} />
