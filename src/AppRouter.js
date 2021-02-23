@@ -118,7 +118,7 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/programs/historical/:employeeId" component={ProgramsHistorical} />
       <RouteConfig exact path="/dashboard/controls/:activityId" component={ControlsList} />
       <RouteConfig exact path="/dashboard/controls/add/:activityId" component={ControlsAdd} />
-      <RouteConfig exact path="/dashboard/controls/edit" component={ControlsEdit} />
+      <RouteConfig path="/dashboard/controls/edit/:id" component={ControlsEdit} />
     </Switch>
   </Router>
 )

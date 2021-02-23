@@ -11,7 +11,7 @@ const FormSubmit = (props) => {
       <Col sm="12 d-flex justify-content-end">
         <div>
           {back && <Link to={back}><Button color="light">Cancelar</Button></Link>}
-          {activityId && <Link to={{ pathname: '/dashboard/controls', state: { activity_id: activityId } }}><Button color="light">Cancelar</Button></Link>}
+          {activityId && <Link to={`/dashboard/controls/${activityId}`}><Button color="light">Cancelar</Button></Link>}
           {onClose && <Button onClick={onClose} color="light">Cancelar</Button>}
           <Button color="primary" className="ml-1" type="submit">{title}</Button>
         </div>
