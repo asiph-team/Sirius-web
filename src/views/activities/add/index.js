@@ -10,7 +10,7 @@ import AddUI from './_addUI'
 const Add = () => {
   const url = 'activities'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: workstations } = useFetchResources('workstations')
+  const { items: workstations } = useFetchResources('workstations?all')
   const { items: risksList } = useFetchResources('risks')
   const { items: data, loading: loadingWorkstations, error: errorWorkstations } = workstations
   if (loadingWorkstations) return <LoadingSpinner />
