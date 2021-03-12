@@ -6,6 +6,7 @@ import {
 import { urlApi, baseApiUrl } from '../helpers/consts'
 import { setDomain, getSubdomain } from '../helpers/functions'
 import { history } from '../../history'
+import { rules } from '../../configs/rules'
 
 const ContextAuth = createContext({
   authenticated: false,
@@ -45,15 +46,21 @@ const Auth = (props) => {
       const response = await axios.post(mainUrl, values)
       const { user, access_token, refresh_token, token_type, expires_at, rol } = response.data.data
       user.role = rol
-      if (rol !== 'superadministrator') {
-        const { enterprise } = response.data.data
-        enterpriseData = enterprise
+      if (Object.keys(rules).includes(rol)) {
+        if (rol !== 'superadministrator') {
+          const { enterprise } = response.data.data
+          enterpriseData = enterprise
+        }
+        setSession({ user, access_token, refresh_token, token_type, expires_at, url })
+        if (rol !== 'superadministrator') { getAlert(access_token) }
+        dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at, enterprise: enterpriseData.name }))
+      } else {
+        dispatch(fetchErrorAuth('Rol no permitido.'))
       }
-      dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at, enterprise: enterpriseData.name }))
-      setSession({ user, access_token, refresh_token, token_type, expires_at, url })
-      if (rol !== 'superadministrator') { getAlert(access_token) }
+
     } catch (error) {
       const { response: { data: { message } } } = error
+      console.log('error', JSON.stringify(error))
       dispatch(fetchErrorAuth(message))
     }
   }
