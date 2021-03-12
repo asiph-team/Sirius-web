@@ -55,7 +55,7 @@ const Auth = (props) => {
         if (rol !== 'superadministrator') { getAlert(access_token) }
         dispatch(fetchSuccessAuth({ user, access_token, refresh_token, token_type, expires_at, enterprise: enterpriseData.name }))
       } else {
-        dispatch(fetchErrorAuth('Rol no permitido.'))
+        dispatch(fetchErrorAuth('No estás autorizado para acceder a la plataforma.'))
       }
 
     } catch (error) {

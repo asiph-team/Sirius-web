@@ -5,7 +5,6 @@ import {
   CardTitle,
   Col,
   Row,
-  UncontrolledAlert,
 } from 'reactstrap'
 import '../../../assets/scss/pages/authentication.scss'
 import logoImg from '../../../assets/img/logo/logo-brand.png'
@@ -23,9 +22,8 @@ const Login = () => (
                 <Card className="rounded-0 mb-0 px-2">
                   <CardHeader className="justify-content-center text-center">
                     <CardTitle><img src={logoImg} alt="logo" className="login-brand" /></CardTitle>
-                    {error && <UncontrolledAlert color="danger">{error}</UncontrolledAlert>}
                   </CardHeader>
-                  <LoginForm handleLogin={handleAuthentication} loading={loading} />
+                  <LoginForm handleLogin={handleAuthentication} loading={loading} error={error} />
                 </Card>
               </Col>
             </Row>
