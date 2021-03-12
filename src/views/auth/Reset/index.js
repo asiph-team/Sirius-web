@@ -6,7 +6,7 @@ import ResetUI from './_resetUI'
 
 const Edit = (props) => {
   const url = 'users/forgetPassword'
-  const { data: { loading, error, items }, postDataAxios, clean } = usePostResources()
+  const { data: { loading, error, items }, postDataAxios, postData, clean } = usePostResources()
   return (
     <>
       <ResetUI handleSubmit={(values) => postDataAxios(values, url)} {...props} />
