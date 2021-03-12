@@ -77,3 +77,7 @@ export const getSubdomain = () => {
   if (localStorage.getItem('sub')) return JSON.parse(localStorage.getItem('sub'))
   return false
 }
+export const client = () => {
+  const parts = window.location.hostname.split('.')
+  return parts[0] === 'app' ? '' : `${parts[0]}.`
+}
