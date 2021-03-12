@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  Button, CardBody, FormGroup, Form, Input, Label, Spinner,
+  Button, CardBody, FormGroup, Form, Input, Label, Spinner, UncontrolledAlert,
 } from 'reactstrap'
 import { Mail, Lock } from 'react-feather'
 
 const LoginForm = (props) => {
-  const { loading } = props
+  const { loading, error } = props
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   return (
@@ -43,6 +43,7 @@ const LoginForm = (props) => {
             </div>
             <Label>Contraseña</Label>
           </FormGroup>
+          {error && <UncontrolledAlert style={{ fontSize: 12 }} color="danger">{error}</UncontrolledAlert>}
           <div className="d-flex justify-content-between">
             <Button block color="primary" type="submit">
               {loading ? <Spinner size="sm" color="light" /> : 'Ingresar'}
