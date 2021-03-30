@@ -7,13 +7,12 @@ import {
   Row,
   Col,
 } from 'reactstrap'
-import { urlApi, baseApiUrl } from '../../../../utility/helpers/consts'
 import { usePostResources } from '../../../../utility/customHooks/resources'
 import FormUI from './_form'
 
 const TrainerSignature = (props) => {
   const { onClose, visibility, item } = props
-  const url = `${urlApi}${baseApiUrl}trainings/courses/${item.id}/relator`
+  const url = `trainings/courses/${item.id}/relator`
   const { data: { items }, patchData } = usePostResources()
   return (
     <>
