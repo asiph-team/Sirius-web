@@ -13,9 +13,11 @@ import {
   updateStatus,
   fetchSignature,
   cleanTemp,
+  fetchSuccessExtra,
 } from '../../ducks/resources'
 import { baseApiUrl, urlApi } from '../helpers/consts'
-import { getSubdomain, client } from "../helpers/functions"
+import { getSubdomain, client, filterParams } from "../helpers/functions"
+import moment from 'moment'
 
 export function useFetchResources(url) {
   const [items, dispatch] = useReducer(resourcesReducer, initialState)
@@ -90,6 +92,13 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const filterParams = async (n_url, params) => {
+    dispatch(fetchStart())
+    await api.get(url + n_url)
+      .then((response) => dispatch(fetchSuccessExtra(response.data, params)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   const indicatorsParams = async (data) => {
     dispatch(fetchStart())
     const newUrl = (data.area == null || !data.area) ? `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}` : `${url}date_start=${data.dateStart}&date_end=${data.dateEnd}&area_id=${data.area}`
@@ -137,6 +146,7 @@ export function useFetchResources(url) {
     updateSignature,
     cleanTempState,
     changeStatusAssisted,
+    filterParams,
   }
 }
 
@@ -154,6 +164,7 @@ export function usePostResources() {
       .then((response) => dispatch(fetchSuccess(response.data)))
       .catch((error) => dispatch(fetchError(error)))
   }
+
   const postExport = async (values, url) => {
     dispatch(fetchStart())
     await api.post(url, values, { responseType: 'arraybuffer' })
@@ -164,6 +175,25 @@ export function usePostResources() {
         const link = document.createElement('a')
         link.href = fileUrl
         link.setAttribute('download', `actions-${date}.xlsx`)
+        dispatch(fetchSuccess(link))
+      })
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
+  const getExport = async (values, url) => {
+    dispatch(fetchStart())
+    await api.get(
+      url,
+      { params: values },
+      { responseType: 'arraybuffer' },
+    )
+      .then((response) => {
+        const type = response.headers['content-type']
+        const date = new Date()
+        const fileUrl = window.URL.createObjectURL(new Blob([response.data]), { type })
+        const link = document.createElement('a')
+        link.href = fileUrl
+        link.setAttribute('download', `report-${moment(date).format('DD.MM.YYYY HH mm')}.xls`)
         dispatch(fetchSuccess(link))
       })
       .catch((error) => dispatch(fetchError(error)))
@@ -217,6 +247,7 @@ export function usePostResources() {
     changeStatus,
     updateFiles,
     postExport,
+    getExport,
     updateSignature,
   }
 }

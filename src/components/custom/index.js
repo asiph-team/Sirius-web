@@ -8,6 +8,7 @@ import {
   AlertLoading,
   AlertSuccess,
   AlertWorkon,
+  AlertSuccessDownload,
 } from './alerts'
 import FormGroup from './formGroup'
 import FormSubmit from './formSubmit'
@@ -21,6 +22,7 @@ export {
   AlertLoading,
   AlertSuccess,
   AlertWorkon,
+  AlertSuccessDownload,
   Can,
   FormGroup,
   FormSubmit,

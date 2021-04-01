@@ -80,6 +80,9 @@ const navigationConfig = [
     parentOf: [
       '/dashboard/trainings/add',
       '/dashboard/trainings/edit',
+      '/dashboard/trainings/filtering',
+      '/dashboard/trainings/detail/:trainingId',
+      '/dashboard/trainings/participants',
     ],
   },
   {

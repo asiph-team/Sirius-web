@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import { PlusCircle } from 'react-feather'
+import { PlusCircle, ExternalLink } from 'react-feather'
 import { InfoTraining } from '../../../components/custom/modals'
 import {
   AlertDialog, Header, List, Search,
@@ -41,6 +41,11 @@ const ListUI = (props) => {
           <Button color="primary" className="my-1">
             <PlusCircle size={14} />
                 &nbsp;Agregar capacitación
+          </Button>
+        </Link>
+        <Link to="/dashboard/trainings/filtering">
+          <Button color="primary" className="ml-1">
+            <ExternalLink size={14} />
           </Button>
         </Link>
       </Header>

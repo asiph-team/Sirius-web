@@ -54,6 +54,20 @@ const ExamChip = {
   ),
 }
 
+const ImageCell = {
+  cell: (row, index, obj) => (
+    <>
+      {
+        row[obj.selector] ? (
+          <img className="img-fluid p-1" src={row[obj.selector]} alt={`${row.id}`} />
+        ):(
+          <>--</>
+        )
+      }
+    </>
+  )
+}
+
 const List = (props) => {
   const {
     headers, data, show, resource, contact, ordering,
@@ -189,7 +203,8 @@ const List = (props) => {
             ? obj.cell = Signature.cell : obj.selector === 'assisted'
               ? obj.cell = participantStatus.cell : obj.selector === '_assisted_'
                 ? obj.cell = AssistedChip.cell : obj.selector === '_exam_'
-                  ? obj.cell = ExamChip.cell : obj
+                  ? obj.cell = ExamChip.cell : obj.image
+                   ? obj.cell = ImageCell.cell : obj
   })
   const handleSort = (column, sortDirection) => {
     ordering(column.orderKey ? column.orderKey : column.selector, sortDirection.toUpperCase())

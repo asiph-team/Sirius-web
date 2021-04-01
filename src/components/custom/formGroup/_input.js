@@ -1,16 +1,19 @@
 import React, { useState, useRef } from 'react'
 import { Field } from 'formik'
 import 'react-datepicker/dist/react-datepicker.css'
-import { PlusCircle } from 'react-feather'
+import { PlusCircle, ChevronDown, Calendar } from 'react-feather'
 import { InputGroup, InputGroupAddon, Input, Button, FormGroup, Label } from 'reactstrap'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { es } from 'date-fns/locale'
-import Select from 'react-select'
+import Select, { defaultTheme } from 'react-select'
 import { formatRut, validateRut } from '@fdograph/rut-utilities'
 import SignatureCanvas from 'react-signature-canvas'
 import CardImg from 'reactstrap/lib/CardImg'
+import moment from 'moment'
+import { singleDateFormatter, filterParams } from '../../../utility/helpers/functions'
 
 registerLocale('es', es)
+
 const SelectField = (props) => {
   const {
     options, field, form, multiple, disabled,
@@ -31,6 +34,197 @@ const SelectField = (props) => {
     />
   )
 }
+
+const SelectFieldFilter = (props) => {
+  const {
+    options, field, form, multiple, disabled, search, filter, filterEmployees, filterWorkstations,
+  } = props
+  const [isOpen, setIsOpen] = useState(false)
+  const [values, setValues] = useState()
+  //const [state, setState] = useState({ isOpen: false, value: undefined })
+  const { name, value } = field
+  const { colors } = defaultTheme
+  const toggleOpen = () => {
+    setIsOpen(!isOpen)
+  }
+  const onSelectChange = (option) => {
+    form.setFieldValue(name, option.value)
+    toggleOpen()
+    setValues(option.label)
+    if (search || filterEmployees || filterWorkstations) {
+      console.log(`filterWorkstations`, filterWorkstations)
+      if (option.value === '_all_') {
+        search('')
+      } else {
+        search(
+          filterParams(form.values, { name, value: option.value }),
+          form.values,
+        )
+        if (filterEmployees) {
+          console.log(`filterEmployees`, filterEmployees)
+          filterEmployees(`?${name}=${option.value}`)
+        }
+        if (filterWorkstations) {
+          console.log(`filterWorkstations`, filterWorkstations)
+          filterWorkstations(`?${name}=${option.value}`)
+        }
+      }
+    }
+  }
+  const selectStyles = {
+    control: provided => ({ ...provided, minWidth: 240, margin: 8 }),
+    menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
+  }
+
+  const Menu = (props) => {
+    const shadow = 'hsla(218, 50%, 10%, 0.1)';
+    return (
+      <div
+        style={{
+          backgroundColor: 'white',
+          borderRadius: 4,
+          boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
+          marginTop: 8,
+          position: 'absolute',
+          zIndex: 1,
+        }}
+        {...props}
+      />
+    );
+  };
+  const Dropdown = ({ children, isOpen, target, onClose }) => (
+    <div style={{ position: 'realtive' }}>
+      {target}
+      {isOpen ? <Menu>{children}</Menu> : null}
+      {isOpen ? <Blanket onClick={onClose} /> : null}
+    </div>
+  );
+  const Blanket = props => (
+    <div
+      css={{
+        bottom: 0,
+        left: 0,
+        top: 0,
+        right: 0,
+        position: 'fixed',
+        zIndex: 1,
+      }}
+      {...props}
+    />
+  );
+  const Svg = p => (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      focusable="false"
+      role="presentation"
+      {...p}
+    />
+  );
+  const DropdownIndicator = () => (
+    <div css={{ color: colors.neutral20, height: 24, width: 32 }}>
+      <Svg>
+        <path
+          d="M16.436 15.085l3.94 4.01a1 1 0 0 1-1.425 1.402l-3.938-4.006a7.5 7.5 0 1 1 1.423-1.406zM10.5 16a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"
+          fill="currentColor"
+          fillRule="evenodd"
+        />
+      </Svg>
+    </div>
+  );
+  const ChevronDown = () => (
+    <Svg style={{ marginRight: -6 }}>
+      <path
+        d="M8.292 10.293a1.009 1.009 0 0 0 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955a1.01 1.01 0 0 0 0-1.419.987.987 0 0 0-1.406 0l-2.298 2.317-2.307-2.327a.99.99 0 0 0-1.406 0z"
+        fill="currentColor"
+        fillRule="evenodd"
+      />
+    </Svg>
+  );
+  return (
+    <>
+      <div className="d-flex w-100">
+        <div onClick={() => toggleOpen()} className="d-flex w-100 justify-content-between align-items-center">
+          <h6 className="cursor-pointer" style={{ fontSize: '12px' }}>{values || value}</h6>
+          <ChevronDown
+            onClick={() => setIsOpen(!isOpen)}
+            size={15}
+            className="primary font-weight-bold"
+          />
+        </div>
+
+      </div>
+      <Dropdown
+        isOpen={isOpen}
+        onClose={() => toggleOpen()}
+      >
+        <Select
+          autoFocus
+          backspaceRemovesValue={false}
+          components={{ DropdownIndicator, IndicatorSeparator: null }}
+          controlShouldRenderValue={false}
+          hideSelectedOptions={false}
+          isClearable={false}
+          styles={selectStyles}
+          tabSelectsValue={false}
+          name={name}
+          options={options}
+          onChange={(option) => onSelectChange(option)}
+          defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
+          isSearchable
+          placeholder=""
+          isMulti={!!multiple}
+          isDisabled={disabled}
+          menuIsOpen
+        />
+      </Dropdown>
+    </>
+  )
+}
+
+export const CustomSelect = (props) => {
+  const {
+    name, title, options, small, multiple, disabled, style,
+  } = props
+  return (
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        options={options}
+        name={name}
+        component={SelectField}
+        multiple={multiple}
+        disabled={disabled}
+        style={style}
+      />
+    </>
+  )
+}
+
+export const CustomSelectFilter = (props) => {
+  const {
+    name, title, options, small, multiple, disabled, style, search, filter, filterEmployees, filterWorkstations,
+  } = props
+  return (
+    <>
+      <h1 htmlFor={name} className="primary" style={{ fontSize: '15px', fontWeight: 'bold' }}>{`${title} ${small || ''}`}</h1>
+      <Field
+        options={options}
+        name={name}
+        component={SelectFieldFilter}
+        multiple={multiple}
+        disabled={disabled}
+        style={style}
+        search={search}
+        filter={filter}
+        filterEmployees={filterEmployees}
+        filterWorkstations={filterWorkstations}
+      />
+    </>
+  )
+}
+
 const SelectFieldModal = (props) => {
   const {
     options, field, form, multiple, disabled, show, userId,
@@ -170,23 +364,6 @@ export const CustomTextArea = (props) => {
   )
 }
 
-export const CustomSelect = (props) => {
-  const {
-    name, title, options, small, multiple, disabled,
-  } = props
-  return (
-    <>
-      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
-      <Field
-        options={options}
-        name={name}
-        component={SelectField}
-        multiple={multiple}
-        disabled={disabled}
-      />
-    </>
-  )
-}
 const SelectFieldCheckbox = (props) => {
   const {
     options, field, form, multiple, disabled,
@@ -290,6 +467,75 @@ export const MultipleCustomSelect = (props) => {
         name={name}
         component={MultipleSelectField}
         multiple={multiple}
+      />
+    </>
+  )
+}
+
+const DatePickerFilteringField = (props) => {
+  const { title, form, field } = props
+  const { name, value } = field
+  const todayInitial = moment(new Date(), 'YYYY-MM-DD').toDate()
+  const todayEnd = new Date()
+
+  const [localDate, setLocalDate] = useState()
+
+  const handleDate = (pickerDate) => {
+    const mDate = moment(pickerDate, 'DD-MM-YYYY').toDate()
+    const nDate = moment(mDate).format('DD-MM-YYYY')
+    setLocalDate(singleDateFormatter(mDate, 'DD-MM-YYYY'))
+    form.setFieldValue(name, '29/03/2019')
+  }
+  const DateCustomInput = ({ onClick }) => (
+    <div className="d-flex w-100 justify-content-between">
+      <h4 className="cursor-pointer" onClick={onClick} style={{ fontSize: '12px', fontWeight: 'bold' }}>
+        {singleDateFormatter(value, 'DD-MM-YYYY')}
+      </h4>
+      <ChevronDown onClick={onClick} className="ml-1" size={20} />
+    </div>
+  )
+  return (
+    <div className="d-flex flex-row">
+      <div className="d-flex justify-content-center align-items-center p-1">
+        <Calendar size={25} className="primary" />
+      </div>
+      <div className="d-flex flex-column w-100">
+        <div className="w-100">
+          <h4 className="primary" style={{ fontSize: '15px', fontWeight: 'bold' }}>{title}</h4>
+        </div>
+        <div className="d-flex flex-row w-100">
+          <DatePicker
+            locale="es"
+            name={name}
+            dateFormat="dd/MM/yyyy"
+            className="form-control"
+            selected={value}
+            autoComplete="off"
+            onChange={(date) => {
+              form.setFieldValue(name, moment(date, 'YYYY-MM-DD').toDate())
+            }}
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
+            customInput={<DateCustomInput />}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export const CustomDatePickerFilter = (props) => {
+  const {
+    name, title,
+  } = props
+  return (
+    <>
+      <Field
+        name={name}
+        component={DatePickerFilteringField}
+        autoComplete="off"
+        title={title}
       />
     </>
   )
