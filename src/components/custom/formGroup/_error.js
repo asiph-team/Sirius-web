@@ -7,7 +7,8 @@ export const CustomErrorMessage = (props) => {
     <ErrorMessage
       name={name}
       component="div"
-      className="field-error text-danger small"
+      className="field-error text-danger"
+      style={{ fontSize: '10px', marginLeft: '2.5px' }}
     />
   )
 }

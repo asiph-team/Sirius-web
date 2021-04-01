@@ -1,3 +1,4 @@
+import { LargeTextCellEditor } from 'ag-grid-community'
 import moment from 'moment'
 import { rules } from '../../configs/rules'
 
@@ -80,4 +81,28 @@ export const getSubdomain = () => {
 export const client = () => {
   const parts = window.location.hostname.split('.')
   return parts[0] === 'app' ? '' : `${parts[0]}.`
+}
+
+export const filterParams = (filter, newObj) => {
+  const fields = {
+    date_start: null,
+    date_end: null,
+    area_id: null,
+    workstation_id: null,
+    employed_id: null,
+  }
+  const keysFilter = Object.keys(filter)
+  keysFilter.forEach((key) => {
+    fields[key] = filter[key]
+  })
+  let url = `?date_start=${moment(filter.date_start).format('YYYY-MM-DD')}&date_end=${moment(filter.date_end).format('YYYY-MM-DD')}`
+  const keys = Object.keys(filter)
+  keys.forEach((key) => {
+    if (key !== 'date_start' && key !== 'date_end') {
+      if (filter[key] !== 'Todas' && filter[key] !== 'Todos') {
+        url += `&${key}=${filter[key]}`
+      }
+    }
+  })
+  return url
 }

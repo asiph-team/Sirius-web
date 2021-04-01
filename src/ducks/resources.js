@@ -1,7 +1,9 @@
 import moment from 'moment'
+import { actions } from 'react-table'
 
 const FETCH_START = 'FETCH_START'
 const FETCH_SUCCESS = 'FETCH_SUCCESS'
+const FETCH_SUCCESS_EXTRA = 'FETCH_SUCCESS_EXTRA'
 const FETCH_SEARCH = 'FETCH_SEARCH'
 const FETCH_ERROR = 'FETCH_ERROR'
 const FETCH_ORDER = 'FETCH_ORDER'
@@ -17,6 +19,12 @@ export const fetchStart = () => ({
 export const fetchSuccess = (payload) => ({
   type: FETCH_SUCCESS,
   payload,
+})
+
+export const fetchSuccessExtra = (payload, data) => ({
+  type: FETCH_SUCCESS_EXTRA,
+  payload,
+  data,
 })
 export const fetchSearch = (payload, data) => ({
   type: FETCH_SEARCH,
@@ -64,6 +72,7 @@ export const initialState = {
   items: null,
   temp: null,
   order: null,
+  filter: null,
 }
 
 export const resourcesReducer = (state = initialState, action) => {
@@ -73,6 +82,13 @@ export const resourcesReducer = (state = initialState, action) => {
       return { ...state, loading: true, temp: null }
     case FETCH_SUCCESS:
       return { ...state, loading: false, items: action.payload }
+    case FETCH_SUCCESS_EXTRA:
+      return {
+        ...state,
+        loading: false,
+        items: action.payload,
+        filter: action.data,
+      }
     case FETCH_SEARCH:
       return {
         ...state,
