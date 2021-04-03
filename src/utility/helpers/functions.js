@@ -95,7 +95,7 @@ export const filterParams = (filter, newObj) => {
   keysFilter.forEach((key) => {
     fields[key] = filter[key]
   })
-  let url = `?date_start=${moment(filter.date_start).format('YYYY-MM-DD')}&date_end=${moment(filter.date_end).format('YYYY-MM-DD')}`
+  let url = `date_start=${moment(filter.date_start).format('YYYY-MM-DD')}&date_end=${moment(filter.date_end).format('YYYY-MM-DD')}`
   const keys = Object.keys(filter)
   keys.forEach((key) => {
     if (key !== 'date_start' && key !== 'date_end') {

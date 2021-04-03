@@ -87,7 +87,7 @@ export const resourcesReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         items: action.payload,
-        filter: action.data,
+        temp: action.data,
       }
     case FETCH_SEARCH:
       return {

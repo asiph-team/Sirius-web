@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import moment from 'moment'
 import { useFetchResources, usePostResources } from '../../../utility/customHooks/resources'
-import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
-import { AlertError, AlertSuccessDownload } from '../../../components/custom'
+import { AlertSuccessDownload, AlertLoading } from '../../../components/custom'
 
-import { Error, AlertLoading } from '../../../components/custom'
+
 import ListUI from './_listUI'
-import { singleDateFormatter, filterParams as urlGenerator } from '../../../utility/helpers/functions'
 
-const FilteringList = () => {
+const FilteringList = (props) => {
+  const { match: { params: { item } } } = props
   const todayInitial = moment(new Date(), 'YYYY-MM-DD').toDate()
   const todayEnd = new Date()
   const [dateStart, setDateStart] = useState(todayInitial.setDate(todayInitial.getDate() - 30))
   const [dateEnd, setDateEnd] = useState(todayEnd.setDate(todayEnd.getDate() - 1))
-  const url = '/trainings/employed/assistance/export'
-  const { data: { loading: loadingPost, items: itemsPost, error: errorPost }, getExport, clean } = usePostResources()
+  const url = `/${item}/employed/assistance/export`
+  const { data: { loading: loadingPost, items: itemsPost, error: errorPost }, postExport, clean } = usePostResources()
   const {
     items: trainings,
     remove,
-    pagination,
-    search,
-    queryParams,
+    paginationFilter,
     filterParams,
     orderBy,
-  } = useFetchResources(`trainings/employed/assistance`)
-  const { items, loading, error, filter } = trainings
+  } = useFetchResources(`${item}/employed/assistance?`)
+
+  const { items, loading, error, filter, temp } = trainings
   // Areas
   const { items: areasData } = useFetchResources('areas?all')
   const { items: areasList, loading: loadingAreas } = areasData
@@ -37,21 +35,22 @@ const FilteringList = () => {
   const { items: workstationsData, loading: loadingWorkstations } = workstations
   const handleDownload = (link) => {
     clean()
-    document.body.appendChild(link)
+    //document.body.appendChild(link)
     link.click()
-    link.remove()
+    //link.remove()
   }
   return (
     <>
       <ListUI
-        handleSubmit={(values) => getExport(
+        title={item === 'trainings' ? 'Capacitaciones' : 'Vigilancias Médicas'}
+        handleSubmit={(values) => postExport(
           {
             ...values,
             date_start: moment(values.date_start).format('DD-MM-YYYY'),
             date_end: moment(values.date_end).format('DD-MM-YYYY'),
-            area_id: values.area_id === 'Todas' ? null : values.area_id,
-            workstation_id: values.workstation_id === 'Todos' ? null : values.workstation_id,
-            employed_id: values.employed_id === 'Todos' ? null : values.employed_id,
+            area_id: values.area_id === ('Todas' || '_all_') ? null : values.area_id,
+            workstation_id: values.workstation_id === ('Todos' || '_all_') ? null : values.workstation_id,
+            employed_id: values.employed_id === ('Todos' || '_all_') ? null : values.employed_id,
           }, url,
         )}
         areas={areasList}
@@ -60,7 +59,7 @@ const FilteringList = () => {
         ordering={orderBy}
         search={filterParams}
         filter={filter}
-        pagination={pagination}
+        pagination={paginationFilter}
         onLoading={loading || loadingAreas || loadingEmployees || loadingWorkstations}
         employees={employeesData}
         workstations={workstationsData}
@@ -72,6 +71,7 @@ const FilteringList = () => {
         }
         filterEmployees={filterEmployees}
         filterWorkstations={filterWorkstations}
+        temp={temp}
       />
       {loadingPost && <AlertLoading message="Generando reporte" />}
       {itemsPost && (

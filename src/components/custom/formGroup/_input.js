@@ -52,7 +52,6 @@ const SelectFieldFilter = (props) => {
     toggleOpen()
     setValues(option.label)
     if (search || filterEmployees || filterWorkstations) {
-      console.log(`filterWorkstations`, filterWorkstations)
       if (option.value === '_all_') {
         search('')
       } else {
@@ -61,11 +60,9 @@ const SelectFieldFilter = (props) => {
           form.values,
         )
         if (filterEmployees) {
-          console.log(`filterEmployees`, filterEmployees)
           filterEmployees(`?${name}=${option.value}`)
         }
         if (filterWorkstations) {
-          console.log(`filterWorkstations`, filterWorkstations)
           filterWorkstations(`?${name}=${option.value}`)
         }
       }

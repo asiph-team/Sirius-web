@@ -12,14 +12,14 @@ import PaginationSeprated from '../../../components/custom/pagination'
 import FormUI from './_form'
 
 const ListUI = (props) => {
-  const { data, remove, pagination, search, temp, ordering, areas, onLoading, employees, workstations, handleSubmit, firstDate, filter, filterEmployees, filterWorkstations } = props
+  const { data, remove, pagination, search, temp, ordering, areas, onLoading, employees, workstations, handleSubmit, firstDate, filter, filterEmployees, filterWorkstations, title } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
   }
-  const transformData = () => data.data.data.map((item) => ({
+  const transformData = () => data && data.data.data.map((item) => ({
     ...item,
     course_date: moment(item.course_date).format('DD/MMYYY'),
     employed_name: `${`${item.employed_name} ${item.employed_lastname}`}`,
@@ -46,9 +46,9 @@ const ListUI = (props) => {
   }, [])
   return (
     <>
-      <Header title="Exportar Capacitaciones" icon="FileText" />
+      <Header title={`Exportar ${title}`} icon="FileText" />
       {
-        areas && employees && workstations && (
+        data && areas && employees && workstations && (
           <FormUI
             title="Exportar"
             areas={areas}

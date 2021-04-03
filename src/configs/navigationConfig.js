@@ -95,6 +95,7 @@ const navigationConfig = [
     parentOf: [
       '/dashboard/programs/add',
       '/dashboard/programs/edit',
+      '/dashboard/programs/filtering',
     ],
   },
   {
