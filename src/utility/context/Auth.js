@@ -60,7 +60,6 @@ const Auth = (props) => {
 
     } catch (error) {
       const { response: { data: { message } } } = error
-      console.log('error', JSON.stringify(error))
       dispatch(fetchErrorAuth(message))
     }
   }

@@ -3,7 +3,6 @@ import SweetAlert from 'react-bootstrap-sweetalert'
 
 const AlertError = (props) => {
   const { callback, error } = props
-  console.log('error', JSON.stringify(error))
   let values = ''
   try {
     const { response: { data: { error: { message } } } } = error

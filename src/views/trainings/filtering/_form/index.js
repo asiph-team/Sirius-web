@@ -22,7 +22,6 @@ const FormUI = (props) => {
   workstations_list.push({ label: 'Todos', value: '_all_' })
   placeholder.date_start = moment(placeholder.date_start).toDate()
   placeholder.date_end = moment(placeholder.date_end).toDate()
-  console.log(`filterWorkstations`, filterWorkstations)
   return (
     <Card>
       <CardBody>

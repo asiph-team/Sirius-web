@@ -105,7 +105,7 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/trainings/detail/:trainingId" component={TrainingDetail} />
       <RouteConfig exact path="/dashboard/trainings/participants" component={ParticipantList} />
       <RouteConfig exact path="/dashboard/trainings/historical/:employeeId" component={TrainingsHistorical} />
-      <RouteConfig exact path="/dashboard/trainings/filtering" component={TrainingsFiltering} />
+      <RouteConfig exact path="/dashboard/:item/filtering" component={TrainingsFiltering} />
       <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
       <RouteConfig path="/dashboard/actions/add" component={ActionsAdd} />
       <RouteConfig path="/dashboard/actions/edit" component={ActionsEdit} />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import { PlusCircle } from 'react-feather'
+import { PlusCircle, ExternalLink } from 'react-feather'
 import {
   AlertDialog, Can, Header, List, Search,
 } from '../../../components/custom'
@@ -35,6 +35,11 @@ const ListUI = (props) => {
             <Button color="primary" className="my-1">
               <PlusCircle size={14} />
                 &nbsp;Agregar
+            </Button>
+          </Link>
+          <Link to="/dashboard/programs/filtering">
+            <Button color="primary" className="ml-1">
+              <ExternalLink size={14} />
             </Button>
           </Link>
         </Can>

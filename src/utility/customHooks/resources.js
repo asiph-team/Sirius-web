@@ -1,5 +1,7 @@
 import { useEffect, useReducer } from 'react'
 import axios from 'axios'
+import FileSaver from 'file-saver'
+import moment from 'moment'
 import api from '../../service/api'
 import {
   initialState,
@@ -16,8 +18,7 @@ import {
   fetchSuccessExtra,
 } from '../../ducks/resources'
 import { baseApiUrl, urlApi } from '../helpers/consts'
-import { getSubdomain, client, filterParams } from "../helpers/functions"
-import moment from 'moment'
+import { client } from '../helpers/functions'
 
 export function useFetchResources(url) {
   const [items, dispatch] = useReducer(resourcesReducer, initialState)
@@ -77,6 +78,14 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const paginationFilter = async (pageNumber, params) => {
+    const nUrl = params ? `${params}&page=${pageNumber}` : `&page=${pageNumber}`
+    dispatch(fetchStart())
+    await api.get(url + nUrl)
+      .then((response) => dispatch(fetchSuccessExtra(response.data, params)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   const search = async (param, values) => {
     dispatch(fetchStart())
     const params = `${param}=${values.value}`
@@ -92,10 +101,10 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
-  const filterParams = async (n_url, params) => {
+  const filterParams = async (nUrl, params) => {
     dispatch(fetchStart())
-    await api.get(url + n_url)
-      .then((response) => dispatch(fetchSuccessExtra(response.data, params)))
+    await api.get(url + nUrl)
+      .then((response) => dispatch(fetchSuccessExtra(response.data, nUrl)))
       .catch((error) => dispatch(fetchError(error)))
   }
 
@@ -130,6 +139,24 @@ export function useFetchResources(url) {
       .catch((error) => dispatch(fetchError(error)))
   }
 
+  const getExport = async (values, url) => {
+    dispatch(fetchStart())
+    await api.get(
+      url,
+      { params: values },
+    )
+      .then((response) => {
+        const type = response.headers['content-type']
+        const date = new Date()
+        const fileUrl = URL.createObjectURL(new Blob([response.data]), { type })
+        const link = document.createElement('a')
+        link.href = fileUrl
+        link.setAttribute('download', `report-${moment(date).format('DD.MM.YYYY HH mm')}.xlsx`)
+        dispatch(fetchSuccess(link))
+      })
+      .catch((error) => dispatch(fetchError(error)))
+  }
+
   const cleanTempState = () => dispatch(cleanTemp())
 
   return {
@@ -137,6 +164,7 @@ export function useFetchResources(url) {
     remove,
     changeStatus,
     pagination,
+    paginationFilter,
     search,
     queryParams,
     indicatorsParams,
@@ -147,6 +175,7 @@ export function useFetchResources(url) {
     cleanTempState,
     changeStatusAssisted,
     filterParams,
+    getExport,
   }
 }
 
@@ -174,7 +203,7 @@ export function usePostResources() {
         const fileUrl = window.URL.createObjectURL(new Blob([response.data]), { type })
         const link = document.createElement('a')
         link.href = fileUrl
-        link.setAttribute('download', `actions-${date}.xlsx`)
+        link.setAttribute('download', `report-${date}.xlsx`)
         dispatch(fetchSuccess(link))
       })
       .catch((error) => dispatch(fetchError(error)))
@@ -182,15 +211,16 @@ export function usePostResources() {
 
   const getExport = async (values, url) => {
     dispatch(fetchStart())
-    await api.get(
+    await api.post(
       url,
+      null,
       { params: values },
       { responseType: 'arraybuffer' },
     )
       .then((response) => {
         const type = response.headers['content-type']
         const date = new Date()
-        const fileUrl = window.URL.createObjectURL(new Blob([response.data]), { type })
+        const fileUrl = URL.createObjectURL(new Blob([response.data]), { type })
         const link = document.createElement('a')
         link.href = fileUrl
         link.setAttribute('download', `report-${moment(date).format('DD.MM.YYYY HH mm')}.xls`)
