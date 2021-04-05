@@ -12,7 +12,7 @@ import moment from 'moment'
 
 const FormUI = (props) => {
   const {
-    handleSubmit, placeholder, areas, search, employees, workstations, filter, filterEmployees, filterWorkstations,
+    handleSubmit, placeholder, areas, search, employees, workstations, filter, filterEmployees, filterWorkstations, loadingAreas, loadingEmployees, loadingWorkstations
   } = props
   const areas_list = areas.data.data.map((el) => ({ label: el.name, value: el.id }))
   const employees_list = employees.data.map((el) => ({ label: `${el.name + ' ' + el.lastname}`, value: el.id }))
@@ -54,6 +54,7 @@ const FormUI = (props) => {
                             search,
                             filter,
                             filterEmployees,
+                            isLoading: loadingWorkstations,
                           })
                         }
                         if (item.name === 'employed_id') {
@@ -62,6 +63,7 @@ const FormUI = (props) => {
                             options: employees_list,
                             search,
                             filter,
+                            isLoading: loadingEmployees,
                           })
                         }
                         return (
