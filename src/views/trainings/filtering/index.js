@@ -27,11 +27,11 @@ const FilteringList = (props) => {
   const { items: areasData } = useFetchResources('areas?all')
   const { items: areasList, loading: loadingAreas } = areasData
   // Workers
-  const { items: employees, filterParams: filterEmployees } = useFetchResources('/areas/workstations/employees')
+  const { items: employees, filterParams: filterEmployees } = useFetchResources('/areas/workstations/employees?all')
   const { items: employeesData, loading: loadingEmployees } = employees
   //if (loading || loadingAreas) return <LoadingSpinner />
   // Workstations
-  const { items: workstations, filterParams: filterWorkstations } = useFetchResources('workstations')
+  const { items: workstations, filterParams: filterWorkstations } = useFetchResources('workstations?all')
   const { items: workstationsData, loading: loadingWorkstations } = workstations
   const handleDownload = (link) => {
     clean()
@@ -45,12 +45,11 @@ const FilteringList = (props) => {
         title={item === 'trainings' ? 'Capacitaciones' : 'Vigilancias Médicas'}
         handleSubmit={(values) => postExport(
           {
-            ...values,
             date_start: moment(values.date_start).format('DD-MM-YYYY'),
             date_end: moment(values.date_end).format('DD-MM-YYYY'),
-            area_id: values.area_id === ('Todas' || '_all_') ? null : values.area_id,
-            workstation_id: values.workstation_id === ('Todos' || '_all_') ? null : values.workstation_id,
-            employed_id: values.employed_id === ('Todos' || '_all_') ? null : values.employed_id,
+            ...(values.area_id !== ('Todas' || '_all_') && { area_id: values.area_id }),
+            ...(values.workstation_id !== ('Todos' || '_all_') && { workstation_id: values.workstation_id }),
+            ...(values.employed_id !== ('Todos' || '_all_') && { employed_id: values.employed_id }),
           }, url,
         )}
         areas={areasList}
@@ -72,6 +71,9 @@ const FilteringList = (props) => {
         filterEmployees={filterEmployees}
         filterWorkstations={filterWorkstations}
         temp={temp}
+        loadingAreas={loadingAreas}
+        loadingEmployees={loadingEmployees}
+        loadingWorkstations={loadingWorkstations}
       />
       {loadingPost && <AlertLoading message="Generando reporte" />}
       {itemsPost && (

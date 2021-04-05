@@ -12,7 +12,7 @@ import PaginationSeprated from '../../../components/custom/pagination'
 import FormUI from './_form'
 
 const ListUI = (props) => {
-  const { data, remove, pagination, search, temp, ordering, areas, onLoading, employees, workstations, handleSubmit, firstDate, filter, filterEmployees, filterWorkstations, title } = props
+  const { data, remove, pagination, search, temp, ordering, areas, onLoading, employees, workstations, handleSubmit, firstDate, filter, filterEmployees, filterWorkstations, title, loadingAreas, loadingEmployees, loadingWorkstations } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
@@ -21,7 +21,7 @@ const ListUI = (props) => {
   }
   const transformData = () => data && data.data.data.map((item) => ({
     ...item,
-    course_date: moment(item.course_date).format('DD/MMYYY'),
+    course_date: moment(item.course_date).format('DD/MM/YYY'),
     employed_name: `${`${item.employed_name} ${item.employed_lastname}`}`,
     course_relator_name: item.course_relator_name ? item.course_relator_name : '--',
     course_relator_rut: item.course_relator_rut ? item.course_relator_rut : '--',
@@ -65,6 +65,9 @@ const ListUI = (props) => {
             filter={filter}
             filterEmployees={filterEmployees}
             filterWorkstations={filterWorkstations}
+            loadingAreas={loadingAreas}
+            loadingEmployees={loadingEmployees}
+            loadingWorkstations={loadingWorkstations}
           />
         )
       }

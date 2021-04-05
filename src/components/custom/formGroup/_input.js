@@ -37,8 +37,9 @@ const SelectField = (props) => {
 
 const SelectFieldFilter = (props) => {
   const {
-    options, field, form, multiple, disabled, search, filter, filterEmployees, filterWorkstations,
+    options, field, form, multiple, disabled, search, filter, filterEmployees, filterWorkstations, isLoading
   } = props
+  console.log(`object`, isLoading)
   const [isOpen, setIsOpen] = useState(false)
   const [values, setValues] = useState()
   //const [state, setState] = useState({ isOpen: false, value: undefined })
@@ -60,10 +61,10 @@ const SelectFieldFilter = (props) => {
           form.values,
         )
         if (filterEmployees) {
-          filterEmployees(`?${name}=${option.value}`)
+          filterEmployees(`&${name}=${option.value}`)
         }
         if (filterWorkstations) {
-          filterWorkstations(`?${name}=${option.value}`)
+          filterWorkstations(`&${name}=${option.value}`)
         }
       }
     }
@@ -143,7 +144,7 @@ const SelectFieldFilter = (props) => {
     <>
       <div className="d-flex w-100">
         <div onClick={() => toggleOpen()} className="d-flex w-100 justify-content-between align-items-center">
-          <h6 className="cursor-pointer" style={{ fontSize: '12px' }}>{values || value}</h6>
+          <h6 className="cursor-pointer" style={{ fontSize: '12px' }}>{isLoading ? 'Cargando...' : values || value}</h6>
           <ChevronDown
             onClick={() => setIsOpen(!isOpen)}
             size={15}
@@ -182,7 +183,7 @@ const SelectFieldFilter = (props) => {
 
 export const CustomSelect = (props) => {
   const {
-    name, title, options, small, multiple, disabled, style,
+    name, title, options, small, multiple, disabled, style, isLoading
   } = props
   return (
     <>
@@ -194,6 +195,7 @@ export const CustomSelect = (props) => {
         multiple={multiple}
         disabled={disabled}
         style={style}
+        isLoading={isLoading}
       />
     </>
   )
@@ -201,7 +203,7 @@ export const CustomSelect = (props) => {
 
 export const CustomSelectFilter = (props) => {
   const {
-    name, title, options, small, multiple, disabled, style, search, filter, filterEmployees, filterWorkstations,
+    name, title, options, small, multiple, disabled, style, search, filter, filterEmployees, filterWorkstations, isLoading,
   } = props
   return (
     <>
@@ -217,6 +219,7 @@ export const CustomSelectFilter = (props) => {
         filter={filter}
         filterEmployees={filterEmployees}
         filterWorkstations={filterWorkstations}
+        isLoading={isLoading}
       />
     </>
   )
