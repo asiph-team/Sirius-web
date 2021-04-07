@@ -41,6 +41,7 @@ const ProgramsEdit = lazy(() => import('./views/programs/edit'))
 const ProgramsDetail = lazy(() => import('./views/programs/detail'))
 const ProgramsParticipantList = lazy(() => import('./views/programs/participant'))
 const ProgramsHistorical = lazy(() => import('./views/programs/historical'))
+const ProgramsFilteringList = lazy(() => import('./views/programs/filtering'))
 const ControlsList = lazy(() => import('./views/controls/list/'))
 const ControlsAdd = lazy(() => import('./views/controls/add'))
 const ControlsEdit = lazy(() => import('./views/controls/edit'))
@@ -105,7 +106,7 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/trainings/detail/:trainingId" component={TrainingDetail} />
       <RouteConfig exact path="/dashboard/trainings/participants" component={ParticipantList} />
       <RouteConfig exact path="/dashboard/trainings/historical/:employeeId" component={TrainingsHistorical} />
-      <RouteConfig exact path="/dashboard/:item/filtering" component={TrainingsFiltering} />
+      <RouteConfig exact path="/dashboard/trainings/filtering" component={TrainingsFiltering} />
       <RouteConfig exact path="/dashboard/actions" component={ActionsList} />
       <RouteConfig path="/dashboard/actions/add" component={ActionsAdd} />
       <RouteConfig path="/dashboard/actions/edit" component={ActionsEdit} />
@@ -118,6 +119,7 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/programs/detail/:programId" component={ProgramsDetail} />
       <RouteConfig exact path="/dashboard/programs/participants" component={ProgramsParticipantList} />
       <RouteConfig exact path="/dashboard/programs/historical/:employeeId" component={ProgramsHistorical} />
+      <RouteConfig exact path="/dashboard/programs/filtering" component={ProgramsFilteringList} />
       <RouteConfig exact path="/dashboard/controls/:activityId" component={ControlsList} />
       <RouteConfig exact path="/dashboard/controls/add/:activityId" component={ControlsAdd} />
       <RouteConfig path="/dashboard/controls/edit/:id" component={ControlsEdit} />
