@@ -56,9 +56,15 @@ const SelectFieldFiltered = (props) => {
       }
 
     }
+
     if (name === 'workstation_id') {
-      form.setFieldValue('employed_id', '_all_')
-      localStorage.setItem('employed_id', '_all_')
+      if (option.value === '_all_') {
+        form.setFieldValue('employed_id', '_all_')
+        localStorage.setItem('employed_id', '_all_')
+      } else {
+        filterEmployees(`&${name}=${option.value}`)
+      }
+
     }
     search(
       filterParams({
