@@ -100,10 +100,10 @@ export const filterParams = (filter, newObj) => {
   keys.forEach((key) => {
     if (key !== 'date_start' && key !== 'date_end') {
       if (filter[key] !== '_all_' && filter[key] !== '_all_') {
-        console.log(`filter[key]`, filter[key])
         url += `&${key}=${filter[key]}`
       }
     }
   })
+  localStorage.setItem('f_url', url)
   return url
 }

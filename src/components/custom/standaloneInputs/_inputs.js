@@ -20,8 +20,7 @@ export const CustomSelect = (props) => {
     }
     if (name === 'area_id') {
       //form.setFieldValue('workstation_id', '_all_')
-      console.log(`name dentro del if`, name)
-      //console.log(`form`, form)
+      
     }
     search(
       //filterParams(form.values, { name, value: option.value }),

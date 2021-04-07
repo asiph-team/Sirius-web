@@ -19,6 +19,13 @@ export const headers = [
     maxWidth: '200px',
   },
   {
+    selector: 'frequency',
+    name: 'Frecuencia',
+    sortable: true,
+    center: true,
+    maxWidth: '200px',
+  },
+  {
     selector: 'employed_name',
     name: 'Nombre trabajador',
     sortable: true,

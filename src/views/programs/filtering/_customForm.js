@@ -7,7 +7,6 @@ import FormGroup from '../../../components/custom/standaloneInputs'
 
 const StandaloneForm = (props) => {
   const { search, areas, employees, workstations, filter, filterEmployees, filterWorkstations, loadingAreas, loadingEmployees, loadingWorkstations } = props
-  console.log(`search`, search)
   const areasList = areas.data.data.map((el) => ({ label: el.name, value: el.id }))
   const employeesList = employees.data.map((el) => ({ label: `${el.name + ' ' + el.lastname}`, value: el.id }))
   const workstationsList = workstations.data.data.map((el) => ({ label: el.name, value: el.id }))

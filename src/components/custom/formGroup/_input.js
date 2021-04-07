@@ -44,17 +44,16 @@ const SelectFieldFiltered = (props) => {
   const handleChange = (option) => {
     localStorage.setItem(name, option.value)
     form.setFieldValue(name, option.value)
+    localStorage.setItem('workstation_id', '_all_')
+    localStorage.setItem('employed_id', '_all_')
     if (name === 'area_id') {
       if (option.value === '_all_') {
         filterWorkstations('')
         filterEmployees('')
-        form.setFieldValue('workstation_id', '_all_')
-        localStorage.setItem('workstation_id', '_all_')
-        localStorage.setItem('employed_id', '_all_')
       } else {
         filterWorkstations(`&${name}=${option.value}`)
+        filterEmployees(`&${name}=${option.value}`)
       }
-
     }
 
     if (name === 'workstation_id') {
@@ -87,7 +86,7 @@ const SelectFieldFiltered = (props) => {
         name={name}
         options={options}
         onChange={(option) => option && handleChange(option)}
-        defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
+        value={options.find((option) => (option.value === value) || (option.label === value))}
         isSearchable
         placeholder=""
         isMulti={!!multiple}

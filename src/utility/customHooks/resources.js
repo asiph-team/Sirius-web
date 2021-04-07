@@ -125,7 +125,9 @@ export function useFetchResources(url) {
   }
 
   const orderBy = async (orderby, ordering) => {
-    const orderParams = `orderBy=${orderby}&order=${ordering}`
+    const nUrl = localStorage.getItem('f_url')
+
+    const orderParams = nUrl ? `${nUrl}&orderBy=${orderby}&order=${ordering}` : `orderBy=${orderby}&order=${ordering}`
     await api.get(url + orderParams)
       .then((response) => dispatch(fetchOrder(response.data, !ordering, { type: 'order', data: orderParams, order: ordering })))
       .catch((error) => dispatch(fetchError(error)))
