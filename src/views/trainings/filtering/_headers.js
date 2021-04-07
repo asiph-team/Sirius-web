@@ -1,9 +1,15 @@
 export const headers = [
   {
+    selector: 'area_name',
+    name: 'Area',
+    sortable: true,
+    minWidth: '200px',
+  },
+  {
     selector: 'training_name',
     name: 'Nombre capacitacion',
     sortable: true,
-    maxWidth: '250px',
+    minWidth: '200px',
   },
   {
     selector: 'course_date',

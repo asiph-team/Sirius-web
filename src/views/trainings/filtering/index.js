@@ -47,9 +47,9 @@ const FilteringList = (props) => {
           {
             date_start: moment(values.date_start).format('DD-MM-YYYY'),
             date_end: moment(values.date_end).format('DD-MM-YYYY'),
-            ...(values.area_id !== ('Todas' || '_all_') && { area_id: values.area_id }),
-            ...(values.workstation_id !== ('Todos' || '_all_') && { workstation_id: values.workstation_id }),
-            ...(values.employed_id !== ('Todos' || '_all_') && { employed_id: values.employed_id }),
+            ...(localStorage.getItem('area_id') !== '_all_' && { area_id: localStorage.getItem('area_id') }),
+            ...(localStorage.getItem('workstation_id') !== '_all_' && { workstation_id: localStorage.getItem('workstation_id') }),
+            ...(localStorage.getItem('employed_id') !== '_all_' && { employed_id: localStorage.getItem('employed_id') }),
           }, url,
         )}
         areas={areasList}

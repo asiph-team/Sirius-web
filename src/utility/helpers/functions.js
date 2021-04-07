@@ -95,11 +95,12 @@ export const filterParams = (filter, newObj) => {
   keysFilter.forEach((key) => {
     fields[key] = filter[key]
   })
-  let url = `date_start=${moment(filter.date_start).format('YYYY-MM-DD')}&date_end=${moment(filter.date_end).format('YYYY-MM-DD')}`
+  let url = `date_start=${localStorage.getItem('date_start')}&date_end=${localStorage.getItem('date_end')}`
   const keys = Object.keys(filter)
   keys.forEach((key) => {
     if (key !== 'date_start' && key !== 'date_end') {
-      if (filter[key] !== 'Todas' && filter[key] !== 'Todos') {
+      if (filter[key] !== '_all_' && filter[key] !== '_all_') {
+        console.log(`filter[key]`, filter[key])
         url += `&${key}=${filter[key]}`
       }
     }
