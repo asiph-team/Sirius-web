@@ -83,6 +83,7 @@ const navigationConfig = [
       '/dashboard/trainings/filtering',
       '/dashboard/trainings/detail/:trainingId',
       '/dashboard/trainings/participants',
+      '/dashboard/trainings/filtering',
     ],
   },
   {

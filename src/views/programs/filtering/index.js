@@ -6,12 +6,12 @@ import { AlertSuccessDownload, AlertLoading } from '../../../components/custom'
 
 import ListUI from './_listUI'
 
-const FilteringList = () => {
+const ProgramsFilteringList = (props) => {
   const todayInitial = moment(new Date(), 'YYYY-MM-DD').toDate()
   const todayEnd = new Date()
   const [dateStart, setDateStart] = useState(todayInitial.setDate(todayInitial.getDate() - 30))
   const [dateEnd, setDateEnd] = useState(todayEnd.setDate(todayEnd.getDate() - 1))
-  const url = `/trainings/employed/assistance/export`
+  const url = `/programs/employed/assistance/export`
   const { data: { loading: loadingPost, items: itemsPost, error: errorPost }, postExport, clean } = usePostResources()
   const {
     items: trainings,
@@ -19,7 +19,7 @@ const FilteringList = () => {
     paginationFilter,
     filterParams,
     orderBy,
-  } = useFetchResources(`trainings/employed/assistance?`)
+  } = useFetchResources(`programs/employed/assistance?`)
 
   const { items, loading, error, filter, temp } = trainings
   // Areas
@@ -41,7 +41,7 @@ const FilteringList = () => {
   return (
     <>
       <ListUI
-        title="Capacitaciones"
+        title="Vigilancias Médicas"
         handleSubmit={(values) => postExport(
           {
             date_start: moment(values.date_start).format('DD-MM-YYYY'),
@@ -86,4 +86,4 @@ const FilteringList = () => {
   )
 }
 
-export default FilteringList
+export default ProgramsFilteringList
