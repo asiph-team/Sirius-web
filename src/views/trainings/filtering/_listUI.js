@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Card, CardBody } from 'reactstrap'
 import moment from 'moment'
 import { LoadingSpinner } from '../../../components/@vuexy/Spinner'
-import { filterParams } from '../../../utility/helpers/functions'
+import { capitalizeFirstLetter, filterParams } from '../../../utility/helpers/functions'
 import { InfoTraining } from '../../../components/custom/modals'
 import {
   AlertDialog, Header, List,
@@ -14,7 +14,6 @@ import StandaloneForm from './_customForm'
 
 const ListUI = (props) => {
   const { data, remove, pagination, search, temp, ordering, areas, onLoading, employees, workstations, handleSubmit, firstDate, filter, filterEmployees, filterWorkstations, title, loadingAreas, loadingEmployees, loadingWorkstations } = props
-  console.log(`firstDate`, firstDate)
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
@@ -27,6 +26,7 @@ const ListUI = (props) => {
     employed_name: `${`${item.employed_name} ${item.employed_lastname}`}`,
     course_relator_name: item.course_relator_name ? item.course_relator_name : '--',
     course_relator_rut: item.course_relator_rut ? item.course_relator_rut : '--',
+    frequency: capitalizeFirstLetter(item.frequency),
   }))
   useEffect(() => {
     localStorage.setItem('date_start', firstDate.date_start)
