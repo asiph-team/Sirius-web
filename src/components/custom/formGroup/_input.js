@@ -35,14 +35,69 @@ const SelectField = (props) => {
   )
 }
 
+
+const SelectFieldFiltered = (props) => {
+  const {
+    options, field, form, multiple, disabled, isLoading, filterEmployees, filterWorkstations, search, filter
+  } = props
+  const { name, value } = field
+  const handleChange = (option) => {
+    localStorage.setItem(name, option.value)
+    form.setFieldValue(name, option.value)
+    if (name === 'area_id') {
+      if (option.value === '_all_') {
+        filterWorkstations('')
+        filterEmployees('')
+        form.setFieldValue('workstation_id', '_all_')
+        localStorage.setItem('workstation_id', '_all_')
+        localStorage.setItem('employed_id', '_all_')
+      } else {
+        filterWorkstations(`&${name}=${option.value}`)
+      }
+
+    }
+    if (name === 'workstation_id') {
+      form.setFieldValue('employed_id', '_all_')
+      localStorage.setItem('employed_id', '_all_')
+    }
+    search(
+      filterParams({
+        area_id: localStorage.getItem('area_id'),
+        workstation_id: localStorage.getItem('workstation_id'),
+        employed_id: localStorage.getItem('employed_id'),
+      }, { name, value: option.value }),
+      {
+        area_id: localStorage.getItem('area_id'),
+        workstation_id: localStorage.getItem('workstation_id'),
+        employed_id: localStorage.getItem('employed_id'),
+      },
+    )
+  }
+  return (
+    <>
+      <Select
+        className="basic-single"
+        classNamePrefix="select"
+        name={name}
+        options={options}
+        onChange={(option) => option && handleChange(option)}
+        defaultValue={options.find((option) => (option.value === value) || (option.label === value))}
+        isSearchable
+        placeholder=""
+        isMulti={!!multiple}
+        isDisabled={disabled}
+        isLoading={isLoading}
+      />
+    </>
+  )
+}
+
 const SelectFieldFilter = (props) => {
   const {
     options, field, form, multiple, disabled, search, filter, filterEmployees, filterWorkstations, isLoading
   } = props
-  console.log(`object`, isLoading)
   const [isOpen, setIsOpen] = useState(false)
   const [values, setValues] = useState()
-  //const [state, setState] = useState({ isOpen: false, value: undefined })
   const { name, value } = field
   const { colors } = defaultTheme
   const toggleOpen = () => {
@@ -183,7 +238,7 @@ const SelectFieldFilter = (props) => {
 
 export const CustomSelect = (props) => {
   const {
-    name, title, options, small, multiple, disabled, style, isLoading
+    name, title, options, small, multiple, disabled, style,
   } = props
   return (
     <>
@@ -195,7 +250,29 @@ export const CustomSelect = (props) => {
         multiple={multiple}
         disabled={disabled}
         style={style}
+      />
+    </>
+  )
+}
+export const CustomSelectFiltered = (props) => {
+  const {
+    name, title, options, small, multiple, disabled, style, isLoading, filterEmployees, filterWorkstations, search, filter
+  } = props
+  return (
+    <>
+      <label htmlFor={name}>{`${title} ${small || ''}`}</label>
+      <Field
+        options={options}
+        name={name}
+        component={SelectFieldFiltered}
+        multiple={multiple}
+        disabled={disabled}
+        style={style}
         isLoading={isLoading}
+        filterEmployees={filterEmployees}
+        filterWorkstations={filterWorkstations}
+        search={search}
+        filter={filter}
       />
     </>
   )
@@ -473,7 +550,7 @@ export const MultipleCustomSelect = (props) => {
 }
 
 const DatePickerFilteringField = (props) => {
-  const { title, form, field } = props
+  const { title, form, field, search } = props
   const { name, value } = field
   const todayInitial = moment(new Date(), 'YYYY-MM-DD').toDate()
   const todayEnd = new Date()
@@ -512,7 +589,9 @@ const DatePickerFilteringField = (props) => {
             selected={value}
             autoComplete="off"
             onChange={(date) => {
+              localStorage.setItem(name, moment(date).format('YYYY-MM-DD'))
               form.setFieldValue(name, moment(date, 'YYYY-MM-DD').toDate())
+              search(filterParams({ date_start: 'all' }))
             }}
             showMonthDropdown
             showYearDropdown
@@ -527,7 +606,7 @@ const DatePickerFilteringField = (props) => {
 
 export const CustomDatePickerFilter = (props) => {
   const {
-    name, title,
+    name, title, search
   } = props
   return (
     <>
@@ -536,6 +615,7 @@ export const CustomDatePickerFilter = (props) => {
         component={DatePickerFilteringField}
         autoComplete="off"
         title={title}
+        search={search}
       />
     </>
   )

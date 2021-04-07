@@ -10,9 +10,11 @@ import {
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
 import FormUI from './_form'
+import StandaloneForm from './_customForm'
 
 const ListUI = (props) => {
   const { data, remove, pagination, search, temp, ordering, areas, onLoading, employees, workstations, handleSubmit, firstDate, filter, filterEmployees, filterWorkstations, title, loadingAreas, loadingEmployees, loadingWorkstations } = props
+  console.log(`firstDate`, firstDate)
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
@@ -21,12 +23,14 @@ const ListUI = (props) => {
   }
   const transformData = () => data && data.data.data.map((item) => ({
     ...item,
-    course_date: moment(item.course_date).format('DD/MM/YYY'),
+    course_date: moment(item.course_date).format('DD/MM/YYYY'),
     employed_name: `${`${item.employed_name} ${item.employed_lastname}`}`,
     course_relator_name: item.course_relator_name ? item.course_relator_name : '--',
     course_relator_rut: item.course_relator_rut ? item.course_relator_rut : '--',
   }))
   useEffect(() => {
+    localStorage.setItem('date_start', firstDate.date_start)
+    localStorage.setItem('date_end', firstDate.date_end)
     search(
       filterParams(
         {
@@ -43,32 +47,46 @@ const ListUI = (props) => {
         date_end: firstDate.date_end,
       },
     )
+    localStorage.setItem('area_id', '_all_')
+    localStorage.setItem('workstation_id', '_all_')
+    localStorage.setItem('employed_id', '_all_')
+    return () => {
+      localStorage.removeItem('date_start')
+      localStorage.removeItem('date_end')
+      localStorage.removeItem('area_id')
+      localStorage.removeItem('workstation_id')
+      localStorage.removeItem('employed_id')
+    }
+
   }, [])
   return (
     <>
       <Header title={`Exportar ${title}`} icon="FileText" />
+
       {
         data && areas && employees && workstations && (
-          <FormUI
-            title="Exportar"
-            areas={areas}
-            search={search}
-            employees={employees}
-            workstations={workstations}
-            handleSubmit={handleSubmit}
-            placeholder={{
-              ...firstDate,
-              area_id: 'Todas',
-              workstation_id: 'Todos',
-              employed_id: 'Todos',
-            }}
-            filter={filter}
-            filterEmployees={filterEmployees}
-            filterWorkstations={filterWorkstations}
-            loadingAreas={loadingAreas}
-            loadingEmployees={loadingEmployees}
-            loadingWorkstations={loadingWorkstations}
-          />
+          <>
+            <FormUI
+              title="Exportar"
+              areas={areas}
+              search={search}
+              employees={employees}
+              workstations={workstations}
+              handleSubmit={handleSubmit}
+              placeholder={{
+                ...firstDate,
+                area_id: localStorage.getItem('area_id'),
+                workstation_id: localStorage.getItem('workstation_id'),
+                employed_id: localStorage.getItem('employed_id'),
+              }}
+              filter={filter}
+              filterEmployees={filterEmployees}
+              filterWorkstations={filterWorkstations}
+              loadingAreas={loadingAreas}
+              loadingEmployees={loadingEmployees}
+              loadingWorkstations={loadingWorkstations}
+            />
+          </>
         )
       }
       <Card>

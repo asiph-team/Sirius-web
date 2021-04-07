@@ -15,7 +15,7 @@ export const config = [
       grid: 2,
     },
     {
-      input: 'CustomSelectFilter',
+      input: 'CustomSelectFiltered',
       key: 3,
       name: 'area_id',
       title: 'Área',
@@ -24,7 +24,7 @@ export const config = [
       grid: 2,
     },
     {
-      input: 'CustomSelectFilter',
+      input: 'CustomSelectFiltered',
       key: 4,
       name: 'workstation_id',
       title: 'Puesto de Trabajo',
@@ -34,7 +34,7 @@ export const config = [
       search: true,
     },
     {
-      input: 'CustomSelectFilter',
+      input: 'CustomSelectFiltered',
       key: 5,
       name: 'employed_id',
       title: 'Trabajadores',

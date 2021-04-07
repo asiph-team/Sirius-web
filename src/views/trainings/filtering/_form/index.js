@@ -26,6 +26,7 @@ const FormUI = (props) => {
     <Card>
       <CardBody>
         <Formik
+          enableReinitialize
           initialValues={placeholder || initialValues}
           validationSchema={validationSchema}
           onSubmit={(values) => handleSubmit(values)}
@@ -37,6 +38,24 @@ const FormUI = (props) => {
                   <Row key={row[0].key}>
                     {
                       row.map((item) => {
+                        if (item.name === 'date_start') {
+                          Object.assign(item, {
+                            ...item,
+                            search,
+                            filter,
+                            filterEmployees,
+                            filterWorkstations,
+                          })
+                        }
+                        if (item.name === 'date_end') {
+                          Object.assign(item, {
+                            ...item,
+                            search,
+                            filter,
+                            filterEmployees,
+                            filterWorkstations,
+                          })
+                        }
                         if (item.name === 'area_id') {
                           Object.assign(item, {
                             ...item,
