@@ -61,7 +61,7 @@ const ListUI = (props) => {
   }, [])
   return (
     <>
-      <Header title={title} icon="List" />
+      <Header title={title} icon="Eye" />
       {
         data && areas && employees && workstations && (
           <>
