@@ -1,22 +1,33 @@
 import React from 'react'
 import { Card, CardBody, Row, Col, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import { ChevronLeft } from 'react-feather'
-import { Header } from '../../../components/custom'
+import { ChevronLeft, Eye } from 'react-feather'
 
 const SupervisionDetailUI = (props) => {
   const { controlMeasure, data } = props
   const { activity, comment, chief_comment } = controlMeasure
   return (
     <>
-      <Header title="Detalle de supervisión" icon="Eye">
-        <Link to="/dashboard/supervision">
-          <Button size="" color="primary" className="my-1">
-            <ChevronLeft size={14} />
+      <Row className="mb-2">
+        <Col sm="12" lg="12" className="d-flex align-items-center justify-content-between">
+          <div className="d-flex items-align-center">
+            <Eye size={20} />
+            <h3 className="font-medium-5 extension-title mb-0" data-tour="extension-title">
+              &nbsp;
+              Detalle de supervisión
+            </h3>
+          </div>
+          <div className="d-flex items-align-center">
+            <Link to="/dashboard/supervision">
+              <Button size="" color="primary" className="my-1">
+                <ChevronLeft size={14} />
                 &nbsp;Volver
-          </Button>
-        </Link>
-      </Header>
+              </Button>
+            </Link>
+          </div>
+        </Col>
+      </Row>
+
       <Card>
         <CardBody>
           <h3 className="font-medium-5 extension-title mb-0" data-tour="extension-title">
