@@ -111,6 +111,15 @@ const navigationConfig = [
       '/dashboard/actions/edit',
     ],
   },
+  {
+    id: 'supervision',
+    title: 'Supervisión',
+    type: 'item',
+    icon: <Icon.Eye size={20} />,
+    permissions: ['administrator', 'chief_of_area'],
+    navLink: '/dashboard/supervision',
+    parentOf: [],
+  },
 ]
 
 export default navigationConfig

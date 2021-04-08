@@ -60,7 +60,7 @@ const ImageCell = {
       {
         row[obj.selector] ? (
           <img className="img-fluid p-1" src={row[obj.selector]} alt={`${row.id}`} />
-        ):(
+        ) : (
           <>--</>
         )
       }
@@ -194,6 +194,28 @@ const List = (props) => {
       if (permitted(`${resource}:edit`)) { return <CustomSwitch status={row.status || row.assisted} changeStatus={() => show(row, 'status')} /> } return (<>{row.state}</>)
     },
   }
+
+  const SupervisionDetail = {
+    cell: (row, index) => (
+      <Can rule={`${resource}:detail`}>
+        <Link id={`detail-${row.id}`} to={{ pathname: `/dashboard/${resource}/detail/`, state: { data: row } }}><Button color="link" className="p-0"><Icon.ZoomIn size={20} /></Button></Link>
+      </Can>
+    ),
+  }
+
+  const RisksSupervision = {
+    cell: (row, index, obj) => {
+      return (
+        <>
+          <div id={`semaforo-${index}`} className={`rounded-sm bg-${semaphore[row[obj.selector]]} h-75 w-100`} />
+          <UncontrolledTooltip placement="right" target={`semaforo-${index}`}>
+            {semaphoreText[row[obj.selector]]}
+          </UncontrolledTooltip>
+        </>
+      )
+    },
+  }
+
   headers.forEach((obj) => {
     // eslint-disable-next-line no-unused-expressions
     obj.selector === 'actions' && ((permitted(`${resource}:edit`) || permitted(`${resource}:delete`) || permitted('trainings:historical')))
@@ -204,7 +226,9 @@ const List = (props) => {
               ? obj.cell = participantStatus.cell : obj.selector === '_assisted_'
                 ? obj.cell = AssistedChip.cell : obj.selector === '_exam_'
                   ? obj.cell = ExamChip.cell : obj.image
-                   ? obj.cell = ImageCell.cell : obj
+                    ? obj.cell = ImageCell.cell : obj.selector === '_supervision_actions_'
+                      ? obj.cell = SupervisionDetail.cell : obj.selector === '_risk_supervision_'
+                        ? obj.cell = RisksSupervision.cell : obj
   })
   const handleSort = (column, sortDirection) => {
     ordering(column.orderKey ? column.orderKey : column.selector, sortDirection.toUpperCase())

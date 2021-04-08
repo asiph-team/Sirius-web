@@ -1,0 +1,46 @@
+export const config = [
+  [
+    {
+      input: 'CustomDatePickerFilter',
+      key: 1,
+      name: 'date_start',
+      title: 'Fecha inicio',
+      grid: 3,
+    },
+    {
+      input: 'CustomDatePickerFilter',
+      key: 2,
+      name: 'date_end',
+      title: 'Fecha termino',
+      grid: 3,
+    },
+    {
+      input: 'CustomSelectFiltered',
+      key: 3,
+      name: 'area_id',
+      title: 'Área',
+      type: 'text',
+      options: [],
+      grid: 2,
+    },
+    {
+      input: 'CustomSelectFiltered',
+      key: 4,
+      name: 'workstation_id',
+      title: 'Puesto de Trabajo',
+      type: 'text',
+      options: [],
+      grid: 2,
+      search: true,
+    },
+    {
+      input: 'CustomSelectFiltered',
+      key: 5,
+      name: 'employed_id',
+      title: 'Trabajadores',
+      type: 'text',
+      options: [],
+      grid: 2,
+    },
+  ],
+]
