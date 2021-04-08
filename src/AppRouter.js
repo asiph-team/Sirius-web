@@ -45,6 +45,8 @@ const ProgramsFilteringList = lazy(() => import('./views/programs/filtering'))
 const ControlsList = lazy(() => import('./views/controls/list/'))
 const ControlsAdd = lazy(() => import('./views/controls/add'))
 const ControlsEdit = lazy(() => import('./views/controls/edit'))
+const Supervision = lazy(() => import('./views/supervision'))
+const SupervisionDetail = lazy(() => import('./views/supervision/detail'))
 
 const AuthConfig = (props) => (
   <ContextAuth.Consumer>
@@ -123,6 +125,8 @@ const AppRouter = () => (
       <RouteConfig exact path="/dashboard/controls/:activityId" component={ControlsList} />
       <RouteConfig exact path="/dashboard/controls/add/:activityId" component={ControlsAdd} />
       <RouteConfig path="/dashboard/controls/edit/:id" component={ControlsEdit} />
+      <RouteConfig exact path="/dashboard/supervision" component={Supervision} />
+      <RouteConfig exact path="/dashboard/supervision/detail" component={SupervisionDetail} />
     </Switch>
   </Router>
 )

@@ -35,6 +35,8 @@ export const rules = {
     'controls:add',
     'controls:edit',
     'controls:delete',
+    'supervision:list',
+    'supervision:detail',
   ],
   chief_of_area: [
     'dashboard:manager',
@@ -50,5 +52,7 @@ export const rules = {
     'controls:add',
     'controls:edit',
     'controls:delete',
+    'supervision:list',
+    'supervision:detail',
   ],
 }

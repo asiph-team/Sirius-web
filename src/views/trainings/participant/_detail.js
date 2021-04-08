@@ -29,7 +29,7 @@ const DetailUI = (props) => {
   }))
   return (
     <>
-      <HeaderSign detail={training} title="cursos" relator show={show} />
+      <HeaderSign detail={training} title={training.name} relator show={show} />
       <Card>
         <CardBody>
           {

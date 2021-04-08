@@ -7,6 +7,7 @@ import { history } from '../../../history'
 
 const HeaderSign = (props) => {
   const { detail, title, back, relator, show } = props
+  console.log(`detail`, detail)
   const IconTag = Icon[detail.relator_signature ? 'CheckCircle' : 'AlertCircle']
   return (
     <Row className="mb-2">
