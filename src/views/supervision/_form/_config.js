@@ -5,14 +5,14 @@ export const config = [
       key: 1,
       name: 'date_start',
       title: 'Fecha inicio',
-      grid: 3,
+      grid: 2,
     },
     {
       input: 'CustomDatePickerFilter',
       key: 2,
       name: 'date_end',
       title: 'Fecha termino',
-      grid: 3,
+      grid: 2,
     },
     {
       input: 'CustomSelectFiltered',
