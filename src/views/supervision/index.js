@@ -10,7 +10,7 @@ const FilteringList = () => {
   const todayEnd = new Date()
   const [dateStart, setDateStart] = useState(todayInitial.setDate(todayInitial.getDate() - 30))
   const [dateEnd, setDateEnd] = useState(todayEnd.setDate(todayEnd.getDate() - 1))
-  const url = `/trainings/employed/assistance/export`
+  const url = '/areas/workstations/employees/employed-activities/export'
   const { data: { loading: loadingPost, items: itemsPost, error: errorPost }, postExport, clean } = usePostResources()
   const {
     items: trainings,

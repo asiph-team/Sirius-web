@@ -92,9 +92,10 @@ const FormUI = (props) => {
                         )
                       })
                     }
-                    <Col sm="2" className="d-flex justify-content-center">
+                    <Col sm="2" className="d-flex justify-content-center align-items-center">
                       <Button type="submit" color="primary" className="d-flex justify-content-center items-align-center" style={{ height: '35px' }}>
                         <FileText size={14} />
+                        &nbsp; Exportar
                       </Button>
                     </Col>
                   </Row>
