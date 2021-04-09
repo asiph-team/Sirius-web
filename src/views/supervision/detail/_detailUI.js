@@ -6,6 +6,7 @@ import { ChevronLeft, Eye } from 'react-feather'
 const SupervisionDetailUI = (props) => {
   const { controlMeasure, data } = props
   const { activity, comment, chief_comment } = controlMeasure
+  const failure = data.filter((item) => item.status === 'ok')
   return (
     <>
       <Row className="mb-2">
@@ -42,15 +43,17 @@ const SupervisionDetailUI = (props) => {
           <h4 className="font-medium-5 mb-4">Medidas de control que fallaron</h4>
           <Row className="d-flex flex-wrap justify-content-start">
             {
-              data && (
+              data ? (
                 <>
-                  {data.data.data.map((item) => (
+                  {failure.map((item) => (
                     <div className="d-flex flex-wrap justify-content-center col-sm-6 col-lg-2">
                       <img src={item.image} className="rounded img-thumbnail" alt={item.name} style={{ width: '100px' }} />
                       <h1 className="w-100 text-center mt-1" style={{ fontSize: '0.8rem' }}>{item.name}</h1>
                     </div>
                   ))}
                 </>
+              ) : (
+                <h4>Sin medidas fallidas</h4>
               )
             }
           </Row>

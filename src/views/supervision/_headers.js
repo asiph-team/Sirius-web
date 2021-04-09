@@ -4,6 +4,7 @@ export const headers = [
     name: 'Actividad',
     sortable: true,
     minWidth: '200px',
+    orderKey: 'activity.name',
   },
   {
     selector: 'accident',
@@ -16,6 +17,7 @@ export const headers = [
     selector: '_risk_supervision_',
     name: 'Evaluación de riesgo',
     sortable: true,
+    orderKey: 'risk',
     maxWidth: '100px',
   },
   {
@@ -24,18 +26,21 @@ export const headers = [
     sortable: true,
     center: true,
     minWidth: '200px',
+    orderKey: 'user.name',
   },
   {
     selector: 'workstation',
     name: 'Puesto de trabajo',
     sortable: true,
     minWidth: '150px',
+    orderKey: 'activity.workstation',
   },
   {
     selector: 'area',
     name: 'Area',
     sortable: true,
     minWidth: '150px',
+    orderKey: 'activity.area',
   },
   {
     selector: '_supervision_actions_',
