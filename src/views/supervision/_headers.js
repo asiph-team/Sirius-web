@@ -11,6 +11,13 @@ export const headers = [
     name: 'Accidente',
     sortable: true,
     center: true,
+    maxWidth: '100px',
+  },
+  {
+    selector: 'date_open',
+    name: 'Fecha apertura',
+    sortable: true,
+    left: true,
     minWidth: '100px',
   },
   {
