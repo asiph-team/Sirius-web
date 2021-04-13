@@ -15,8 +15,8 @@ const Edit = (props) => {
   const { items: participants } = useFetchResources(`programs/${placeholder.id}/employees?all`)
   const { items: employeesData, loading: loadingEmployees, error: errorEmployees } = employees
   const { items: participantsData, loading: loadingParticipants, error: errorParticipants } = participants
-  if (loadingEmployees && loadingParticipants) return <LoadingSpinner />
-  if (errorEmployees && errorParticipants) return <Error message={error.message} />
+  if (loadingEmployees || loadingParticipants) return <LoadingSpinner />
+  if (errorEmployees || errorParticipants) return <Error message={error.message} />
   return (
     <>
       {
