@@ -19,23 +19,19 @@ const Edit = (props) => {
   if (errorEmployees || errorParticipants) return <Error message={error.message} />
   return (
     <>
-      {
-        employeesData && participantsData && (
-          <EditUI
-            handleSubmit={(values) => update({
-              name: values.name,
-              description: values.description,
-              employees_id: values.employees_id,
-              end_date: moment(values.end_date).format('YYYY-MM-DD'),
-              start_date: moment(values.start_date).format('YYYY-MM-DD'),
-              frequency: values.frequency,
-            }, `programs/${values.id}`)}
-            {...props}
-            employees={employeesData && employeesData}
-            participants={participantsData && participantsData}
-          />
-        )
-      }
+      <EditUI
+        handleSubmit={(values) => update({
+          name: values.name,
+          description: values.description,
+          employees_id: values.employees_id,
+          end_date: moment(values.end_date).format('YYYY-MM-DD'),
+          start_date: moment(values.start_date).format('YYYY-MM-DD'),
+          frequency: values.frequency,
+        }, `programs/${values.id}`)}
+        {...props}
+        employees={employeesData}
+        participants={participantsData}
+      />
       {loading && <AlertLoading message="Actualizando vigilancia médica" />}
       {error && <AlertError callback={() => clean()} />}
       {items && (

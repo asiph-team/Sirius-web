@@ -15,22 +15,26 @@ const EditUI = (props) => {
   return (
     <>
       <Header title="Editar vigilancia médica" icon="Box" />
-      <FormUI
-        handleSubmit={handleSubmit}
-        title="Guardar"
-        placeholder={{
-          id: placeholder.id,
-          name: placeholder.name,
-          frequency: placeholder.frequency,
-          start_date: placeholder.start_date,
-          end_date: placeholder.end_date,
-          description: placeholder.description,
-          employees_id: participantsList,
-        }}
-        employees={employeesList}
-        validationSchema={validationSchemaEdit}
+      {
+        participantsList && (
+          <FormUI
+            handleSubmit={handleSubmit}
+            title="Guardar"
+            placeholder={{
+              id: placeholder.id,
+              name: placeholder.name,
+              frequency: placeholder.frequency,
+              start_date: placeholder.start_date,
+              end_date: placeholder.end_date,
+              description: placeholder.description,
+              employees_id: participantsList,
+            }}
+            employees={employeesList}
+            validationSchema={validationSchemaEdit}
 
-      />
+          />
+        )
+      }
     </>
   )
 }
