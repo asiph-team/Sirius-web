@@ -24,6 +24,7 @@ const DetailUI = (props) => {
             data={data.data.data}
             show={show}
             url="/dashboard/programs/participants"
+            module="programs"
           />
         )
       }
