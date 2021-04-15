@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 const ListCourse = (props) => {
-  const { data, show, url, instance } = props
+  const { data, show, url, instance, module } = props
   const compareDates = (date) => {
     const now = Date()
     return moment(date) > moment(now) ? 'Por realizar' : 'Realizado '
@@ -19,7 +19,7 @@ const ListCourse = (props) => {
           <Card key={item.id}>
             <CardBody className="d-flex justify-content-between align-items-center">
               <h3>
-                {compareDates(item.date)}
+                {module !== 'programs' && compareDates(item.date)}
                 {' '}
                 {item.name}
               </h3>
