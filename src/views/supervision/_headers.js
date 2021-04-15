@@ -8,7 +8,7 @@ export const headers = [
   },
   {
     selector: 'accident',
-    name: 'Accidente',
+    name: 'Incidente',
     sortable: true,
     center: true,
     maxWidth: '100px',
