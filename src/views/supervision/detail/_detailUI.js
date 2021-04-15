@@ -6,7 +6,7 @@ import { ChevronLeft, Eye } from 'react-feather'
 const SupervisionDetailUI = (props) => {
   const { controlMeasure, data } = props
   const { activity, comment, chief_comment } = controlMeasure
-  const failure = data.filter((item) => item.status === 'ok')
+  const failure = data.filter((item) => item.status === 'fail')
   return (
     <>
       <Row className="mb-2">
