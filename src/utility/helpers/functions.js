@@ -107,3 +107,27 @@ export const filterParams = (filter, newObj) => {
   localStorage.setItem('f_url', url)
   return url
 }
+
+export const paginationFilterParams = () => {
+  const fields = {
+    date_start: null,
+    date_end: null,
+    area_id: null,
+    workstation_id: null,
+    employed_id: null,
+    orderBy: null,
+    order: null,
+  }
+  let url = `date_start=${localStorage.getItem('date_start')}&date_end=${localStorage.getItem('date_end')}`
+  const keys = Object.keys(fields)
+  keys.forEach((key) => {
+    if (key !== 'date_start' && key !== 'date_end') {
+      const localField = localStorage.getItem(key)
+      if (localField !== '_all_') {
+        url += `&${key}=${localField}`
+      }
+    }
+  })
+  localStorage.setItem('f_url', url)
+  return url
+}

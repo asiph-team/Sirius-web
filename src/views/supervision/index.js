@@ -18,7 +18,7 @@ const FilteringList = () => {
     paginationFilter,
     filterParams,
     orderBy,
-  } = useFetchResources(`/areas/workstations/employees/employed-activities?`)
+  } = useFetchResources('/areas/workstations/employees/employed-activities?')
 
   const { items, loading, error, filter, temp } = trainings
   // Areas
