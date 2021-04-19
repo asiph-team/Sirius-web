@@ -1,6 +1,5 @@
 import { useEffect, useReducer } from 'react'
 import axios from 'axios'
-import FileSaver from 'file-saver'
 import moment from 'moment'
 import api from '../../service/api'
 import {
@@ -18,7 +17,7 @@ import {
   fetchSuccessExtra,
 } from '../../ducks/resources'
 import { baseApiUrl, urlApi } from '../helpers/consts'
-import { client } from '../helpers/functions'
+import { client, paginationFilterParams } from '../helpers/functions'
 
 export function useFetchResources(url) {
   const [items, dispatch] = useReducer(resourcesReducer, initialState)
@@ -79,7 +78,8 @@ export function useFetchResources(url) {
   }
 
   const paginationFilter = async (pageNumber, params) => {
-    const nUrl = params ? `${params}&page=${pageNumber}` : `&page=${pageNumber}`
+    const queryParams = paginationFilterParams()
+    const nUrl = queryParams ? `${queryParams}&page=${pageNumber}` : `&page=${pageNumber}`
     dispatch(fetchStart())
     await api.get(url + nUrl)
       .then((response) => dispatch(fetchSuccessExtra(response.data, params)))
@@ -126,7 +126,8 @@ export function useFetchResources(url) {
 
   const orderBy = async (orderby, ordering) => {
     const nUrl = localStorage.getItem('f_url')
-
+    localStorage.setItem('orderBy', orderby)
+    localStorage.setItem('order', ordering)
     const orderParams = nUrl ? `${nUrl}&orderBy=${orderby}&order=${ordering}` : `orderBy=${orderby}&order=${ordering}`
     await api.get(url + orderParams)
       .then((response) => dispatch(fetchOrder(response.data, !ordering, { type: 'order', data: orderParams, order: ordering })))

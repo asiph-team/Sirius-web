@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card, CardBody } from 'reactstrap'
-import moment from 'moment'
 import { LoadingSpinner } from '../../components/@vuexy/Spinner'
-import { capitalizeFirstLetter, filterParams } from '../../utility/helpers/functions'
+import { filterParams } from '../../utility/helpers/functions'
 import { InfoTraining } from '../../components/custom/modals'
 import {
   AlertDialog, Header, List,
@@ -84,6 +83,7 @@ const ListUI = (props) => {
               loadingAreas={loadingAreas}
               loadingEmployees={loadingEmployees}
               loadingWorkstations={loadingWorkstations}
+              ordering={ordering}
             />
           </>
         )

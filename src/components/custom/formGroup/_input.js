@@ -44,10 +44,11 @@ const SelectFieldFiltered = (props) => {
   const handleChange = (option) => {
     localStorage.setItem(name, option.value)
     form.setFieldValue(name, option.value)
-    localStorage.setItem('workstation_id', '_all_')
-    localStorage.setItem('employed_id', '_all_')
+
     if (name === 'area_id') {
       if (option.value === '_all_') {
+        localStorage.setItem('workstation_id', '_all_')
+        localStorage.setItem('employed_id', '_all_')
         filterWorkstations('')
         filterEmployees('')
       } else {
