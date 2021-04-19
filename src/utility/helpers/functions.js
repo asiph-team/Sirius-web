@@ -123,7 +123,7 @@ export const paginationFilterParams = () => {
   keys.forEach((key) => {
     if (key !== 'date_start' && key !== 'date_end') {
       const localField = localStorage.getItem(key)
-      if (localField !== '_all_') {
+      if (localField !== '_all_' && localField !== null) {
         url += `&${key}=${localField}`
       }
     }
