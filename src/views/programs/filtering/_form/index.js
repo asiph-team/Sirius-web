@@ -4,20 +4,24 @@ import {
 } from 'reactstrap'
 import { FileText } from 'react-feather'
 import { Formik, Form } from 'formik'
+import moment from 'moment'
 import { FormGroup } from '../../../../components/custom'
 import { initialValues } from './_initialValues'
 import { config } from './_config'
 import { validationSchema } from './_validation'
-import moment from 'moment'
+import { userData } from '../../../../utility/helpers/functions'
 
 const FormUI = (props) => {
   const {
     handleSubmit, placeholder, areas, search, employees, workstations, filter, filterEmployees, filterWorkstations, loadingAreas, loadingEmployees, loadingWorkstations
   } = props
-  const areas_list = areas.data.data.map((el) => ({ label: el.name, value: el.id }))
+  const { role } = userData()
+  const areas_list = areas.data.map((el) => ({ label: el.name, value: el.id }))
   const employees_list = employees.data.map((el) => ({ label: `${el.name + ' ' + el.lastname}`, value: el.id }))
   const workstations_list = workstations.data.data.map((el) => ({ label: el.name, value: el.id }))
-  areas_list.push({ label: 'Todas', value: '_all_' })
+  if (role !== 'chief_of_area') {
+    areas_list.push({ label: 'Todas', value: '_all_' })
+  }
   employees_list.push({ label: 'Todos', value: '_all_' })
   workstations_list.push({ label: 'Todos', value: '_all_' })
   placeholder.date_start = moment(placeholder.date_start).toDate()
@@ -64,6 +68,7 @@ const FormUI = (props) => {
                             filter,
                             filterEmployees,
                             filterWorkstations,
+                            disabled: role === 'chief_of_area',
                           })
                         }
                         if (item.name === 'workstation_id') {

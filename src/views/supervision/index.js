@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import { useFetchResources, usePostResources } from '../../utility/customHooks/resources'
 import { AlertSuccessDownload, AlertLoading } from '../../components/custom'
-
 import ListUI from './_listUI'
 
 const FilteringList = () => {
@@ -37,6 +36,7 @@ const FilteringList = () => {
     link.click()
     //link.remove()
   }
+
   return (
     <>
       <ListUI
@@ -50,7 +50,7 @@ const FilteringList = () => {
             ...(localStorage.getItem('employed_id') !== '_all_' && { employed_id: localStorage.getItem('employed_id') }),
           }, url,
         )}
-        areas={areasList}
+        areas={areasList && areasList.data}
         data={items}
         remove={remove}
         ordering={orderBy}

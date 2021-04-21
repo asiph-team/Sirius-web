@@ -37,12 +37,12 @@ const ListUI = (props) => {
                 &nbsp;Agregar
             </Button>
           </Link>
-          <Link to="/dashboard/programs/filtering">
-            <Button color="primary" className="ml-1">
-              <ExternalLink size={14} />
-            </Button>
-          </Link>
         </Can>
+        <Link to="/dashboard/programs/filtering">
+          <Button color="primary" className="ml-1">
+            <ExternalLink size={14} />
+          </Button>
+        </Link>
       </Header>
       <Card>
         <CardBody>

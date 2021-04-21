@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card, CardBody } from 'reactstrap'
 import { LoadingSpinner } from '../../components/@vuexy/Spinner'
-import { filterParams } from '../../utility/helpers/functions'
+import { filterParams, userData } from '../../utility/helpers/functions'
 import { InfoTraining } from '../../components/custom/modals'
 import {
   AlertDialog, Header, List,
@@ -14,6 +14,9 @@ const ListUI = (props) => {
   const { data, remove, pagination, search, temp, ordering, areas, onLoading, employees, workstations, handleSubmit, firstDate, filter, filterEmployees, filterWorkstations, title, loadingAreas, loadingEmployees, loadingWorkstations, isLoading } = props
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
+  if (areas) {
+    console.log(JSON.stringify(areas.data[0].id))
+  }
   const show = (item, type, visible = true) => {
     setSelected(item)
     setVisibility({ ...visibility, [type]: visible })
@@ -27,6 +30,7 @@ const ListUI = (props) => {
     workstation: item.activity.workstation,
     area: item.activity.area,
   }))
+  const { role } = userData()
   useEffect(() => {
     localStorage.setItem('date_start', firstDate.date_start)
     localStorage.setItem('date_end', firstDate.date_end)
@@ -73,7 +77,7 @@ const ListUI = (props) => {
               handleSubmit={handleSubmit}
               placeholder={{
                 ...firstDate,
-                area_id: localStorage.getItem('area_id'),
+                area_id: role === 'chief_of_area' ? areas.data[0].id : localStorage.getItem('area_id'),
                 workstation_id: localStorage.getItem('workstation_id'),
                 employed_id: localStorage.getItem('employed_id'),
               }}
