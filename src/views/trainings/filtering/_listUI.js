@@ -10,10 +10,11 @@ import {
 import { headers } from './_headers'
 import PaginationSeprated from '../../../components/custom/pagination'
 import FormUI from './_form'
-import StandaloneForm from './_customForm'
+import { userData } from '../../../utility/helpers/functions'
 
 const ListUI = (props) => {
   const { data, remove, pagination, search, temp, ordering, areas, onLoading, employees, workstations, handleSubmit, firstDate, filter, filterEmployees, filterWorkstations, title, loadingAreas, loadingEmployees, loadingWorkstations } = props
+  const { role } = userData()
   const [selected, setSelected] = useState({})
   const [visibility, setVisibility] = useState({ contact: false, remove: false })
   const show = (item, type, visible = true) => {
@@ -75,7 +76,7 @@ const ListUI = (props) => {
               handleSubmit={handleSubmit}
               placeholder={{
                 ...firstDate,
-                area_id: localStorage.getItem('area_id'),
+                area_id: role === 'chief_of_area' ? areas.data[0].id : localStorage.getItem('area_id'),
                 workstation_id: localStorage.getItem('workstation_id'),
                 employed_id: localStorage.getItem('employed_id'),
               }}

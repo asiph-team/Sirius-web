@@ -51,7 +51,7 @@ const FilteringList = () => {
             ...(localStorage.getItem('employed_id') !== '_all_' && { employed_id: localStorage.getItem('employed_id') }),
           }, url,
         )}
-        areas={areasList}
+        areas={areasList && areasList.data}
         data={items}
         remove={remove}
         ordering={orderBy}
