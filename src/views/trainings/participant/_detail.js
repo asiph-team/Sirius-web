@@ -25,7 +25,7 @@ const DetailUI = (props) => {
     workstation: item.user.workstation ? item.user.workstation.name : null,
     signature: item.signature,
     date_signature: item.date_signature ? moment(item.date_signature, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY') : '',
-    assistance: item.status === 'invited' ? 'Invitado' : 'Asistió',
+    assistance: item.status === 'not_assist' ? 'Invitado' : 'Asistió',
   }))
   return (
     <>
