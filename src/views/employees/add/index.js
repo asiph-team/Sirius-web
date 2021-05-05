@@ -11,7 +11,7 @@ import { singleDateFormatter } from '../../../utility/helpers/functions'
 const Add = () => {
   const url = 'employees'
   const { data: { loading, error, items }, postData, clean } = usePostResources()
-  const { items: workstations } = useFetchResources('workstations?')
+  const { items: workstations } = useFetchResources('workstations?all')
   const { items: data, loading: loadingWorkstations, error: errorWorkstations } = workstations
   if (loadingWorkstations) return <LoadingSpinner />
   if (errorWorkstations) return <Error message={errorWorkstations} />
